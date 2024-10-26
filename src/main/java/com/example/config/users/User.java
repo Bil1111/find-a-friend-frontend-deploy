@@ -1,27 +1,32 @@
 package com.example.config.users;
 
 import jakarta.persistence.*;
-import java.util.Objects;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "users")
+@Table(name = "app_user")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Email(message = "Введіть дійсний email")
     private String email;
 
-    @Column(nullable = false)
+    @Size(min = 6, message = "Пароль має містити не менше 6 символів")
     private String password;
 
-    public User() {}
-
-    public User(String email, String password) {
+    public User(String email, String encodedPassword) {
         this.email = email;
-        this.password = password;
+        this.password = encodedPassword;
+    }
+
+    public User() {
+
     }
 
     public Long getId() {
@@ -46,19 +51,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    // equals() та hashCode()
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(email, user.email);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(email);
     }
 }

@@ -22,8 +22,8 @@ public class SecurityConfig {
                         .anyRequest().authenticated() // Інші запити вимагають авторизації
                 )
                 .formLogin(form -> form
-                        .loginPage("/login") // Вказуємо свою сторінку логіну
-                        .defaultSuccessUrl("/dashboard", true) // Сторінка після успішного логіну
+                        .loginPage("/api/users/login") // Вказуємо свою сторінку логіну
+                        .defaultSuccessUrl("/", true) // Сторінка після успішного логіну
                         .permitAll() // Доступ до сторінки логіну дозволено всім
                 )
                 .logout(logout -> logout

@@ -108,7 +108,7 @@
             .then(response => {
                 if (response.ok) {
                     // Redirect or show success message
-                    window.location.href = '/login'; // Redirect to the login page
+                    window.location.href = '/api/users/login'; // Redirect to the login page
                 } else {
                     errorMessage.textContent = 'Error registering, please try again.';
                 }

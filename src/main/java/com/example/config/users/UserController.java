@@ -27,7 +27,10 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<String> loginUser(@RequestBody UserLoginRequest request) {
         try {
+            System.out.println(request.getEmail());
+            System.out.println(request.getPassword());
             if (userService.loginUser(request.getEmail(), request.getPassword())) {
+                System.out.println(userService);
                 return new ResponseEntity<>("Login successful", HttpStatus.OK);
             } else {
                 return new ResponseEntity<>("Invalid credentials", HttpStatus.UNAUTHORIZED);

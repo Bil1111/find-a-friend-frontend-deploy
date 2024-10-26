@@ -16,7 +16,7 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     public User registerUser(String email, String password) {
-        if (userRepository.findByEmail(email) != null) {
+        if ((userRepository.findByEmail(email)) != null) {
             throw new UserAlreadyExistsException("User with email " + email + " already exists.");
         }
         String encodedPassword = passwordEncoder.encode(password);

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Заклад 1",
+    "address": "Адреса 1, Київ",
+    "phone": "+380123456789",
+    "lat": 50.4501,
+    "lng": 30.5234,
+    "image": "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no"
+  },
+  {
+    "name": "дом котла 2",
+    "address": "Адреса 2, Київ",
+    "phone": "+380987654321",
+    "lat": 50.4547,
+    "lng": 30.5238,
+    "image": "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no"
+  },
+  {
+    "name": "Заклад 3",
+    "address": "Адреса 3, Київ",
+    "phone": "+380555555555",
+    "lat": 50.4454,
+    "lng": 30.5289,
+    "image": "https://lh5.googleusercontent.com/p/AF1QipPa3nZp4vjSbEA8zUIrUX0jHgO7bB6XFP-lHvGT=w408-h680-k-no"
+  },
+  {
+    "name": "Новий Заклад",
+    "address": "Нова Адреса, Київ",
+    "phone": "+380112233445",
+    "lat": 50.4339,
+    "lng": 30.4818,
+    "image": "https://i.ibb.co/qnwchYY/image.png"
+  },
+  {
+    "name": "Смакота",
+    "address": "Вулиця Грушевського, 1, Київ",
+    "phone": "+380632222333",
+    "lat": 50.4505,
+    "lng": 30.525,
+    "image": "https://i.ibb.co/hV0ZcGJ/image.png"
+  }
+]

@@ -1,0 +1,44 @@
+*{
+    margin: 20px 20px 20px 20px;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+}
+
+.Costumer_Sing_In{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    
+}
+
+.Costumer_Sing_In te{
+    padding: 10px; /* Внутрішній відступ */
+    border: 1px solid #ccc; /* Сірий контур */
+    border-radius: 4px; /* Закруглені кути */
+    box-sizing: border-box; /* Включити відступи в ширину */
+}
+
+.Costumer_Sing_In p{
+    padding: 10px; /* Внутрішній відступ */
+    border: 1px solid #ccc; /* Сірий контур */
+    border-radius: 4px; /* Закруглені кути */
+    box-sizing: border-box; /* Включити відступи в ширину */
+}
+
+.En{
+    padding: 10px;
+    background-color: #4CAF50; /* Зелений фон */
+    color: white; /* Білий текст */
+    border: none; /* Без контуру */
+    border-radius: 4px; /* Закруглені кути */
+    cursor: pointer; /* Курсор у вигляді вказівника */
+    font-size: 16px; /* Розмір шрифту */
+}
+.En:hover{
+    background-color: #45a049; /* Темніший зелений при наведенні */
+}

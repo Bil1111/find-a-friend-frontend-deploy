@@ -13,29 +13,34 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(AbstractHttpConfigurer::disable) // Вимикаємо CSRF для спрощення (можна залишити увімкненим, якщо потрібно)
-                .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/api/users/register", "/login", "/register", "/first/hello", "/").permitAll() // Додаємо виключення для публічних сторінок
-                        .anyRequest().authenticated() // Інші запити вимагають авторизації
-                )
-                .formLogin(form -> form
-                        .loginPage("/api/users/login") // Вказуємо свою сторінку логіну
-                        .defaultSuccessUrl("/", true) // Сторінка після успішного логіну
-                        .permitAll() // Доступ до сторінки логіну дозволено всім
-                )
-                .logout(logout -> logout
-                        .logoutUrl("/logout") // URL для логауту
-                        .logoutSuccessUrl("/login?logout") // Після логауту перенаправлення на сторінку логіну
-                        .permitAll() // Логаут доступний всім
-                )
-                .httpBasic(); // Вмикаємо HTTP Basic для базової авторизації (опціонально)
-
-        return http.build();
-    }
-
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                .csrf(AbstractHttpConfigurer::disable) // Вимикаємо CSRF для спрощення (можна залишити увімкненим, якщо потрібно)
+//                .authorizeHttpRequests(authz -> authz
+//                        .requestMatchers(
+//                                "/api/users/register",
+//                                "/api/users/login",
+//                                "/register",
+//                                "/first/hello",
+//                                "/",
+//                                "/api/controllers/establishments" // Додаємо це
+//                        ).permitAll() // Додаємо виключення для публічних сторінок
+//                        .anyRequest().authenticated() // Інші запити вимагають авторизації
+//                )
+//                .formLogin(form -> form
+//                        .loginPage("/api/users/login") // Вказуємо свою сторінку логіну
+//                        .defaultSuccessUrl("/", true) // Сторінка після успішного логіну
+//                        .permitAll() // Доступ до сторінки логіну дозволено всім
+//                )
+//                .logout(logout -> logout
+//                        .logoutUrl("/logout") // URL для логауту
+//                        .logoutSuccessUrl("/login?logout") // Після логауту перенаправлення на сторінку логіну
+//                        .permitAll() // Логаут доступний всім
+//                );
+//
+//        return http.build();
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

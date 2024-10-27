@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #fc9b00;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    font-size: 2rem;
+    padding: 20px 20px 20px 20px;
+}
+
+nav {
+    margin: 20px auto;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+nav ul li a:hover {
+    color: #000000;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+.map-container {
+    display: flex;
+    flex-direction: column; /* Додано, щоб елементи розташовувались вертикально */
+    justify-content: center;
+    align-items: center;
+    height: auto; /* Змініть на auto, щоб містився вміст */
+}
+
+.map-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.map-container li {
+    text-align: center;
+}
+
+.LinkIcon{
+    position: absolute;
+    top: 45px;
+    left: 60px;
+}
+.found {
+    display: block; 
+    margin-top: 20px; /* Відстань між картою і повідомленням */
+    text-align: center; /* Центрувати текст */
+    font-size: larger;
+    
+}
+
+input[type="text"] {
+    width: 10%; /* Зробити поле введення на всю ширину */
+    padding: 10px; /* Внутрішній відступ для кращого вигляду */
+    margin-top: 5px; /* Відстань між label і полем введення */
+    margin-bottom: 10px; /* Відстань після поля введення */
+   
+   
+}
+
+.foundMAp {
+    padding: 10px 20px; 
+    cursor: pointer;
+    
+}
+.foundMAp:hover {
+    padding: 10px 20px;
+    cursor: pointer; 
+    background-color: tomato;
+    
+}
+
+.Regg{
+ display: flex;
+ justify-content:center;
+ align-items: center;
+}
+
+.Enter{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-right: 10px;
+    
+}
+
+.Enter:hover{
+    text-decoration: none;
+    color: #000000;
+}
+
+.Registr{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-left: 10px; 
+    
+}
+
+.Registr:hover{
+    text-decoration: none;
+    color: #000000;
+   
+    
+}
+.slash{
+ 
+}

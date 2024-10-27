@@ -18,17 +18,18 @@
 
   <dependencies>
     <!-- Spring Boot Starter Web -->
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
       <version>${spring.boot.version}</version>
     </dependency>
+
     <dependency>
       <groupId>org.glassfish</groupId>
       <artifactId>javax.el</artifactId>
       <version>3.0.0</version>
     </dependency>
+
     <dependency>
       <groupId>org.hibernate.validator</groupId>
       <artifactId>hibernate-validator</artifactId>
@@ -64,7 +65,7 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- Thymeleaf Spring integration for Spring 6 -->
+    <!-- Thymeleaf Spring integration -->
     <dependency>
       <groupId>org.thymeleaf</groupId>
       <artifactId>thymeleaf-spring6</artifactId>
@@ -78,15 +79,69 @@
       <version>4.0.1</version>
       <scope>provided</scope>
     </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-security</artifactId>
-      <version>RELEASE</version>
-      <scope>compile</scope>
-    </dependency>
   </dependencies>
 
   <build>
     <finalName>spring-mvc-app</finalName>
+    <plugins>
+      <!-- Maven Compiler Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version> <!-- Версія для уникнення попереджень -->
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+        </configuration>
+      </plugin>
+
+      <!-- Exec Maven Plugin for Angular -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.6.0</version>
+        <executions>
+          <!-- npm install -->
+          <execution>
+            <id>npm-install</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>generate-resources</phase>
+            <configuration>
+              <executable>npm</executable>
+              <arguments>
+                <argument>install</argument>
+              </arguments>
+              <workingDirectory>src/frontend</workingDirectory>
+            </configuration>
+          </execution>
+
+          <!-- npm run build -->
+          <execution>
+            <id>npm-build</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>generate-resources</phase>
+            <configuration>
+              <executable>npm</executable>
+              <arguments>
+                <argument>run</argument>
+                <argument>build</argument>
+              </arguments>
+              <workingDirectory>src/frontend</workingDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Spring Boot Maven Plugin -->
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>${spring.boot.version}</version>
+      </plugin>
+    </plugins>
   </build>
 </project>

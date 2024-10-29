@@ -1,6 +1,7 @@
 package com.example.config.shelters;
 
 import com.example.config.animals.Animal;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -28,6 +29,7 @@ public class Shelter {
     @Size(max = 500, message = "Опис не повинен перевищувати 500 символів")
     private String description;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "shelter", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Animal> animals;
 

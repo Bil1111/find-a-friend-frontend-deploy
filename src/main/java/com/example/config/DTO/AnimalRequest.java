@@ -1,7 +1,5 @@
 package com.example.config.DTO;
 
-import com.example.config.shelters.Shelter;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -21,14 +19,16 @@ public class AnimalRequest {
     private String size;
 
     @NotNull(message = "Shelter ID is required")
-    private Shelter shelter;
+    private Long shelter;
 
     @Size(max = 255, message = "Description must not exceed 255 characters")
     private String description;
 
+    // Конструктор без параметрів
     public AnimalRequest() {}
 
-    public AnimalRequest(String name, String type, Integer age, String size, Shelter shelter, String description) {
+    // Конструктор з параметрами
+    public AnimalRequest(String name, String type, Integer age, String size, Long shelter, String description) {
         this.name = name;
         this.type = type;
         this.age = age;
@@ -37,6 +37,7 @@ public class AnimalRequest {
         this.description = description;
     }
 
+    // Геттери та сеттери
     public String getName() {
         return name;
     }
@@ -69,11 +70,11 @@ public class AnimalRequest {
         this.size = size;
     }
 
-    public Shelter getShelter() {
+    public Long getShelter() {
         return shelter;
     }
 
-    public void setShelter(Shelter shelter) {
+    public void setShelter(Long shelter) { // Змінено з setShelter на setShelter
         this.shelter = shelter;
     }
 

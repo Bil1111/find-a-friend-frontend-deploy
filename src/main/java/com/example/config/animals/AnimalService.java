@@ -1,7 +1,7 @@
 package com.example.config.animals;
 
-
 import com.example.config.DTO.AnimalRequest;
+import com.example.config.shelters.Shelter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,16 +14,18 @@ public class AnimalService {
     @Autowired
     private AnimalRepository animalRepository;
 
-    public Animal addAnimal(AnimalRequest request) {
-        Animal animal = new Animal(
-                request.getName(),
-                request.getType(),
-                request.getAge(),
-                request.getSize(),
-                request.getDescription(),
-                request.getShelter()
-        );
-        return animalRepository.save(animal);
+    public void addAnimal(AnimalRequest request, Shelter shelter) {
+        // Створення нового Animal
+        Animal animal = new Animal();
+        animal.setName(request.getName());
+        animal.setType(request.getType());
+        animal.setAge(request.getAge());
+        animal.setSize(request.getSize());
+        animal.setDescription(request.getDescription());
+        animal.setShelter(shelter); // Встановлення shelter
+
+        // Збереження тварини в базі даних
+        animalRepository.save(animal);
     }
 
     public Optional<Animal> getAnimalById(Long id) {
@@ -35,10 +37,6 @@ public class AnimalService {
     }
 
     public void deleteAnimal(Long id) {
-        if (animalRepository.existsById(id)) {
-            animalRepository.deleteById(id);
-        } else {
-            throw new AnimalNotFoundException("Animal with ID " + id + " not found.");
-        }
+        animalRepository.deleteById(id);
     }
 }

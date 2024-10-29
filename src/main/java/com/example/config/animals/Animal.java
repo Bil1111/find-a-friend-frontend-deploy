@@ -1,10 +1,11 @@
 package com.example.config.animals;
 
+import com.example.config.shelters.Shelter;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import com.example.config.shelters.Shelter;
 
 @Entity
 @Table(name = "animal")
@@ -18,36 +19,36 @@ public class Animal {
     @Size(max = 50, message = "Ім'я не повинно перевищувати 50 символів")
     private String name;
 
-    @NotEmpty(message = "Тип не може бути порожнім") // Наприклад, "кіт", "пес"
+    @NotEmpty(message = "Тип не може бути порожнім")
     private String type;
 
     @NotNull(message = "Вік не може бути порожнім")
     private Integer age;
 
-    @NotEmpty(message = "Розмір не може бути порожнім") // Наприклад, "маленький", "середній", "великий"
+    @NotEmpty(message = "Розмір не може бути порожнім")
     private String size;
 
     @Size(max = 255, message = "Опис не повинен перевищувати 255 символів")
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "shelter_id", nullable = false)
-    private Shelter shelter;
+    @JsonBackReference
+    @ManyToOne // Вказуємо, що багато тварин можуть бути у одного притулку
+    @JoinColumn(name = "shelter_id", nullable = false) // Зазначаємо, що поле shelter_id в базі даних
+    private Shelter shelter; // Вказуємо зв'язок з притулком
 
-    // Constructor including the new description field
+    // Конструктори
     public Animal(String name, String type, Integer age, String size, String description, Shelter shelter) {
         this.name = name;
         this.type = type;
         this.age = age;
         this.size = size;
         this.description = description;
-        this.shelter = shelter;
+        this.shelter = shelter; // Присвоюємо об'єкт Shelter
     }
 
-    // No-argument constructor
     public Animal() {}
 
-    // Getters and setters
+    // Геттери та сеттери
     public Long getId() {
         return id;
     }

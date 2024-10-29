@@ -1,0 +1,236 @@
+Гайд для фронтенду:
+
+
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ApiService {
+  private apiUrl = 'http://localhost:8080/api';
+
+  constructor(private http: HttpClient) { }
+
+  getHello(): Observable<string> {
+    return this.http.get<string>(`${this.apiUrl}/hello`);
+  }
+
+  postData(message: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/data`, { message });
+  }
+}
+
+це крч така мікрозалупа якась ви самі розбиретеся
+
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from './api.service';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <div>
+      <h1>{{ message }}</h1>
+      <button (click)="fetchHello()">Fetch Hello</button>
+      <button (click)="sendMessage()">Send Message</button>
+    </div>
+  `
+})
+export class AppComponent implements OnInit {
+  message: string = '';
+
+  constructor(private apiService: ApiService) { }
+
+  ngOnInit() { }
+
+  fetchHello() {
+    this.apiService.getHello().subscribe(response => {
+      this.message = response;
+    });
+  }
+
+  sendMessage() {
+    this.apiService.postData('Hello from Angular').subscribe(response => {
+      this.message = response.responseMessage;
+    });
+  }
+}
+
+
+Це використання в компоненті
+
+
+========================================================================
+РЕЄСТРАЦІЯ
+========================================================================
+
+значить дивіться щоб зареєструвати користувача нам повинна прийти json з вмістом
+
+{
+  "email": "123",
+  "password": "123"
+}
+
+НА ПОРТ http://localhost:8080/api/users/register командою POST 
+Обробляйте помилки по анотації ангуляра чи просто веб протоколів 
+
+========================================================================
+ЛОГІН
+========================================================================
+щоб залогінити користувача на порт http://localhost:8080/api/users/login командою POST повинна прийти така json:
+{
+  "email": "1@1",
+  "password": "1"
+}
+
+========================================================================
+РЕЄСТРАЦІЯ ПРИТУЛКІВ
+========================================================================
+Щоб зареєструвати новий притулок методом пост надішліть на порт http://localhost:8080/api/shelters/add методом POST таку json:
+{
+  "name": "123",
+  "address": "123",
+  "contactNumber": "123",
+  "description": "123",
+  "city": "123"
+  "latitude": "0.0"
+  "longitude": "0.0"
+}
+
+========================================================================
+ОТРИМАННЯ ID ПРИТУЛКУ
+========================================================================
+методом GET надіслати на порт http://localhost:8080/api/shelters/ТУТ_ВКАЗУЄМО_АЙДІ ПРИТУЛКУ таку json:
+{
+  "name": "123",
+  "address": "123",
+  "contactNumber": "123",
+  "description": "123",
+  "city": "123"
+  "latitude": "0.0"
+  "longitude": "0.0"
+}
+вам повернуть айді притулку 
+========================================================================
+ЗАПОСТИТИ ТВАРИНКУ В ПРИТУЛОК
+========================================================================
+POST http://localhost:8080/api/animals/add
+{
+  "name": "123",
+  "type": "123",
+  "age": 10,
+  "size": "3",
+  "shelter": {ТУТ І ТРЕБА АЙДІ ПРИТУЛКУ},
+  "description": "Не більше 255 символів"
+}
+========================================================================
+ВИДАЛИТИ ПРИТУЛОК
+========================================================================
+DELETE http://localhost:8080/api/shelters/ТУТ_ВКАЗУЄМО_АЙДІ ПРИТУЛКУ
+{
+  "name": "",
+  "address": "",
+  "contactNumber": "",
+  "description": "",
+  "city": ""
+  "latitude": ""
+  "longitude": ""
+}
+========================================================================
+ОТРИМАТИ ВСІ ПРИТУЛКИ
+========================================================================
+GET http://localhost:8080/api/shelters
+приклад відповіді:
+[
+    {
+        "id": 1,
+        "name": "123",
+        "address": "123",
+        "contactNumber": "123",
+        "description": "123",
+        "city": "null",
+        "latitude": "0.0",
+        "longitude": "0.0",
+        "animals": []
+    },
+    {
+        "id": 2,
+        "name": "123",
+        "address": "123",
+        "contactNumber": "123",
+        "description": "123",
+        "city": null,
+        "latitude": "0.0",
+        "longitude": "0.0",
+        "animals": []
+    },
+    {
+        "id": 3,
+        "name": "Uzbeki",
+        "address": "1.2",
+        "contactNumber": "+43534534",
+        "description": "lalala",
+        "city": null,
+        "latitude": "0.0",
+        "longitude": "0.0",
+        "animals": []
+    }
+]
+========================================================================
+ОТРИМАТИ КОНКРЕТНИЙ ПРИТУЛОК ЗА АЙДІ
+========================================================================
+GET http://localhost:8080/api/shelters/ТУТ_ВКАЗУЄМО_АЙДІ ПРИТУЛКУ
+Відповідь:
+{
+    "id": 1,
+    "name": "123",
+    "address": "123",
+    "contactNumber": "123",
+    "description": "123",
+    "city": 123,
+    "latitude": "0.0",
+    "longitude": "0.0",
+    "animals": []
+}
+========================================================================
+ОТРИМАТИ СПИСОК ВСІХ ТВАРИН
+========================================================================
+GET http://localhost:8080/api/animals
+Відповідь:
+[
+    {
+        "id": 1,
+        "name": "123",
+        "type": "123",
+        "age": 10,
+        "size": "3",
+        "description": "?? ?????? 255 ????????"
+    },
+    {
+        "id": 2,
+        "name": "123",
+        "type": "123",
+        "age": 10,
+        "size": "3",
+        "description": "aloha"
+    }
+]
+========================================================================
+ОТРИМАТИ ТВАРИНКУ ЗА АЙДІ
+========================================================================
+GET http://localhost:8080/api/animals/ТУТ_ВКАЗУЄМО_АЙДІ ТВАРИНКИ
+Відповідь:
+{
+    "id": 1,
+    "name": "123",
+    "type": "123",
+    "age": 10,
+    "size": "3",
+    "description": "aloha"
+}
+========================================================================
+ВИДАЛИТИ ТВАРИНКУ ЗА АЙДІ
+========================================================================
+DELETE http://localhost:8080/api/animals/1
+акуратно блять не видаляйте тваринок

@@ -23,11 +23,12 @@ public class ShelterController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Shelter> getShelterById(@PathVariable Long id) {
+    public ResponseEntity<Shelter> getShelterById(@PathVariable("id") Long id) {
         Optional<Shelter> shelter = shelterService.getShelterById(id);
         return shelter.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
 
     @GetMapping
     public ResponseEntity<List<Shelter>> getAllShelters() {
@@ -36,7 +37,7 @@ public class ShelterController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteShelter(@PathVariable Long id) {
+    public ResponseEntity<String> deleteShelter(@PathVariable("id") Long id) {
         shelterService.deleteShelter(id);
         return new ResponseEntity<>("Shelter deleted successfully", HttpStatus.OK);
     }

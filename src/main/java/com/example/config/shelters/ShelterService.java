@@ -18,7 +18,10 @@ public class ShelterService {
                 request.getName(),
                 request.getAddress(),
                 request.getContactNumber(),
-                request.getDescription()
+                request.getDescription(),
+                request.getCity(),
+                request.getLatitude(),
+                request.getLongitude()
         );
         return shelterRepository.save(shelter);
     }

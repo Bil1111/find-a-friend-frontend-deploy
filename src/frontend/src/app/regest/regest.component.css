@@ -1,44 +1,108 @@
-*{
-    margin: 20px 20px 20px 20px;
+* {
+  box-sizing: border-box;
 }
 
-body{
-    width: 100%;
-    height: 100vh;
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  height: 100vh; /* Займає всю висоту екрана */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.Costumer_Sing_In{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 25px;
-    
+.container {
+  width: 100%;
+  max-width: 400px; /* Максимальна ширина контейнера */
+  margin: 0 auto; /* Центруємо контейнер по горизонталі */
 }
 
-.Costumer_Sing_In te{
-    padding: 10px; /* Внутрішній відступ */
-    border: 1px solid #ccc; /* Сірий контур */
-    border-radius: 4px; /* Закруглені кути */
-    box-sizing: border-box; /* Включити відступи в ширину */
+.form-container {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out; /* Додаємо анімацію появи */
+  display: flex;
+  flex-direction: column; /* Використовуємо flex для вертикального розташування */
+  align-items: center; /* Вирівнюємо по центру */
 }
 
-.Costumer_Sing_In p{
-    padding: 10px; /* Внутрішній відступ */
-    border: 1px solid #ccc; /* Сірий контур */
-    border-radius: 4px; /* Закруглені кути */
-    box-sizing: border-box; /* Включити відступи в ширину */
+h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #333;
 }
 
-.En{
-    padding: 10px;
-    background-color: #4CAF50; /* Зелений фон */
-    color: white; /* Білий текст */
-    border: none; /* Без контуру */
-    border-radius: 4px; /* Закруглені кути */
-    cursor: pointer; /* Курсор у вигляді вказівника */
-    font-size: 16px; /* Розмір шрифту */
+.form-group {
+  margin-bottom: 1rem;
+  width: 100%; /* Додаємо ширину для форм-групи */
 }
-.En:hover{
-    background-color: #45a049; /* Темніший зелений при наведенні */
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border 0.3s;
+}
+
+input:focus {
+  border: 1px solid #007bff;
+  outline: none;
+}
+
+.btn {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.spinner {
+  border: 5px solid #f3f3f3; /* Light grey */
+  border-top: 5px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin: 1rem auto;
+}
+
+/* Анімація для спінера */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Анімація появи */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

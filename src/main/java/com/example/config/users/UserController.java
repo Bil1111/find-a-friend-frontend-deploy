@@ -18,7 +18,7 @@ public class UserController {
     public ResponseEntity<String> registerUser(@RequestBody UserRegistrationRequest request) {
         try {
             userService.registerUser(request.getEmail(), request.getPassword());
-            return new ResponseEntity<>("User registered successfully", HttpStatus.CREATED);
+            return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (UserAlreadyExistsException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }
@@ -27,13 +27,13 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<String> loginUser(@RequestBody UserLoginRequest request) {
         try {
-            System.out.println(request.getEmail());
-            System.out.println(request.getPassword());
+
             if (userService.loginUser(request.getEmail(), request.getPassword())) {
                 System.out.println(userService);
-                return new ResponseEntity<>("Login successful", HttpStatus.OK);
+                return new ResponseEntity<>(HttpStatus.OK);
             } else {
-                return new ResponseEntity<>("Invalid credentials", HttpStatus.UNAUTHORIZED);
+                System.out.println("Declined");
+                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
             }
         } catch (UserNotFoundException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);

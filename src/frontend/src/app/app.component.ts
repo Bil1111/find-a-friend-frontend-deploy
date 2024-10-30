@@ -2,80 +2,73 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent implements OnInit {
-  title = 'FF';
-  isHomePage: boolean = false;
-  map!: google.maps.Map; // Використовуємо оператор запевнення визначення (!)
-
-  interface Shelter {
+interface MapPoint {
   name: string;
   address: string;
   phone: string;
   lat: number;
   lng: number;
   image: string;
+}
 
-  ngOnInit(): void {
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'] // corrected styleUrl to styleUrls
+})
+export class AppComponent implements OnInit {
+  title = 'FF';
+  isHomePage: boolean = false;
+  mapPoints: MapPoint[] = [];
+
+  constructor(private router: Router, private http: HttpClient) {}
+
+  ngOnInit() {
+    this.router.events.subscribe(() => {
+      this.isHomePage = this.router.url === '/';
+      if (this.isHomePage) {
+        this.loadMapPoints();
+      }
+    });
   }
-}
 
-constructor(private router: Router, private http: HttpClient) {}
+  loadMapPoints() {
+    this.http.get<MapPoint[]>('http://localhost:8080/api/mapPoints')
+      .subscribe(data => {
+        this.mapPoints = data;
+        this.initMap();
+      });
+  }
 
-ngOnInit() {
-  this.router.events.subscribe(() => {
-    this.isHomePage = this.router.url === '/';
-    if (this.isHomePage) {
-      this.loadMap();
-    }
-  });
-}
-
-loadMap() {
-  const mapOptions: google.maps.MapOptions = {
-    center: { lat: 50.4501, lng: 30.5234 }, // Центр карти
-    zoom: 12
-  };
-
-  this.map = new google.maps.Map(document.getElementById('map') as HTMLElement, mapOptions);
-
-  // Отримати мітки з API
-  this.fetchShelters();
-}
-
-fetchShelters() {
-  this.http.get<Shelter[]>('http://localhost:8080/api/mapPoints').subscribe(
-    (shelters: Shelter[]) => {
-      this.addMarkers(shelters);
-    },
-    (error) => {
-      console.error('Error fetching shelters:', error);
-    }
-  );
-}
-
-addMarkers(shelters: Shelter[]) {
-  shelters.forEach(shelter => {
-    const marker = new google.maps.Marker({
-      position: { lat: shelter.lat, lng: shelter.lng },
-      map: this.map,
-      title: shelter.name,
+  initMap() {
+    const map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
+      zoom: 10,
+      center: { lat: 50.4501, lng: 30.5234 }, // Center the map to Kyiv
     });
 
-    // Додаємо слухача подій для мітки
-    marker.addListener('click', () => {
-      alert(`Ви клікнули на ${shelter.name}\nАдреса: ${shelter.address}\nТелефон: ${shelter.phone}`); // Виводимо деталі закладу
-    });
-  });
-}
+    this.mapPoints.forEach(point => {
+      const marker = new google.maps.Marker({
+        position: { lat: point.lat, lng: point.lng },
+        map: map,
+        title: point.name,
+      });
 
-searchShelter() {
-  const shelterName = (document.getElementById('name') as HTMLInputElement).value;
-  // Реалізуйте логіку пошуку на основі назви притулку
-  console.log(`Шукаємо заклад: ${shelterName}`);
-}
+      // Create an info window for the marker
+      const infoWindow = new google.maps.InfoWindow({
+        content: `
+          <div>
+            <h2>${point.name}</h2>
+            <p>${point.address}</p>
+            <p>Телефон: ${point.phone}</p>
+            <img src="${point.image}" alt="${point.name}" style="width:100px;height:auto;">
+          </div>
+        `,
+      });
+
+      // Add a click listener to the marker
+      marker.addListener('click', () => {
+        infoWindow.open(map, marker);
+      });
+    });
+  }
 }

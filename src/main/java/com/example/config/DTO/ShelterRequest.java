@@ -17,15 +17,18 @@ public class ShelterRequest {
     @Size(max = 255, message = "Description must not exceed 255 characters")
     private String description;
 
+    @NotBlank(message = "City is required")
+    private String city;
 
     // Constructors, Getters, and Setters
     public ShelterRequest() {}
 
-    public ShelterRequest(String name, String address, String contactNumber, String description, Integer capacity) {
+    public ShelterRequest(String name, String address, String contactNumber, String description, String city) {
         this.name = name;
         this.address = address;
         this.contactNumber = contactNumber;
         this.description = description;
+        this.city = city;
     }
 
     public String getName() {
@@ -61,4 +64,11 @@ public class ShelterRequest {
         this.description = description;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 }

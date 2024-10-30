@@ -24,17 +24,21 @@ public class AnimalRequest {
     @Size(max = 255, message = "Description must not exceed 255 characters")
     private String description;
 
+    @NotNull(message = "Sex is required")
+    private Integer sex;
+
     // Конструктор без параметрів
     public AnimalRequest() {}
 
     // Конструктор з параметрами
-    public AnimalRequest(String name, String type, Integer age, String size, Long shelter, String description) {
+    public AnimalRequest(String name, String type, Integer age, String size, Long shelter, String description, Integer sex) {
         this.name = name;
         this.type = type;
         this.age = age;
         this.size = size;
         this.shelter = shelter;
         this.description = description;
+        this.sex = sex;
     }
 
     // Геттери та сеттери
@@ -84,5 +88,12 @@ public class AnimalRequest {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setSex(Integer sex){
+        this.sex = sex;
+    }
+    public Integer getSex(){
+        return sex;
     }
 }

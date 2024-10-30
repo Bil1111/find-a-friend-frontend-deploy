@@ -4,6 +4,7 @@ import com.example.config.animals.Animal;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -29,15 +30,19 @@ public class Shelter {
     @Size(max = 500, message = "Опис не повинен перевищувати 500 символів")
     private String description;
 
+    @NotEmpty(message = "Місто не може бути порожнім")
+    private String city;
+
     @JsonManagedReference
     @OneToMany(mappedBy = "shelter", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Animal> animals;
 
-    public Shelter(String name, String address, String contactNumber, String description) {
+    public Shelter(String name, String address, String contactNumber, String description, String city) {
         this.name = name;
         this.address = address;
         this.contactNumber = contactNumber;
         this.description = description;
+        this.city = city;
     }
 
     public Shelter() {

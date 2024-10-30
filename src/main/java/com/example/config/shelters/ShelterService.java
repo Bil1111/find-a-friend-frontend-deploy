@@ -13,14 +13,15 @@ public class ShelterService {
     @Autowired
     private ShelterRepository shelterRepository;
 
-    public Shelter addShelter(ShelterRequest request) {
+    public void addShelter(ShelterRequest request) {
         Shelter shelter = new Shelter(
                 request.getName(),
                 request.getAddress(),
                 request.getContactNumber(),
-                request.getDescription()
+                request.getDescription(),
+                request.getCity()
         );
-        return shelterRepository.save(shelter);
+        shelterRepository.save(shelter);
     }
 
     public Optional<Shelter> getShelterById(Long id) {

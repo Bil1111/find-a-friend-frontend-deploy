@@ -12,7 +12,7 @@
   <div class="Regg">
     <a routerLink='/sing-in' class="Enter">Увійти</a>
     <span class="slash">|</span>
-    <a routerLink='/regest' class="Registr">За реєструватися</a>
+    <a routerLink='/regest' class="Registr"> Zaреєструватися</a>
   </div>
 </header>
 
@@ -24,11 +24,10 @@
 
 <router-outlet></router-outlet>
 
-<div class="map-container" *ngIf="isHomePage">
-  <h1>Map Shelters</h1>
-  <div id="map" style="height: 600px; width: 100%;"></div>
+<div id="map" style="width: 100%; height: 600px;" *ngIf="isHomePage"></div>
 
+<div class="map-container" *ngIf="isHomePage">
   <label for="name" class="found">Назва притулку:</label>
   <input type="text" id="name" name="name">
-  <button class="foundMAp" (click)="searchShelter()">Шукати</button>
+  <button class="foundMAp">Шукати</button>
 </div>

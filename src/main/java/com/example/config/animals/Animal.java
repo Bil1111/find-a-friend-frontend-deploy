@@ -31,19 +31,28 @@ public class Animal {
     @Size(max = 255, message = "Опис не повинен перевищувати 255 символів")
     private String description;
 
+    @NotNull(message = "Sex is required")
+    private String sex;
+
+
     @JsonBackReference
     @ManyToOne // Вказуємо, що багато тварин можуть бути у одного притулку
     @JoinColumn(name = "shelter_id", nullable = false) // Зазначаємо, що поле shelter_id в базі даних
     private Shelter shelter; // Вказуємо зв'язок з притулком
 
     // Конструктори
-    public Animal(String name, String type, Integer age, String size, String description, Shelter shelter) {
+    public Animal(String name, String type, Integer age, String size, String description, Shelter shelter, int sexIndex) {
         this.name = name;
         this.type = type;
         this.age = age;
         this.size = size;
         this.description = description;
         this.shelter = shelter; // Присвоюємо об'єкт Shelter
+        if(sexIndex == 0){
+            sex = "Хлопчик";
+        } else if (sexIndex == 1) {
+            sex = "Дівчинка";
+        }
     }
 
     public Animal() {}
@@ -103,5 +112,13 @@ public class Animal {
 
     public void setShelter(Shelter shelter) {
         this.shelter = shelter;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 }

@@ -29,7 +29,11 @@ public class AnimalService {
         } else if (request.getSex() == 1) {
             animal.setSex("Дівчинка");
         }
+        animal.setCity(shelter.getCity());
+        animal.setShelterPhoneNumber(shelter.getContactNumber());
+
         animalRepository.save(animal);
+
     }
 
     public Optional<Animal> getAnimalById(Long id) {

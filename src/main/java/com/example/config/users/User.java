@@ -14,10 +14,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(columnDefinition = "NVARCHAR(255)")
     @NotEmpty(message = "Email не може бути порожнім")
     @Email(message = "Введіть дійсний email")
     private String email;
 
+    @Column(columnDefinition = "NVARCHAR(255)")
     @NotEmpty(message = "Пароль не може бути порожнім")
     @Size(min = 6, message = "Пароль має містити не менше 6 символів")
     private String password;

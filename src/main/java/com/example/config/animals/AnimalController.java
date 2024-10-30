@@ -69,18 +69,5 @@ public class AnimalController {
         }
 
     }
-    @PostMapping("/upload")
-    public ResponseEntity<String> uploadPhoto(@RequestParam("file") MultipartFile file) {
-        if (file.isEmpty()) {
-            return new ResponseEntity<>("Please select a file!", HttpStatus.BAD_REQUEST);
-        }
 
-        try {
-            Path path = Paths.get(uploadDir + file.getOriginalFilename());
-            Files.copy(file.getInputStream(), path);
-            return new ResponseEntity<>("File uploaded successfully: " + file.getOriginalFilename(), HttpStatus.OK);
-        } catch (IOException e) {
-            return new ResponseEntity<>("File upload failed: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 }

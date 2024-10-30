@@ -61,19 +61,7 @@ public class Animal {
 
     // Конструктори
     public Animal(String name, String type, Integer age, String size, String description, Shelter shelter, int sexIndex) {
-        this.name = name;
-        this.type = type;
-        this.age = age;
-        this.size = size;
-        this.description = description;
-        this.shelter = shelter; // Присвоюємо об'єкт Shelter
-        if(sexIndex == 0){
-            sex = "Хлопчик";
-        } else if (sexIndex == 1) {
-            sex = "Дівчинка";
-        }
-        this.shelterPhoneNumber = shelter.getContactNumber();
-        this.city = shelter.getCity();
+
     }
 
     public Animal() {}

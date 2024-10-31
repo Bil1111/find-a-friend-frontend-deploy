@@ -1,5 +1,6 @@
 package com.example.config.users;
 
+import com.example.config.shelters.Shelter;
 import jakarta.persistence.*;
 
 import javax.validation.constraints.Email;
@@ -23,6 +24,10 @@ public class User {
     @NotEmpty(message = "Пароль не може бути порожнім")
     @Size(min = 6, message = "Пароль має містити не менше 6 символів")
     private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "shelter_id", referencedColumnName = "id", nullable = true)
+    private Shelter shelter;
 
     public User(String email, String encodedPassword) {
         this.email = email;
@@ -55,5 +60,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Shelter getShelter() {
+        return shelter;
+    }
+
+    public void setShelter(Shelter shelter) {
+        this.shelter = shelter;
     }
 }

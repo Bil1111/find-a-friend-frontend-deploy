@@ -1,23 +1,57 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
+@Component({
+  selector: 'app-regest',
+  templateUrl: './regest.component.html',
+  styleUrls: ['./regest.component.css']
+})
+export class RegestComponent {
+  email: string = '';
+  password: string = '';
+  passwordAgain: string = '';
+  errorMessage: string | null = null;
 
-import { RegestComponent } from './regest.component';
+  constructor(private http: HttpClient, private router: Router) { }
 
-describe('RegestComponent', () => {
-  let component: RegestComponent;
-  let fixture: ComponentFixture<RegestComponent>;
+  register() {
+    if (this.password !== this.passwordAgain) {
+      this.errorMessage = 'Паролі не співпадають';
+      console.error(this.errorMessage);
+      return;
+    }
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [RegestComponent]
-    })
-    .compileComponents();
+    const registrationData = {
+      email: this.email,
+      password: this.password
+    };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      observe: 'response' as 'response'
+    };
 
-    fixture = TestBed.createComponent(RegestComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    this.http.post('http://localhost:8080/api/users/register', registrationData, httpOptions)
+      .subscribe({
+        next: (response) => {
+          console.log('Response status:', response.status);
+          console.log('Response body:', response.body);
+          if (response.status === 201) {
+            console.log('Реєстрація успішна', response);
+            this.router.navigate(['/sing-in']);
+          } else {
+            this.errorMessage = 'Сталася невідома помилка';
+          }
+        },
+        error: (error) => {
+          console.error('Помилка:', error);
+          if (error.status === 409) {
+            this.errorMessage = 'Користувач з такою поштою вже існує';
+          } else {
+            this.errorMessage = 'Реєстрація не лася';
+          }
+        }
+      });
+}}

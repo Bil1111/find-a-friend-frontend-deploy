@@ -3,6 +3,8 @@ package com.example.config.animals;
 import com.example.config.shelters.Shelter;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -17,19 +19,40 @@ public class Animal {
 
     @NotEmpty(message = "Ім'я не може бути порожнім")
     @Size(max = 50, message = "Ім'я не повинно перевищувати 50 символів")
+    @Column(columnDefinition = "NVARCHAR(255)")
     private String name;
 
+    @Column(columnDefinition = "NVARCHAR(255)")
     @NotEmpty(message = "Тип не може бути порожнім")
     private String type;
 
     @NotNull(message = "Вік не може бути порожнім")
     private Integer age;
 
+    @Column(columnDefinition = "NVARCHAR(255)")
     @NotEmpty(message = "Розмір не може бути порожнім")
     private String size;
 
+    @Column(columnDefinition = "NVARCHAR(255)")
     @Size(max = 255, message = "Опис не повинен перевищувати 255 символів")
     private String description;
+
+    @Column(columnDefinition = "NVARCHAR(255)")
+    @NotNull(message = "Sex is required")
+    private String sex;
+
+    @Column(columnDefinition = "NVARCHAR(255)")
+    @NotNull(message = "File")
+    private String imageURL;
+
+    @Column(columnDefinition = "NVARCHAR(255)")
+    @NotNull(message = "City is required")
+    private String city;
+
+    @Column(columnDefinition = "NVARCHAR(255)")
+    @NotNull(message = "Shelter Phone Number is required")
+    private String shelterPhoneNumber;
+
 
     @JsonBackReference
     @ManyToOne // Вказуємо, що багато тварин можуть бути у одного притулку
@@ -37,13 +60,8 @@ public class Animal {
     private Shelter shelter; // Вказуємо зв'язок з притулком
 
     // Конструктори
-    public Animal(String name, String type, Integer age, String size, String description, Shelter shelter) {
-        this.name = name;
-        this.type = type;
-        this.age = age;
-        this.size = size;
-        this.description = description;
-        this.shelter = shelter; // Присвоюємо об'єкт Shelter
+    public Animal(String name, String type, Integer age, String size, String description, Shelter shelter, int sexIndex) {
+
     }
 
     public Animal() {}
@@ -103,5 +121,40 @@ public class Animal {
 
     public void setShelter(Shelter shelter) {
         this.shelter = shelter;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getShelterPhoneNumber() {
+        return shelterPhoneNumber;
+    }
+
+    public void setShelterPhoneNumber(String shelterPhoneNumber) {
+        this.shelterPhoneNumber = shelterPhoneNumber;
+    }
+
+    public void setImageUrl(String s) {
     }
 }

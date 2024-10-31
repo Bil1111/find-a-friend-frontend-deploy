@@ -7,13 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/animals")
 public class AnimalController {
+
+    @Value("src/main/resources/images}")
+    private String uploadDir;
 
     @Autowired
     private AnimalService animalService;
@@ -46,6 +55,19 @@ public class AnimalController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteAnimal(@PathVariable("id") Long id) {
         animalService.deleteAnimal(id);
-        return new ResponseEntity<>("Animal deleted successfully", HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping({"/next/{id}"})
+    public ResponseEntity<List<Animal>> getNextAnimal(@PathVariable("id") int id) {
+        try{
+            List<Animal> animals = animalService.getNextAnimals(id);
+            return new ResponseEntity<>(animals, HttpStatus.OK);
+        }catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+    }
+
 }

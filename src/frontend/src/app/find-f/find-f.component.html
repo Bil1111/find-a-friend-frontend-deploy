@@ -1,17 +1,35 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Find a Friend - друзі</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="animals-container">
+  <h2>Тваринки</h2>
+  <div class="animal-cards">
+    <div *ngFor="let animal of animals"
+         class="animal-card"
+         [ngStyle]="{'background-color': animal.sex === 'Хлопчик' ? '#ADD8E6' : '#FFB6C1'}"
+         (click)="selectAnimal(animal)">
+      <img [src]="animal.imageURL" alt="{{ animal.name }}" />
+      <h3>{{ animal.name }}</h3>
+      <p>Місто: {{ animal.city }}</p>
+      <p>Телефон: {{ animal.shelterPhoneNumber }}</p>
+    </div>
+  </div>
 
-</head>
-<body>
-  <header></header>
-  
-  <footer></footer>
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Назад</button>
+    <span>Сторінка {{ currentPage }} з {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Вперед</button>
+  </div>
+</div>
 
-</body>
-</html>
-
+<!-- Модальне вікно для детальної інформації про тварину -->
+<div *ngIf="selectedAnimal" class="modal">
+  <div class="modal-content">
+    <span (click)="closeModal()" class="close-button">&times;</span>
+    <h2>{{ selectedAnimal.name }}</h2>
+    <img [src]="selectedAnimal.imageURL" alt="{{ selectedAnimal.name }}" />
+    <p>Тип: {{ selectedAnimal.type }}</p>
+    <p>Вік: {{ selectedAnimal.age }} років</p>
+    <p>Розмір: {{ selectedAnimal.size }}</p>
+    <p>Опис: {{ selectedAnimal.description }}</p>
+    <p>Місто: {{ selectedAnimal.city }}</p>
+    <p>Телефон: {{ selectedAnimal.shelterPhoneNumber }}</p>
+  </div>
+</div>

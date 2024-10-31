@@ -1,6 +1,4 @@
-
 <header>
-<!--  <h1>Головна сторінка</h1>-->
   <nav>
     <ul>
       <li><a routerLink='/find-f'>Знайти друга</a></li>
@@ -8,43 +6,28 @@
       <li><a routerLink='/blog-and-news'>Блог та новини</a></li>
       <li><a routerLink='/donate'>Зробити пожертву</a></li>
       <li><a routerLink='/free-people'>Волонтерство</a></li>
-
     </ul>
   </nav>
 
   <div class="Regg">
     <a routerLink='/sing-in' class="Enter">Увійти</a>
     <span class="slash">|</span>
-    <a routerLink='/regest' class="Registr">За реєструватися</a>
+    <a routerLink='/regest' class="Registr"> Zaреєструватися</a>
   </div>
 </header>
 
 <div class="LinkIcon">
-  <a href="" >
+  <a href="">
     <img src="../../public/FFLogo.png" alt="FFLOGO"/>
   </a>
 </div>
 
-
 <router-outlet></router-outlet>
 
+<div id="map" style="width: 100%; height: 600px;" *ngIf="isHomePage"></div>
 
-<div class="map-container"  *ngIf="isHomePage">
-
-  <ul>
-    <li>
-      <h1>Map Shelters</h1>
-      <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2600.760062591866!2d28.48674601568897!3d49.233083879325846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472d56fa83b9ea47%3A0xef35a1b6538f4a1d!2sRoshen%20Fountain!5e0!3m2!1sen!2sua!4v1696434572887!5m2!1sen!2sua&maptype=satellite"
-                width="1000" height="600" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>e>
-
-    </li>
-  </ul>
-
+<div class="map-container" *ngIf="isHomePage">
   <label for="name" class="found">Назва притулку:</label>
   <input type="text" id="name" name="name">
   <button class="foundMAp">Шукати</button>
 </div>
-
-

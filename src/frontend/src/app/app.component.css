@@ -17,6 +17,10 @@ header {
     padding: 20px;
     text-align: center;
     color: white;
+    display: flex;
+    justify-content: flex-end;
+   
+
 }
 
 h1 {
@@ -31,21 +35,25 @@ nav {
 
 nav ul {
     list-style-type: none;
+    
 }
 
 nav ul li {
     display: inline;
     margin: 0 15px;
+    margin-left: 30px;
 }
 
 nav ul li a {
     text-decoration: none;
     color: #ffffff;
     font-size: 1.2rem;
+   
 }
 
 nav ul li a:hover {
     color: #000000;
+    transition: 0.6s ease-in-out;
 }
 
 footer {
@@ -73,17 +81,17 @@ footer {
     text-align: center;
 }
 
-.LinkIcon{
+.LinkIcon {
     position: absolute;
-    top: 45px;
-    left: 60px;
+    top: 32px;
+    left: 40px;
 }
 .found {
-    display: block; 
+    display: block;
     margin-top: 20px; /* Відстань між картою і повідомленням */
     text-align: center; /* Центрувати текст */
     font-size: larger;
-    
+
 }
 
 input[type="text"] {
@@ -91,20 +99,20 @@ input[type="text"] {
     padding: 10px; /* Внутрішній відступ для кращого вигляду */
     margin-top: 5px; /* Відстань між label і полем введення */
     margin-bottom: 10px; /* Відстань після поля введення */
-   
-   
+
+
 }
 
 .foundMAp {
-    padding: 10px 20px; 
+    padding: 10px 20px;
     cursor: pointer;
-    
+
 }
 .foundMAp:hover {
     padding: 10px 20px;
-    cursor: pointer; 
+    cursor: pointer;
     background-color: tomato;
-    
+
 }
 
 .Regg{
@@ -118,28 +126,36 @@ input[type="text"] {
     color: #ffffff;
     font-size: 1.2rem;
     margin-right: 10px;
-    
+
 }
 
 .Enter:hover{
     text-decoration: none;
     color: #000000;
+    transition: 0.6s ease-in-out;
 }
 
 .Registr{
     text-decoration: none;
     color: #ffffff;
     font-size: 1.2rem;
-    margin-left: 10px; 
-    
+    margin-left: 10px;
+
 }
 
 .Registr:hover{
     text-decoration: none;
     color: #000000;
-   
-    
+    transition: 0.6s ease-in-out;
+
+
+}
+
+.img{
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
 }
 .slash{
- 
+
 }

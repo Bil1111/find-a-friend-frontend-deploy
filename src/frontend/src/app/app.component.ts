@@ -17,4 +17,8 @@ export class AppComponent implements OnInit {
         this.isHomePage = this.router.url === '/';
       });
     }
+
+    visible = false;
+    closeMenu(){this.visible = false;}
+    Openmemu(){this.visible = true;}
 }

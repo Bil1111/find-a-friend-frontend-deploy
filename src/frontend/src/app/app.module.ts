@@ -10,6 +10,8 @@ import { DonateComponent } from './donate/donate.component';
 import { FreePeopleComponent } from './free-people/free-people.component';
 import { SingINComponent } from './sing-in/sing-in.component';
 import { RegestComponent } from './regest/regest.component';
+import { AdoptComponent } from './adopt/adopt.component';
+import { GifthouseComponent } from './gifthouse/gifthouse.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { RegestComponent } from './regest/regest.component';
     DonateComponent,
     FreePeopleComponent,
     SingINComponent,
-    RegestComponent
+    RegestComponent,
+    AdoptComponent,
+    GifthouseComponent
   ],
   imports: [
     BrowserModule,

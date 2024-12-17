@@ -128,7 +128,7 @@ body {
   border-radius: 15px;
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  animation: fadeIn 1.5s ease-in-out;
+  animation: fadeIn 0.9s ease-in-out;
   width: 100%;
   height: 800px;
 
@@ -164,11 +164,44 @@ body {
   
 }
 
-
-
+.Developer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 300px;
+ 
+}
+.Developer h1 {
+  font-size: 2em;
+  text-align: center;
+  padding: 25px;
+  padding-top: 35px;
+  color: #000000;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin-bottom: 30px;
+  animation: fadeIn 1.5s ease-in-out;
+  width: 100%;
+  height: 15%;
+}
+.Developer p {
+  font-size: 2em;
+  text-align: center;
+  padding: 25px;
+  padding-top: 35px;
+  color: #000000;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin-bottom: 30px;
+  animation: fadeIn 1.5s ease-in-out;
+  width: 100%;
+  height: 15%;
+}
 
 /* Декоративні елементи */
-.Title1:hover {
+/* .Title1:hover {
   transform: scale(1.04);
   transition: transform 0.3s ease;
 }
@@ -181,14 +214,14 @@ body {
 .Title3:hover {
   transform: scale(1.04);
   transition: transform 0.3s ease;
-}
+} */
 
 
 /* Анімація для заголовка */
 @keyframes fadeIn {
   0% {
       opacity: 0;
-      transform: translateY(-20px);
+      transform: translateY(-40px);
   }
   100% {
       opacity: 1;

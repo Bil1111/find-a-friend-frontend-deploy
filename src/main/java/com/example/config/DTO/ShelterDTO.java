@@ -1,9 +1,9 @@
 package com.example.config.DTO;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
-public class ShelterRequest {
+import javax.validation.constraints.*;
+
+public class ShelterDTO {
 
     @NotBlank(message = "Name is required")
     private String name;
@@ -20,15 +20,31 @@ public class ShelterRequest {
     @NotBlank(message = "City is required")
     private String city;
 
-    // Constructors, Getters, and Setters
-    public ShelterRequest() {}
+    @NotNull(message = "Latitude cannot be null")
+    @DecimalMin(value = "-90.0", message = "Latitude must be between -90 and 90")
+    @DecimalMax(value = "90.0", message = "Latitude must be between -90 and 90")
+    private Double latitude;
 
-    public ShelterRequest(String name, String address, String contactNumber, String description, String city) {
+    @NotNull(message = "Longitude cannot be null")
+    @DecimalMin(value = "-180.0", message = "Longitude must be between -180 and 180")
+    @DecimalMax(value = "180.0", message = "Longitude must be between -180 and 180")
+    private Double longitude;
+
+    @NotBlank(message = "Image is required")
+    private String imageURL;
+
+    // Constructors, Getters, and Setters
+    public ShelterDTO() {}
+
+    public ShelterDTO(String name, String address, String contactNumber, String description, String city,Double latitude,Double longitude, String imageURL) {
         this.name = name;
         this.address = address;
         this.contactNumber = contactNumber;
         this.description = description;
         this.city = city;
+        this.latitude=latitude;
+        this.longitude=longitude;
+        this.imageURL=imageURL;
     }
 
     public String getName() {
@@ -70,5 +86,29 @@ public class ShelterRequest {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }

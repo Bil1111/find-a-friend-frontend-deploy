@@ -89,13 +89,14 @@ export class AppComponent implements OnInit {
 ========================================================================
 Щоб зареєструвати новий притулок методом пост надішліть на порт http://localhost:8080/api/shelters/add методом POST таку json:
 {
-  "name": "123",
-  "address": "123",
-  "contactNumber": "123",
-  "description": "123",
-  "city": "123"
-  "latitude": "0.0"
-  "longitude": "0.0"
+    "name": "Притулок №5",
+    "address": "Адреса притулку №5",
+    "contactNumber": "+380 935 556 666",
+    "description": "Опис притулку 5",
+    "city": "Дніпро",
+    "latitude": 48.4647,
+    "longitude": 35.0462,
+    "imageURL": "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no"
 }
 
 ========================================================================

@@ -16,38 +16,49 @@ public class Shelter {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
+    @Column(columnDefinition = "VARCHAR(255)")
     @NotEmpty(message = "Назва не може бути порожньою")
     @Size(max = 100, message = "Назва не повинна перевищувати 100 символів")
     private String name;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
+    @Column(columnDefinition = "VARCHAR(255)")
     @NotEmpty(message = "Адреса не може бути порожньою")
     private String address;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
+    @Column(columnDefinition = "VARCHAR(255)")
     @NotEmpty(message = "Контактний номер не може бути порожнім")
     @Size(max = 15, message = "Контактний номер не повинен перевищувати 15 символів")
     private String contactNumber;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
+    @Column(columnDefinition = "VARCHAR(255)")
     @Size(max = 500, message = "Опис не повинен перевищувати 500 символів")
     private String description;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
+    @Column(columnDefinition = "VARCHAR(255)")
     @NotEmpty(message = "Місто не може бути порожнім")
     private String city;
-
+    @Column(columnDefinition = "VARCHAR(255)")
+    @NotNull(message = "Latitude cannot be null")
+    private Double latitude;
+    @Column(columnDefinition = "VARCHAR(255)")
+    @NotNull(message = "Longitude cannot be null")
+    private Double longitude;
+    @Column(columnDefinition = "VARCHAR(255)")
+    @NotNull(message = "File")
+    private String imageURL;
     @JsonManagedReference
     @OneToMany(mappedBy = "shelter", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Animal> animals;
 
-    public Shelter(String name, String address, String contactNumber, String description, String city) {
+    public Shelter(String name, String address, String contactNumber, String description, String city,double latitude,double longitude, String imageURL) {
         this.name = name;
         this.address = address;
         this.contactNumber = contactNumber;
         this.description = description;
         this.city = city;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.imageURL=imageURL;
     }
 
     public Shelter() {
@@ -108,5 +119,29 @@ public class Shelter {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }

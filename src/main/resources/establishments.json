@@ -2,51 +2,51 @@
   {
     "name": "Притулок №1",
     "address": "Адреса притулку №1",
-    "phone": "+380 931 112 222",
+    "contactNumber": "+380 931 112 222",
     "description": "Опис притулку 1",
     "city": "Київ",
-    "lat": 50.4501,
-    "lng": 30.5931,
-    "image": "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no"
+    "latitude": 50.4501,
+    "longitude": 30.5931,
+    "imageURL": "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no"
   },
   {
     "name": "Притулок №2",
     "address": "Адреса притулку №2",
-    "phone": "+380 932 223 333",
+    "contactNumber": "+380 932 223 333",
     "description": "Опис притулку 2",
     "city": "Львів",
-    "lat": 49.8397,
-    "lng": 24.0297,
-    "image": "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no"
+    "latitude": 49.8397,
+    "longitude": 24.0297,
+    "imageURL": "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no"
   },
   {
     "name": "Притулок №3",
     "address": "Адреса притулку №3",
-    "phone": "+380 933 334 444",
+    "contactNumber": "+380 933 334 444",
     "description": "Опис притулку 3",
     "city": "Одеса",
-    "lat": 46.4825,
-    "lng": 30.7233,
-    "image": "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no"
+    "latitude": 46.4825,
+    "longitude": 30.7233,
+    "imageURL": "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no"
   },
   {
     "name": "Притулок №4",
     "address": "Адреса притулку №4",
-    "phone": "+380 934 445 555",
+    "contactNumber": "+380 934 445 555",
     "description": "Опис притулку 4",
     "city": "Харків",
-    "lat": 49.9935,
-    "lng": 36.2304,
-    "image": "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no"
+    "latitude": 49.9935,
+    "longitude": 36.2304,
+    "imageURL": "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no"
   },
   {
     "name": "Притулок №5",
     "address": "Адреса притулку №5",
-    "phone": "+380 935 556 666",
+    "contactNumber": "+380 935 556 666",
     "description": "Опис притулку 5",
     "city": "Дніпро",
-    "lat": 48.4647,
-    "lng": 35.0462,
-    "image": "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no"
+    "latitude": 48.4647,
+    "longitude": 35.0462,
+    "imageURL": "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no"
   }
 ]

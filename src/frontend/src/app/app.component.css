@@ -87,22 +87,22 @@ footer {
     left: 230px;
 }
 
-/* .map-container {
+.map-container {
     display: flex;
     flex-direction: column; 
     justify-content: center;
     align-items: center;
     height: auto; 
-} */
+}
 
-/* .map-container ul {
+.map-container ul {
     list-style-type: none;
     padding: 0;
-} */
+}
 
-/* .map-container li {
+.map-container li {
     text-align: center;
-} */
+}
 
 
 /* .found {
@@ -120,18 +120,18 @@ footer {
     margin-bottom: 10px; 
 } */
 
-/* .foundMAp {
+.foundMAp {
     padding: 10px 20px;
     cursor: pointer;
 
-} */
+}
 
-/* .foundMAp:hover {
+.foundMAp:hover {
     padding: 10px 20px;
     cursor: pointer;
     background-color: tomato;
 
-} */
+}
 
 .Regg{
 
@@ -244,186 +244,7 @@ footer {
 }
 }
 
-.alltext{
-    font-family: "e-ukr";
-    margin-left: 30px;
-    margin-right: 15px;
-}
 
-.rl{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   margin-top: 30px;
-}
-.rl a{
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 1.2rem;  
-    background-color: hwb(34 0% 1%);
-    border-radius: 8px;
-    display: flex;
-    width: 210px;
-    height:40px;
-    padding-left: 33px;
-    padding-top: 4px;
-    
-    
-   
-}
-
-.rl a:hover{
-    background-color: rgb(230, 130, 0);
-    transition: 0.2s ease-in-out;
-}
-
-
-.step{
-  position: relative;  
-}
-.step h1{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.steptext{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 55%;
-    margin: 0 auto;
-}
-
-.dog {
-  position: relative;   
-}
-.dog img{
-  position: absolute;
-  top: -60px
-}
-
-.paw{
-    position: absolute;
-    top: 780px;
-    left: 100px;
-    transform: rotate(30deg); 
-}
-
-.paw img{
-    width: 120px;
-    height: 120px;
-}
-
-.paw1{
-    position: absolute;
-    top: 830px;
-    left: -30px;
-    transform: rotate(30deg); 
-}
-
-.paw1 img{
-    width: 120px;
-    height: 120px;
-}
-
-
-.paw2{
-    position: absolute;
-    top: 200px;
-    left: 1370px;
-    transform: rotate(-150deg); 
-}
-
-.paw2 img{
-    width: 120px;
-    height: 120px;
-}
-
-
-.paw3{
-    position: absolute;
-    top: 150px;
-    left: 1470px;
-    transform: rotate(-150deg); 
-}
-
-.paw3 img{
-    width: 120px;
-    height: 120px;
-}
-
-.cat{
-  position: absolute;
-  top: 370px;
-  left: 880px;
-}
-.cat img{
-    width: 350px;
-    height: 200px;
-}
-
-.list{
-    margin-bottom: 80px;
-    
-}
-.list h1{
-   text-align: center;
-}
-.listtext{
-    text-align: center;
-
-}
-.listtext ol {
-    padding-left: 0;
-    list-style-position: inside;
-
-}
-.listtext ol li{
-    margin: 10px 0;
- }
-
- .how{
- margin-bottom: 80px;
- }
-.how h1 {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-}
-.howtext{
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    text-align: center;
-    width: 65%;
-    margin: 0 auto;
-    line-height: 0.8cm;
-}
-.find{
-  width: 60%; /* Ширина блоку */
-  margin: 0 auto; /* Центрування по горизонталі */
-  text-align: left; /* Текст вирівняний ліворуч */
-  margin-bottom: 200px;
-  margin-top: 50px;
-}
-
-.find h1{
-    margin-left: -20px;
-}
-.textfind{
-    font-family: 'e-ukrL';
-    line-height: 0.9cm;
-    margin-bottom: 15px;
-    font-size: x-large;
-    
-}
-
-.textfind1{
-    font-family: 'e-ukrL';
-    line-height: 0.9cm;
-    font-size: x-large;
-}
 
  /* розібратися як працює */
  /* .nav-item {

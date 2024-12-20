@@ -1,28 +1,141 @@
-*{
-    margin:  20px 20px 20px 20px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-   width: 100%;
-   height:100vh ;
+  font-family: "e-ukr";
+  background-color: #ffffff;
+  color: #333;
 }
 
-.container{
-    display: flex;
-    justify-content: center; /* Центрує по горизонталі */
-    align-items: center; /* Центрує по вертикалі */
+.container {
+  margin-left: 80px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.Phone{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.Prozoro {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  margin: 20px;
+  line-height: 1.6;
+
+ 
+}
+
+.Prozoro h1 {
+  color: #222222;
+  font-size: 24px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.Prozoro h2 {
+  color: #444444;
+  font-size: 18px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Prozoro p {
+  font-size: larger;
+  color: #555555;
+}
+
+.Prozoro ol {
+  padding-left: 20px;
+  list-style-type: decimal;
+}
+
+.Prozoro ol li {
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.Prozoro ul {
+  padding-left: 20px;
+  list-style-type: disc;
+  margin-top: 10px;
+}
+
+.Prozoro ul li {
+  font-weight: normal;
+  color: #666666;
+  margin-bottom: 8px;
+}
+
+/* Стиль для кнопки */
+.Don {
+  margin-top: 40px;
+  background-color: #d3d3d3;
+  color: #333333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  font-size: medium;
+  
+}
+
+.Don:hover {
+  background-color: #a3a3a3;
 }
 
 #name{
-    padding: 10px;
+  margin-top: 20px;
+  padding: 20px 20px;
+  border-radius: 15px;
+  font-size: large;
+}
+/* 
+.DPhone {
+  margin-top: 40px;
+  background-color: #d3d3d3;
+  color: #333333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  font-size: medium;
+  
 }
 
-.Don{
-    display: flex;
-    justify-content: center; /* Центрує по горизонталі */
-    align-items: center; /* Центрує по вертикалі */
-    padding: 10px;
+.DPhone:hover {
+  background-color: #a3a3a3;
 }
+
+#nPhone{
+  margin-top: 20px;
+  padding: 20px 20px;
+  border-radius: 15px;
+  font-size: large;
+} */
 
 .Prozoro h1{
     display:  flex;

@@ -15,7 +15,9 @@ body {
     color: #333;
   
 }
-
+.iiii{
+ 
+}
 header {
     background-color: #fc8f00;
     padding: 20px;
@@ -134,25 +136,33 @@ footer {
 }
 
 .Regg{
-
  font-family: "e-ukr";
- display: flex;
- justify-content:center;
- align-items: center;
+ display: grid;
+ place-items: center;
+}
+ .Regg ol{
+    list-style-type: none;
+ }
+
+ .drop:hover .menulist{
+    display: block;
+ }
+ .menulist{
+    display: none;
+    position: absolute;
+    /* background-color: #333; */
+    border-radius: 20px;
+    min-width: 200px;
+    z-index: 1;
+    left: 860px;
+    
+ }
+
+ .menulist a{
+    display: block;
+ }
 
  
-}
-
-.ReggPhone {
- font-family: "e-ukr";
- display: flex;
- justify-content:center;
- align-items: center;
- margin-top: 40px;
- margin-left: 20px;
- 
-}
-
 .Enter{
     text-decoration: none;
     color: #ffffff;
@@ -169,23 +179,35 @@ footer {
 }
 
 .Registr{
-    border-radius: 15px;
+    /* border-radius: 15px;
     background-color: #f4f4f4;
     text-decoration: none;
     color: #000000;
     font-size: 1.2rem;
     margin-left: 10px;
-    padding: 10px;
+    padding: 10px; */
 
 }
 
 .Registr:hover{
-    background-color: #000000;
+    /* background-color: #000000;
     text-decoration: none;
     color: #f4f4f4;
-    transition: 0.2s ease-in-out;
+    transition: 0.2s ease-in-out; */
 
 }
+
+.ReggPhone {
+ font-family: "e-ukr";
+ display: flex;
+ justify-content:center;
+ align-items: center;
+ margin-top: 40px;
+ margin-left: 20px;
+ 
+}
+
+
 
 .img{
   width: 120px;

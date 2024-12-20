@@ -18,30 +18,31 @@ overflow-x: hidden;
 
 .allTitle{
   margin: 240px auto;
-  display: flex;
+  /* display: flex; */
   
 }
 .Title1, .Title2,.Title3 {
   text-align: center;
   padding: 20px;
   border-radius: 15px;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  /* animation: fadeIn 0.9s ease-in-out; */
-  width: 40%;
-  height: 600px;
+  /* width: 40%;
+  height: 600px; */
+  /* background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); */
+  display: grid;
+  place-items: center;
  
 
 }
 
 
 .Title1 h1,.Title2 h1,.Title3 h1{
-  font-size: 2em;
+  font-family: "e-ukr";
   color: #000000;
   border-radius: 15px;
-  background: rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  margin-bottom: 30px;
+  /* background: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); */
+  margin-bottom: 5px;
   /* animation: fadeIn 1.5s ease-in-out; */
   width: 100%;
   height: 15%;
@@ -50,17 +51,17 @@ overflow-x: hidden;
 }
 
 .Title1 p,.Title2 p ,.Title3 p{
-  font-family: "e-ukrL";
-  line-height: 1.4;
-  font-size: 22px;
-  text-align: left;
+  font-family: "e-ukr";
+  line-height: 0.9cm;
+  font-size: large;
+  text-align: center;
   padding: 30px;
-  border-radius: 15px;
-  background: rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  /* border-radius: 15px; */
+  /* background: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); */
   /* animation: fadeIn 1.5s ease-in-out; */
-  width: 100%;
-  height: 75%;
+  width: 80%;
+  height:100%;
   
 }
 

@@ -26,7 +26,7 @@ import {HttpClientModule} from '@angular/common/http';
     SingINComponent,
     RegestComponent,
     AdoptComponent,
-    GifthouseComponent
+    GifthouseComponent,
   ],
   imports: [
     BrowserModule,

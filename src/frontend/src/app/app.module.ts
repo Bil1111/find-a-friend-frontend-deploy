@@ -12,6 +12,8 @@ import { SingINComponent } from './sing-in/sing-in.component';
 import { RegestComponent } from './regest/regest.component';
 import { AdoptComponent } from './adopt/adopt.component';
 import { GifthouseComponent } from './gifthouse/gifthouse.component';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { GifthouseComponent } from './gifthouse/gifthouse.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

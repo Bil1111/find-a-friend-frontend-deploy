@@ -75,4 +75,7 @@ export class AppComponent implements OnInit {
       });
     });
   }
+  visible = false;
+  closeMenu(){this.visible = false;}
+  Openmemu(){this.visible = true;}
 }

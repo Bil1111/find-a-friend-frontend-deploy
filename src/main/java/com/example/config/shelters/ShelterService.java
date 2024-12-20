@@ -1,6 +1,6 @@
 package com.example.config.shelters;
 
-import com.example.config.DTO.ShelterRequest;
+import com.example.config.DTO.ShelterDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +13,16 @@ public class ShelterService {
     @Autowired
     private ShelterRepository shelterRepository;
 
-    public void addShelter(ShelterRequest request) {
+    public void addShelter(ShelterDTO request) {
         Shelter shelter = new Shelter(
                 request.getName(),
                 request.getAddress(),
                 request.getContactNumber(),
                 request.getDescription(),
-                request.getCity()
+                request.getCity(),
+                request.getLatitude(),
+                request.getLongitude(),
+                request.getImageURL()
         );
         shelterRepository.save(shelter);
     }

@@ -19,37 +19,37 @@ public class Animal {
 
     @NotEmpty(message = "Ім'я не може бути порожнім")
     @Size(max = 50, message = "Ім'я не повинно перевищувати 50 символів")
-    @Column(columnDefinition = "NVARCHAR(255)")
+    @Column(columnDefinition = "VARCHAR(255)")
     private String name;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
+    @Column(columnDefinition = "VARCHAR(255)")
     @NotEmpty(message = "Тип не може бути порожнім")
     private String type;
 
     @NotNull(message = "Вік не може бути порожнім")
     private Integer age;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
+    @Column(columnDefinition = "VARCHAR(255)")
     @NotEmpty(message = "Розмір не може бути порожнім")
     private String size;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
+    @Column(columnDefinition = "VARCHAR(255)")
     @Size(max = 255, message = "Опис не повинен перевищувати 255 символів")
     private String description;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
+    @Column(columnDefinition = "VARCHAR(255)")
     @NotNull(message = "Sex is required")
     private String sex;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
+    @Column(columnDefinition = "VARCHAR(255)")
     @NotNull(message = "File")
     private String imageURL;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
+    @Column(columnDefinition = "VARCHAR(255)")
     @NotNull(message = "City is required")
     private String city;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
+    @Column(columnDefinition = "VARCHAR(255)")
     @NotNull(message = "Shelter Phone Number is required")
     private String shelterPhoneNumber;
 

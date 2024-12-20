@@ -15,19 +15,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
+    @Column(columnDefinition = "VARCHAR(255)")
     @NotEmpty(message = "Email не може бути порожнім")
     @Email(message = "Введіть дійсний email")
     private String email;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
+    @Column(columnDefinition = "VARCHAR(255)")
     @NotEmpty(message = "Пароль не може бути порожнім")
     @Size(min = 6, message = "Пароль має містити не менше 6 символів")
     private String password;
 
-    @ManyToOne
-    @JoinColumn(name = "shelter_id", referencedColumnName = "id", nullable = true)
-    private Shelter shelter;
+//    @ManyToOne
+//    @JoinColumn(name = "shelter_id", referencedColumnName = "id", nullable = true)
+//    private Shelter shelter;
 
     public User(String email, String encodedPassword) {
         this.email = email;
@@ -62,11 +62,11 @@ public class User {
         this.password = password;
     }
 
-    public Shelter getShelter() {
-        return shelter;
-    }
-
-    public void setShelter(Shelter shelter) {
-        this.shelter = shelter;
-    }
+//    public Shelter getShelter() {
+//        return shelter;
+//    }
+//
+//    public void setShelter(Shelter shelter) {
+//        this.shelter = shelter;
+//    }
 }

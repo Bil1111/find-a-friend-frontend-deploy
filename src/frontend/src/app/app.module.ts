@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
@@ -10,9 +10,10 @@ import { DonateComponent } from './donate/donate.component';
 import { FreePeopleComponent } from './free-people/free-people.component';
 import { SingINComponent } from './sing-in/sing-in.component';
 import { RegestComponent } from './regest/regest.component';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { GoogleMapsModule } from '@angular/google-maps';
+import { AdoptComponent } from './adopt/adopt.component';
+import { GifthouseComponent } from './gifthouse/gifthouse.component';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,13 +25,14 @@ import { GoogleMapsModule } from '@angular/google-maps';
     FreePeopleComponent,
     SingINComponent,
     RegestComponent,
+    AdoptComponent,
+    GifthouseComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    GoogleMapsModule,
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

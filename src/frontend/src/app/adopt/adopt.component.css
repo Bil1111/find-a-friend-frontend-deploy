@@ -1,0 +1,42 @@
+*{
+    margin:  20px 20px 20px 20px;
+}
+
+body {
+    font-family: "e-ukr";
+   width: 100%;
+   height:100vh ;
+}
+
+.adaption-form{
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.adaption-form h1{
+    text-align: center;
+    line-height: 1.5cm;   
+}
+.adopt{
+    display: flex;
+    flex-direction: column;
+}
+label {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input, select,  button {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button:hover{
+    background-color: #b5b5b5;
+}

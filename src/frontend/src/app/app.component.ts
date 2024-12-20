@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+declare const google: any;
 
 interface MapPoint {
   name: string;
   address: string;
-  phone: string;
-  lat: number;
-  lng: number;
-  image: string;
+  contactNumber: string;
+  description: string;
+  city: string;
+  latitude: number;
+  longitude: number;
+  imageURL: string;
 }
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'] // corrected styleUrl to styleUrls
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   title = 'FF';
@@ -43,32 +46,37 @@ export class AppComponent implements OnInit {
   initMap() {
     const map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
       zoom: 10,
-      center: { lat: 50.4501, lng: 30.5234 }, // Center the map to Kyiv
+      center: { lat: 50.4501, lng: 30.5234 }, // Центр карти - Київ
     });
 
     this.mapPoints.forEach(point => {
       const marker = new google.maps.Marker({
-        position: { lat: point.lat, lng: point.lng },
+        position: { lat: point.latitude, lng: point.longitude }, // Використовуємо latitude та longitude
         map: map,
         title: point.name,
       });
 
-      // Create an info window for the marker
+      // Створення інфо-вікна для мітки
       const infoWindow = new google.maps.InfoWindow({
         content: `
           <div>
             <h2>${point.name}</h2>
-            <p>${point.address}</p>
-            <p>Телефон: ${point.phone}</p>
-            <img src="${point.image}" alt="${point.name}" style="width:100px;height:auto;">
+            <p><strong>Місто:</strong> ${point.city}</p>
+            <p><strong>Адреса:</strong> ${point.address}</p>
+            <p><strong>Телефон:</strong> ${point.contactNumber}</p>
+            <p><strong>Опис:</strong> ${point.description}</p>
+            <img src="${point.imageURL}" alt="${point.name}" style="width:100px;height:auto;">
           </div>
         `,
       });
 
-      // Add a click listener to the marker
+      // Обробник події для відкриття інфо-вікна
       marker.addListener('click', () => {
         infoWindow.open(map, marker);
       });
     });
   }
+  visible = false;
+  closeMenu(){this.visible = false;}
+  Openmemu(){this.visible = true;}
 }

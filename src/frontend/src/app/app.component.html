@@ -40,7 +40,7 @@
           <a routerLink="/free-people" >Стати волонтером</a>
           <a routerLink="/adopt">Усиновити тваринку</a>
           <a routerLink="/">Допомогти речами</a>
-          <a routerLink="/">Подарувати дім</a>
+          <a routerLink="/gifthouse">Подарувати дім</a>
         </div>
       </li>
       <li class="nav-item "><a class="nav-link" routerLink='/donate'>Донат</a></li>
@@ -65,15 +65,27 @@
 
 
        <div class="Regg d-none d-lg-block" >
-        <ol>
+        <a routerLink='/sing-in' class="Enter" *ngIf="!isLogged">Вхід</a>
+        <a routerLink='/regest' class="Registr"  *ngIf="!isLogged">Зареєструватися</a>
+
+        <div *ngIf="isLogged" class="login">
+          <img src="/user.svg" alt="1488" class="photo">
+          <button class="btn_out" (click)="logout()">Вийти</button>
+         </div>
+        <!-- <ol>
           <li class="drop">
-               <img src="/imgforlogin" alt="dsfsdf">
+               <img src="/imgforlogin" alt="1488" >
             <div class="menulist">
-              <a routerLink='/sing-in' class="Enter">Вхід</a>
-             <a routerLink='/regest' class="Registr">Зареєструватися</a>
+              <a routerLink='/sing-in' class="Enter_pc" *ngIf="!isLogged">Вхід</a>
+             <a routerLink='/regest' class="Registr_pc"  *ngIf="!isLogged">Зареєструватися</a>
+
+             <div *ngIf="isLogged">
+              <button class="btn_out" (click)="logout()">Вийти</button>
+             </div>
+             
             </div>
           </li>
-        </ol>
+        </ol> -->
   </div>
 
   <div class="ReggPhone d-block d-lg-none"  >
@@ -93,10 +105,37 @@
 
 <router-outlet></router-outlet>
 
-
-
 <div class="map-container" *ngIf="isHomePage">
   <h1>Map Shelters</h1>
   <div id="map" style="width: 100%; height: 800px;"></div>
-</div>
 
+</div>
+<footer *ngIf="ShowFooter">
+  <div class="footer-container">
+    <div class="info-section1">
+      <ul>
+        <li><a routerLink="/find-f">Знайти друга</a></li>
+        <li><a routerLink="/donate">Донат</a></li>
+        <li><a routerLink="/about">Про нас</a></li>
+        <li><a routerLink="/blog-and-news">Блог та новини</a></li>
+      </ul>
+    </div>
+    <div class="logo-section">
+      <img class="imgfooter" src="/Logo.svg" alt="FF_LOGO" />
+      <p>Find a Friend</p>
+    </div>
+    <div class="info-section2">
+      <p>Волонтерство</p>
+        <ul>
+          <li><a routerLink="/free-people">Стати волонтером</a></li>
+          <li><a routerLink="/adopt">Усиновити тваринку</a></li>
+          <li><a routerLink="/">Допомогти речами</a></li>
+          <li><a routerLink="/gifthouse">Подарувати дім</a></li>
+        </ul>
+    </div>
+
+  </div>
+  <div class="credits-section">
+    <p class="project">© 2024 Благодійний проєкт</p>
+  </div>
+</footer>

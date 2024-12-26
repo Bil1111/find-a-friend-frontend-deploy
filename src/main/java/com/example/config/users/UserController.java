@@ -13,7 +13,10 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
+    // //
+    // @Autowired
+    // private JwtTokenProvider jwtTokenProvider;
+    
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody UserRegistrationRequest request) {
         try {
@@ -22,6 +25,7 @@ public class UserController {
         } catch (UserAlreadyExistsException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }
+     
     }
 
     @PostMapping("/login")

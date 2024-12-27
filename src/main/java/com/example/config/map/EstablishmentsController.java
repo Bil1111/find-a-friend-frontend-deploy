@@ -27,4 +27,6 @@ public class EstablishmentsController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("File not found");
         }
     }
+
+    
 }

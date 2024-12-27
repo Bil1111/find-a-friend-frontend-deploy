@@ -9,6 +9,6 @@ import java.util.List;
 public interface ShelterRepository extends JpaRepository<Shelter, Long> {
     List<Shelter> findByCity(String city);
     List<Shelter> findByAnimalsNotEmpty(); // Example method to find shelters with available animals
-
+    List<Shelter> findByNameContainingIgnoreCase(String name);
     boolean existsById(Long id);
 }

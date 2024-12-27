@@ -1,6 +1,6 @@
 package com.example.config.animals;
 
-import com.example.config.DTO.AnimalRequest;
+import com.example.config.requests.AnimalRequest;
 import com.example.config.shelters.Shelter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

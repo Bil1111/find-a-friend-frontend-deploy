@@ -1,6 +1,6 @@
 package com.example.config.shelters;
 
-import com.example.config.DTO.ShelterDTO;
+import com.example.config.requests.ShelterDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +34,9 @@ public class ShelterService {
     public List<Shelter> getAllShelters() {
         return shelterRepository.findAll();
     }
-
+    public List<Shelter> searchSheltersByName(String query) {
+        return shelterRepository.findByNameContainingIgnoreCase(query);
+    }
     public void deleteShelter(Long id) {
         if (shelterRepository.existsById(id)) {
             shelterRepository.deleteById(id);

@@ -1,6 +1,4 @@
 package com.example.config.users;
-
-import com.example.config.shelters.Shelter;
 import jakarta.persistence.*;
 
 import javax.validation.constraints.Email;
@@ -25,13 +23,16 @@ public class User {
     @Size(min = 6, message = "Пароль має містити не менше 6 символів")
     private String password;
 
+    @Column(unique = true)
+    private String authToken; // Унікальний токен для аутентифікації
 //    @ManyToOne
 //    @JoinColumn(name = "shelter_id", referencedColumnName = "id", nullable = true)
 //    private Shelter shelter;
 
-    public User(String email, String encodedPassword) {
+    public User(String email, String encodedPassword, String authToken) {
         this.email = email;
         this.password = encodedPassword;
+        this.authToken = authToken;
     }
 
     public User() {
@@ -62,7 +63,15 @@ public class User {
         this.password = password;
     }
 
-//    public Shelter getShelter() {
+    public String getAuthToken() {
+        return authToken;
+    }
+
+    public void setAuthToken(String authToken) {
+        this.authToken = authToken;
+    }
+
+    //    public Shelter getShelter() {
 //        return shelter;
 //    }
 //

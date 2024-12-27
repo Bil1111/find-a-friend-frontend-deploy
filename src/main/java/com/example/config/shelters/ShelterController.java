@@ -1,6 +1,6 @@
 package com.example.config.shelters;
 
-import com.example.config.requests.ShelterDTO;
+import com.example.config.requests.ShelterRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ public class ShelterController {
     private ShelterService shelterService;
 
     @PostMapping("/add")
-    public ResponseEntity<String> addShelter(@RequestBody ShelterDTO request) {
+    public ResponseEntity<String> addShelter(@RequestBody ShelterRequest request) {
         shelterService.addShelter(request);
         return new ResponseEntity<>("Shelter added successfully", HttpStatus.CREATED);
     }

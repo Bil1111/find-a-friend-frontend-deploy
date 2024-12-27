@@ -1,4 +1,4 @@
-package com.example.config.users;
+package com.example.config.requests;
 
 public class UserLoginRequest {
     private String email;

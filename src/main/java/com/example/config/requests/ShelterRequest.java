@@ -1,4 +1,4 @@
-package com.example.config.DTO;
+package com.example.config.requests;
 
 
 import javax.validation.constraints.*;

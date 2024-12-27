@@ -18,7 +18,7 @@ interface MapPoint {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
- 
+
 })
 export class AppComponent implements OnInit {
 
@@ -30,24 +30,24 @@ export class AppComponent implements OnInit {
    public isLogged: boolean = false;
    ShowFooter: boolean = false;
 
-  // log: boolean = false; // Для тесту 
+  // log: boolean = false; // Для тесту
 
   visible = false;
   constructor(private router: Router, private http: HttpClient) {
     this.router.events.subscribe(() => {
       this.ShowFooter = this.router.url !== '/adopt' &&  this.router.url !== '/gifthouse' &&  this.router.url !== '/free-people' && this.router.url !== '/gifthouse' ;
-    
+
     })
   }
 
   ngOnInit() {
-    this.router.events.subscribe(() => {  
+    this.router.events.subscribe(() => {
       this.isHomePage = this.router.url === '/';
       if (this.isHomePage) {
         this.loadMapPoints();
       }
     });
-    
+
 
   }
 
@@ -97,11 +97,11 @@ export class AppComponent implements OnInit {
   closeMenu(){this.visible = false;}
   Openmemu(){this.visible = true;}
 
- 
+
   logout(){
     // this.sharedService.logout();
    }
-  
+
 //  logg(){
 //   this.sharedService.setUserKey('1');
 //   this.sharedService.setisLoggedIn(true);

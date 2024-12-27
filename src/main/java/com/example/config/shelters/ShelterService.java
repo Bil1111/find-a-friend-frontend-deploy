@@ -1,11 +1,9 @@
 package com.example.config.shelters;
 
-import com.example.config.DTO.ShelterDTO;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.example.config.requests.ShelterDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.io.File;
-import java.io.IOException;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -36,27 +34,9 @@ public class ShelterService {
     public List<Shelter> getAllShelters() {
         return shelterRepository.findAll();
     }
-
-    //заповнюємо .json притулками
-    public void saveSheltersToJsonFile() {
-        try {
-            List<Shelter> shelters = shelterRepository.findAll();
-            ObjectMapper objectMapper = new ObjectMapper();
-
-            // Встановлюємо "Pretty Print" формат для JSON
-            objectMapper.writerWithDefaultPrettyPrinter()
-                    .writeValue(new File("shelters.json"), shelters);
-
-            System.out.println("Shelters saved to file in readable format: shelters.json");
-        } catch (IOException e) {
-            System.err.println("Error while saving shelters to file: " + e.getMessage());
-            e.printStackTrace();
-        }
+    public List<Shelter> searchSheltersByName(String query) {
+        return shelterRepository.findByNameContainingIgnoreCase(query);
     }
-
-
-
-
     public void deleteShelter(Long id) {
         if (shelterRepository.existsById(id)) {
             shelterRepository.deleteById(id);

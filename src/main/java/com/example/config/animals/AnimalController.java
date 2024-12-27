@@ -1,6 +1,6 @@
 package com.example.config.animals;
 
-import com.example.config.DTO.AnimalRequest;
+import com.example.config.requests.AnimalRequest;
 import com.example.config.shelters.Shelter;
 import com.example.config.shelters.ShelterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 

@@ -3,62 +3,58 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
 
 
 body {
-
     width: 100%;
     height: 100%;
-    background-color: #f4f4f4;
-    color: #333;
-
 }
 
 header {
     background-color: #fc8f00;
-    padding: 20px;
+    padding: 6px;
     text-align: center;
     color: white;
     display: flex;
-
-
 }
 
 h1 {
     font-size: 2rem;
-    padding: 20px 20px 20px 20px;
+    margin: 20px auto;
 }
 
 nav {
     font-family: "e-ukr";
-    margin: 20px auto;
+    margin: 10px auto;
     text-align: center;
-    margin-right: 50px;
+    margin-right: 90px;
 
 }
 
 nav ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
-    display:  flex;
-    align-items: center;
-    justify-items: center;
+    padding: 0;    
+}
 
+nav ul .Descktop  {
+    margin-right: 120px;
+    z-index: 1;
+    
 }
 
 nav ul .Descktop .nav-item {
     display: inline-block;
-    margin: 0 15px;
-    margin-left: 30px;
+    margin: 0 7px;
+    /* margin-left: 30px; */
+    
 }
 
 nav ul li a {
     text-decoration: none;
     color: #ffffff;
-    font-size: 1.2rem;
+    font-size: 1.0rem;
 
 }
 
@@ -67,18 +63,32 @@ nav ul li a:hover {
     transition: 0.2s ease-in-out;
 }
 
-footer {
+
+/* nav ul li .Registr_pc {
+    background-color: #f4f4f4;
+    color: #000;
+    border-radius: 10px;
+}
+
+nav ul li .Registr_pc:hover {
+    background-color: #000  ;
+    color: #f4f4f4;
+    border-radius: 10px;
+} */
+
+/* footer {
     text-align: center;
     margin-top: 50px;
     padding: 10px;
     background-color: #333;
     color: white;
-}
+} */
 
 .LinkIcon {
     position: absolute;
-    top: 8px;
-    left: 100px;
+    top: 0vw;
+    left: 12vw;
+    z-index: 10; 
 }
 
 .LinkIconPhone {
@@ -120,46 +130,53 @@ footer {
     margin-bottom: 10px;
 } */
 
-.foundMAp {
+/* .foundMAp {
     padding: 10px 20px;
     cursor: pointer;
 
-}
+} */
 
-.foundMAp:hover {
+/* .foundMAp:hover {
     padding: 10px 20px;
     cursor: pointer;
     background-color: tomato;
 
-}
+} */
 
 .Regg{
-
  font-family: "e-ukr";
- display: flex;
- justify-content:center;
- align-items: center;
-
-
+ margin-right: 90px;
+ 
 }
+ /* .Regg ol{
+    list-style-type: none;
+ }
 
-.ReggPhone {
- font-family: "e-ukr";
- display: flex;
- justify-content:center;
- align-items: center;
- margin-top: 40px;
- margin-left: 20px;
+ .drop:hover .menulist{
+    display: block;
+ }
+ .menulist{
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.0 45);
+    border-radius: 10px;
+    min-width: 200px;
+    z-index: 1;
+    left: 990px;
 
-}
+ }
+
+ .menulist a{
+    display: block;
+   margin-bottom: 5px;    
+ } */
+
 
 .Enter{
     text-decoration: none;
     color: #ffffff;
-    font-size: 1.2rem;
+    font-size: 1.0rem;
     margin-right: 10px;
-
-
 }
 
 .Enter:hover{
@@ -173,7 +190,7 @@ footer {
     background-color: #f4f4f4;
     text-decoration: none;
     color: #000000;
-    font-size: 1.2rem;
+    font-size: 1.0rem;
     margin-left: 10px;
     padding: 10px;
 
@@ -187,9 +204,20 @@ footer {
 
 }
 
+.ReggPhone {
+ font-family: "e-ukr";
+ display: flex;
+ justify-content:center;
+ align-items: center;
+ margin-top: 40px;
+ margin-left: 20px;
+
+}
+
 .img{
   width: 120px;
-  height: 120px;
+  height: 120px; 
+    
 }
 
 .imgPhone{
@@ -207,7 +235,7 @@ footer {
   width: 30px;
   height: 30px;
   background-size: contain;
-}
+}       
 
 .offcanvas-header{
  color: #000000;
@@ -221,9 +249,9 @@ footer {
   margin-bottom:35px ;
 }
 
-.offcanvas-body {
+.offcanvas-body, .Phone_and_Tablet, .ReggPhone{
  background-color: #fc8f00;
-}
+}   
 
 
 .Phone_and_Tablet .nav-item .nav-link{
@@ -244,8 +272,6 @@ footer {
 }
 }
 
-
-
  /* розібратися як працює */
  /* .nav-item {
     position: relative;
@@ -258,6 +284,7 @@ footer {
     background-color: #333;
     min-width: 160px;
     z-index: 1;
+    left: 200px;
   }
 
   .dropdown-content a {
@@ -278,9 +305,113 @@ footer {
     border-radius: 10px;
   }
 
-  /* .nav-item:hover .dropbtn {
-    border-radius: 10px;
-    background-color: #ddd;
-    color: black;
 
-  } */
+.login{
+  margin-right: 100px;
+}
+.btn_out{
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-left: 20px;      
+}
+
+.btn_out:hover{
+    background-color: rgb(3, 3, 3);
+    color: #f4f4f4;
+    border-radius: 10px;
+    transition: 0.2s ease-in-out;
+}
+.photo{
+  height: 25px;
+  width: 50px;
+  position: relative;
+  top: -3px;
+}
+/* Загальний стиль для футера */
+footer {
+ font-family: 'e-ukr';
+ font-size: smaller;
+ background-color:#dcdcdc;
+
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+  padding-top: 10px;
+}
+.info-section1{
+    margin-top: 25px;
+}
+.info-section1 ul,
+.info-section2 ul{
+    list-style: none;
+    
+}
+
+.info-section1 li,
+.info-section2 li{
+  line-height: 1.7rem;
+}
+
+.info-section1 a,
+.info-section2 a{
+  text-decoration: none;
+  color: #000;
+  
+}
+.info-section1 a:hover,
+.info-section2 a:hover{
+  text-decoration: none;
+  color: #fc8f00;
+  transition: 0.2s ease-in-out;
+}
+
+.info-section2 p{
+ text-align: center;
+ margin-bottom: 5px;
+  text-transform: uppercase;
+  
+}
+
+.credits-section {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  padding-bottom: 10px;
+}
+
+.logo-section{
+    position: relative;
+    left: 20px;
+}
+.logo-section p {
+    font-size: larger;
+    position: relative;
+    top: 20px;
+}
+
+.imgfooter{
+    height: 100px;
+    position: relative;
+    left: 20px;
+    top: 20px;
+}
+
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .info-section,
+    .logo-section,
+    .credits-section {
+      margin-bottom: 2rem;
+    }
+  }
+  

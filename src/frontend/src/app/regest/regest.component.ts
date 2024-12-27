@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+// import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-regest',
@@ -14,7 +15,13 @@ export class RegestComponent {
   errorMessage: string | null = null;
   loading: boolean = false; // Додали змінну для завантаження
 
-  constructor(private http: HttpClient, private router: Router) { }
+ //
+  // log: boolean = false;// Локальна змінна для зберігання стану
+ //
+
+  constructor(private http: HttpClient, private router: Router) {}
+
+ 
 
   register() {
     if (this.password !== this.passwordAgain) {
@@ -43,8 +50,10 @@ export class RegestComponent {
           console.log('Response status:', response.status);
           console.log('Response body:', response.body);
           if (response.status === 201) {
+            //           
             console.log('Реєстрація успішна', response);
             this.router.navigate(['/sing-in']);
+            window.location.reload;
           } else {
             this.errorMessage = 'Сталася невідома помилка';
           }
@@ -58,6 +67,9 @@ export class RegestComponent {
             this.errorMessage = 'Реєстрація не вдалася';
           }
         }
+        
       });
+      
   }
+ 
 }

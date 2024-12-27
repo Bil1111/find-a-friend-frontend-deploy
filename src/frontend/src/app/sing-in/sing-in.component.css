@@ -14,9 +14,10 @@ body {
 }
 
 .container {
+  font-family: "e-ukr";
   width: 100%;
   max-width: 400px; /* Максимальна ширина контейнера */
-  margin: 0 auto; /* Центрування контейнера */
+  margin: 75px auto; /* Центрування контейнера */
 }
 
 .Costumer_Sing_In {
@@ -32,12 +33,13 @@ body {
 }
 
 h2 {
-  margin-bottom: 1rem; /* Відступ знизу заголовка */
+  margin-bottom: 2rem;
   text-align: center; /* Центрування тексту */
   color: #333; /* Колір тексту */
 }
 
 input {
+  font-family: "e-ukrL";
   width: 100%; /* Ширина інпутів */
   padding: 10px; /* Внутрішній відступ */
   border: 1px solid #ccc; /* Сірий контур */
@@ -52,22 +54,25 @@ input:focus {
 }
 
 .En {
+  
   width: 100%; /* Ширина кнопки */
-  padding: 10px; /* Внутрішній відступ */
-  background-color: #007bff; /* Синій фон */
+  padding: 7px; 
+  background-color: #fc8f00; /* Синій фон */
   color: white; /* Білий текст */
   border: none; /* Без контуру */
   border-radius: 5px; /* Закруглені кути */
   cursor: pointer; /* Курсор у вигляді вказівника */
   font-size: 16px; /* Розмір шрифту */
   transition: background-color 0.3s; /* Анімація зміни кольору фону */
+  margin-top: 15px;
 }
 
 .En:hover {
-  background-color: #0056b3; /* Темніший синій при наведенні */
+  background-color: #e48304; /* Темніший синій при наведенні */
 }
 
 .register-link {
+  font-family: "e-ukrL";
   text-align: center; /* Центрування тексту */
   margin-top: 1rem; /* Відступ зверху */
 }
@@ -86,6 +91,29 @@ input:focus {
   margin-top: 1rem; /* Відступ зверху */
 }
 
+
+label{
+  font-family: "e-ukrL";
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #555;
+}
+
+.p{
+  width: 100%;
+  padding: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border 0.3s;
+}
+.te{
+  width: 100%;
+  padding: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border 0.3s;
+}
 /* Анімація появи */
 @keyframes fadeIn {
   from { opacity: 0; }

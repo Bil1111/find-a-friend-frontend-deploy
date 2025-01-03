@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Фільтрування</h2>
+        <div class="filter-group">
+            <label>Тип тварини</label>
+            <button>Усі</button>
+            <button>Песики</button>
+            <button>Котики</button>
+        </div>
+        <div class="filter-group">
+            <label>Стать</label>
+            <button>Усі</button>
+            <button>Хлопчики</button>
+            <button>Дівчинки</button>
+        </div>
+        <div class="filter-group">
+            <label>Вік</label>
+            <button>Усі</button>
+            <button>до 1 р.</button>
+            <button>1-2 р.</button>
+            <button>2-5 р.</button>
+            <button>старше 5 р.</button>
+        </div>
+
+        <div class="filter-group">
+            <label>Вакциновані</label>
+            <button>Так</button>
+            <button>Ні</button>
+       
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="shelter-name">Притулок "Назва притулку"</div>
+        <div class="animals">
+            <div class="animal-card">
+                <img src="" alt="Dog">
+                <h3>Пес </h3>
+                <p>Вік: 3 роки</p>
+                <p>Стать: Хлопчик</p>
+                <button>Детальніше</button>
+            </div>
+            <div class="animal-card">
+                <img src="" alt="Dog">
+                <h3>Бублик</h3>
+                <p>Вік: 3 роки</p>
+                <p>Стать: Хлопчик</p>
+                <button>Детальніше</button>
+            </div>
+            <div class="animal-card">
+                <img src="" alt="Cat">
+                <h3>Кіт</h3>
+                <p>Вік: 2 роки</p>
+                <p>Стать: Хлопчик</p>
+                <button>Детальніше</button>
+
+
+                <!-- <div class="animals-container">
+                    <h2>Тваринки</h2>
+                    <div class="animal-cards">
+                      <div *ngFor="let animal of animals"
+                           class="animal-card"
+                           [ngStyle]="{'background-color': animal.sex === 'Хлопчик' ? '#ADD8E6' : '#FFB6C1'}"
+                           (click)="selectAnimal(animal)">
+                        <img [src]="animal.imageURL" alt="{{ animal.name }}" />
+                        <h3>{{ animal.name }}</h3>
+                        <p>Місто: {{ animal.city }}</p>
+                        <p>Телефон: {{ animal.shelterPhoneNumber }}</p>
+                      </div>
+                    </div>
+                  
+                    <div class="pagination">
+                      <button (click)="previousPage()" [disabled]="currentPage === 1">Назад</button>
+                      <span>Сторінка {{ currentPage }} з {{ totalPages }}</span>
+                      <button (click)="nextPage()" [disabled]="currentPage === totalPages">Вперед</button>
+                    </div>
+                  </div> -->
+                  
+                  <!-- Модальне вікно для детальної інформації про тварину -->
+                  <!-- <div *ngIf="selectedAnimal" class="modal">
+                    <div class="modal-content">
+                      <span (click)="closeModal()" class="close-button">&times;</span>
+                      <h2>{{ selectedAnimal.name }}</h2>
+                      <img [src]="selectedAnimal.imageURL" alt="{{ selectedAnimal.name }}" />
+                      <p>Тип: {{ selectedAnimal.type }}</p>
+                      <p>Вік: {{ selectedAnimal.age }} років</p>
+                      <p>Розмір: {{ selectedAnimal.size }}</p>
+                      <p>Опис: {{ selectedAnimal.description }}</p>
+                      <p>Місто: {{ selectedAnimal.city }}</p>
+                      <p>Телефон: {{ selectedAnimal.shelterPhoneNumber }}</p>
+                    </div>
+                  </div> -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

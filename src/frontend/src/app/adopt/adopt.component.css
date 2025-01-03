@@ -36,7 +36,13 @@ input, select,  button {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-
+button{
+    color: #ffffff;
+    background-color: #fc8f00
+    
+}
 button:hover{
-    background-color: #b5b5b5;
+    background-color: #d97b00;
+    transition: 0.2s ease-in-out;
+    
 }

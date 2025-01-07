@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { SharedService } from './shared.service';
 declare const google: any;
 
 interface MapPoint {
@@ -27,17 +28,21 @@ export class AppComponent implements OnInit {
   mapPoints: MapPoint[] = [];
 
   //
-   public isLogged: boolean = false;
+    isLogged: boolean = false;
    ShowFooter: boolean = false;
 
   // log: boolean = false; // Для тесту
 
   visible = false;
-  constructor(private router: Router, private http: HttpClient) {
+  constructor(private router: Router, private http: HttpClient,private sharedService: SharedService) {
     this.router.events.subscribe(() => {
       this.ShowFooter = this.router.url !== '/adopt' &&  this.router.url !== '/gifthouse' &&  this.router.url !== '/free-people' && this.router.url !== '/gifthouse' ;
 
     })
+    // Підписка на зміну стану логіну
+    this.sharedService.isLoggedIn$.subscribe(isLoggedIn =>{
+      this.isLogged = isLoggedIn;
+    });
   }
 
   ngOnInit() {
@@ -98,14 +103,11 @@ export class AppComponent implements OnInit {
   Openmemu(){this.visible = true;}
 
 
-  logout(){
-    // this.sharedService.logout();
-   }
-
-//  logg(){
-//   this.sharedService.setUserKey('1');
-//   this.sharedService.setisLoggedIn(true);
-//  }
+  logout() {
+    // Remove token from localStorage on logout
+    localStorage.removeItem('token');
+    this.sharedService.changeLoginState(false);
+  }
 
 
 }

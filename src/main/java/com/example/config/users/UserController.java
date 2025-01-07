@@ -1,6 +1,7 @@
 package com.example.config.users;
 
 import com.example.config.requests.UserLoginRequest;
+import com.example.config.requests.UserRegistrationRequest;
 import com.example.config.token.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

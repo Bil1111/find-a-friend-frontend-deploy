@@ -9,22 +9,22 @@
     <div class="adaption-form">
 
         <h1>Форма заявки на усиновлення тварини</h1>
-        <form (ngSubmit)="FormAdopt()" class="adopt"> 
+        <form (ngSubmit)="FormAdopt()" class="adopt">
          <label for="name">Ваше ім'я:</label>
          <input type="text" id="name" [(ngModel)]="name"  name="name" placeholder="Введіть ваше ім'я" required>
-   
+
          <label for="surname">Ваше прізвище:</label>
          <input type="text" id="surname" [(ngModel)]="surname"  name="surname" placeholder="Введіть ваше прізвище" required>
-   
+
          <label for="email">Email:</label>
          <input type="email" id="email" [(ngModel)]="email"  name="email" placeholder="Введіть ваш email" required>
-   
+
          <label for="phone">Телефон:</label>
          <input type="tel" id="phone" [(ngModel)]="phone"   name="phone" placeholder="Введіть ваш номер телефону" required>
 
-         <label for="">ПРитулок</label>
+         <label for="">Притулок</label>
     <input type="tel" id="shelter"  [(ngModel)]="shelter" name="shelter" placeholder="" required>
-   
+
          <label for="animal">Яку тварину ви хочете усиновити:</label>
          <select id="animal" [(ngModel)]="animal"  name="animal" required>
            <option value="">Виберіть тварину</option>
@@ -32,18 +32,18 @@
            <option value="dog">Пес</option>
            <option value="other">Інші</option>
          </select>
-   
+
          <label for="exp">Чи маєте досвід догляду за тваринами?</label>
           <select id="exp" [(ngModel)]="exp"  name="exp" required>
            <option value="">Маєте досвід догляду за тваринами?</option>
            <option value="yes">Так</option>
            <option value="no">Ні</option>
           </select>
-         
+
           <button type="submit">Надіслати заявку</button>
        </form>
-   
-     
+
+
      </div>
 </body>
 </html>

@@ -157,4 +157,7 @@ public class Animal {
 
     public void setImageUrl(String s) {
     }
+
+    
+    
 }

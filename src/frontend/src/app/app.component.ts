@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { query } from '@angular/animations';
 declare const google: any;
 
 interface MapPoint {
@@ -21,6 +22,7 @@ interface MapPoint {
 
 })
 export class AppComponent implements OnInit {
+  searcshelter: string = '';// Зберігає значення поля введення
 
   title = 'FF';
   isHomePage: boolean = false;
@@ -35,7 +37,7 @@ export class AppComponent implements OnInit {
   visible = false;
   constructor(private router: Router, private http: HttpClient) {
     this.router.events.subscribe(() => {
-      this.ShowFooter = this.router.url !== '/adopt' &&  this.router.url !== '/gifthouse' &&  this.router.url !== '/free-people' && this.router.url !== '/gifthouse' ;
+      this.ShowFooter = this.router.url !== '/adopt' &&  this.router.url !== '/gifthouse' &&  this.router.url !== '/free-people';
 
     })
   }
@@ -48,6 +50,18 @@ export class AppComponent implements OnInit {
       }
     });
 
+
+  }
+  // Для знаходження притулків
+  findshelter(){
+   this.http.get('http://localhost:8080/api/shelters/search?query=' + this.searcshelter).subscribe({
+    next: (response) => {
+      console.log('Результати пошуку:', response);
+    },
+    error: (error) => {
+      console.error('Помилка при пошуку:', error);
+    },
+  });
 
   }
 
@@ -76,7 +90,7 @@ export class AppComponent implements OnInit {
       const infoWindow = new google.maps.InfoWindow({
         content: `
           <div>
-            <h2>${point.name}</h2>
+           <a id="shelter-link" href="/for-all-shelter" style="font-size: 2.3em; font-weight: bold;  text-decoration: none; color: black">${point.name}</a>
             <p><strong>Місто:</strong> ${point.city}</p>
             <p><strong>Адреса:</strong> ${point.address}</p>
             <p><strong>Телефон:</strong> ${point.contactNumber}</p>
@@ -90,7 +104,10 @@ export class AppComponent implements OnInit {
       marker.addListener('click', () => {
         infoWindow.open(map, marker);
       });
+
     });
+
+
   }
 
 
@@ -102,10 +119,6 @@ export class AppComponent implements OnInit {
     // this.sharedService.logout();
    }
 
-//  logg(){
-//   this.sharedService.setUserKey('1');
-//   this.sharedService.setisLoggedIn(true);
-//  }
 
 
 }

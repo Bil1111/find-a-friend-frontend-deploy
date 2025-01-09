@@ -39,8 +39,8 @@
         <div class="dropdown-content">
           <a routerLink="/free-people" >Стати волонтером</a>
           <a routerLink="/adopt">Усиновити тваринку</a>
-          <a routerLink="/">Допомогти речами</a>
-          <a routerLink="/gifthouse">Подарувати дім</a>
+          <a routerLink="/thigns">Допомога</a>
+          <a routerLink="/for-all-shelter">Подарувати дім</a>
         </div>
       </li>
       <li class="nav-item "><a class="nav-link" routerLink='/donate'>Донат</a></li>
@@ -107,9 +107,16 @@
 
 <div class="map-container" *ngIf="isHomePage">
   <h1>Map Shelters</h1>
-  <div id="map" style="width: 100%; height: 800px;"></div>
+
+  <!-- <div class="findshelter">
+    <input type="text" [(ngModel)]="searcshelter">  <button (click)="findshelter()">Пошук</button>
+</div> -->
+
+  <div id="map" style="width: 90%; height: 700px;"></div>
 
 </div>
+
+
 <footer *ngIf="ShowFooter">
   <div class="footer-container">
     <div class="info-section1">

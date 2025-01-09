@@ -21,7 +21,7 @@ export class RegestComponent {
 
   constructor(private http: HttpClient, private router: Router) {}
 
- 
+
 
   register() {
     if (this.password !== this.passwordAgain) {
@@ -50,7 +50,7 @@ export class RegestComponent {
           console.log('Response status:', response.status);
           console.log('Response body:', response.body);
           if (response.status === 201) {
-            //           
+            //
             console.log('Реєстрація успішна', response);
             this.router.navigate(['/sing-in']);
             window.location.reload;
@@ -67,9 +67,9 @@ export class RegestComponent {
             this.errorMessage = 'Реєстрація не вдалася';
           }
         }
-        
+
       });
-      
+
   }
- 
+
 }

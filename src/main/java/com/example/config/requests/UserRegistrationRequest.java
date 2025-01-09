@@ -1,8 +1,9 @@
-package com.example.config.users;
+package com.example.config.requests;
 
-public class UserLoginRequest {
+public class UserRegistrationRequest {
     private String email;
     private String password;
+//    private Role role;
 
     public String getEmail() {
         return email;
@@ -19,4 +20,13 @@ public class UserLoginRequest {
     public void setPassword(String password) {
         this.password = password;
     }
+
+//    public Role getRole() {
+//        return role;
+//    }
+//
+//    public void setRole(Role role) {
+//        this.role = role;
+//    }
+
 }

@@ -64,6 +64,7 @@ public class Animal {
 
     }
 
+
     public Animal() {}
 
     // Геттери та сеттери

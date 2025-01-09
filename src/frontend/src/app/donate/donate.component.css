@@ -16,7 +16,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
 }
 
 .Phone{
@@ -36,7 +36,7 @@ body {
   margin: 20px;
   line-height: 1.6;
 
- 
+
 }
 
 .Prozoro h1 {
@@ -46,7 +46,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
 }
 
 .Prozoro h2 {
@@ -98,7 +98,7 @@ body {
   transition: background-color 0.3s;
   display: flex;
   font-size: medium;
-  
+
 }
 
 .Don:hover {
@@ -111,7 +111,7 @@ body {
   border-radius: 15px;
   font-size: large;
 }
-/* 
+/*
 .DPhone {
   margin-top: 40px;
   background-color: #d3d3d3;
@@ -123,7 +123,7 @@ body {
   transition: background-color 0.3s;
   display: flex;
   font-size: medium;
-  
+
 }
 
 .DPhone:hover {
@@ -138,46 +138,42 @@ body {
 } */
 
 .Prozoro h1{
-    display:  flex;
-    justify-content: center;
-    align-items: center;
+  display:  flex;
+  justify-content: center;
+  align-items: center;
 }
 .Prozoro h2{
-    display:  flex;
-    justify-content: center;
-    align-items: center;
+  display:  flex;
+  justify-content: center;
+  align-items: center;
 }
 .Prozoro p{
-   font-size: larger;
+  font-size: larger;
 }
 
 /* Container for Shelters */
 .shelters-container {
-  margin-top: 30px;
+  padding: 20px;
 }
 .shelters-container .shelter-cards {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 .shelters-container h2 {
- margin-bottom: 30px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
 .shelter-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 80px;
-  
+  gap: 50px;
+
 }
-.shelter-card .nameshelter{
-  text-align: center;
-  margin-bottom: 10px;
-}
+
 .shelter-card {
-  width: 300px;
+  width: 250px;
   padding: 10px;
   border-radius: 8px;
   cursor: pointer;
@@ -229,10 +225,9 @@ body {
   background-color: white;
   padding: 20px;
   border-radius: 8px;
-  width: 500px;
+  width: 400px;
   text-align: left;
   position: relative;
-  gap: 5px;
 }
 
 .modal-content h2 {
@@ -241,12 +236,7 @@ body {
   margin-bottom: 15px;
   text-align: center;
 }
-.modal-content h3 {
-  font-size: x-large;
-}
-.modal-content .nameshelter{
-  margin-bottom: 20px;
-}
+
 .modal-content img {
   width: 100%;
   height: auto;
@@ -269,4 +259,3 @@ body {
   top: 10px;
   right: 15px;
 }
-

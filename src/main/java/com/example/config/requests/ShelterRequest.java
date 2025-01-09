@@ -1,9 +1,9 @@
-package com.example.config.DTO;
+package com.example.config.requests;
 
 
 import javax.validation.constraints.*;
 
-public class ShelterDTO {
+public class ShelterRequest {
 
     @NotBlank(message = "Name is required")
     private String name;
@@ -34,9 +34,9 @@ public class ShelterDTO {
     private String imageURL;
 
     // Constructors, Getters, and Setters
-    public ShelterDTO() {}
+    public ShelterRequest() {}
 
-    public ShelterDTO(String name, String address, String contactNumber, String description, String city,Double latitude,Double longitude, String imageURL) {
+    public ShelterRequest(String name, String address, String contactNumber, String description, String city, Double latitude, Double longitude, String imageURL) {
         this.name = name;
         this.address = address;
         this.contactNumber = contactNumber;

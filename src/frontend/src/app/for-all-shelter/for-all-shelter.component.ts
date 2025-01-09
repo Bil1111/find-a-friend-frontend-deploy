@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-for-all-shelter',
   templateUrl: './for-all-shelter.component.html',
   styleUrl: './for-all-shelter.component.css'
 })
-export class ForAllShelterComponent {
+export class ForAllShelterComponent implements OnInit {
  
   animals: any[] = [];
   allAnimals: any[] = []; 
@@ -16,7 +17,7 @@ export class ForAllShelterComponent {
   selectedAnimal: any = null; // Для зберігання вибраної тварини
   isAdoptFormOpen: any = null;
   isWardFormOpen: any = null;
-  shelterName: string = ''; 
+  // shelterName: string = ''; 
  
   // Це зміннІ, яку буде використовувати [(ngModel)]
   //КОРИСТУВАЧ
@@ -34,10 +35,22 @@ export class ForAllShelterComponent {
   // shelter: string= '';
   City: string ='';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+  shelter_Name: string = '';
+  shelter_ID: number = 0;
 
   ngOnInit() {
-    this.fetchAnimals(this.currentPage);
+      // Отримання значення `shelterName` із параметрів маршруту
+      this.route.queryParams.subscribe(params =>{
+        this.shelter_Name = params['shelterName'];
+      });
+
+    //   this.route.queryParams.subscribe(params =>{
+    //     this. shelter_ID = params['shelterId'];
+    //     // this.filterAnimals(this.shelter_ID);
+    //   });
+
+    // this.fetchAnimals(this.currentPage);
     
   }
 
@@ -60,7 +73,9 @@ export class ForAllShelterComponent {
     );
   }
 
-  
+  // filterAnimals(shelter_ID: number){
+  //   this.animals = this.allAnimals.filter(animal => animal.shelter_id === shelter_ID);
+  // }
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;

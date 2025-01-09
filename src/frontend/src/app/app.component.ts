@@ -5,6 +5,7 @@ import { query } from '@angular/animations';
 declare const google: any;
 
 interface MapPoint {
+  id: number;
   name: string;
   address: string;
   contactNumber: string;
@@ -53,17 +54,17 @@ export class AppComponent implements OnInit {
 
   }
   // Для знаходження притулків
-  findshelter(){
-   this.http.get('http://localhost:8080/api/shelters/search?query=' + this.searcshelter).subscribe({
-    next: (response) => {
-      console.log('Результати пошуку:', response);
-    },
-    error: (error) => {
-      console.error('Помилка при пошуку:', error);
-    },
-  });
+  // findshelter(){
+  //  this.http.get('http://localhost:8080/api/shelters/search?query=' + this.searcshelter).subscribe({
+  //   next: (response) => {
+  //     console.log('Результати пошуку:', response);
+  //   },
+  //   error: (error) => {
+  //     console.error('Помилка при пошуку:', error);
+  //   },
+  // });
    
-  }
+  // }
 
   loadMapPoints() {
     this.http.get<MapPoint[]>('http://localhost:8080/api/mapPoints')
@@ -90,7 +91,13 @@ export class AppComponent implements OnInit {
       const infoWindow = new google.maps.InfoWindow({
         content: `
           <div>
-           <a id="shelter-link" href="/for-all-shelter" style="font-size: 2.3em; font-weight: bold;  text-decoration: none; color: black">${point.name}</a>
+           <a id="shelter-link" href="/for-all-shelter?shelterName=${point.name}&shelterId=${point.id}" style="
+           font-size: 2.3em; 
+           font-weight: bold;
+             text-decoration: none; 
+             color: black; ">${point.name}</a>
+             
+            s<p><strong>ID:</strong> ${point.id}</p>
             <p><strong>Місто:</strong> ${point.city}</p>
             <p><strong>Адреса:</strong> ${point.address}</p>
             <p><strong>Телефон:</strong> ${point.contactNumber}</p>

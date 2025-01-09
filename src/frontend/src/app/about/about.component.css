@@ -350,5 +350,20 @@ margin-top: 50px;
   margin-left: 20px;
 }
 
-
-
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff8e04;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 100px;
+  cursor: pointer;
+  display: none; 
+  z-index: 1000;
+  font-size: xx-large;
+}
+.scroll-to-top.show {
+  display: block;
+}

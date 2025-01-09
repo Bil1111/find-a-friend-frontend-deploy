@@ -12,14 +12,21 @@
   <div class="shelters-container">
     <h2>Притулки</h2>
     <div class="shelter-cards">
-      <div *ngFor="let shelter of shelters"
-           class="shelter-card"
-           (click)="selectShelter(shelter)">
-        <img [src]="shelter.imageURL" alt="{{ shelter.city }}" />
-        <h3>Місто: {{ shelter.city }}</h3>
-        <p>ID: {{ shelter.id }}</p>
+      <div *ngFor="let shelter of shelters"  class="shelter-card"  (click)="selectShelter(shelter)">
+          <h3 class="nameshelter">Притулок  {{shelter.name }}</h3>
+        <img [src]="shelter.name" alt="{{ shelter.city }}" />
+        <h3 >Контактна інформація</h3>
+        
+        <p>м. {{ shelter.city }}</p>
+        <!-- <p>ID: {{ shelter.id }}</p> -->
         <p>Адреса: {{ shelter.address }}</p>
-        <p>Телефон: {{ shelter.contact_number }}</p>
+        <p>Телефон: {{ shelter.contactNumber }}</p>
+        <p>Email: anuta0203.net</p>
+
+        <h3>Ревізити для переказу:</h3>
+        <p>Карта: 1111 1111 1111 1111</p>
+        <p>Paypal: SAP_Dobro</p>
+        <p>IBAN: BA393385804800211234</p>
       </div>
     </div>
   </div>
@@ -28,11 +35,20 @@
   <div *ngIf="selectedShelter" class="modal">
     <div class="modal-content">
       <span (click)="closeModal()" class="close-button">&times;</span>
-      <h2>Притулок у {{ selectedShelter.city }}</h2>
+      <h2>м. {{ selectedShelter.city }}</h2>
+      <h3 class="nameshelter" >Притулок  {{selectedShelter.name }}</h3>
       <img [src]="selectedShelter.imageURL" alt="{{ selectedShelter.city }}" />
-      <p>ID: {{ selectedShelter.id }}</p>
+      <h3>Контактна інформація</h3>
+        
+      <!-- <p>ID: {{ shelter.id }}</p> -->
       <p>Адреса: {{ selectedShelter.address }}</p>
-      <p>Телефон: {{ selectedShelter.contact_number }}</p>
+      <p>Телефон: {{ selectedShelter.contactNumber }}</p>
+      <p>Email: anuta0203.net</p>
+
+      <h3>Ревізити для переказу:</h3>
+      <p>Карта: 1111 1111 1111 1111</p>
+      <p>Paypal: SAP_Dobro</p>
+      <p>IBAN: BA393385804800211234</p>
       <p>Опис: {{ selectedShelter.description }}</p>
     </div>
   </div>

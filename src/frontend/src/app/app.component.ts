@@ -5,6 +5,7 @@ import { SharedService } from './shared.service';
 declare const google: any;
 
 interface MapPoint {
+  id: number;
   name: string;
   address: string;
   contactNumber: string;
@@ -22,6 +23,7 @@ interface MapPoint {
 
 })
 export class AppComponent implements OnInit {
+ // searcshelter: string = '';// Зберігає значення поля введення
 
   title = 'FF';
   isHomePage: boolean = false;
@@ -52,9 +54,18 @@ export class AppComponent implements OnInit {
         this.loadMapPoints();
       }
     });
-
-
-  }
+}
+    // Для знаходження притулків
+  //   findshelter(){
+  //     this.http.get('http://localhost:8080/api/shelters/search?query=' + this.searcshelter).subscribe({
+  //       next: (response) => {
+  //         console.log('Результати пошуку:', response);
+  //       },
+  //       error: (error) => {
+  //         console.error('Помилка при пошуку:', error);
+  //       },
+  //     });
+  // }
 
   loadMapPoints() {
     this.http.get<MapPoint[]>('http://localhost:8080/api/mapPoints')
@@ -82,6 +93,7 @@ export class AppComponent implements OnInit {
         content: `
           <div>
             <h2>${point.name}</h2>
+            <p><strong>Айді:</strong> ${point.id}</p>
             <p><strong>Місто:</strong> ${point.city}</p>
             <p><strong>Адреса:</strong> ${point.address}</p>
             <p><strong>Телефон:</strong> ${point.contactNumber}</p>
@@ -108,6 +120,5 @@ export class AppComponent implements OnInit {
     localStorage.removeItem('token');
     this.sharedService.changeLoginState(false);
   }
-
 
 }

@@ -1,114 +1,154 @@
-/* General Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body Styling */
 body {
   font-family: "e-ukr";
   background-color: #ffffff;
   color: #333;
 }
 
-/* Container for Shelters */
-.shelters-container {
+.container {
+  margin-left: 80px;
   padding: 20px;
-}
-
-.shelter-cards {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+
 }
 
-.shelter-card {
-  width: 250px;
-  padding: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s, background-color 0.3s;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+.Phone{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.Prozoro {
   background-color: #f9f9f9;
-  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  margin: 20px;
+  line-height: 1.6;
+
+
 }
 
-.shelter-card img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 8px 8px 0 0;
+.Prozoro h1 {
+  color: #222222;
+  font-size: 24px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
-.shelter-card:hover {
-  transform: scale(1.05);
-  background-color: #eaeaea;
-}
-
-.shelter-card h3 {
+.Prozoro h2 {
+  color: #444444;
   font-size: 18px;
-  color: #222;
-  margin-top: 10px;
-}
-
-.shelter-card p {
-  font-size: 14px;
-  color: #555;
-  margin: 5px 0;
-}
-
-/* Modal Styling */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.modal-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 400px;
-  text-align: left;
-  position: relative;
+.Prozoro p {
+  font-size: larger;
+  color: #555555;
 }
 
-.modal-content h2 {
-  font-size: 22px;
-  color: #333;
+.Prozoro ol {
+  padding-left: 20px;
+  list-style-type: decimal;
+}
+
+.Prozoro ol li {
   margin-bottom: 15px;
-  text-align: center;
+  font-weight: bold;
+  color: #333333;
 }
 
-.modal-content img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 15px;
+.Prozoro ul {
+  padding-left: 20px;
+  list-style-type: disc;
+  margin-top: 10px;
 }
 
-.modal-content p {
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 10px;
+.Prozoro ul li {
+  font-weight: normal;
+  color: #666666;
+  margin-bottom: 8px;
 }
 
-.close-button {
+/* Стиль для кнопки */
+.Don {
+  margin-top: 40px;
+  background-color: #d3d3d3;
+  color: #333333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 28px;
-  color: #333;
-  position: absolute;
-  top: 10px;
-  right: 15px;
+  transition: background-color 0.3s;
+  display: flex;
+  font-size: medium;
+
+}
+
+.Don:hover {
+  background-color: #a3a3a3;
+}
+
+#name{
+  margin-top: 20px;
+  padding: 20px 20px;
+  border-radius: 15px;
+  font-size: large;
+}
+/*
+.DPhone {
+  margin-top: 40px;
+  background-color: #d3d3d3;
+  color: #333333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  font-size: medium;
+
+}
+
+.DPhone:hover {
+  background-color: #a3a3a3;
+}
+
+#nPhone{
+  margin-top: 20px;
+  padding: 20px 20px;
+  border-radius: 15px;
+  font-size: large;
+} */
+
+.Prozoro h1{
+  display:  flex;
+  justify-content: center;
+  align-items: center;
+}
+.Prozoro h2{
+  display:  flex;
+  justify-content: center;
+  align-items: center;
+}
+.Prozoro p{
+  font-size: larger;
 }
 
 /* Container for Shelters */
@@ -121,7 +161,7 @@ body {
   align-items: center;
 }
 .shelters-container h2 {
- margin-bottom: 30px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
@@ -129,7 +169,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 50px;
-  
+
 }
 
 .shelter-card {
@@ -219,4 +259,3 @@ body {
   top: 10px;
   right: 15px;
 }
-

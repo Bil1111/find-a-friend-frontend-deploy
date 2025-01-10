@@ -10,6 +10,7 @@ export class ForAllShelterComponent implements OnInit {
  
   animals: any[] = [];
   allAnimals: any[] = []; 
+  SheletrAnimals: any[] = []; 
   currentPage: number = 1;
   totalPages: number = 0;
   itemsPerPage: number = 10;
@@ -40,18 +41,18 @@ export class ForAllShelterComponent implements OnInit {
   shelter_ID: number = 0;
 
   ngOnInit() {
-      // Отримання значення `shelterName` із параметрів маршруту
-      this.route.queryParams.subscribe(params =>{
-        this.shelter_Name = params['shelterName'];
-      });
-
-    //   this.route.queryParams.subscribe(params =>{
-    //     this. shelter_ID = params['shelterId'];
-    //     // this.filterAnimals(this.shelter_ID);
-    //   });
-
-    // this.fetchAnimals(this.currentPage);
     
+      // Отримання значення `shelterName` із параметрів маршруту
+      this.route.queryParams.subscribe(params => {
+        this.shelter_Name = params['shelterName'];
+        this.shelter_ID = +params['shelterId'];
+        this.fetchAnimals(this.currentPage);
+      });
+    
+  }
+
+  filterAnimals(shelter: number){
+    this.SheletrAnimals = this.allAnimals.filter(animal => animal.id === shelter);
   }
 
   fetchAnimals(page: number) {
@@ -64,8 +65,12 @@ export class ForAllShelterComponent implements OnInit {
           animal.imageURL = `http://localhost:8080/images/${animal.id}.png`;
           return animal;
         });
-        this.animals = [...this.allAnimals]; // Ініціалізуємо тварин
+                // Викликаємо метод для фільтрації після того, як отримали shelter_ID
+           this.filterAnimals(this.shelter_ID);
+        this.animals = [...this.SheletrAnimals]; // Ініціалізуємо тварин
+   
         this.totalPages = Math.ceil(data.length / this.itemsPerPage); // Обчислюйте загальну кількість сторінок
+      
       },
       error => {
         console.error('Error fetching animals:', error); // Логування помилки
@@ -73,9 +78,8 @@ export class ForAllShelterComponent implements OnInit {
     );
   }
 
-  // filterAnimals(shelter_ID: number){
-  //   this.animals = this.allAnimals.filter(animal => animal.shelter_id === shelter_ID);
-  // }
+ 
+
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
@@ -142,7 +146,7 @@ export class ForAllShelterComponent implements OnInit {
   }
 
   applyFilters() {
-    this.animals = this.allAnimals.filter(animal => {
+    this.animals = this.SheletrAnimals.filter(animal => {
       return (
         this.isMatchingFilter(animal, 'type', this.activeFilters.type) &&
         this.isMatchingFilter(animal, 'sex', this.activeFilters.sex) &&

@@ -97,7 +97,6 @@ export class AppComponent implements OnInit {
              text-decoration: none;
              color: black; ">${point.name}</a>
 
-            s<p><strong>ID:</strong> ${point.id}</p>
             <p><strong>Місто:</strong> ${point.city}</p>
             <p><strong>Адреса:</strong> ${point.address}</p>
             <p><strong>Телефон:</strong> ${point.contactNumber}</p>

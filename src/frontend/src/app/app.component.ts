@@ -90,18 +90,14 @@ export class AppComponent implements OnInit {
       // Створення інфо-вікна для мітки
       const infoWindow = new google.maps.InfoWindow({
         content: `
-          <div>
-           <a id="shelter-link" href="/for-all-shelter?shelterName=${point.name}&shelterId=${point.id}" style="
-           font-size: 2.3em;
-           font-weight: bold;
-             text-decoration: none;
+          <div  style="font-family: 'e-ukr' max-width: 300px; padding: 10px; margin: 0;border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);" >
+           <a id="shelter-link" href="/for-all-shelter?shelterName=${point.name}&shelterId=${point.id}" style="font-size: 2.3em;font-weight: bold;text-decoration: none;  display: flex;  justify-content: center;
              color: black; ">${point.name}</a>
-
-            <p><strong>Місто:</strong> ${point.city}</p>
-            <p><strong>Адреса:</strong> ${point.address}</p>
-            <p><strong>Телефон:</strong> ${point.contactNumber}</p>
-            <p><strong>Опис:</strong> ${point.description}</p>
-            <img src="${point.imageURL}" alt="${point.name}" style="width:100px;height:auto;">
+            <p style=" margin-top: 10px; font-size: 1.1rem">  <strong>Місто:</strong> ${point.city}</p>
+            <p style="font-size: 1.1rem" ><strong>Адреса:</strong> ${point.address}</p>
+            <p style="font-size: 1.1rem"><strong>Телефон:</strong> ${point.contactNumber}</p>
+            <p style="font-size: 1.1rem"><strong>Опис:</strong> ${point.description}</p>
+            <img src="${point.imageURL}" alt="${point.name}" style="width:100px; height:auto; object-fit: cover;  ">
           </div>
         `,
       });

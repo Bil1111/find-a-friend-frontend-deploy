@@ -2,6 +2,7 @@ package com.example.config.forms;
 
 import com.example.config.requests.AdoptRequest;
 import com.example.config.requests.VolunteerRequest;
+import com.example.config.requests.WardRequest;
 import com.example.config.shelters.Shelter;
 import com.example.config.shelters.ShelterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,11 @@ public class FormController {
         formService.addAdoptForm(request, shelter);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+    @PostMapping("/ward")
+    public ResponseEntity<Map<String, String>> wardForm(@RequestBody WardRequest request) {
+        formService.addWardForm(request);
 
-
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

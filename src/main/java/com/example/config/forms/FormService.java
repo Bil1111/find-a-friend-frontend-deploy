@@ -2,6 +2,7 @@ package com.example.config.forms;
 
 import com.example.config.requests.AdoptRequest;
 import com.example.config.requests.VolunteerRequest;
+import com.example.config.requests.WardRequest;
 import com.example.config.shelters.Shelter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,8 @@ public class FormService {
     private AdoptFormRepository adoptFormRepository;
     @Autowired
     private VolunteerFormRepository volunteerFormRepository;
+    @Autowired
+    private WardFormRepository wardFormRepository;
 
     public void addVolunteerForm(VolunteerRequest request, Shelter shelter) {
         VolunteerForm volunteerForm = new VolunteerForm(request.getFirstName(),
@@ -32,5 +35,20 @@ public class FormService {
                 shelter);
         adoptFormRepository.save(adoptForm);
     }
+    public void addWardForm(WardRequest request) {
+        WardForm wardForm=new WardForm(
+                request.getFirstName(),
+                request.getLastName(),
+                request.getEmail(),
+                request.getContactNumber(),
+                request.getExperience(),
+                request.getTypeOfAnimal(),
+                request.getAnimalName(),
+                request.getAnimalAge(),
+                request.getAnimalSex(),
+                request.getAnimalSize()
+        );
 
+        wardFormRepository.save(wardForm);
+    }
 }

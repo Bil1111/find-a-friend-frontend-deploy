@@ -93,7 +93,7 @@ export class AppComponent implements OnInit {
         content: `
           <div>
             <h2>${point.name}</h2>
-            <p><strong>Айді:</strong> ${point.id}</p>
+            <p><strong>ID:</strong> ${point.id}</p>
             <p><strong>Місто:</strong> ${point.city}</p>
             <p><strong>Адреса:</strong> ${point.address}</p>
             <p><strong>Телефон:</strong> ${point.contactNumber}</p>

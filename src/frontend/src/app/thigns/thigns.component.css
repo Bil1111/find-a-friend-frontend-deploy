@@ -1,32 +1,135 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body{
-    font-family: 'e-ukr';
+
+body {
+  font-family: 'e-ukr';
+  width: 100%;
+  height: 100%;
+  margin-left: 20px;
+  margin-top: 20px;
+  color: #333333;
+}
+
+.title1, .title2 {
+  text-align: center; /* Центрування заголовків */
+  margin-bottom: 20px;
+}
+
+.title1 {
+  display: grid;
+  place-content: center;
+  margin-bottom: 10px;
+  font-size: xx-large;
+}
+
+.title2 {
+  display: grid;
+  place-content: center;
+  margin-bottom: 10px;
+  font-size: large;
+}
+
+.col1, .col2 {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  list-style-type: disc;
+  margin: 10px 0;
+  padding-left: 20px; /* Відступ для списків */
+}
+
+/* Секції допомоги */
+.col1, .col2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+/* Загальні стилі для карток */
+.help1, .help2, .help3, .help4 {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 20px; /* Відступ всередині картки */
+  flex: 1 1 calc(45% - 20px); /* Для великих екранів */
+  max-width: calc(45% - 20px); /* Для великих екранів */
+}
+
+/* Текст у картках */
+.help1 p, .help2 p, .help3 p, .help4 p {
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: justify; /* Вирівнювання тексту по ширині */
+}
+
+.help1 li, .help2 li, .help3 li, .help4 li {
+  margin: 5px 0;
+}
+
+/* Стилі для футера */
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f1f1;
+  padding: 20px;
+  margin-top: 20px;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.footer-container ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.footer-container li {
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+.footer-container img {
+  width: 50px;
+  height: auto;
+  margin: 10px auto;
+  display: block;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+  .col1, .col2 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-container ul {
     width: 100%;
-    height: 100%;
-    margin-left: 20px;
-    margin-top: 20px;
-}
+  }
 
-.title1{
-    display: grid;
-    place-content: center;
-    margin-bottom: 10px; 
-    font-size: xx-large;
-}
+  .footer-container li {
+    font-size: 0.9rem;
+  }
 
-.title2{
-    display: grid;
-    place-content: center; 
-    margin-bottom: 10px; 
-    font-size: large;
-}  
-
-.col1, .col2{
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 20px;
+  .help1, .help2, .help3, .help4 {
+    flex: 1 1 100%; /* Розтягнути картки на всю ширину */
+    max-width: 100%; /* Максимальна ширина 100% */
+  }
 }

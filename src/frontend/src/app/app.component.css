@@ -11,12 +11,14 @@ body {
   height: 100%;
 }
 
+
 header {
   background-color: #fc8f00;
   padding: 6px;
   text-align: center;
   color: white;
   display: flex;
+ 
 }
 
 h1 {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -6,18 +6,77 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './adopt.component.html',
   styleUrls: ['./adopt.component.css']
 })
-export class AdoptComponent {
+export class AdoptComponent implements OnInit {
   firstName: string = '';
   lastName: string = '';
   email: string = '';
   contactNumber: string = '';
+  shelter: string = '';
   typeOfAnimal: string = '';
   experience: string = '';
-  shelter: string = '';
   errorMessage: string | null = null;
   successMessage: string | null = null;
 
+
+  shelters: any[] = []; // Масив для зберігання всіх притулків
+  selectedShelter: any = null; // Для зберігання вибраного притулку
+  animals: any[] = []; // Масив для зберігання всіх тварин
+  allAnimals: any[] = []; // Для зберігання вибраної тварини
   constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    this.fetchShelters();
+    this.fetchAnimals();
+   }
+
+
+ // Метод для отримання всіх тварин
+   fetchAnimals() {
+   
+    this.http.get<any[]>(`http://localhost:8080/api/animals`).subscribe(
+      data => {
+        console.log('Received data:', data); // Додайте це логування
+        this.allAnimals = data.map(animal => {
+          // Генеруємо URL для зображення
+          // animal.imageURL = `http://localhost:8080/images/${animal.id}.png`;
+          return animal;
+        });
+                // Викликаємо метод для фільтрації після того, як отримали shelter_ID
+          //  this.filterAnimals(this.shelter_ID);
+        this.animals = [...this.allAnimals]; // Ініціалізуємо тварин
+   
+      },
+      error => {
+        console.error('Error fetching animals:', error); // Логування помилки
+      }
+    );
+  }
+
+
+  // Метод для отримання всіх притулків
+  fetchShelters() {
+    this.http.get<any[]>('http://localhost:8080/api/shelters').subscribe(
+      data => {
+        console.log('Received shelters data:', data); // Логування отриманих даних
+        this.shelters = data.map(shelter => {
+          // Генеруємо URL для зображення кожного притулку
+          // shelter.imageURL = `http://localhost:8080/images/shelters/${shelter.id}.png`;
+          return shelter;
+        });
+      },
+      error => {
+        console.error('Error fetching shelters:', error); // Логування помилки
+      }
+    );
+  }
+
+  // Метод для вибору притулку
+  selectShelter(shelter: any) {
+    this.selectedShelter = shelter; // Зберігаємо вибраний притулок
+  }
+
+
+
 
   FormAdopt() {
     const adoptData = {

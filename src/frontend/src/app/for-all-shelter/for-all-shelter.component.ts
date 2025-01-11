@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-for-all-shelter',
   templateUrl: './for-all-shelter.component.html',
   styleUrl: './for-all-shelter.component.css'
 })
-export class ForAllShelterComponent {
+export class ForAllShelterComponent implements OnInit {
 
   animals: any[] = [];
   allAnimals: any[] = [];
+  // SheletrAnimals: any[] = [];
   currentPage: number = 1;
   totalPages: number = 0;
   itemsPerPage: number = 10;
@@ -16,6 +18,24 @@ export class ForAllShelterComponent {
   selectedAnimal: any = null; // Для зберігання вибраної тварини
   isAdoptFormOpen: any = null;
   isWardFormOpen: any = null;
+  // shelterName: string = '';
+
+  // Це зміннІ, яку буде використовувати [(ngModel)]
+  //КОРИСТУВАЧ
+  // name: string = '';
+  // surname: string = '';
+  // email: string = '';
+  // phone: string = '';
+  // exp: string ='';
+  // //ТВАРИНКА
+  // namePet: string ='';
+  // AgePet: string ='';
+  // SexPet: string ='';
+  // SizePet: string ='';
+  // TypePet: string ='';
+  // shelter: string= '';
+  // City: string ='';
+
 
   // Це зміннІ, яку буде використовувати [(ngModel)]
   //КОРИСТУВАЧ
@@ -33,17 +53,29 @@ export class ForAllShelterComponent {
   animalSize: string ='';
   typeOfAnimal: string ='';
 
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+  shelter_Name: string = '';
+  // shelter_ID: number = 0;
 
   ngOnInit() {
-    this.fetchAnimals(this.currentPage);
+
+      // Отримання значення `shelterName` із параметрів маршруту
+      this.route.queryParams.subscribe(params => {
+        this.shelter_Name = params['shelterName'];
+        // this.shelter_ID = +params['shelterId'];
+        this.fetchAnimals(this.currentPage);
+      });
 
   }
 
+  // filterAnimals(shelter: number){
+  //   this.SheletrAnimals = this.allAnimals.filter(animal => animal.id === shelter);
+  // }
+
+  // &limit=${this.itemsPerPage}
   fetchAnimals(page: number) {
     const startId = (page - 1) * this.itemsPerPage;
-    this.http.get<any[]>(`http://localhost:8080/api/animals?start=${startId}&limit=${this.itemsPerPage}`).subscribe(
+    this.http.get<any[]>(`http://localhost:8080/api/animals?start=${startId}`).subscribe(
       data => {
         console.log('Received data:', data); // Додайте це логування
         this.allAnimals = data.map(animal => {
@@ -51,14 +83,19 @@ export class ForAllShelterComponent {
           animal.imageURL = `http://localhost:8080/images/${animal.id}.png`;
           return animal;
         });
+                // Викликаємо метод для фільтрації після того, як отримали shelter_ID
+          //  this.filterAnimals(this.shelter_ID);
         this.animals = [...this.allAnimals]; // Ініціалізуємо тварин
+
         this.totalPages = Math.ceil(data.length / this.itemsPerPage); // Обчислюйте загальну кількість сторінок
+
       },
       error => {
         console.error('Error fetching animals:', error); // Логування помилки
       }
     );
   }
+
 
 
   nextPage() {
@@ -88,6 +125,13 @@ export class ForAllShelterComponent {
 
  openWardForm(){
     this.isWardFormOpen = this.selectedAnimal;
+
+     // Ініціалізуємо значення для прихованих полів ДОДАВ ОЦЕ
+     this.animalName = this.selectedAnimal.name || 'empty';
+     this.animalAge = this.selectedAnimal.age || 'empty';
+     this.animalSex = this.selectedAnimal.sex || 'empty';
+     this.animalSize = this.selectedAnimal.size || 'empty';
+     this.typeOfAnimal = this.selectedAnimal.type || 'empty';
   }
 
   // Метод для закриття модального вікна
@@ -171,48 +215,51 @@ export class ForAllShelterComponent {
 
    // ФОРМА ДЛЯ ОПІКИ
    ModalWard(){
-     const adoptData= {
-       firstName: this.firstName,
-       lastName: this.lastName,
-       email: this.email,
-       contactNumber: this.contactNumber,
-       experience: this.experience,
-       typeOfAnimal: this.typeOfAnimal,
-       animalName: this.animalName,
-       animalAge: this.animalAge,
-       animalSex: this.animalSex,
-       animalSize: this.animalSize,
-     };
+    const WardData= {
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
+      contactNumber: this.contactNumber,
+      experience: this.experience,
+      typeOfAnimal: this.typeOfAnimal,
 
-     this.http.post('http://localhost:8080/api/forms/ward', adoptData).subscribe({
-       next: (response) => {
-         this.successMessage = 'Форма успішно відправлена!';
-         this.errorMessage = null;
-         console.log('Форма успішно відправлена', response);
-         this.clearForm();
-         this.clearMessagesAfterDelay();
-       },
-       error: (error) => {
-         this.errorMessage = 'Сталася помилка під час відправлення форми.';
-         this.successMessage = null;
-         console.error('Сталася помилка', error);
-         this.clearMessagesAfterDelay();
-       }
-     });
+      animalName: this.animalName,
+      animalAge: this.animalAge,
+      animalSex: this.animalSex,
+      animalSize: this.animalSize,
+    };
+
+    this.http.post('http://localhost:8080/api/forms/ward', WardData).subscribe({
+      next: (response) => {
+        this.successMessage = 'Форма успішно відправлена!';
+        this.errorMessage = null;
+        console.log('Форма успішно відправлена', response);
+        this.clearForm();
+        this.clearMessagesAfterDelay();
+      },
+      error: (error) => {
+        this.errorMessage = 'Сталася помилка під час відправлення форми.';
+        this.successMessage = null;
+        console.error('Сталася помилка', error);
+        this.clearMessagesAfterDelay();
+      }
+    });
+  }
+
+ clearForm() {
+   this.firstName = '';
+   this.lastName = '';
+   this.email = '';
+   this.contactNumber = '';
+   this.typeOfAnimal = '';
+   this.experience = '';
+ }
+
+ clearMessagesAfterDelay() {
+   setTimeout(() => {
+     this.errorMessage = null;
+     this.successMessage = null;
+   }, 5000); // Повідомлення зникне через 5 секунд
    }
-  clearForm() {
-    this.firstName = '';
-    this.lastName = '';
-    this.email = '';
-    this.contactNumber = '';
-    this.typeOfAnimal = '';
-    this.experience = '';
-  }
 
-  clearMessagesAfterDelay() {
-    setTimeout(() => {
-      this.errorMessage = null;
-      this.successMessage = null;
-    }, 5000); // Повідомлення зникне через 5 секунд
-  }
 }

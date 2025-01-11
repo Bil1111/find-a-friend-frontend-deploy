@@ -24,8 +24,13 @@
     <label for="phone">Телефон:</label>
     <input type="tel" id="phone" [(ngModel)]="contactNumber" name="contactNumber" placeholder="Введіть ваш номер телефону" required>
 
-    <label for="">Притулок</label>
-    <input type="text" id="shelter" [(ngModel)]="shelter" name="shelter"  required>
+    <label for="shelter">Притулки:</label>
+    <select type="text" id="shelter" [(ngModel)]="shelter"  name="shelter"  required>
+      <option value="" disabled selected hidden>Оберіть притулок</option>
+      <option *ngFor="let shelter of shelters" [value]="shelter.id">
+        {{ shelter.name }}
+      </option>
+    </select>
 
     <button type="submit">Надіслати</button>
   </form>

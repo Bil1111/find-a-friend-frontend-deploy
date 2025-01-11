@@ -12,4 +12,6 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
     List<Animal> findBySize(String size);
     List<Animal> findByShelterId(Long shelterId);
     boolean existsById(Long id);
+
+    
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { SharedService } from './shared.service';
+import { query } from '@angular/animations';
 declare const google: any;
 
 interface MapPoint {
@@ -23,28 +23,24 @@ interface MapPoint {
 
 })
 export class AppComponent implements OnInit {
- // searcshelter: string = '';// Зберігає значення поля введення
+  searcshelter: string = '';// Зберігає значення поля введення
 
   title = 'FF';
   isHomePage: boolean = false;
   mapPoints: MapPoint[] = [];
 
   //
-    isLogged: boolean = false;
+   public isLogged: boolean = false;
    ShowFooter: boolean = false;
 
   // log: boolean = false; // Для тесту
 
   visible = false;
-  constructor(private router: Router, private http: HttpClient,private sharedService: SharedService) {
+  constructor(private router: Router, private http: HttpClient) {
     this.router.events.subscribe(() => {
-      this.ShowFooter = this.router.url !== '/adopt' &&  this.router.url !== '/gifthouse' &&  this.router.url !== '/free-people' && this.router.url !== '/gifthouse' ;
+      this.ShowFooter = this.router.url !== '/adopt' &&  this.router.url !== '/gifthouse' &&  this.router.url !== '/free-people';
 
     })
-    // Підписка на зміну стану логіну
-    this.sharedService.isLoggedIn$.subscribe(isLoggedIn =>{
-      this.isLogged = isLoggedIn;
-    });
   }
 
   ngOnInit() {
@@ -54,17 +50,20 @@ export class AppComponent implements OnInit {
         this.loadMapPoints();
       }
     });
-}
-    // Для знаходження притулків
-  //   findshelter(){
-  //     this.http.get('http://localhost:8080/api/shelters/search?query=' + this.searcshelter).subscribe({
-  //       next: (response) => {
-  //         console.log('Результати пошуку:', response);
-  //       },
-  //       error: (error) => {
-  //         console.error('Помилка при пошуку:', error);
-  //       },
-  //     });
+
+
+  }
+  // Для знаходження притулків
+  // findshelter(){
+  //  this.http.get('http://localhost:8080/api/shelters/search?query=' + this.searcshelter).subscribe({
+  //   next: (response) => {
+  //     console.log('Результати пошуку:', response);
+  //   },
+  //   error: (error) => {
+  //     console.error('Помилка при пошуку:', error);
+  //   },
+  // });
+
   // }
 
   loadMapPoints() {
@@ -91,14 +90,14 @@ export class AppComponent implements OnInit {
       // Створення інфо-вікна для мітки
       const infoWindow = new google.maps.InfoWindow({
         content: `
-          <div>
-            <h2>${point.name}</h2>
-            <p><strong>ID:</strong> ${point.id}</p>
-            <p><strong>Місто:</strong> ${point.city}</p>
-            <p><strong>Адреса:</strong> ${point.address}</p>
-            <p><strong>Телефон:</strong> ${point.contactNumber}</p>
-            <p><strong>Опис:</strong> ${point.description}</p>
-            <img src="${point.imageURL}" alt="${point.name}" style="width:100px;height:auto;">
+          <div  style="font-family: 'e-ukr' max-width: 300px; padding: 10px; margin: 0;border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);" >
+           <a id="shelter-link" href="/for-all-shelter?shelterName=${point.name}&shelterId=${point.id}" style="font-size: 2.3em;font-weight: bold;text-decoration: none;  display: flex;  justify-content: center;
+             color: black; ">${point.name}</a>
+            <p style=" margin-top: 10px; font-size: 1.1rem">  <strong>Місто:</strong> ${point.city}</p>
+            <p style="font-size: 1.1rem" ><strong>Адреса:</strong> ${point.address}</p>
+            <p style="font-size: 1.1rem"><strong>Телефон:</strong> ${point.contactNumber}</p>
+            <p style="font-size: 1.1rem"><strong>Опис:</strong> ${point.description}</p>
+            <img src="${point.imageURL}" alt="${point.name}" style="width:100px; height:auto; object-fit: cover;  ">
           </div>
         `,
       });
@@ -107,7 +106,10 @@ export class AppComponent implements OnInit {
       marker.addListener('click', () => {
         infoWindow.open(map, marker);
       });
+
     });
+
+
   }
 
 
@@ -115,10 +117,10 @@ export class AppComponent implements OnInit {
   Openmemu(){this.visible = true;}
 
 
-  logout() {
-    // Remove token from localStorage on logout
-    localStorage.removeItem('token');
-    this.sharedService.changeLoginState(false);
-  }
+  logout(){
+    // this.sharedService.logout();
+   }
+
+
 
 }

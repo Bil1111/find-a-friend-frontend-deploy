@@ -36,7 +36,7 @@ public class ShelterRequest {
     // Constructors, Getters, and Setters
     public ShelterRequest() {}
 
-    public ShelterRequest(String name, String address, String contactNumber, String description, String city,Double latitude,Double longitude, String imageURL) {
+    public ShelterRequest(String name, String address, String contactNumber, String description, String city, Double latitude, Double longitude, String imageURL) {
         this.name = name;
         this.address = address;
         this.contactNumber = contactNumber;

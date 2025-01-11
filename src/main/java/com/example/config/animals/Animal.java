@@ -64,9 +64,12 @@ public class Animal {
 
     }
 
+
     public Animal() {}
 
     // Геттери та сеттери
+  
+    
     public Long getId() {
         return id;
     }

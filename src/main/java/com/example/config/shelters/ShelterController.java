@@ -1,5 +1,6 @@
 package com.example.config.shelters;
 
+import com.example.config.animals.Animal;
 import com.example.config.requests.ShelterRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,6 +36,17 @@ public class ShelterController {
         List<Shelter> shelters = shelterService.getAllShelters();
         return new ResponseEntity<>(shelters, HttpStatus.OK);
     }
+    /*@GetMapping({"/next/{id}"})
+    public ResponseEntity<List<Shelter>> getNextShelter(@PathVariable("id") int id) {
+        try{
+            List<Shelter> shelters = shelterService.getNextShelter(id);
+            return new ResponseEntity<>(shelters, HttpStatus.OK);
+        }catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+    }*/
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteShelter(@PathVariable("id") Long id) {

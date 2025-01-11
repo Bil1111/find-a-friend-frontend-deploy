@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-sing-in',
@@ -13,12 +14,18 @@ export class SingINComponent implements OnInit {
   errorMessage: string | null = null;
   isLoggedIn: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private sharedService: SharedService) {
+    // Підписка на зміну стану логіну
+    this.sharedService.isLoggedIn$.subscribe(isLoggedIn =>{
+      this.isLoggedIn = isLoggedIn;
+    });
+  }
 
   ngOnInit() {
     // Check if token exists in localStorage on component initialization
     if (localStorage.getItem('token')) {
-      this.isLoggedIn = true;
+      //this.isLoggedIn = true;
+      this.sharedService.changeLoginState(true);
     }
   }
   // Login method
@@ -34,7 +41,8 @@ export class SingINComponent implements OnInit {
           console.log('Login successful', response);
           // Store token in localStorage
           localStorage.setItem('token', response.token);
-          this.isLoggedIn = true; // Set isLoggedIn to true after successful login
+         // this.isLoggedIn = true; // Set isLoggedIn to true after successful login
+          this.sharedService.changeLoginState(true);
           this.router.navigate(['/about']); // Redirect after login
         },
         error: (error) => {
@@ -44,12 +52,12 @@ export class SingINComponent implements OnInit {
       });
   }
 
-  logout() {
-    // Remove token from localStorage on logout
-    localStorage.removeItem('token');
-    this.isLoggedIn = false; // Set isLoggedIn to false on logout
-    this.router.navigate(['/login']);
-  }
+  // logout() {
+  //   // Remove token from localStorage on logout
+  //   localStorage.removeItem('token');
+  //   this.sharedService.changeLoginState(false);
+  //   //this.isLoggedIn = false; // Set isLoggedIn to false on logout
+  // }
 
   // Метод для відправки даних входу
   // login() {

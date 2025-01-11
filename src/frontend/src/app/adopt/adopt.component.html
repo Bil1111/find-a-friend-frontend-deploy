@@ -11,30 +11,35 @@
         <h1>Форма заявки на усиновлення тварини</h1>
         <form (ngSubmit)="FormAdopt()" class="adopt">
          <label for="name">Ваше ім'я:</label>
-         <input type="text" id="name" [(ngModel)]="name"  name="name" placeholder="Введіть ваше ім'я" required>
+         <input type="text" id="name" [(ngModel)]="firstName"  name="firstName" placeholder="Введіть ваше ім'я" required>
 
          <label for="surname">Ваше прізвище:</label>
-         <input type="text" id="surname" [(ngModel)]="surname"  name="surname" placeholder="Введіть ваше прізвище" required>
+         <input type="text" id="surname" [(ngModel)]="lastName"  name="lastName" placeholder="Введіть ваше прізвище" required>
 
          <label for="email">Email:</label>
          <input type="email" id="email" [(ngModel)]="email"  name="email" placeholder="Введіть ваш email" required>
 
          <label for="phone">Телефон:</label>
-         <input type="tel" id="phone" [(ngModel)]="phone"   name="phone" placeholder="Введіть ваш номер телефону" required>
+         <input type="tel" id="phone" [(ngModel)]="contactNumber"   name="contactNumber" placeholder="Введіть ваш номер телефону" required>
 
-         <label for="">Притулок</label>
-    <input type="tel" id="shelter"  [(ngModel)]="shelter" name="shelter" placeholder="" required>
+         <label for="shelter">Притулки:</label>
+         <select type="text" id="shelter" [(ngModel)]="shelter"  name="shelter"  required>
+          <option value="" disabled selected hidden>Оберіть притулок</option>
+           <option *ngFor="let shelter of shelters" [value]="shelter.id">
+             {{ shelter.name }}
+           </option>
+         </select>
 
          <label for="animal">Яку тварину ви хочете усиновити:</label>
-         <select id="animal" [(ngModel)]="animal"  name="animal" required>
-           <option value="">Виберіть тварину</option>
-           <option value="cat">Кіт</option>
-           <option value="dog">Пес</option>
-           <option value="other">Інші</option>
+         <select id="animal" [(ngModel)]="typeOfAnimal"  name="typeOfAnimal" required>
+          <option value="" disabled selected hidden>Оберіть тваринку</option>
+          <option *ngFor="let animal of animals" [value]="animal.name">
+            {{ animal.name }}
+          </option>
          </select>
 
          <label for="exp">Чи маєте досвід догляду за тваринами?</label>
-          <select id="exp" [(ngModel)]="exp"  name="exp" required>
+          <select id="exp" [(ngModel)]="experience"  name="experience" required>
            <option value="">Маєте досвід догляду за тваринами?</option>
            <option value="yes">Так</option>
            <option value="no">Ні</option>

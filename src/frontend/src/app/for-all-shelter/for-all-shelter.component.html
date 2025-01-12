@@ -139,14 +139,11 @@
            <option value="no">Ні</option>
           </select>
 
-            <input type="hidden" [(ngModel)]="animalName" name="animalName" [value]="isAdoptFormOpen.name">
-            <input type="hidden" [(ngModel)]="animalAge" name="animalAge" [value]="isAdoptFormOpen.age">
-            <input type="hidden" [(ngModel)]="animalSex" name="animalSex" [value]="isAdoptFormOpen.sex">
-            <input type="hidden" [(ngModel)]="animalSize" name="animalSize" [value]="isAdoptFormOpen.size">
-            <input type="hidden" [(ngModel)]="typeOfAnimal" name="typeOfAnimal" [value]="isAdoptFormOpen.type">
-            <!-- <input type="hidden" [(ngModel)]="shelter" name="shelter" [value]="isAdoptFormOpen.shelter"> -->
-            <!-- <input type="hidden" [(ngModel)]="City" name="City" [value]="isAdoptFormOpen.city"> -->
-
+          <input type="hidden" [(ngModel)]="animalName" name="animalName" >
+          <input type="hidden" [(ngModel)]="animalAge" name="animalAge" >
+          <input type="hidden" [(ngModel)]="animalSex" name="animalSex" >
+          <input type="hidden" [(ngModel)]="animalSize" name="animalSize" >
+          <input type="hidden" [(ngModel)]="typeOfAnimal" name="typeOfAnimal" >
 
           <button type="submit">Надіслати заявку</button>
        </form>
@@ -168,7 +165,7 @@
             <input type="text" id="surname"[(ngModel)]="lastName" name="lastName" placeholder="Введіть ваше прізвище" required>
 
             <label for="email">Email:</label>
-            <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Введіть ваш email" required>
+            <input type="email" id="email1" [(ngModel)]="email" name="email" placeholder="Введіть ваш email" required>
 
             <label for="phone">Телефон:</label>
             <input type="tel" id="phone" [(ngModel)]="contactNumber"  name="contactNumber" placeholder="Введіть ваш номер телефону" required>
@@ -186,8 +183,6 @@
             <input type="hidden" [(ngModel)]="animalSex" name="animalSex" >
             <input type="hidden" [(ngModel)]="animalSize" name="animalSize" >
             <input type="hidden" [(ngModel)]="typeOfAnimal" name="typeOfAnimal" >
-              <!-- <input type="hidden" [(ngModel)]="shelter" name="shelter" [value]="isWardFormOpen.shelter"> -->
-              <!-- <input type="hidden" [(ngModel)]="City" name="City" [value]="isWardFormOpen.city"> -->
 
 
             <button type="submit">Надіслати заявку</button>

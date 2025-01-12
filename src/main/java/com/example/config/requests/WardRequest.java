@@ -3,29 +3,31 @@ package com.example.config.requests;
 import jakarta.persistence.Column;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 public class WardRequest {
 
+    @NotBlank(message = "First name is required")
     private String firstName;
-
+    @NotBlank(message = "Last name is required")
     private String lastName;
-
+    @NotBlank(message = "Email is required")
     private String email;
-
+    @NotBlank(message = "Contact number is required")
     private String contactNumber;
-
+    @NotBlank(message = "Experience is required")
     private String experience;
-
+    @NotBlank(message = "typeOfAnimal is required")
     private String typeOfAnimal;
-
+    @NotBlank(message = "Animal name is required")
     private String animalName;
-
+    @NotBlank(message = "Animal age is required")
     private String animalAge;
-
+    @NotBlank(message = "Animal sex is required")
     private String animalSex;
-
+    @NotBlank(message = "Animal size is required")
     private String animalSize;
 
     public WardRequest(String firstName, String lastName, String email, String contactNumber, String experience, String typeOfAnimal, String animalName, String animalAge, String animalSex, String animalSize) {

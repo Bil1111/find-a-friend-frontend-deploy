@@ -62,7 +62,6 @@ public class AnimalController {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-
     }
 
 }

@@ -25,14 +25,19 @@ public class FormService {
         volunteerFormRepository.save(volunteerForm);
     }
 
-    public void addAdoptForm(AdoptRequest request, Shelter shelter) {
-        AdoptForm adoptForm = new AdoptForm(request.getFirstName(),
+    public void addAdoptForm(AdoptRequest request) {
+        AdoptForm adoptForm = new AdoptForm(
+                request.getFirstName(),
                 request.getLastName(),
                 request.getEmail(),
                 request.getContactNumber(),
-                request.getTypeOfAnimal(),
                 request.getExperience(),
-                shelter);
+                request.getTypeOfAnimal(),
+                request.getAnimalName(),
+                request.getAnimalAge(),
+                request.getAnimalSex(),
+                request.getAnimalSize()
+               );
         adoptFormRepository.save(adoptForm);
     }
     public void addWardForm(WardRequest request) {

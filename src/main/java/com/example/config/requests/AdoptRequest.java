@@ -1,7 +1,11 @@
 package com.example.config.requests;
 
 import com.example.config.shelters.Shelter;
+import jakarta.persistence.Column;
+
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 
 public class AdoptRequest {
@@ -13,21 +17,34 @@ public class AdoptRequest {
     private String email;
     @NotBlank(message = "Contact number is required")
     private String contactNumber;
-    @NotBlank(message = "typeOfAnimal is required")
-    private String typeOfAnimal;
     @NotBlank(message = "Experience is required")
     private String experience;
-    @NotBlank(message = "Shelter is required")
-    private Long shelter;
+    @NotBlank(message = "typeOfAnimal is required")
+    private String typeOfAnimal;
+    @NotBlank(message = "animalName is required")
+    private String animalName;
+    @NotBlank(message = "animalAge is required")
+    private String animalAge;
+    @NotBlank(message = "animalSex is required")
+    private String animalSex;
+    @NotBlank(message = "animalSize is required")
+    private String animalSize;
 
-    public AdoptRequest(String firstName, String lastName, String email, String contactNumber, String typeOfAnimal, String experience, Long shelter) {
+//    @NotBlank(message = "Shelter is required")
+//    private Long shelter;
+
+
+    public AdoptRequest(String firstName, String lastName, String email, String contactNumber, String experience, String typeOfAnimal, String animalName, String animalAge, String animalSex, String animalSize) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.contactNumber = contactNumber;
-        this.typeOfAnimal = typeOfAnimal;
         this.experience = experience;
-        this.shelter = shelter;
+        this.typeOfAnimal = typeOfAnimal;
+        this.animalName = animalName;
+        this.animalAge = animalAge;
+        this.animalSex = animalSex;
+        this.animalSize = animalSize;
     }
 
     public AdoptRequest() {
@@ -66,13 +83,13 @@ public class AdoptRequest {
         this.contactNumber = contactNumber;
     }
 
-    public Long getShelter() {
-        return shelter;
-    }
-
-    public void setShelter(Long shelter) {
-        this.shelter = shelter;
-    }
+//    public Long getShelter() {
+//        return shelter;
+//    }
+//
+//    public void setShelter(Long shelter) {
+//        this.shelter = shelter;
+//    }
 
     public String getTypeOfAnimal() {
         return typeOfAnimal;
@@ -88,5 +105,37 @@ public class AdoptRequest {
 
     public void setExperience(String experience) {
         this.experience = experience;
+    }
+
+    public String getAnimalName() {
+        return animalName;
+    }
+
+    public void setAnimalName(String animalName) {
+        this.animalName = animalName;
+    }
+
+    public String getAnimalAge() {
+        return animalAge;
+    }
+
+    public void setAnimalAge(String animalAge) {
+        this.animalAge = animalAge;
+    }
+
+    public String getAnimalSex() {
+        return animalSex;
+    }
+
+    public void setAnimalSex(String animalSex) {
+        this.animalSex = animalSex;
+    }
+
+    public String getAnimalSize() {
+        return animalSize;
+    }
+
+    public void setAnimalSize(String animalSize) {
+        this.animalSize = animalSize;
     }
 }

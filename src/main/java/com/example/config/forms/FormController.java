@@ -35,9 +35,7 @@ public class FormController {
 
     @PostMapping("/adopt")
     public ResponseEntity<Map<String, String>> adoptForm(@RequestBody AdoptRequest request) {
-        Shelter shelter = shelterRepository.findById(request.getShelter())
-                .orElseThrow(() -> new RuntimeException("Shelter not found"));
-        formService.addAdoptForm(request, shelter);
+        formService.addAdoptForm(request);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

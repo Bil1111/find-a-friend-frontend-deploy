@@ -32,7 +32,7 @@ export class AdoptComponent implements OnInit {
 
  // Метод для отримання всіх тварин
    fetchAnimals() {
-   
+
     this.http.get<any[]>(`http://localhost:8080/api/animals`).subscribe(
       data => {
         console.log('Received data:', data); // Додайте це логування
@@ -44,7 +44,7 @@ export class AdoptComponent implements OnInit {
                 // Викликаємо метод для фільтрації після того, як отримали shelter_ID
           //  this.filterAnimals(this.shelter_ID);
         this.animals = [...this.allAnimals]; // Ініціалізуємо тварин
-   
+
       },
       error => {
         console.error('Error fetching animals:', error); // Логування помилки

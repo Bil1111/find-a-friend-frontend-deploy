@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <title>Document</title> -->
+
+</head>
+<body>
 <div class="animals-container">
   <h2>Тваринки</h2>
   <div class="animal-cards">
@@ -19,105 +28,107 @@
   </div>
 </div>
 
+
 <!-- Модальне вікно для детальної інформації про тварину -->
 <div *ngIf="selectedAnimal" class="modal">
   <div class="modal-content">
     <span (click)="closeModal()" class="close-button">&times;</span>
-    <h2>{{ selectedAnimal.name }}</h2>
     <img [src]="selectedAnimal.imageURL" alt="{{ selectedAnimal.name }}" />
-    <p>Тип: {{ selectedAnimal.type }}</p>
-    <p>Вік: {{ selectedAnimal.age }} років</p>
-    <p>Розмір: {{ selectedAnimal.size }}</p>
-    <p>Опис: {{ selectedAnimal.description }}</p>
-    <p>Місто: {{ selectedAnimal.city }}</p>
-    <p>Телефон: {{ selectedAnimal.shelterPhoneNumber }}</p>
+    <div class="info">
+      <h2><strong>{{ selectedAnimal.name }}</strong></h2>
+      <p><strong>Тип: </strong> {{ selectedAnimal.sex }}</p>
+      <p><strong>Вік: </strong>{{ selectedAnimal.age }} років</p>
+      <p><strong>Розмір: </strong> {{ selectedAnimal.size }}</p>
+      <p><strong>Опис: </strong> {{ selectedAnimal.description }}</p>
+      <p><strong>Місто: </strong> {{ selectedAnimal.city }}</p>
+      <p><strong>Назва притулку: </strong></p>
+    </div>
+
     <div class="buttonForAdoptAndWard">
       <button (click)="openWardForm()" class="Adoptbtn">Взяти під опіку</button>
-       <button (click)="openAdoptForm()" class="Wardbtn">Усиновити</button>
+      <button (click)="openAdoptForm()" class="Wardbtn">Усиновити</button>
     </div>
-   
+
   </div>
 </div>
 
 <div *ngIf="isAdoptFormOpen" class="modalAdopt">
-<div class="adopt-content">
-  <span (click)="closeAdoptForm()" class="close-button">&times;</span>
-  <h1>Форма заявки на усиновлення тварини</h1>
+  <div class="adopt-content">
+    <span (click)="closeAdoptForm()" class="close-button1">&times;</span>
+    <h1>Форма заявки на усиновлення тварини</h1>
 
-  <form (ngSubmit)="ModalAdopt()" class="adopt"> 
-   <label for="name">Ваше ім'я:</label>
-   <input type="text" id="name" [(ngModel)]="name" name="name" placeholder="Введіть ваше ім'я" required>
+    <form (ngSubmit)="ModalAdopt()" class="adopt">
+      <label for="name">Ваше ім'я:</label>
+      <input type="text" id="firstName" [(ngModel)]="firstName" name="firstName" placeholder="Введіть ваше ім'я" required>
 
-   <label for="surname">Ваше прізвище:</label>
-   <input type="text" id="surname"[(ngModel)]="surname" name="surname" placeholder="Введіть ваше прізвище" required>
+      <label for="surname">Ваше прізвище:</label>
+      <input type="text" id="lastName"[(ngModel)]="lastName" name="lastName" placeholder="Введіть ваше прізвище" required>
 
-   <label for="email">Email:</label>
-   <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Введіть ваш email" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Введіть ваш email" required>
 
-   <label for="phone">Телефон:</label>
-   <input type="tel" id="phone" [(ngModel)]="phone"  name="phone" placeholder="Введіть ваш номер телефону" required>
+      <label for="phone">Телефон:</label>
+      <input type="tel" id="contactNumber" [(ngModel)]="contactNumber"  name="contactNumber" placeholder="Введіть ваш номер телефону" required>
 
 
-   <label for="exp">Чи маєте досвід догляду за тваринами?</label>
-    <select id="exp" [(ngModel)]="exp" name="exp" required>
-     <option value="">Маєте досвід догляду за тваринами?</option>
-     <option value="yes">Так</option>
-     <option value="no">Ні</option>
-    </select>
-   
-      <input type="hidden" [(ngModel)]="namePet" name="namePet" [value]="isAdoptFormOpen.name">
-      <input type="hidden" [(ngModel)]="AgePet" name="AgePet" [value]="isAdoptFormOpen.age">
-      <input type="hidden" [(ngModel)]="SexPet" name="SexPet" [value]="isAdoptFormOpen.sex">
-      <input type="hidden" [(ngModel)]="SizePet" name="SizePet" [value]="isAdoptFormOpen.size">
-      <input type="hidden" [(ngModel)]="TypePet" name="TypePet" [value]="isAdoptFormOpen.type">
-      <!-- <input type="hidden" [(ngModel)]="shelter" name="shelter" [value]="isAdoptFormOpen.shelter"> -->
-      <input type="hidden" [(ngModel)]="City" name="City" [value]="isAdoptFormOpen.city">
-    
+      <label for="exp">Чи маєте досвід догляду за тваринами?</label>
+      <select id="experience" [(ngModel)]="experience" name="experience" required>
+        <option value="">Маєте досвід догляду за тваринами?</option>
+        <option value="yes">Так</option>
+        <option value="no">Ні</option>
+      </select>
 
-    <button type="submit">Надіслати заявку</button>
- </form>
+      <input type="hidden" [(ngModel)]="animalName" name="animalName" >
+      <input type="hidden" [(ngModel)]="animalAge" name="animalAge" >
+      <input type="hidden" [(ngModel)]="animalSex" name="animalSex" >
+      <input type="hidden" [(ngModel)]="animalSize" name="animalSize" >
+      <input type="hidden" [(ngModel)]="typeOfAnimal" name="typeOfAnimal" >
 
-</div>
+      <button type="submit">Надіслати заявку</button>
+    </form>
+
+  </div>
 </div>
 
 
 <div *ngIf="isWardFormOpen" class="modalWard">
   <div class="ward-content">
-    <span (click)="closeWardForm()" class="close-button">&times;</span>
+    <span (click)="closeWardForm()" class="close-button2">&times;</span>
     <h1>Форма заявки на опіку</h1>
-  
-    <form (ngSubmit)="ModalWard()" class="ward"> 
-     <label for="name">Ваше ім'я:</label>
-     <input type="text" id="name" [(ngModel)]="name" name="name" placeholder="Введіть ваше ім'я" required>
-  
-     <label for="surname">Ваше прізвище:</label>
-     <input type="text" id="surname"[(ngModel)]="surname" name="surname" placeholder="Введіть ваше прізвище" required>
-  
-     <label for="email">Email:</label>
-     <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Введіть ваш email" required>
-  
-     <label for="phone">Телефон:</label>
-     <input type="tel" id="phone" [(ngModel)]="phone"  name="phone" placeholder="Введіть ваш номер телефону" required>
-  
-  
-     <label for="exp">Чи маєте досвід догляду за тваринами?</label>
-      <select id="exp" [(ngModel)]="exp" name="exp" required>
-       <option value="">Маєте досвід догляду за тваринами?</option>
-       <option value="yes">Так</option>
-       <option value="no">Ні</option>
+
+    <form (ngSubmit)="ModalWard()" class="ward">
+      <label for="name">Ваше ім'я:</label>
+      <input type="text" id="name" [(ngModel)]="firstName" name="firstName" placeholder="Введіть ваше ім'я" required>
+
+      <label for="surname">Ваше прізвище:</label>
+      <input type="text" id="surname"[(ngModel)]="lastName" name="lastName" placeholder="Введіть ваше прізвище" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email1" [(ngModel)]="email" name="email" placeholder="Введіть ваш email" required>
+
+      <label for="phone">Телефон:</label>
+      <input type="tel" id="phone" [(ngModel)]="contactNumber"  name="contactNumber" placeholder="Введіть ваш номер телефону" required>
+
+
+      <label for="exp">Чи маєте досвід догляду за тваринами?</label>
+      <select id="exp" [(ngModel)]="experience" name="experience" required>
+        <option value="">Маєте досвід догляду за тваринами?</option>
+        <option value="yes">Так</option>
+        <option value="no">Ні</option>
       </select>
-     
-        <input type="hidden" [(ngModel)]="namePet" name="namePet" [value]="isWardFormOpen.name">
-        <input type="hidden" [(ngModel)]="AgePet" name="AgePet" [value]="isWardFormOpen.age">
-        <input type="hidden" [(ngModel)]="SexPet" name="SexPet" [value]="isWardFormOpen.sex">
-        <input type="hidden" [(ngModel)]="SizePet" name="SizePet" [value]="isWardFormOpen.size">
-        <input type="hidden" [(ngModel)]="TypePet" name="TypePet" [value]="isWardFormOpen.type">
-        <!-- <input type="hidden" [(ngModel)]="shelter" name="shelter" [value]="isAdoptFormOpen.shelter"> -->
-        <input type="hidden" [(ngModel)]="City" name="City" [value]="isAdoptFormOpen.city">
-      
-  
+
+      <input type="hidden" [(ngModel)]="animalName" name="animalName" >
+      <input type="hidden" [(ngModel)]="animalAge" name="animalAge" >
+      <input type="hidden" [(ngModel)]="animalSex" name="animalSex" >
+      <input type="hidden" [(ngModel)]="animalSize" name="animalSize" >
+      <input type="hidden" [(ngModel)]="typeOfAnimal" name="typeOfAnimal" >
+
+
       <button type="submit">Надіслати заявку</button>
-   </form>
-  
+    </form>
+
   </div>
-  </div>
+</div>
+
+</body>
+</html>

@@ -151,7 +151,18 @@
   "latitude" : 49.9935,
   "longitude" : 36.2304,
   "imageURL" : "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no",
-  "animals" : [ ]
+  "animals" : [ {
+    "id" : 11,
+    "name" : "test",
+    "type" : "testPet",
+    "age" : 1,
+    "size" : "small",
+    "description" : "Не більше 255 символів",
+    "sex" : "Хлопчик",
+    "imageURL" : null,
+    "city" : "Харків",
+    "shelterPhoneNumber" : "+380 934 445 555"
+  } ]
 }, {
   "id" : 5,
   "name" : "Притулок №5",

@@ -32,27 +32,48 @@ public class AdoptForm {
     @Size(max = 15, message = "Контактний номер не повинен перевищувати 15 символів")
     private String contactNumber;
     @Column(columnDefinition = "VARCHAR(255)")
-    @NotEmpty(message = "Вид тварини не може бути порожнім")
-    @Size(max = 15, message = "Вид тварини не повинен перевищувати 15 символів")
-    private String typeOfAnimal;
-    @Column(columnDefinition = "VARCHAR(255)")
     @NotEmpty(message = "Досвід не може бути порожнім")
     @Size(max = 15, message = "Досвід не повинен перевищувати 15 символів")
     private String experience;
-    @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "shelter_id", nullable = false)
-    private Shelter shelter;
+    @Column(columnDefinition = "VARCHAR(255)")
+    @NotEmpty(message = "Вид тварини не може бути порожнім")
+    @Size(max = 15, message = "Вид тварини не повинен перевищувати 15 символів")
+    private String typeOfAnimal;
+
+    @Column(columnDefinition = "VARCHAR(255)")
+    @NotEmpty(message = "animalName не може бути порожнім")
+    @Size(max = 15, message = "animalName не повинен перевищувати 15 символів")
+    private String animalName;
+    @Column(columnDefinition = "VARCHAR(255)")
+    @NotEmpty(message = "animalAge не може бути порожнім")
+    @Size(max = 15, message = "animalAge не повинен перевищувати 15 символів")
+    private String animalAge;
+    @Column(columnDefinition = "VARCHAR(255)")
+    @NotEmpty(message = "animalSex не може бути порожнім")
+    @Size(max = 15, message = "animalSex не повинен перевищувати 15 символів")
+    private String animalSex;
+    @Column(columnDefinition = "VARCHAR(255)")
+    @NotEmpty(message = "animalSize не може бути порожнім")
+    @Size(max = 15, message = "animalSize не повинен перевищувати 15 символів")
+    private String animalSize;
+
+//    @JsonBackReference
+//    @ManyToOne
+//    @JoinColumn(name = "shelter_id", nullable = false)
+//    private Shelter shelter;
 
 
-    public AdoptForm(String firstName, String lastName, String email, String contactNumber, String typeOfAnimal, String experience, Shelter shelter) {
+    public AdoptForm(String firstName, String lastName, String email, String contactNumber, String experience,String typeOfAnimal, String animalName, String animalAge, String animalSex, String animalSize) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.contactNumber = contactNumber;
-        this.typeOfAnimal = typeOfAnimal;
         this.experience = experience;
-        this.shelter = shelter;
+        this.typeOfAnimal = typeOfAnimal;
+        this.animalName = animalName;
+        this.animalAge = animalAge;
+        this.animalSex = animalSex;
+        this.animalSize = animalSize;
     }
 
     public AdoptForm() {
@@ -99,13 +120,13 @@ public class AdoptForm {
         this.contactNumber = contactNumber;
     }
 
-    public Shelter getShelter() {
-        return shelter;
-    }
-
-    public void setShelter(Shelter shelter) {
-        this.shelter = shelter;
-    }
+//    public Shelter getShelter() {
+//        return shelter;
+//    }
+//
+//    public void setShelter(Shelter shelter) {
+//        this.shelter = shelter;
+//    }
 
     public String getTypeOfAnimal() {
         return typeOfAnimal;
@@ -121,6 +142,38 @@ public class AdoptForm {
 
     public void setExperience(String experience) {
         this.experience = experience;
+    }
+
+    public String getAnimalName() {
+        return animalName;
+    }
+
+    public void setAnimalName(String animalName) {
+        this.animalName = animalName;
+    }
+
+    public String getAnimalAge() {
+        return animalAge;
+    }
+
+    public void setAnimalAge(String animalAge) {
+        this.animalAge = animalAge;
+    }
+
+    public String getAnimalSex() {
+        return animalSex;
+    }
+
+    public void setAnimalSex(String animalSex) {
+        this.animalSex = animalSex;
+    }
+
+    public String getAnimalSize() {
+        return animalSize;
+    }
+
+    public void setAnimalSize(String animalSize) {
+        this.animalSize = animalSize;
     }
 }
 

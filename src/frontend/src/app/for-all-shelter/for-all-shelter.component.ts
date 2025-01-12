@@ -14,28 +14,9 @@ export class ForAllShelterComponent implements OnInit {
   currentPage: number = 1;
   totalPages: number = 0;
   itemsPerPage: number = 10;
-
   selectedAnimal: any = null; // Для зберігання вибраної тварини
   isAdoptFormOpen: any = null;
   isWardFormOpen: any = null;
-  // shelterName: string = '';
-
-  // Це зміннІ, яку буде використовувати [(ngModel)]
-  //КОРИСТУВАЧ
-  // name: string = '';
-  // surname: string = '';
-  // email: string = '';
-  // phone: string = '';
-  // exp: string ='';
-  // //ТВАРИНКА
-  // namePet: string ='';
-  // AgePet: string ='';
-  // SexPet: string ='';
-  // SizePet: string ='';
-  // TypePet: string ='';
-  // shelter: string= '';
-  // City: string ='';
-
 
   // Це зміннІ, яку буде використовувати [(ngModel)]
   //КОРИСТУВАЧ
@@ -121,6 +102,11 @@ export class ForAllShelterComponent implements OnInit {
 
  openAdoptForm(){
     this.isAdoptFormOpen = this.selectedAnimal;
+   this.animalName = this.selectedAnimal.name || 'empty';
+   this.animalAge = this.selectedAnimal.age || 'empty';
+   this.animalSex = this.selectedAnimal.sex || 'empty';
+   this.animalSize = this.selectedAnimal.size || 'empty';
+   this.typeOfAnimal = this.selectedAnimal.type || 'empty';
   }
 
  openWardForm(){
@@ -210,7 +196,35 @@ export class ForAllShelterComponent implements OnInit {
 
  // ФОРМА ДЛЯ УСИНОВЛЕННЯ
   ModalAdopt(){
+    const WardData= {
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
+      contactNumber: this.contactNumber,
+      experience: this.experience,
+      typeOfAnimal: this.typeOfAnimal,
 
+      animalName: this.animalName,
+      animalAge: this.animalAge,
+      animalSex: this.animalSex,
+      animalSize: this.animalSize,
+    };
+
+    this.http.post('http://localhost:8080/api/forms/adopt', WardData).subscribe({
+      next: (response) => {
+        this.successMessage = 'Форма успішно відправлена!';
+        this.errorMessage = null;
+        console.log('Форма успішно відправлена', response);
+        this.clearForm();
+        this.clearMessagesAfterDelay();
+      },
+      error: (error) => {
+        this.errorMessage = 'Сталася помилка під час відправлення форми.';
+        this.successMessage = null;
+        console.error('Сталася помилка', error);
+        this.clearMessagesAfterDelay();
+      }
+    });
   }
 
    // ФОРМА ДЛЯ ОПІКИ

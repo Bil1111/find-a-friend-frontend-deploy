@@ -39,17 +39,24 @@ export class SingINComponent implements OnInit {
       .subscribe({
         next: (response: any) => {
           console.log('Login successful', response);
-          // Store token in localStorage
+
+          // Збереження токена в localStorage
           localStorage.setItem('token', response.token);
-         // this.isLoggedIn = true; // Set isLoggedIn to true after successful login
+
+          // Оновлення стану логіну
           this.sharedService.changeLoginState(true);
-          this.router.navigate(['/about']); // Redirect after login
+
+          // Перенаправлення користувача на сторінку, вказану сервером
+          const redirectUrl = response.redirect || '/'; // Fallback, якщо redirect не вказано
+          this.router.navigate([redirectUrl]);
         },
         error: (error) => {
           this.errorMessage = 'Login failed';
           console.error('Login failed', error);
         }
       });
+
+
   }
 
   // logout() {

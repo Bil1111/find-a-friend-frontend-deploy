@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -22,7 +23,11 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody UserRegistrationRequest request) {
         try {
-            userService.registerUser(request.getEmail(), request.getPassword());
+            Optional<User> existingCustomer = userService.findByLogin(request.getEmail());
+            if (existingCustomer.isPresent()) {
+                return new ResponseEntity<>("User with this email already exists", HttpStatus.CONFLICT);
+            }
+            userService.registerUser(request);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (UserAlreadyExistsException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
@@ -32,11 +37,18 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> loginUser(@RequestBody UserLoginRequest request) {
         try {
-            if (userService.loginUser(request.getEmail(), request.getPassword())) {
+            Optional<User> user = userService.findByEmail(request.getEmail());
+            if (user.isPresent() && userService.loginUser(request.getEmail(), request.getPassword())) {
+                User loggedInUser = user.get();
                 // Генерація токену після успішного входу
-                String token = jwtTokenProvider.generateToken(request.getEmail()); // Генерація токену
+                String token = jwtTokenProvider.generateToken(loggedInUser.getEmail(), loggedInUser.getRole()); // Генерація токену
                 Map<String, String> response = new HashMap<>();
                 response.put("token", token); // Повертаємо токен у відповіді
+                if (loggedInUser.getRole().equals(Role.ADMIN)) {
+                    response.put("redirect", "/donate"); // Адмін
+                } else {
+                    response.put("redirect", "/about"); // Звичайний користувач
+                }
                 return new ResponseEntity<>(response, HttpStatus.OK); // Повертаємо ResponseEntity з Map
             } else {
                 return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -47,7 +59,6 @@ public class UserController {
             return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
         }
     }
-
 }
 // DEFAULT
 //    @PostMapping("/login")

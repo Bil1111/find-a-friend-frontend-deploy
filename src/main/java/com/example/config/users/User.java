@@ -25,14 +25,17 @@ public class User {
 
     @Column(unique = true)
     private String authToken; // Унікальний токен для аутентифікації
+    @Enumerated(EnumType.STRING)
+    private Role role;
 //    @ManyToOne
 //    @JoinColumn(name = "shelter_id", referencedColumnName = "id", nullable = true)
 //    private Shelter shelter;
 
-    public User(String email, String encodedPassword, String authToken) {
+    public User(String email, String encodedPassword, String authToken,Role role) {
         this.email = email;
         this.password = encodedPassword;
         this.authToken = authToken;
+        this.role=role;
     }
 
     public User() {
@@ -71,6 +74,13 @@ public class User {
         this.authToken = authToken;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
     //    public Shelter getShelter() {
 //        return shelter;
 //    }

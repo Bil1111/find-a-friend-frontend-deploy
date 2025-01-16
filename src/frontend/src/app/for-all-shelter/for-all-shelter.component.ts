@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-for-all-shelter',
@@ -185,7 +185,7 @@ export class ForAllShelterComponent implements OnInit {
 
  // ФОРМА ДЛЯ УСИНОВЛЕННЯ
   ModalAdopt(){
-    const WardData= {
+    const AdoptData= {
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
@@ -198,8 +198,17 @@ export class ForAllShelterComponent implements OnInit {
       animalSex: this.animalSex,
       animalSize: this.animalSize,
     };
+    // const token = localStorage.getItem('token');
+    //
+    // // Перевіряємо, чи є токен
+    // if (!token) {
+    //   console.error('Token not found');
+    //   return;
+    // }
+    //
+    // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    this.http.post('http://localhost:8080/api/forms/adopt', WardData).subscribe({
+    this.http.post('http://localhost:8080/api/forms/adopt', AdoptData).subscribe({
       next: (response) => {
         this.successMessage = 'Форма успішно відправлена!';
         this.errorMessage = null;
@@ -231,6 +240,15 @@ export class ForAllShelterComponent implements OnInit {
       animalSex: this.animalSex,
       animalSize: this.animalSize,
     };
+     // const token = localStorage.getItem('token');
+     //
+     // // Перевіряємо, чи є токен
+     // if (!token) {
+     //   console.error('Token not found');
+     //   return;
+     // }
+     //
+     // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     this.http.post('http://localhost:8080/api/forms/ward', WardData).subscribe({
       next: (response) => {

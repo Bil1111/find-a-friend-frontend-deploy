@@ -11,8 +11,9 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**") // Дозволити CORS для всіх маршрутів, які починаються з /api/
-                .allowedOrigins("http://localhost:4200") // Дозволяємо запити з цього походження
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS"); // Дозволяємо ці методи
+                .allowedOrigins("http://localhost:8080","http://localhost:4200") // Дозволяємо запити з цього походження
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("Authorization", "Content-Type"); // Дозволяємо ці методи
     }
 
     @Override

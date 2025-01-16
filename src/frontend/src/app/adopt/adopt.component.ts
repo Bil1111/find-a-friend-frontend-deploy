@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-adopt',
@@ -17,22 +17,20 @@ export class AdoptComponent implements OnInit {
   errorMessage: string | null = null;
   successMessage: string | null = null;
 
-
   shelters: any[] = []; // Масив для зберігання всіх притулків
   selectedShelter: any = null; // Для зберігання вибраного притулку
   animals: any[] = []; // Масив для зберігання всіх тварин
   allAnimals: any[] = []; // Для зберігання вибраної тварини
+
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
     this.fetchShelters();
     this.fetchAnimals();
-   }
+  }
 
-
- // Метод для отримання всіх тварин
-   fetchAnimals() {
-
+  // Метод для отримання всіх тварин
+  fetchAnimals() {
     this.http.get<any[]>(`http://localhost:8080/api/animals`).subscribe(
       data => {
         console.log('Received data:', data); // Додайте це логування
@@ -41,17 +39,15 @@ export class AdoptComponent implements OnInit {
           // animal.imageURL = `http://localhost:8080/images/${animal.id}.png`;
           return animal;
         });
-                // Викликаємо метод для фільтрації після того, як отримали shelter_ID
-          //  this.filterAnimals(this.shelter_ID);
+        // Викликаємо метод для фільтрації після того, як отримали shelter_ID
+        // this.filterAnimals(this.shelter_ID);
         this.animals = [...this.allAnimals]; // Ініціалізуємо тварин
-
       },
       error => {
         console.error('Error fetching animals:', error); // Логування помилки
       }
     );
   }
-
 
   // Метод для отримання всіх притулків
   fetchShelters() {
@@ -75,9 +71,7 @@ export class AdoptComponent implements OnInit {
     this.selectedShelter = shelter; // Зберігаємо вибраний притулок
   }
 
-
-
-
+  // Метод для відправки форми
   FormAdopt() {
     const adoptData = {
       firstName: this.firstName,
@@ -89,6 +83,19 @@ export class AdoptComponent implements OnInit {
       shelter: this.shelter
     };
 
+    // Отримуємо токен з localStorage
+    // const token = localStorage.getItem('token');
+    //
+    // // Перевіряємо, чи є токен
+    // if (!token) {
+    //   console.error('Token not found');
+    //   return;
+    // }
+    //
+    // // Створюємо заголовки з токеном
+    // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    // Відправляємо запит з токеном у заголовках
     this.http.post('http://localhost:8080/api/forms/adopt', adoptData).subscribe({
       next: (response) => {
         this.successMessage = 'Форма успішно відправлена!';

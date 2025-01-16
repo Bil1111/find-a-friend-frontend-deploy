@@ -1,6 +1,8 @@
 package com.example.config.forms;
 
 import com.example.config.requests.WardRequest;
+import com.example.config.users.User;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import javax.validation.constraints.Email;
@@ -53,7 +55,10 @@ public class WardForm {
     @NotEmpty(message = "Розмір не може бути порожнім")
     @Size(max = 15, message = "Розмір не повинен перевищувати 15 символів")
     private String animalSize;
-
+//    @JsonBackReference
+//    @ManyToOne
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private User user;
     public WardForm(String firstName, String lastName, String email, String contactNumber, String experience, String typeOfAnimal, String animalName, String animalAge, String animalSex, String animalSize) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -65,6 +70,7 @@ public class WardForm {
         this.animalAge = animalAge;
         this.animalSex = animalSex;
         this.animalSize = animalSize;
+//        this.user=user;
     }
     public WardForm() {
 
@@ -158,4 +164,12 @@ public class WardForm {
     public void setAnimalSize(String animalSize) {
         this.animalSize = animalSize;
     }
+
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 }

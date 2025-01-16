@@ -29,6 +29,8 @@ public class WardRequest {
     private String animalSex;
     @NotBlank(message = "Animal size is required")
     private String animalSize;
+//    @NotBlank(message = "User is required")
+//    private Long user;
 
     public WardRequest(String firstName, String lastName, String email, String contactNumber, String experience, String typeOfAnimal, String animalName, String animalAge, String animalSex, String animalSize) {
         this.firstName = firstName;
@@ -41,6 +43,7 @@ public class WardRequest {
         this.animalAge = animalAge;
         this.animalSex = animalSex;
         this.animalSize = animalSize;
+   //     this.user=user;
     }
 
     public WardRequest() {
@@ -126,4 +129,12 @@ public class WardRequest {
     public void setAnimalSize(String animalSize) {
         this.animalSize = animalSize;
     }
+
+//    public Long getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(Long user) {
+//        this.user = user;
+//    }
 }

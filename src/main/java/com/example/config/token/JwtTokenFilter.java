@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,31 +27,32 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         String token = request.getHeader("Authorization");
 
         if (token != null && token.startsWith("Bearer ")) {
-            token = token.substring(7); // Вилучаємо "Bearer " з початку токену
+            token = token.substring(7); // Remove "Bearer " prefix
             try {
-                // Отримуємо email і ролі з токену
+                // Extract email and roles from the token
                 String email = jwtTokenProvider.getEmailFromToken(token);
-                List<String> roles = jwtTokenProvider.getRolesFromToken(token); // Метод для отримання ролей
+                List<String> roles = jwtTokenProvider.getRolesFromToken(token);
 
                 if (email != null && roles != null) {
-                    // Конвертуємо ролі в GrantedAuthority
+                    // Convert roles to GrantedAuthority
                     List<SimpleGrantedAuthority> authorities = roles.stream()
                             .map(SimpleGrantedAuthority::new)
-                            .collect(Collectors.toList());  // Коригуємо для зворотнього перетворення в список
+                            .collect(Collectors.toList());
 
-                    // Додаємо інформацію користувача в SecurityContext
+                    // Add user information to SecurityContext
                     UsernamePasswordAuthenticationToken authentication =
                             new UsernamePasswordAuthenticationToken(email, null, authorities);
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
             } catch (Exception e) {
+                // Handle invalid token
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 response.getWriter().write("Invalid JWT token");
                 return;
             }
         }
 
+        // Proceed with the next filter in the chain
         filterChain.doFilter(request, response);
     }
 }
-

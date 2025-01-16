@@ -1,6 +1,7 @@
 package com.example.config.forms;
 
 import com.example.config.shelters.Shelter;
+import com.example.config.users.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
@@ -59,8 +60,8 @@ public class AdoptForm {
 
 //    @JsonBackReference
 //    @ManyToOne
-//    @JoinColumn(name = "shelter_id", nullable = false)
-//    private Shelter shelter;
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private User user;
 
 
     public AdoptForm(String firstName, String lastName, String email, String contactNumber, String experience,String typeOfAnimal, String animalName, String animalAge, String animalSex, String animalSize) {
@@ -175,5 +176,6 @@ public class AdoptForm {
     public void setAnimalSize(String animalSize) {
         this.animalSize = animalSize;
     }
+
 }
 

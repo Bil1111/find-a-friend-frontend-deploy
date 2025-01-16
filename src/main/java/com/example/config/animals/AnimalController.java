@@ -1,6 +1,7 @@
 package com.example.config.animals;
 
 import com.example.config.requests.AnimalRequest;
+import com.example.config.requests.UserRegistrationRequest;
 import com.example.config.shelters.Shelter;
 import com.example.config.shelters.ShelterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,13 @@ public class AnimalController {
         List<Animal> animals = animalService.getAllAnimals();
         return new ResponseEntity<>(animals, HttpStatus.OK);
     }
-
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> updateCustomerDetails(@RequestBody AnimalRequest request, @PathVariable("id") Long id) {
+        Shelter shelter = shelterRepository.findById(request.getShelter())
+                .orElseThrow(() -> new RuntimeException("Shelter not found"));
+        animalService.updateAnimalDetails(request, id,shelter);
+        return new ResponseEntity<>("Animal updated successfully", HttpStatus.OK);
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteAnimal(@PathVariable("id") Long id) {
         animalService.deleteAnimal(id);

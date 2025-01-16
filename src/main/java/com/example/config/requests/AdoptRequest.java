@@ -1,11 +1,6 @@
 package com.example.config.requests;
 
-import com.example.config.shelters.Shelter;
-import jakarta.persistence.Column;
-
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
 
 public class AdoptRequest {
@@ -30,8 +25,8 @@ public class AdoptRequest {
     @NotBlank(message = "animalSize is required")
     private String animalSize;
 
-//    @NotBlank(message = "Shelter is required")
-//    private Long shelter;
+//    @NotBlank(message = "User is required")
+//    private Long user;
 
 
     public AdoptRequest(String firstName, String lastName, String email, String contactNumber, String experience, String typeOfAnimal, String animalName, String animalAge, String animalSex, String animalSize) {
@@ -45,6 +40,7 @@ public class AdoptRequest {
         this.animalAge = animalAge;
         this.animalSex = animalSex;
         this.animalSize = animalSize;
+ //       this.user=user;
     }
 
     public AdoptRequest() {
@@ -82,14 +78,6 @@ public class AdoptRequest {
     public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
-
-//    public Long getShelter() {
-//        return shelter;
-//    }
-//
-//    public void setShelter(Long shelter) {
-//        this.shelter = shelter;
-//    }
 
     public String getTypeOfAnimal() {
         return typeOfAnimal;
@@ -138,4 +126,12 @@ public class AdoptRequest {
     public void setAnimalSize(String animalSize) {
         this.animalSize = animalSize;
     }
+
+//    public Long getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(Long user) {
+//        this.user = user;
+//    }
 }

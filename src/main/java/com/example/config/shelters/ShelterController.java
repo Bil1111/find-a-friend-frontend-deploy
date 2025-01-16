@@ -1,6 +1,7 @@
 package com.example.config.shelters;
 
 import com.example.config.animals.Animal;
+import com.example.config.requests.AnimalRequest;
 import com.example.config.requests.ShelterRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,11 @@ public class ShelterController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> updateCustomerDetails(@RequestBody ShelterRequest request, @PathVariable("id") Long id) {
+        shelterService.updateShelterDetails(request, id);
+        return new ResponseEntity<>("Shelter updated successfully", HttpStatus.OK);
+    }
     @GetMapping
     public ResponseEntity<List<Shelter>> getAllShelters() {
         List<Shelter> shelters = shelterService.getAllShelters();

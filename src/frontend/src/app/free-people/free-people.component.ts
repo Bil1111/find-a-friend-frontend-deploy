@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-free-people',
@@ -58,6 +58,15 @@ export class FreePeopleComponent implements OnInit {
       contactNumber: this.contactNumber,
       shelter: this.shelter
     };
+    // const token = localStorage.getItem('token');
+    //
+    // // Перевіряємо, чи є токен
+    // if (!token) {
+    //   console.error('Token not found');
+    //   return;
+    // }
+    //
+    // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     this.http.post('http://localhost:8080/api/forms/volunteer', volonterData).subscribe({
       next: (response) => {
@@ -90,7 +99,4 @@ export class FreePeopleComponent implements OnInit {
       this.successMessage = null;
     }, 5000); // Повідомлення зникнуть через 5 секунд
   }
-
-
-
 }

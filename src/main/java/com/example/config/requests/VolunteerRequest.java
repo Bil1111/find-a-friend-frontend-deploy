@@ -14,6 +14,8 @@ public class VolunteerRequest {
     private String contactNumber;
     @NotBlank(message = "Shelter is required")
     private Long shelter;
+//    @NotBlank(message = "User is required")
+//    private Long user;
 
     public VolunteerRequest(String firstName, String lastName, String email, String contactNumber, Long shelter) {
         this.firstName = firstName;
@@ -21,6 +23,7 @@ public class VolunteerRequest {
         this.email = email;
         this.contactNumber = contactNumber;
         this.shelter = shelter;
+//        this.user=user;
     }
 
     public VolunteerRequest() {
@@ -66,4 +69,12 @@ public class VolunteerRequest {
     public void setShelter(Long shelter) {
         this.shelter = shelter;
     }
+
+//    public Long getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(Long user) {
+//        this.user = user;
+//    }
 }

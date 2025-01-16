@@ -162,6 +162,17 @@
     "imageURL" : null,
     "city" : "Харків",
     "shelterPhoneNumber" : "+380 934 445 555"
+  }, {
+    "id" : 12,
+    "name" : "testCORS",
+    "type" : "dog",
+    "age" : 10,
+    "size" : "big",
+    "description" : "Тестуємо CORS політику",
+    "sex" : "Хлопчик",
+    "imageURL" : null,
+    "city" : "Харків",
+    "shelterPhoneNumber" : "+380 934 445 555"
   } ]
 }, {
   "id" : 5,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-find-f',
@@ -109,7 +109,7 @@ export class FindFComponent implements OnInit {
   }
 
   ModalAdopt(){
-    const WardData= {
+    const AdoptData= {
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
@@ -122,8 +122,18 @@ export class FindFComponent implements OnInit {
       animalSex: this.animalSex,
       animalSize: this.animalSize,
     };
+    // Отримуємо токен з localStorage
+    // const token = localStorage.getItem('token');
+    //
+    // // Перевіряємо, чи є токен
+    // if (!token) {
+    //   console.error('Token not found');
+    //   return;
+    // }
+    //
+    // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    this.http.post('http://localhost:8080/api/forms/adopt', WardData).subscribe({
+    this.http.post('http://localhost:8080/api/forms/adopt', AdoptData).subscribe({
       next: (response) => {
         this.successMessage = 'Форма успішно відправлена!';
         this.errorMessage = null;
@@ -155,6 +165,15 @@ export class FindFComponent implements OnInit {
       animalSex: this.animalSex,
       animalSize: this.animalSize,
     };
+    // const token = localStorage.getItem('token');
+    //
+    // // Перевіряємо, чи є токен
+    // if (!token) {
+    //   console.error('Token not found');
+    //   return;
+    // }
+    //
+    // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     this.http.post('http://localhost:8080/api/forms/ward', WardData).subscribe({
       next: (response) => {

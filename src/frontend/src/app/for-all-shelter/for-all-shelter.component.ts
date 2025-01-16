@@ -7,10 +7,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './for-all-shelter.component.css'
 })
 export class ForAllShelterComponent implements OnInit {
-
+  shelter: any = {}; // Об'єкт шелтера, включає тварин
   animals: any[] = [];
-  allAnimals: any[] = [];
-  // SheletrAnimals: any[] = [];
+  filteredAnimals: any[] = [];
+  // ShelterAnimals: any[] = [];
   currentPage: number = 1;
   totalPages: number = 0;
   itemsPerPage: number = 10;
@@ -36,15 +36,13 @@ export class ForAllShelterComponent implements OnInit {
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
   shelter_Name: string = '';
-  // shelter_ID: number = 0;
+ shelter_ID: number = 0;
 
   ngOnInit() {
-
-      // Отримання значення `shelterName` із параметрів маршруту
       this.route.queryParams.subscribe(params => {
         this.shelter_Name = params['shelterName'];
-        // this.shelter_ID = +params['shelterId'];
-        this.fetchAnimals(this.currentPage);
+        this.shelter_ID = +params['shelterId'];
+        this.fetchShelterData(this.shelter_ID);
       });
 
   }
@@ -54,42 +52,33 @@ export class ForAllShelterComponent implements OnInit {
   // }
 
   // &limit=${this.itemsPerPage}
-  fetchAnimals(page: number) {
-    const startId = (page - 1) * this.itemsPerPage;
-    this.http.get<any[]>(`http://localhost:8080/api/animals?start=${startId}`).subscribe(
-      data => {
-        console.log('Received data:', data); // Додайте це логування
-        this.allAnimals = data.map(animal => {
-          // Генеруємо URL для зображення
-          animal.imageURL = `http://localhost:8080/images/${animal.id}.png`;
-          return animal;
-        });
-                // Викликаємо метод для фільтрації після того, як отримали shelter_ID
-          //  this.filterAnimals(this.shelter_ID);
-        this.animals = [...this.allAnimals]; // Ініціалізуємо тварин
-
-        this.totalPages = Math.ceil(data.length / this.itemsPerPage); // Обчислюйте загальну кількість сторінок
-
-      },
-      error => {
-        console.error('Error fetching animals:', error); // Логування помилки
-      }
-    );
+  fetchShelterData(shelterID: number) {
+    this.http.get<any>(`http://localhost:8080/api/shelters/${this.shelter_ID}?page=${this.currentPage}&limit=${this.itemsPerPage}`)
+      .subscribe(
+        response => {
+          this.shelter = response;
+          this.animals = response.animals || [];
+          this.filteredAnimals = [...this.animals];
+          this.totalPages = response.totalPages; // Ensure your API returns totalPages
+        },
+        error => console.error('Error fetching shelter data:', error)
+      );
   }
+
 
 
 
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.fetchAnimals(this.currentPage);
+      this.fetchShelterData(this.currentPage);
     }
   }
 
   previousPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
-      this.fetchAnimals(this.currentPage);
+      this.fetchShelterData(this.currentPage);
     }
   }
 
@@ -157,7 +146,7 @@ export class ForAllShelterComponent implements OnInit {
   }
 
   applyFilters() {
-    this.animals = this.allAnimals.filter(animal => {
+    this.animals = this.filteredAnimals.filter(animal => {
       return (
         this.isMatchingFilter(animal, 'type', this.activeFilters.type) &&
         this.isMatchingFilter(animal, 'sex', this.activeFilters.sex) &&

@@ -9,6 +9,7 @@
 body {
   width: 100%;
   height: 100%;
+
 }
 
 
@@ -18,7 +19,7 @@ header {
   text-align: center;
   color: white;
   display: flex;
- 
+  /* overflow: hidden; */
 }
 
 h1 {
@@ -41,14 +42,16 @@ nav ul {
 }
 
 nav ul .Descktop  {
-  margin-right: 120px;
+  margin-right: 60px;
   z-index: 1;
+  /* width: 680px; */
 
 }
 
 nav ul .Descktop .nav-item {
   display: inline-block;
   margin: 0 7px;
+  
   /* margin-left: 30px; */
 
 }
@@ -90,7 +93,7 @@ nav ul li .Registr_pc:hover {
   position: absolute;
   top: 0vw;
   left: 12vw;
-  z-index: 10;
+  z-index: 3;
 }
 
 .LinkIconPhone {
@@ -299,20 +302,6 @@ nav ul li .Registr_pc:hover {
   margin-bottom: 20px;
 }
 
-@media (min-width: 992px) and (max-width: 1470px) {
-  .navbar {
-    display: flex;
-    align-items: center;
-    padding-left: 70px;
-  }
-
-  .LinkIcon {
-    position: absolute;
-    top: 8px;
-    left: -12px;
-  }
-}
-
 /* розібратися як працює */
 /* .nav-item {
    position: relative;
@@ -428,7 +417,7 @@ footer {
 
 .logo-section{
   position: relative;
-  left: 20px;
+  /* left: 20px; */
 }
 .logo-section p {
   font-size: larger;
@@ -443,7 +432,7 @@ footer {
   top: 20px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 630px) {
   .footer-container {
     flex-direction: column;
     text-align: center;
@@ -454,5 +443,41 @@ footer {
   .credits-section {
     margin-bottom: 2rem;
   }
+  .imgfooter{
+    left: 0px;
+  }
 }
 
+@media (min-width: 992px) and (max-width: 1440px) {
+  .navbar {
+    padding-left: 150px;
+  }
+  nav ul {
+   
+  }
+  nav { margin-right: 0px;}
+  .LinkIcon {
+    position: absolute;
+    top: 8px;
+    left: -12px;
+  }
+}
+
+
+/* 
+@media(min-width: 992px) and (max-width: 1285px){
+  nav ul .Descktop{
+    margin-right: 0;
+    padding-right: 30px;
+    line-height: 2.0rem;
+  }
+  nav ul .Descktop .nav-item {
+
+  }
+  nav ul {
+   
+  }
+  .offcanvas-body{
+   
+  }
+} */

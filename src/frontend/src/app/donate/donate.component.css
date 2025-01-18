@@ -168,12 +168,12 @@ body {
 .shelter-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 60px;
 
 }
 
 .shelter-card {
-  width: 250px;
+  width: 350px;
   padding: 10px;
   border-radius: 8px;
   cursor: pointer;
@@ -225,7 +225,7 @@ body {
   background-color: white;
   padding: 20px;
   border-radius: 8px;
-  width: 400px;
+  width: 500px;
   text-align: left;
   position: relative;
 }
@@ -258,4 +258,26 @@ body {
   position: absolute;
   top: 10px;
   right: 15px;
+}
+
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff8e04;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 100px;
+  cursor: pointer;
+  display: none; 
+  z-index: 1000;
+  font-size: xx-large;
+}
+.scroll-to-top.show {
+  display: block;
+}
+@media (min-widht: 550px) and (max-widht: 800px) {
+  .shelter-card { }
 }

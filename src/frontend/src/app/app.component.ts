@@ -54,17 +54,17 @@ export class AppComponent implements OnInit {
 
   }
   // Для знаходження притулків
-  // findshelter(){
-  //  this.http.get('http://localhost:8080/api/shelters/search?query=' + this.searcshelter).subscribe({
-  //   next: (response) => {
-  //     console.log('Результати пошуку:', response);
-  //   },
-  //   error: (error) => {
-  //     console.error('Помилка при пошуку:', error);
-  //   },
-  // });
+  findshelter(){
+   this.http.get('http://localhost:8080/api/shelters/search?query=' + this.searcshelter).subscribe({
+    next: (response) => {
+      console.log('Результати пошуку:', response);
+    },
+    error: (error) => {
+      console.error('Помилка при пошуку:', error);
+    },
+  });
 
-  // }
+  }
 
   loadMapPoints() {
     this.http.get<MapPoint[]>('http://localhost:8080/api/mapPoints')

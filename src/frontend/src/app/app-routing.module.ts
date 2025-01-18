@@ -13,6 +13,7 @@ import { ThignsComponent } from './thigns/thigns.component';
 import { ForAllShelterComponent } from './for-all-shelter/for-all-shelter.component';
 
 
+
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'find-f', component: FindFComponent },

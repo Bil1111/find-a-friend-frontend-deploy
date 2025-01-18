@@ -20,10 +20,17 @@
          <input type="email" id="email" [(ngModel)]="email"  name="email" placeholder="Введіть ваш email" required>
 
          <label for="phone">Телефон:</label>
-         <input type="tel" id="phone" [(ngModel)]="contactNumber"   name="contactNumber" placeholder="Введіть ваш номер телефону" required>
+         <input type="tel" id="phone" [(ngModel)]="contactNumber" name="contactNumber" placeholder="Введіть ваш номер телефону" required>
+
+         <input type="hidden"  [(ngModel)]="animalAge"  name="animalAge">
+         <input type="hidden"  [(ngModel)]="animalSex"  name="animalSex">
+         <input type="hidden"  [(ngModel)]="animalSize"  name="animalSize">
+         <input type="hidden"  [(ngModel)]="typeOfAnimal"  name="typeOfAnimal">
+     
+
 
          <label for="shelter">Притулки:</label>
-         <select type="text" id="shelter" [(ngModel)]="shelter"  name="shelter"  required>
+         <select type="text" id="shelter" [(ngModel)]="shelter" (change)="fetchShelterData()" name="shelter"  required>
           <option value="" disabled selected hidden>Оберіть притулок</option>
            <option *ngFor="let shelter of shelters" [value]="shelter.id">
              {{ shelter.name }}
@@ -31,7 +38,7 @@
          </select>
 
          <label for="animal">Яку тварину ви хочете усиновити:</label>
-         <select id="animal" [(ngModel)]="typeOfAnimal"  name="typeOfAnimal" required>
+         <select id="animal" [(ngModel)]="Name_Animal" (change)="hidden_info_for_animals(Name_Animal)"  name="Name_Animal" required>
           <option value="" disabled selected hidden>Оберіть тваринку</option>
           <option *ngFor="let animal of animals" [value]="animal.name">
             {{ animal.name }}

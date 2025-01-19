@@ -11,72 +11,79 @@ export class AdoptComponent implements OnInit {
   lastName: string = '';
   email: string = '';
   contactNumber: string = '';
-  shelter: string = '';
-  typeOfAnimal: string = '';
+  shelter:  string = ''; //id притулку 
+  Name_Animal: string =''; 
   experience: string = '';
   errorMessage: string | null = null;
   successMessage: string | null = null;
-
+  
+  animalAge: string = '';
+  animalSex: string = '';
+  animalSize: string = '';
+  typeOfAnimal: string = '';
 
   shelters: any[] = []; // Масив для зберігання всіх притулків
-  selectedShelter: any = null; // Для зберігання вибраного притулку
+  // selectedShelter: any = null; // Для зберігання вибраного притулку
   animals: any[] = []; // Масив для зберігання всіх тварин
   allAnimals: any[] = []; // Для зберігання вибраної тварини
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
     this.fetchShelters();
-    this.fetchAnimals();
+    this.fetchShelterData();
+    // this.fetchAnimals();
+    
    }
+   
+
+
+   fetchShelterData() {
+    this.http.get<any>(`http://localhost:8080/api/shelters/${this.shelter}`)
+      .subscribe(
+        response => {
+          this.shelter = response.id;
+          this.animals = response.animals || [];
+          this.allAnimals = [...this.animals];
+        },
+        error => console.error('Error fetching shelter data:', error)
+      );
+  }
 
 
  // Метод для отримання всіх тварин
    fetchAnimals() {
-   
     this.http.get<any[]>(`http://localhost:8080/api/animals`).subscribe(
       data => {
         console.log('Received data:', data); // Додайте це логування
         this.allAnimals = data.map(animal => {
-          // Генеруємо URL для зображення
-          // animal.imageURL = `http://localhost:8080/images/${animal.id}.png`;
-          return animal;
-        });
-                // Викликаємо метод для фільтрації після того, як отримали shelter_ID
-          //  this.filterAnimals(this.shelter_ID);
+          return animal; });
         this.animals = [...this.allAnimals]; // Ініціалізуємо тварин
-   
       },
-      error => {
-        console.error('Error fetching animals:', error); // Логування помилки
-      }
+      error => {console.error('Error fetching animals:', error);}
     );
   }
 
-
+ 
   // Метод для отримання всіх притулків
   fetchShelters() {
     this.http.get<any[]>('http://localhost:8080/api/shelters').subscribe(
       data => {
         console.log('Received shelters data:', data); // Логування отриманих даних
-        this.shelters = data.map(shelter => {
-          // Генеруємо URL для зображення кожного притулку
-          // shelter.imageURL = `http://localhost:8080/images/shelters/${shelter.id}.png`;
-          return shelter;
-        });
+        this.shelters = data.map(shelter => {return shelter;});
       },
-      error => {
-        console.error('Error fetching shelters:', error); // Логування помилки
-      }
+      error => {console.error('Error fetching shelters:', error); }
     );
   }
 
-  // Метод для вибору притулку
-  selectShelter(shelter: any) {
-    this.selectedShelter = shelter; // Зберігаємо вибраний притулок
-  }
-
-
-
+      hidden_info_for_animals(selectedAnimalName: string){
+        const selectedAnimal = this.animals.find(animal => animal.name === selectedAnimalName);
+        if(selectedAnimal){
+          this.animalAge = selectedAnimal.age;
+          this.animalSex = selectedAnimal.sex;
+          this.animalSize = selectedAnimal.size;
+          this.typeOfAnimal = selectedAnimal.type;
+        }
+      }
 
   FormAdopt() {
     const adoptData = {
@@ -84,9 +91,14 @@ export class AdoptComponent implements OnInit {
       lastName: this.lastName,
       email: this.email,
       contactNumber: this.contactNumber,
-      typeOfAnimal: this.typeOfAnimal,
+      Name_Animal: this.Name_Animal,
       experience: this.experience,
-      shelter: this.shelter
+      shelter: this.shelter,
+
+      animalAge: this.animalAge,
+      animalSex: this.animalSex,
+      animalSize: this.animalSize, 
+      typeOfAnimal: this.typeOfAnimal,
     };
 
     this.http.post('http://localhost:8080/api/forms/adopt', adoptData).subscribe({
@@ -113,7 +125,12 @@ export class AdoptComponent implements OnInit {
     this.contactNumber = '';
     this.typeOfAnimal = '';
     this.experience = '';
-    this.shelter = '';
+    this.shelter = "";
+
+   this.animalAge = '';
+   this.animalSex = '';
+    this.animalSize  = '';
+    this.typeOfAnimal = ''; 
   }
 
   clearMessagesAfterDelay() {

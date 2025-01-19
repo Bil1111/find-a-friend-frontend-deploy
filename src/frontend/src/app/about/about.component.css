@@ -31,6 +31,7 @@ overflow-x: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); */
   display: grid;
   place-items: center;
+  
  
 
 }
@@ -216,7 +217,7 @@ top: -280px
 
 .cat{
 position: absolute;
-top: 270px;
+top: 280px;
 left: 880px;
 }
 .cat img{
@@ -295,6 +296,8 @@ margin-top: 50px;
 .Dev{
   display: flex;
   margin-top:1cm;
+  gap: 90px;
+  
 }
 .devtitle h1{
   margin-top: 7cm;
@@ -309,8 +312,8 @@ margin-top: 50px;
   display: grid;
   place-items: center;
   max-height: 500px;
-  max-width:  20%;
-  margin-left: 90px;
+  /* max-width:  20%; */
+  /* margin-left: 90px; */
   margin-bottom: 20px;
   font-family: 'e-ukrL';
   font-size: small;
@@ -349,7 +352,6 @@ margin-top: 50px;
   height: 59px;
   margin-left: 20px;
 }
-
 .scroll-to-top {
   position: fixed;
   bottom: 20px;
@@ -366,4 +368,81 @@ margin-top: 50px;
 }
 .scroll-to-top.show {
   display: block;
+}
+
+@media (min-width: 730px) {
+  .Dev{
+   flex-wrap: wrap;
+   display: flex;
+   justify-content: center;
+
+  }
+}
+@media (max-width: 730px) {
+  .Dev{
+   display: grid;
+   place-content: center;
+  }
+}
+
+@media (max-width: 1024px) {
+   .find{width: 85%;}
+   .howtext {width: 80%;}
+   .listtext{font-size: x-large;}
+   .Title1 p,.Title2 p ,.Title3 p{ width: 90%;}
+}
+
+@media (min-width: 320px) and (max-width: 426px) {
+  .find{width: 100%; }
+  .howtext {width: 100%;}
+  .listtext{font-size: x-large;}
+  .Title1 p,.Title2 p ,.Title3 p{ width: 100%; padding: 0px; text-align: start;}
+  .Title1 h1,.Title2 h1,.Title3 h1 { margin-bottom: 30px;}
+  .steptext{width: 100%; text-align: center;}
+  
+}
+
+
+
+@media (max-width: 1050px) {
+  .paw{
+    position: absolute;
+    top: 680px;
+    left: 0px;
+    transform: rotate(30deg); 
+    display: none;
+  }
+  
+  .paw img{
+    width: 120px;
+    height: 120px;
+  }
+  
+  .paw1{
+    display: none;
+  }
+  
+  .paw1 img{
+    width: 120px;
+    height: 120px;
+  }
+
+  .dog img{
+    display: none;
+    position: absolute;
+    left: -200px;
+    top: -280px
+    
+    }
+
+    .cat{
+      position: absolute;
+      top: 350px;
+      left: 780px;
+      }
+      .cat img{
+        width: 350px;
+        height: 200px;
+        margin-top: -20px;
+      }
 }

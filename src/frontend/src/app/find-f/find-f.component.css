@@ -1,33 +1,109 @@
 body{
-  font-family: 'e-ukr ';
+  font-family: 'e-ukr';
 }
-.animals-container {
+.animal-card .buttonn{
+  position: absolute; /* Абсолютна позиція відносно animal-card */
+  bottom: 10px; 
+  right: 10px; 
+  width: 50px;
+  height: 50px;
+  color: #f9f9f9;
+  background-color: #fc8f00;
+  border-radius: 100%;
+}
+.buttonn{
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+.circle{
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: #000000;
+  margin-top: 3px;
+}
+.sidebar {
+  font-family: 'e-ukr';
+  max-width: 359px;
+  max-height: 500px;
+  background-color: rgb(255, 255, 255);
   padding: 20px;
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  overflow-y: scroll; 
 }
+
+.sidebar .filter-group,
+.sidebar .filter-groupOther {
+  margin-bottom: 10px;
+} 
+.sidebar .filter-group label,
+.filter-groupOther label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+
+.sidebar .filter-group button,
+.sidebar .filter-groupOther button {
+  margin: 5px 5px 5px 0;
+  padding: 7px 18.2px;   /* Перше = висота, Друге = Довжина */
+  border: none;
+  background-color: #dedede;
+  color: #000000;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.3s ease-in-out;
+  margin-right: 7px;
+ 
+
+}
+
+.sidebar .filter-group button:hover,
+.sidebar .filter-groupOther button:hover {
+  background-color: #fc8f00;
+  color: white;
+}
+
+.sidebar .filter-group button.active,
+.sidebar .filter-groupOther button.active {
+  background-color: #fc8f00;
+  color: white;
+}
+
+.sidebar .filter-groupOther {
+ display: flex;
+ flex-direction: column;
+}
+
+
+.animals-container  .animal-cards{margin: auto 100px; display:flex;justify-content: center; margin-bottom: 10px;}  
+
 .animals-container h2 {
  display: flex;
  justify-content: center;
  margin-bottom: 35px;
 }
-.animals-container .pagination {
-  margin: 25px auto;
-}
+.animals-container .pagination { margin: 25px auto;}
 
-.animals-container .animal-cards {
+/* .animals-container .animal-cards {
   display:flex;
   justify-content: center;
   margin-bottom: 10px;
-}
+} */
 
 .animal-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 75px;
+  gap: 60px;
 }
 
 .animal-card {
-  width: 200px; /* Ширина картки */
-  padding: 10px;
+  width: 359px; /* Ширина картки */
+  /* padding: 10px; */
   border-radius: 8px;
   cursor: pointer;
   transition: transform 0.2s;
@@ -36,58 +112,90 @@ body{
 }
 
 .animal-card img {
-  width: 100%; /* Зображення займатиме всю ширину картки */
-  height: auto; /* Зберігати пропорції зображення */
-  object-fit: cover; /* Змінює розмір зображення, щоб заповнити рамку */
+  width: 100%; 
+  height: 370px; 
+  object-fit: cover; 
 }
-
+/* 
 .animal-card:hover {
-  transform: scale(1.05); /* Збільшення картки при наведенні */
-}
+  transform: scale(1.05); 
+} */
 
 .pagination {
   margin-top: 20px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 25%;
-  
+  width: 25%; 
 }
-.previous, .next {
-  margin-top: 13px;
+.previous, .next {margin-top: 13px;}
+.animal-card h3 { margin-left: 5px; margin-top: 5px; }
+.animal-card .info_about_pet {
+  display: flex; 
+  gap: 10px;
+  font-family: 'e-ukrL';
+  font-size: 16px;
+  padding-left: 5px;
+  line-height: 0.4cm;
 }
 
+.info{
+  font-family: 'e-ukrL';
+  padding: 10px;
+}
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.222);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2;
+  backdrop-filter: blur(10px);
 }
 
 .modal-content {
+  position: relative;
   background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 300px;
-  text-align: center;
+  width: 350px;
+  /* height: 600px; */
+  text-align: start;
+}
+.modal-content img{
+  height: 150px;
+  object-fit: cover;
 }
 
-.close-button {
+.close-button,
+.close-button1,
+.close-button2{
+  height: 45px;
+  width: 45px;
   cursor: pointer;
   float: right;
   font-size: 28px;
+  background-color: #cccccca4;
+  border-radius: 100%;
+  display: grid;
+  place-content: center;
+  position: absolute;
+  right: -30px;
+  top: -30px;
+}
+.close-button:hover,
+.close-button1:hover,
+.close-button2:hover {
+  background-color: #ccccccb4;
 }
 
 .buttonForAdoptAndWard {
  display: flex;
  justify-content: space-evenly;
  align-items: center;
+ border-radius: 10px;
  
 }
 
@@ -104,14 +212,16 @@ body{
   z-index: 3;
 }
 .adopt-content h1{
+  
   text-align: center;
   line-height: 1.5cm;   
 }
 .adopt-content{
+  position: relative;
   background: #fff;
   padding: 20px;
   border-radius: 8px; 
-  text-align: center;
+  text-align: start;
 }
 .adopt{
   display: flex;
@@ -131,12 +241,24 @@ body{
   align-items: center;
   z-index: 3;
 }
+.Adoptbtn button,
+.Wardbtn button{
+  margin-bottom: 10px;
+  color: #ffffff;
+  background-color: #fc8f00
 
+}
+.Adoptbtn:hover,
+.Wardbtn:hover{
+  background-color: #d97b00;
+    transition: 0.2s ease-in-out;
+}
 .ward-content{
+  position: relative;
   background: #fff;
   padding: 20px;
   border-radius: 8px;
-  text-align: center;
+  text-align: start;
 }
 .ward-content h1{
   text-align: center;
@@ -154,15 +276,17 @@ label {
 }
 
 input, select,  button {
+  font-family: 'e-ukr';
     margin-bottom: 15px;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 7px;
 }
 button{
     color: #ffffff;
     background-color: #fc8f00
+    
     
 }
 button:hover{
@@ -170,6 +294,126 @@ button:hover{
     transition: 0.2s ease-in-out;
     
 }
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff8e04;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 100px;
+  cursor: pointer;
+  display: none; 
+  z-index: 1000;
+  font-size: xx-large;
+}
+.scroll-to-top.show {
+  display: block;
+}
+
+@media (max-width: 1150px) {
+  .animals-container .pagination { margin: 25px auto;}
+  .pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 37%; 
+  }
+  .close-button2{height: 45px; width: 45px; position: absolute; right: -10px; top: -10px;}
+.ward-content{ height: 95%; width: 95%; overflow-x:scroll; }
+.close-button1{height: 45px; width: 45px; position: absolute; right: 5px; top: 0px;}
+.adopt-content{ height: 95%; width: 95%; overflow-x:scroll;}
+}
+@media (min-width: 320px) and (max-width: 995px) {
+ 
+}
+
+
+@media (min-width: 768px) and (max-width: 995px) {
+  /* .animals-container  .animal-cards{margin: auto 0px;}   */
+  .animal-cards { gap: 40px; }
+  .animal-card { width: 340px; /* Ширина картки */}
+.animals-container  .animal-cards{margin: auto 60px;}  
+.sidebar {max-width: 100%; max-height: 500px;}
+/* .animals-container .pagination { margin: 25px auto;} */
+.pagination {width: 40%; }
+.animal-card .info_about_pet {display: flex;  gap: 10px;font-family: 'e-ukrL';   font-size: 14px;padding-left: 5px;line-height: 0.4cm;}
+.animal-card img {  height: 200px; }
+.animal-card .buttonn{bottom: 75px;  right: 10px; }
+}
+
+@media (max-width: 860px) {
+  .animal-cards { gap: 20px; }
+  .animal-card { width: 270px; /* Ширина картки */}
+.animals-container  .animal-cards{margin: auto 60px;}  
+.sidebar {max-width: 100%; max-height: 500px;}
+/* .animals-container .pagination { margin: 25px auto;} */
+.pagination {width: 40%; }
+.animal-card .info_about_pet {
+  display: flex; 
+  gap: 10px;
+  font-family: 'e-ukrL';  
+  font-size: 14px;
+  padding-left: 5px;
+  line-height: 0.4cm;
+}
+.animal-card img {  height: 200px; }
+.animal-card .buttonn{bottom: 75px;  right: 10px; }
+.close-button2{height: 45px; width: 45px; position: absolute; right: -10px; top: -10px;}
+.ward-content{ height: 85%; width: 95%; overflow-x:scroll; }
+.close-button1{height: 45px; width: 45px; position: absolute; right: 5px; top: 0px;}
+.adopt-content{ height: 85%; width: 95%; overflow-x:scroll;}
+}
+
+@media (max-width: 668px) {
+  .animal-cards { gap: 40px; }
+  .animal-card { width: 259px; /* Ширина картки */}
+  .pagination { width: 65%;}
+  .close-button,.close-button1,.close-button2{height: 45px; width: 45px; position: absolute; right: -20px; top: -20px;}
+}
+
+
+@media (max-width: 426px) {
+  .animals-container  .animal-cards{margin: auto 0px;}  
+  .animal-cards { gap: 40px; }
+  .animal-card { width: 259px; /* Ширина картки */}
+  .pagination { width: 100%;}
+  .sidebar { max-width: 100%;max-height: 320px; }
+  .close-button1{height: 45px; width: 45px; position: absolute; right: 5px; top: 0px;}
+  .adopt-content h1{line-height: 1.0cm;}
+  .adopt-content{ height: 95%; width: 95%; overflow-x:scroll;}
+  .adopt{display: flex;flex-direction: column;}
+
+  .close-button2{height: 45px; width: 45px; position: absolute; right: -10px; top: -10px;}
+  .ward-content{ height: 95%; width: 95%; overflow-x:scroll; }
+  .ward-content h1{line-height: 1.0cm;   }
+  .ward{ display: flex; flex-direction: column;}
+}
+
+
+@media (max-width: 375px) {
+  .animal-cards {gap: 40px; }
+  .animal-card {width: 259px; /* Ширина картки */}
+ 
+}
+
+
+@media (max-width: 320px) {
+  .animal-cards { gap: 40px; }
+  .animal-card { width: 259px; /* Ширина картки */}
+  .animal-card .info_about_pet { font-size: 11px; line-height: 0.2cm;}
+  .circle{width: 8px; height: 8px; margin-top: 0px;}
+  .animal-card .buttonn{bottom: 55px;  right: 10px; }
+  .animal-card .info_about_pet {gap: 6px;}
+  /* .close-button,.close-button1,.close-button2{height: 45px; width: 45px; position: absolute; right: 5px; top: 0px;} */
+
+
+ 
+}
+
 
 /* .Adoptbtn {
 

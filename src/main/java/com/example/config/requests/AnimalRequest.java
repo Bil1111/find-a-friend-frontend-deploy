@@ -26,12 +26,14 @@ public class AnimalRequest {
 
     @NotNull(message = "Sex is required")
     private Integer sex;
+    @NotBlank(message = "Image is required")
+    private String imageURL;
 
     // Конструктор без параметрів
     public AnimalRequest() {}
 
     // Конструктор з параметрами
-    public AnimalRequest(String name, String type, Integer age, String size, Long shelter, String description, Integer sex) {
+    public AnimalRequest(String name, String type, Integer age, String size, Long shelter, String description, Integer sex, String imageURL) {
         this.name = name;
         this.type = type;
         this.age = age;
@@ -39,6 +41,7 @@ public class AnimalRequest {
         this.shelter = shelter;
         this.description = description;
         this.sex = sex;
+        this.imageURL=imageURL;
     }
 
     // Геттери та сеттери
@@ -95,5 +98,13 @@ public class AnimalRequest {
     }
     public Integer getSex(){
         return sex;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }

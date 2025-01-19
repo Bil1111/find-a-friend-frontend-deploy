@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { query } from '@angular/animations';
+import { SharedService } from './shared.service';
 declare const google: any;
 
 interface MapPoint {
@@ -23,24 +23,24 @@ interface MapPoint {
 
 })
 export class AppComponent implements OnInit {
-  searcshelter: string = '';// Зберігає значення поля введення
 
   title = 'FF';
   isHomePage: boolean = false;
   mapPoints: MapPoint[] = [];
 
-  //
    public isLogged: boolean = false;
    ShowFooter: boolean = false;
 
-  // log: boolean = false; // Для тесту
 
   visible = false;
-  constructor(private router: Router, private http: HttpClient) {
+  constructor(private router: Router, private http: HttpClient,private sharedService: SharedService) {
     this.router.events.subscribe(() => {
       this.ShowFooter = this.router.url !== '/adopt' &&  this.router.url !== '/gifthouse' &&  this.router.url !== '/free-people';
 
     })
+    this.sharedService.isLoggedIn$.subscribe(isLoggedIn =>{
+      this.isLogged = isLoggedIn;
+    });
   }
 
   ngOnInit() {
@@ -51,18 +51,6 @@ export class AppComponent implements OnInit {
       }
     });
 
-
-  }
-  // Для знаходження притулків
-  findshelter(){
-   this.http.get('http://localhost:8080/api/shelters/search?query=' + this.searcshelter).subscribe({
-    next: (response) => {
-      console.log('Результати пошуку:', response);
-    },
-    error: (error) => {
-      console.error('Помилка при пошуку:', error);
-    },
-  });
 
   }
 
@@ -118,9 +106,7 @@ export class AppComponent implements OnInit {
 
 
   logout(){
-    // this.sharedService.logout();
+    localStorage.removeItem('token');
+    this.sharedService.changeLoginState(false);
    }
-
-
-
 }

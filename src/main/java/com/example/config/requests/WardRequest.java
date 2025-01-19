@@ -1,9 +1,14 @@
 package com.example.config.requests;
 
+import jakarta.persistence.Column;
+
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
+public class WardRequest {
 
-public class AdoptRequest {
     @NotBlank(message = "First name is required")
     private String firstName;
     @NotBlank(message = "Last name is required")
@@ -16,20 +21,18 @@ public class AdoptRequest {
     private String experience;
     @NotBlank(message = "typeOfAnimal is required")
     private String typeOfAnimal;
-    @NotBlank(message = "animalName is required")
+    @NotBlank(message = "Animal name is required")
     private String animalName;
-    @NotBlank(message = "animalAge is required")
+    @NotBlank(message = "Animal age is required")
     private String animalAge;
-    @NotBlank(message = "animalSex is required")
+    @NotBlank(message = "Animal sex is required")
     private String animalSex;
-    @NotBlank(message = "animalSize is required")
+    @NotBlank(message = "Animal size is required")
     private String animalSize;
-
 //    @NotBlank(message = "User is required")
 //    private Long user;
 
-
-    public AdoptRequest(String firstName, String lastName, String email, String contactNumber, String experience, String typeOfAnimal, String animalName, String animalAge, String animalSex, String animalSize) {
+    public WardRequest(String firstName, String lastName, String email, String contactNumber, String experience, String typeOfAnimal, String animalName, String animalAge, String animalSex, String animalSize) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -40,10 +43,10 @@ public class AdoptRequest {
         this.animalAge = animalAge;
         this.animalSex = animalSex;
         this.animalSize = animalSize;
- //       this.user=user;
+   //     this.user=user;
     }
 
-    public AdoptRequest() {
+    public WardRequest() {
 
     }
 
@@ -79,20 +82,20 @@ public class AdoptRequest {
         this.contactNumber = contactNumber;
     }
 
-    public String getTypeOfAnimal() {
-        return typeOfAnimal;
-    }
-
-    public void setTypeOfAnimal(String typeOfAnimal) {
-        this.typeOfAnimal = typeOfAnimal;
-    }
-
     public String getExperience() {
         return experience;
     }
 
     public void setExperience(String experience) {
         this.experience = experience;
+    }
+
+    public String getTypeOfAnimal() {
+        return typeOfAnimal;
+    }
+
+    public void setTypeOfAnimal(String typeOfAnimal) {
+        this.typeOfAnimal = typeOfAnimal;
     }
 
     public String getAnimalName() {

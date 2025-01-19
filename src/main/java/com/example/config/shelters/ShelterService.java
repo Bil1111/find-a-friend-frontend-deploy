@@ -1,9 +1,15 @@
 package com.example.config.shelters;
 
+import com.example.config.animals.Animal;
+import com.example.config.requests.AnimalRequest;
 import com.example.config.requests.ShelterRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.micrometer.common.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -28,7 +34,32 @@ public class ShelterService {
         );
         shelterRepository.save(shelter);
     }
+    public void updateShelterDetails(ShelterRequest request, Long shelterId) {
+        Optional<Shelter> shelterOptional = shelterRepository.findById(shelterId);
 
+        shelterOptional.ifPresentOrElse(shelter -> {
+            if (StringUtils.isNotBlank(request.getName())) {
+                shelter.setName(request.getName());
+            }if (StringUtils.isNotBlank(request.getAddress())) {
+                shelter.setAddress(request.getAddress());
+            }if (StringUtils.isNotBlank(request.getContactNumber())) {
+                shelter.setContactNumber(request.getContactNumber());
+            }if (StringUtils.isNotBlank(request.getDescription())) {
+                shelter.setDescription(request.getDescription());
+            }if (StringUtils.isNotBlank(request.getCity())) {
+                shelter.setCity(request.getCity());
+            }if (request.getLatitude()!=null) {
+                shelter.setLatitude(request.getLatitude());
+            }if (request.getLongitude()!=null) {
+                shelter.setLongitude(request.getLongitude());
+            }
+            shelterRepository.save(shelter);
+        }, () -> {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Shelter with id " + shelterId + " not found"
+            );
+        });
+    }
     public Optional<Shelter> getShelterById(Long id) {
         return shelterRepository.findById(id);
     }

@@ -1,9 +1,17 @@
 package com.example.config.users;
+import com.example.config.animals.Animal;
+import com.example.config.forms.AdoptForm;
+import com.example.config.forms.VolunteerForm;
+import com.example.config.forms.WardForm;
+import com.example.config.shelters.Shelter;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 @Table(name = "app_user")
@@ -25,14 +33,22 @@ public class User {
 
     @Column(unique = true)
     private String authToken; // Унікальний токен для аутентифікації
-//    @ManyToOne
-//    @JoinColumn(name = "shelter_id", referencedColumnName = "id", nullable = true)
-//    private Shelter shelter;
-
-    public User(String email, String encodedPassword, String authToken) {
+    @Enumerated(EnumType.STRING)
+    private Role role;
+//    @JsonManagedReference
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<AdoptForm> adoptForms;
+//    @JsonManagedReference
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<VolunteerForm> volunteerForms;
+//    @JsonManagedReference
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<WardForm> wardForms;
+    public User(String email, String encodedPassword, Role role) {
         this.email = email;
         this.password = encodedPassword;
-        this.authToken = authToken;
+        // this.authToken = authToken;
+        this.role=role;
     }
 
     public User() {
@@ -71,6 +87,13 @@ public class User {
         this.authToken = authToken;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
     //    public Shelter getShelter() {
 //        return shelter;
 //    }

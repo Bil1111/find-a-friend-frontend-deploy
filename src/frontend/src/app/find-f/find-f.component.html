@@ -2,14 +2,14 @@
 <div class="animals-container">
       <h2>Тваринки</h2>
   <div class="animal-cards">
-    
+
     <div class="sidebar" >
       <div class="filter-group">
-          <label>Тип тварини</label>
-          <button [ngClass]="{'active': activeFilters['type'].length === 0 || activeFilters['type'].includes('')}" (click)="toggleFilter('type', '')">Усі</button>
-          <button [ngClass]="{'active': activeFilters['type'].includes('dog')}" (click)="toggleFilter('type','dog')">Песики</button>
-          <button [ngClass]="{'active': activeFilters['type'].includes('cat')}"(click)="toggleFilter('type','cat')">Котики</button>
-          <button [ngClass]="{'active': activeFilters['type'].includes('rabbit')}"(click)="toggleFilter('type','rabbit')">Кролик</button>
+        <label>Тип тварини</label>
+        <button [ngClass]="{'active': activeFilters['type'].length === 0 || activeFilters['type'].includes('')}" (click)="toggleFilter('type', '')">Усі</button>
+        <button [ngClass]="{'active': activeFilters['type'].includes('Собака')}" (click)="toggleFilter('type','Собака')">Песики</button>
+        <button [ngClass]="{'active': activeFilters['type'].includes('Кіт')}" (click)="toggleFilter('type','Кіт')">Котики</button>
+        <button [ngClass]="{'active': activeFilters['type'].includes('Кролик')}" (click)="toggleFilter('type','Кролик')">Кролик</button>
       </div>
       <div class="filter-group">
           <label>Стать</label>
@@ -40,7 +40,7 @@
           <button [ngClass]="{'active' :activeFilters['steril'].includes('Стерелізована') }" (click)="toggleFilter('steril','Стерелізована')" class="S">Стерелізована</button>
           <button [ngClass]="{'active' :activeFilters['need_help'].includes('Потребує особливого догляду') }" (click)="toggleFilter('need_help','Потребує особливого догляду')" class="P">Потребує особливого догляду</button>
       </div>
-      
+
   </div>
 
     <div *ngFor="let animal of animals "
@@ -56,12 +56,12 @@
       <div class="info_about_pet">
           <p>Потребує особливого догляду</p>
       </div>
-      
+
       <div class="info_about_pet">
           <p>Вакцинована</p>
           <div class="circle"></div>
           <p>Стерелізована</p>
-            
+
        </div>
        <div class="buttonn" (click)="selectAnimal(animal)">
          <svg width="50" height="50" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -71,7 +71,7 @@
         </svg></div>
     </div>
   </div>
- 
+
  <div class="pagination">
     <button (click)="previousPage()" [disabled]="currentPage === 1" class="previous">Назад</button>
     <span>Сторінка {{ currentPage }} з {{ totalPages }}</span>
@@ -91,14 +91,14 @@
       <p><strong>Розмір: </strong> {{ selectedAnimal.size }}</p>
       <p><strong>Опис: </strong> {{ selectedAnimal.description }}</p>
       <p><strong>Місто: </strong> {{ selectedAnimal.city }}</p>
-      <p><strong>Назва притулку: </strong>{{ selectedAnimal.shelterName }}</p> 
+      <p><strong>Назва притулку: </strong>{{ selectedAnimal.shelterName }}</p>
     </div>
-     
+
       <div class="buttonForAdoptAndWard">
         <button (click)="openWardForm()" class="Adoptbtn">Взяти під опіку</button>
          <button (click)="openAdoptForm()" class="Wardbtn">Усиновити</button>
       </div>
-     
+
     </div>
   </div>
 
@@ -107,7 +107,7 @@
   <span (click)="closeAdoptForm()" class="close-button1">&times;</span>
   <h1>Форма заявки на усиновлення тварини</h1>
 
-  <form (ngSubmit)="ModalAdopt()" class="adopt"> 
+  <form (ngSubmit)="ModalAdopt()" class="adopt">
     <label for="name">Ваше ім'я:</label>
     <input type="text" id="firstName" [(ngModel)]="firstName" name="firstName" placeholder="Введіть ваше ім'я" required>
 
@@ -127,15 +127,13 @@
       <option value="yes">Так</option>
       <option value="no">Ні</option>
     </select>
-   
+
     <input type="hidden" [(ngModel)]="animalName" name="animalName" >
     <input type="hidden" [(ngModel)]="animalAge" name="animalAge" >
     <input type="hidden" [(ngModel)]="animalSex" name="animalSex" >
     <input type="hidden" [(ngModel)]="animalSize" name="animalSize" >
     <input type="hidden" [(ngModel)]="typeOfAnimal" name="typeOfAnimal" >
-      <input type="hidden" [(ngModel)]="Shelter" name="shelter" [value]="isAdoptFormOpen.shelter">
-      <input type="hidden" [(ngModel)]="City" name="City" [value]="isAdoptFormOpen.city">
-    
+
 
     <button type="submit">Надіслати заявку</button>
  </form>
@@ -148,8 +146,8 @@
   <div class="ward-content">
     <span (click)="closeWardForm()" class="close-button2">&times;</span>
     <h1>Форма заявки на опіку</h1>
-  
-    <form (ngSubmit)="ModalWard()" class="ward"> 
+
+    <form (ngSubmit)="ModalWard()" class="ward">
       <label for="name">Ваше ім'я:</label>
       <input type="text" id="name" [(ngModel)]="firstName" name="firstName" placeholder="Введіть ваше ім'я" required>
 
@@ -169,7 +167,7 @@
         <option value="yes">Так</option>
         <option value="no">Ні</option>
       </select>
-     
+
       <input type="hidden" [(ngModel)]="animalName" name="animalName" >
       <input type="hidden" [(ngModel)]="animalAge" name="animalAge" >
       <input type="hidden" [(ngModel)]="animalSex" name="animalSex" >
@@ -177,10 +175,10 @@
       <input type="hidden" [(ngModel)]="typeOfAnimal" name="typeOfAnimal" >
         <input type="hidden" [(ngModel)]="Shelter" name="shelter" [value]="isWardFormOpen.shelter">
         <input type="hidden" [(ngModel)]="City" name="City" [value]="isAdoptFormOpen.city">
-      
-  
+
+
       <button type="submit">Надіслати заявку</button>
    </form>
-  
+
   </div>
   </div>

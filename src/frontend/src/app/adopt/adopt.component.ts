@@ -11,12 +11,12 @@ export class AdoptComponent implements OnInit {
   lastName: string = '';
   email: string = '';
   contactNumber: string = '';
-  shelter:  string = ''; //id притулку 
-  Name_Animal: string =''; 
+  shelter:  string = ''; //id притулку
   experience: string = '';
   errorMessage: string | null = null;
   successMessage: string | null = null;
-  
+
+  animalName: string ='';
   animalAge: string = '';
   animalSex: string = '';
   animalSize: string = '';
@@ -32,9 +32,9 @@ export class AdoptComponent implements OnInit {
     this.fetchShelters();
     this.fetchShelterData();
     // this.fetchAnimals();
-    
+
    }
-   
+
 
 
    fetchShelterData() {
@@ -63,7 +63,7 @@ export class AdoptComponent implements OnInit {
     );
   }
 
- 
+
   // Метод для отримання всіх притулків
   fetchShelters() {
     this.http.get<any[]>('http://localhost:8080/api/shelters').subscribe(
@@ -82,6 +82,7 @@ export class AdoptComponent implements OnInit {
           this.animalSex = selectedAnimal.sex;
           this.animalSize = selectedAnimal.size;
           this.typeOfAnimal = selectedAnimal.type;
+          this.animalName=selectedAnimal.name;
         }
       }
 
@@ -91,14 +92,14 @@ export class AdoptComponent implements OnInit {
       lastName: this.lastName,
       email: this.email,
       contactNumber: this.contactNumber,
-      Name_Animal: this.Name_Animal,
       experience: this.experience,
       shelter: this.shelter,
 
       animalAge: this.animalAge,
       animalSex: this.animalSex,
-      animalSize: this.animalSize, 
+      animalSize: this.animalSize,
       typeOfAnimal: this.typeOfAnimal,
+      animalName: this.animalName
     };
 
     this.http.post('http://localhost:8080/api/forms/adopt', adoptData).subscribe({
@@ -130,7 +131,7 @@ export class AdoptComponent implements OnInit {
    this.animalAge = '';
    this.animalSex = '';
     this.animalSize  = '';
-    this.typeOfAnimal = ''; 
+    this.typeOfAnimal = '';
   }
 
   clearMessagesAfterDelay() {

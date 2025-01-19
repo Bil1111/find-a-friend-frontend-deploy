@@ -26,7 +26,7 @@
          <input type="hidden"  [(ngModel)]="animalSex"  name="animalSex">
          <input type="hidden"  [(ngModel)]="animalSize"  name="animalSize">
          <input type="hidden"  [(ngModel)]="typeOfAnimal"  name="typeOfAnimal">
-     
+
 
 
          <label for="shelter">Притулки:</label>
@@ -38,7 +38,7 @@
          </select>
 
          <label for="animal">Яку тварину ви хочете усиновити:</label>
-         <select id="animal" [(ngModel)]="Name_Animal" (change)="hidden_info_for_animals(Name_Animal)"  name="Name_Animal" required>
+         <select id="animal" [(ngModel)]="animalName" (change)="hidden_info_for_animals(animalName)"  name="Name_Animal" required>
           <option value="" disabled selected hidden>Оберіть тваринку</option>
           <option *ngFor="let animal of animals" [value]="animal.name">
             {{ animal.name }}

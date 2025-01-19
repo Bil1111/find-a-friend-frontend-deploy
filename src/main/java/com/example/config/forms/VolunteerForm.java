@@ -1,6 +1,7 @@
 package com.example.config.forms;
 
 import com.example.config.shelters.Shelter;
+import com.example.config.users.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
@@ -35,12 +36,18 @@ public class VolunteerForm {
     @JoinColumn(name = "shelter_id", nullable = false)
     private Shelter shelter;
 
+//    @JsonBackReference
+//    @ManyToOne
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private User user;
+
     public VolunteerForm(String firstName, String lastName, String email, String contactNumber, Shelter shelter) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.contactNumber = contactNumber;
         this.shelter = shelter;
+//        this.user=user;
     }
 
     public VolunteerForm() {
@@ -94,4 +101,12 @@ public class VolunteerForm {
     public void setShelter(Shelter shelter) {
         this.shelter = shelter;
     }
+
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 }

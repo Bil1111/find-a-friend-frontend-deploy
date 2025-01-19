@@ -1,6 +1,6 @@
 package com.example.config.forms;
 
-import com.example.config.shelters.Shelter;
+import com.example.config.requests.WardRequest;
 import com.example.config.users.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
@@ -10,12 +10,11 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "adopt_forms")
-public class AdoptForm {
+@Table(name = "ward_forms")
+public class WardForm {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(columnDefinition = "VARCHAR(255)")
     @NotEmpty(message = "Ім'я не може бути порожнім")
     @Size(max = 100, message = "Ім'я не повинно перевищувати 100 символів")
@@ -37,34 +36,30 @@ public class AdoptForm {
     @Size(max = 15, message = "Досвід не повинен перевищувати 15 символів")
     private String experience;
     @Column(columnDefinition = "VARCHAR(255)")
-    @NotEmpty(message = "Вид тварини не може бути порожнім")
-    @Size(max = 15, message = "Вид тварини не повинен перевищувати 15 символів")
+    @NotEmpty(message = "Вид не може бути порожнім")
+    @Size(max = 15, message = "Вид не повинен перевищувати 15 символів")
     private String typeOfAnimal;
-
     @Column(columnDefinition = "VARCHAR(255)")
-    @NotEmpty(message = "animalName не може бути порожнім")
-    @Size(max = 15, message = "animalName не повинен перевищувати 15 символів")
+    @NotEmpty(message = "Ім'я тварини не може бути порожнім")
+    @Size(max = 15, message = "Ім'я тварини не повинен перевищувати 15 символів")
     private String animalName;
     @Column(columnDefinition = "VARCHAR(255)")
-    @NotEmpty(message = "animalAge не може бути порожнім")
-    @Size(max = 15, message = "animalAge не повинен перевищувати 15 символів")
+    @NotEmpty(message = "Вік не може бути порожнім")
+    @Size(max = 15, message = "Вік не повинен перевищувати 15 символів")
     private String animalAge;
     @Column(columnDefinition = "VARCHAR(255)")
-    @NotEmpty(message = "animalSex не може бути порожнім")
-    @Size(max = 15, message = "animalSex не повинен перевищувати 15 символів")
+    @NotEmpty(message = "Стать не може бути порожнім")
+    @Size(max = 15, message = "Стать не повинен перевищувати 15 символів")
     private String animalSex;
     @Column(columnDefinition = "VARCHAR(255)")
-    @NotEmpty(message = "animalSize не може бути порожнім")
-    @Size(max = 15, message = "animalSize не повинен перевищувати 15 символів")
+    @NotEmpty(message = "Розмір не може бути порожнім")
+    @Size(max = 15, message = "Розмір не повинен перевищувати 15 символів")
     private String animalSize;
-
 //    @JsonBackReference
 //    @ManyToOne
 //    @JoinColumn(name = "user_id", nullable = false)
 //    private User user;
-
-
-    public AdoptForm(String firstName, String lastName, String email, String contactNumber, String experience,String typeOfAnimal, String animalName, String animalAge, String animalSex, String animalSize) {
+    public WardForm(String firstName, String lastName, String email, String contactNumber, String experience, String typeOfAnimal, String animalName, String animalAge, String animalSex, String animalSize) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -75,18 +70,19 @@ public class AdoptForm {
         this.animalAge = animalAge;
         this.animalSex = animalSex;
         this.animalSize = animalSize;
+//        this.user=user;
+    }
+    public WardForm() {
+
     }
 
-    public AdoptForm() {
 
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -121,13 +117,13 @@ public class AdoptForm {
         this.contactNumber = contactNumber;
     }
 
-//    public Shelter getShelter() {
-//        return shelter;
-//    }
-//
-//    public void setShelter(Shelter shelter) {
-//        this.shelter = shelter;
-//    }
+    public String getExperience() {
+        return experience;
+    }
+
+    public void setExperience(String experience) {
+        this.experience = experience;
+    }
 
     public String getTypeOfAnimal() {
         return typeOfAnimal;
@@ -135,14 +131,6 @@ public class AdoptForm {
 
     public void setTypeOfAnimal(String typeOfAnimal) {
         this.typeOfAnimal = typeOfAnimal;
-    }
-
-    public String getExperience() {
-        return experience;
-    }
-
-    public void setExperience(String experience) {
-        this.experience = experience;
     }
 
     public String getAnimalName() {
@@ -177,5 +165,11 @@ public class AdoptForm {
         this.animalSize = animalSize;
     }
 
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 }
-

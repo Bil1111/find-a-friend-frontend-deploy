@@ -53,7 +53,6 @@ public class Animal {
     @NotNull(message = "Shelter Phone Number is required")
     private String shelterPhoneNumber;
 
-
     @JsonBackReference
     @ManyToOne // Вказуємо, що багато тварин можуть бути у одного притулку
     @JoinColumn(name = "shelter_id", nullable = false) // Зазначаємо, що поле shelter_id в базі даних
@@ -157,10 +156,4 @@ public class Animal {
     public void setShelterPhoneNumber(String shelterPhoneNumber) {
         this.shelterPhoneNumber = shelterPhoneNumber;
     }
-
-    public void setImageUrl(String s) {
-    }
-
-    
-    
 }

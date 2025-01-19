@@ -78,7 +78,10 @@ export class ForAllShelterComponent implements OnInit {
       .subscribe(
         response => {
           this.shelter = response;
-          this.animals = response.animals || [];
+          this.animals = response.animals.map((animal: any) =>({
+            ...animal,
+               imageURL: `http://localhost:8080/images/${animal.id}.png`
+          })) || [];
           this.filteredAnimals = [...this.animals];
           this.totalPages = response.totalPages; // Ensure your API returns totalPages
         },

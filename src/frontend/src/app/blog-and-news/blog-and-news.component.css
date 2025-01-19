@@ -23,6 +23,23 @@ body{
 }
 
 
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff8e04;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 100px;
+  cursor: pointer;
+  display: none; 
+  z-index: 1000;
+  font-size: xx-large;
+}
+.scroll-to-top.show {
+  display: block;
+}
 .Blog h2{
  margin-bottom: 20px;
  /* background: rgba(0, 0, 0, 0.1);
@@ -137,7 +154,15 @@ body{
     height: 120px;
      
   }
-
+@media (min-width: 320px) and (max-width: 1440px) {
+  .paw, .paw1{ display: none;}
+}
+@media (min-width: 320px) and (max-width: 1024px) {
+  .paw2, .paw3{display: none;}
+}
+@media (min-width: 320px) and (max-width: 425px) {
+  .paw2, .paw3{display: none;}
+}
   /* .Blog h1{
   background: rgba(0, 0, 0, 0.1);
   border-radius: 15px;

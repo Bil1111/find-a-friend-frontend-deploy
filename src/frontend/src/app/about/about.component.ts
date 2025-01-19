@@ -13,8 +13,6 @@ onWindowScroll() {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
   this.isScrollToTopVisible = scrollTop > 300;
 }
-
-
   scrollToTop(){
     window.scrollTo({
       top:0,

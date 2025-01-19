@@ -1,93 +1,146 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <title>Document</title> -->
-
-</head>
-<body>
+<button class="scroll-to-top" (click)="scrollToTop()"  [class.show]="isScrollToTopVisible">↑</button>
 <div class="animals-container">
-  <h2>Тваринки</h2>
+      <h2>Тваринки</h2>
   <div class="animal-cards">
-    <div *ngFor="let animal of animals"
+
+    <div class="sidebar" >
+      <div class="filter-group">
+          <label>Тип тварини</label>
+          <button [ngClass]="{'active': activeFilters['type'].length === 0 || activeFilters['type'].includes('')}" (click)="toggleFilter('type', '')">Усі</button>
+          <button [ngClass]="{'active': activeFilters['type'].includes('dog')}" (click)="toggleFilter('type','dog')">Песики</button>
+          <button [ngClass]="{'active': activeFilters['type'].includes('cat')}"(click)="toggleFilter('type','cat')">Котики</button>
+          <button [ngClass]="{'active': activeFilters['type'].includes('rabbit')}"(click)="toggleFilter('type','rabbit')">Кролик</button>
+      </div>
+      <div class="filter-group">
+          <label>Стать</label>
+          <button  [ngClass]="{'active': activeFilters['sex'].length === 0 || activeFilters['sex'].includes('')}"(click)="toggleFilter('sex','')">Усі</button>
+          <button [ngClass]="{'active' : activeFilters['sex'].includes('Хлопчик')}" (click)="toggleFilter('sex','Хлопчик')">Хлопчик</button>
+          <button [ngClass]="{'active' : activeFilters['sex'].includes('Дівчинка')}" (click)="toggleFilter('sex','Дівчинка')">Дівчинка</button>
+      </div>
+      <div class="filter-group">
+          <label>Вік</label>
+          <button [ngClass]="{'active': activeFilters['age'].length === 0 || activeFilters['age'].includes('')}" (click)="toggleFilter('age','')">Усі</button>
+          <button [ngClass]="{'active' : activeFilters['age'].includes(1)}" (click)="toggleFilter('age',1)"> до 1р.</button>
+          <button [ngClass]="{'active' : activeFilters['age'].includes(2)}" (click)="toggleFilter('age',2)"> 1-2р.</button>
+          <button [ngClass]="{'active' : activeFilters['age'].includes(3)}" (click)="toggleFilter('age',3)"> 2-5р.</button>
+          <button [ngClass]="{'active' : activeFilters['age'].includes(4)}" (click)="toggleFilter('age',4)"> старше 5р.</button>
+      </div>
+      <div class="filter-group">
+        <label>Місто</label>
+        <button [ngClass]="{'active': activeFilters['city'].length === 0 || activeFilters['city'].includes('')}" (click)="toggleFilter('city','')">Усі</button>
+        <button [ngClass]="{'active' : activeFilters['city'].includes('Дніпро')}" (click)="toggleFilter('city','Дніпро')">Дніпро</button>
+        <button [ngClass]="{'active' : activeFilters['city'].includes('Вінниця')}" (click)="toggleFilter('city','Вінниця')">Вінниця</button>
+        <button [ngClass]="{'active' : activeFilters['city'].includes('Київ')}" (click)="toggleFilter('city','Київ')">Київ</button>
+        <button [ngClass]="{'active' : activeFilters['city'].includes('Одеса')}" (click)="toggleFilter('city','Одеса')">Одеса</button>
+        <button [ngClass]="{'active' : activeFilters['city'].includes('Львів')}" (click)="toggleFilter('city','Львів')">Львів</button>
+    </div>
+      <div class="filter-groupOther">
+          <label>Інше</label>
+          <button [ngClass]="{'active' :activeFilters['vakcin'].includes('Вакцинована') }" (click)="toggleFilter('vakcin','Вакцинована')" class="V">Вакцинована</button>
+          <button [ngClass]="{'active' :activeFilters['steril'].includes('Стерелізована') }" (click)="toggleFilter('steril','Стерелізована')" class="S">Стерелізована</button>
+          <button [ngClass]="{'active' :activeFilters['need_help'].includes('Потребує особливого догляду') }" (click)="toggleFilter('need_help','Потребує особливого догляду')" class="P">Потребує особливого догляду</button>
+      </div>
+
+  </div>
+
+    <div *ngFor="let animal of animals "
          class="animal-card"
-         [ngStyle]="{'background-color': animal.sex === 'Хлопчик' ? '#ADD8E6' : '#FFB6C1'}"
-         (click)="selectAnimal(animal)">
+         [ngStyle]="{'background-color': '#dedede'}">
       <img [src]="animal.imageURL" alt="{{ animal.name }}" />
-      <h3>{{ animal.name }}</h3>
-      <p>Місто: {{ animal.city }}</p>
-      <p>Телефон: {{ animal.shelterPhoneNumber }}</p>
+       <h3>{{ animal.name }}</h3>
+      <div class="info_about_pet">
+         <p>{{animal.sex}}</p>
+         <div class="circle"></div>
+         <p>{{animal.age}} роки</p>
+      </div>
+      <div class="info_about_pet">
+          <p>Потребує особливого догляду</p>
+      </div>
+
+      <div class="info_about_pet">
+          <p>Вакцинована</p>
+          <div class="circle"></div>
+          <p>Стерелізована</p>
+
+       </div>
+       <div class="buttonn" (click)="selectAnimal(animal)">
+         <svg width="50" height="50" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="18" r="18" fill="#FF9000"/>
+        <path d="M13 26.1375L24.3922 18" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        <path d="M13 10L24.5617 17.8947" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        </svg></div>
     </div>
   </div>
 
-  <div class="pagination">
+ <div class="pagination">
     <button (click)="previousPage()" [disabled]="currentPage === 1" class="previous">Назад</button>
     <span>Сторінка {{ currentPage }} з {{ totalPages }}</span>
     <button (click)="nextPage()" [disabled]="currentPage === totalPages"  class="next">Вперед</button>
   </div>
 </div>
-
-
-<!-- Модальне вікно для детальної інформації про тварину -->
-<div *ngIf="selectedAnimal" class="modal">
-  <div class="modal-content">
-    <span (click)="closeModal()" class="close-button">&times;</span>
-    <img [src]="selectedAnimal.imageURL" alt="{{ selectedAnimal.name }}" />
-    <div class="info">
-      <h2><strong>{{ selectedAnimal.name }}</strong></h2>
+<!-- *ngFor="let shelter of shelters" -->
+  <!-- Модальне вікно для детальної інформації про тварину -->
+  <div *ngIf="selectedAnimal" class="modal">
+    <div class="modal-content">
+      <span (click)="closeModal()" class="close-button">&times;</span>
+      <img [src]="selectedAnimal.imageURL" alt="{{ selectedAnimal.name }}" />
+      <div class="info" >
+         <h2><strong>{{ selectedAnimal.name }}</strong></h2>
       <p><strong>Тип: </strong> {{ selectedAnimal.sex }}</p>
       <p><strong>Вік: </strong>{{ selectedAnimal.age }} років</p>
       <p><strong>Розмір: </strong> {{ selectedAnimal.size }}</p>
       <p><strong>Опис: </strong> {{ selectedAnimal.description }}</p>
       <p><strong>Місто: </strong> {{ selectedAnimal.city }}</p>
-      <p><strong>Назва притулку: </strong></p>
+      <p><strong>Назва притулку: </strong>{{ selectedAnimal.shelterName }}</p>
     </div>
 
-    <div class="buttonForAdoptAndWard">
-      <button (click)="openWardForm()" class="Adoptbtn">Взяти під опіку</button>
-      <button (click)="openAdoptForm()" class="Wardbtn">Усиновити</button>
-    </div>
+      <div class="buttonForAdoptAndWard">
+        <button (click)="openWardForm()" class="Adoptbtn">Взяти під опіку</button>
+         <button (click)="openAdoptForm()" class="Wardbtn">Усиновити</button>
+      </div>
 
+    </div>
   </div>
-</div>
 
 <div *ngIf="isAdoptFormOpen" class="modalAdopt">
-  <div class="adopt-content">
-    <span (click)="closeAdoptForm()" class="close-button1">&times;</span>
-    <h1>Форма заявки на усиновлення тварини</h1>
+<div class="adopt-content">
+  <span (click)="closeAdoptForm()" class="close-button1">&times;</span>
+  <h1>Форма заявки на усиновлення тварини</h1>
 
-    <form (ngSubmit)="ModalAdopt()" class="adopt">
-      <label for="name">Ваше ім'я:</label>
-      <input type="text" id="firstName" [(ngModel)]="firstName" name="firstName" placeholder="Введіть ваше ім'я" required>
+  <form (ngSubmit)="ModalAdopt()" class="adopt">
+    <label for="name">Ваше ім'я:</label>
+    <input type="text" id="firstName" [(ngModel)]="firstName" name="firstName" placeholder="Введіть ваше ім'я" required>
 
-      <label for="surname">Ваше прізвище:</label>
-      <input type="text" id="lastName"[(ngModel)]="lastName" name="lastName" placeholder="Введіть ваше прізвище" required>
+    <label for="surname">Ваше прізвище:</label>
+    <input type="text" id="lastName"[(ngModel)]="lastName" name="lastName" placeholder="Введіть ваше прізвище" required>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Введіть ваш email" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Введіть ваш email" required>
 
-      <label for="phone">Телефон:</label>
-      <input type="tel" id="contactNumber" [(ngModel)]="contactNumber"  name="contactNumber" placeholder="Введіть ваш номер телефону" required>
+    <label for="phone">Телефон:</label>
+    <input type="tel" id="contactNumber" [(ngModel)]="contactNumber"  name="contactNumber" placeholder="Введіть ваш номер телефону" required>
 
 
-      <label for="exp">Чи маєте досвід догляду за тваринами?</label>
-      <select id="experience" [(ngModel)]="experience" name="experience" required>
-        <option value="">Маєте досвід догляду за тваринами?</option>
-        <option value="yes">Так</option>
-        <option value="no">Ні</option>
-      </select>
+    <label for="exp">Чи маєте досвід догляду за тваринами?</label>
+    <select id="experience" [(ngModel)]="experience" name="experience" required>
+      <option value="">Маєте досвід догляду за тваринами?</option>
+      <option value="yes">Так</option>
+      <option value="no">Ні</option>
+    </select>
 
-      <input type="hidden" [(ngModel)]="animalName" name="animalName" >
-      <input type="hidden" [(ngModel)]="animalAge" name="animalAge" >
-      <input type="hidden" [(ngModel)]="animalSex" name="animalSex" >
-      <input type="hidden" [(ngModel)]="animalSize" name="animalSize" >
-      <input type="hidden" [(ngModel)]="typeOfAnimal" name="typeOfAnimal" >
+    <input type="hidden" [(ngModel)]="animalName" name="animalName" >
+    <input type="hidden" [(ngModel)]="animalAge" name="animalAge" >
+    <input type="hidden" [(ngModel)]="animalSex" name="animalSex" >
+    <input type="hidden" [(ngModel)]="animalSize" name="animalSize" >
+    <input type="hidden" [(ngModel)]="typeOfAnimal" name="typeOfAnimal" >
+      <input type="hidden" [(ngModel)]="Shelter" name="shelter" [value]="isAdoptFormOpen.shelter">
+      <input type="hidden" [(ngModel)]="City" name="City" [value]="isAdoptFormOpen.city">
 
-      <button type="submit">Надіслати заявку</button>
-    </form>
 
-  </div>
+    <button type="submit">Надіслати заявку</button>
+ </form>
+
+</div>
 </div>
 
 
@@ -122,13 +175,12 @@
       <input type="hidden" [(ngModel)]="animalSex" name="animalSex" >
       <input type="hidden" [(ngModel)]="animalSize" name="animalSize" >
       <input type="hidden" [(ngModel)]="typeOfAnimal" name="typeOfAnimal" >
+        <input type="hidden" [(ngModel)]="Shelter" name="shelter" [value]="isWardFormOpen.shelter">
+        <input type="hidden" [(ngModel)]="City" name="City" [value]="isAdoptFormOpen.city">
 
 
       <button type="submit">Надіслати заявку</button>
-    </form>
+   </form>
 
   </div>
-</div>
-
-</body>
-</html>
+  </div>

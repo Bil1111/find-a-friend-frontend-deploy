@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-for-all-shelter',
@@ -7,17 +7,36 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './for-all-shelter.component.css'
 })
 export class ForAllShelterComponent implements OnInit {
-  shelter: any = {}; // Об'єкт шелтера, включає тварин
+  shelter: any = {};
   animals: any[] = [];
-  filteredAnimals: any[] = [];
-  // ShelterAnimals: any[] = [];
+  filteredAnimals: any[] = []; 
+  // SheletrAnimals: any[] = []; 
   currentPage: number = 1;
   totalPages: number = 0;
   itemsPerPage: number = 10;
+  
   selectedAnimal: any = null; // Для зберігання вибраної тварини
   isAdoptFormOpen: any = null;
   isWardFormOpen: any = null;
+  // shelterName: string = ''; 
+ 
+  // Це зміннІ, яку буде використовувати [(ngModel)]
+  //КОРИСТУВАЧ
+  // name: string = '';
+  // surname: string = '';
+  // email: string = '';
+  // phone: string = '';
+  // exp: string ='';
+  // //ТВАРИНКА
+  // namePet: string ='';
+  // AgePet: string ='';
+  // SexPet: string ='';
+  // SizePet: string ='';
+  // TypePet: string ='';
+  // shelter: string= '';
+  // City: string ='';
 
+  
   // Це зміннІ, яку буде використовувати [(ngModel)]
   //КОРИСТУВАЧ
   firstName: string = '';
@@ -36,22 +55,24 @@ export class ForAllShelterComponent implements OnInit {
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
   shelter_Name: string = '';
- shelter_ID: number = 0;
+  shelter_ID: number = 0;
 
   ngOnInit() {
+    
+      // Отримання значення `shelterName` із параметрів маршруту
       this.route.queryParams.subscribe(params => {
         this.shelter_Name = params['shelterName'];
         this.shelter_ID = +params['shelterId'];
         this.fetchShelterData(this.shelter_ID);
       });
-
+    
   }
 
   // filterAnimals(shelter: number){
   //   this.SheletrAnimals = this.allAnimals.filter(animal => animal.id === shelter);
   // }
 
-  // &limit=${this.itemsPerPage}
+  // &limit=${this.itemsPerPage}?start=${startId}
   fetchShelterData(shelterID: number) {
     this.http.get<any>(`http://localhost:8080/api/shelters/${this.shelter_ID}?page=${this.currentPage}&limit=${this.itemsPerPage}`)
       .subscribe(
@@ -64,9 +85,7 @@ export class ForAllShelterComponent implements OnInit {
         error => console.error('Error fetching shelter data:', error)
       );
   }
-
-
-
+ 
 
   nextPage() {
     if (this.currentPage < this.totalPages) {
@@ -91,11 +110,6 @@ export class ForAllShelterComponent implements OnInit {
 
  openAdoptForm(){
     this.isAdoptFormOpen = this.selectedAnimal;
-   this.animalName = this.selectedAnimal.name || 'empty';
-   this.animalAge = this.selectedAnimal.age || 'empty';
-   this.animalSex = this.selectedAnimal.sex || 'empty';
-   this.animalSize = this.selectedAnimal.size || 'empty';
-   this.typeOfAnimal = this.selectedAnimal.type || 'empty';
   }
 
  openWardForm(){
@@ -112,7 +126,7 @@ export class ForAllShelterComponent implements OnInit {
   // Метод для закриття модального вікна
   closeModal() {
     this.selectedAnimal = null; // Скидаємо вибрану тварину
-
+ 
   }
   closeAdoptForm(){
     this.isAdoptFormOpen = null;
@@ -136,7 +150,7 @@ export class ForAllShelterComponent implements OnInit {
     const filterArray = this.activeFilters[filterType]; // Це масив, в якому зберігаються значення для вибраного фільтра.
     const index = filterArray.indexOf(value);
     if(value === '' || 0){ this.activeFilters[filterType] = [];}
-
+    
     if (index > -1) {
       filterArray.splice(index, 1);// видаляє за допомогою методу splice.
     } else {
@@ -151,10 +165,10 @@ export class ForAllShelterComponent implements OnInit {
         this.isMatchingFilter(animal, 'type', this.activeFilters.type) &&
         this.isMatchingFilter(animal, 'sex', this.activeFilters.sex) &&
         this.isMatchingFilter(animal, 'age', this.activeFilters.age) &&
-        this.isMatchingFilter(animal, 'city', this.activeFilters.city) &&
-        this.isMatchingFilter(animal, 'vakcin', this.activeFilters.vakcin) &&
-        this.isMatchingFilter(animal, 'steril', this.activeFilters.steril) &&
-        this.isMatchingFilter(animal, 'need_help', this.activeFilters.need_help)
+        this.isMatchingFilter(animal, 'city', this.activeFilters.city) && 
+        this.isMatchingFilter(animal, 'vakcin', this.activeFilters.vakcin) && 
+        this.isMatchingFilter(animal, 'steril', this.activeFilters.steril) && 
+        this.isMatchingFilter(animal, 'need_help', this.activeFilters.need_help) 
       );
     });
   }
@@ -163,7 +177,7 @@ export class ForAllShelterComponent implements OnInit {
     if (activeValues.length === 0 || activeValues.includes('')) {
       return true; // Якщо фільтр не активний, всі значення проходять
     }
-    // if (filterType === 'type' && activeValues.includes('') || filterType === 'sex' && activeValues.includes('')
+    // if (filterType === 'type' && activeValues.includes('') || filterType === 'sex' && activeValues.includes('') 
     //    || filterType === 'age' && activeValues.includes(0) || filterType === 'city' && activeValues.includes('')) {
     //   return true; // Вік "Усі" повинен проходити
     // }
@@ -175,54 +189,17 @@ export class ForAllShelterComponent implements OnInit {
         3: (age) => age >= 2 && age <= 5,
         4: (age) => age > 5,
       };
-
+  
       return activeValues.some(value => ageRanges[value]?.(animal.age));
     }
-
+    
     return activeValues.includes(animal[filterType]);
   }
 
 
  // ФОРМА ДЛЯ УСИНОВЛЕННЯ
   ModalAdopt(){
-    const AdoptData= {
-      firstName: this.firstName,
-      lastName: this.lastName,
-      email: this.email,
-      contactNumber: this.contactNumber,
-      experience: this.experience,
-      typeOfAnimal: this.typeOfAnimal,
 
-      animalName: this.animalName,
-      animalAge: this.animalAge,
-      animalSex: this.animalSex,
-      animalSize: this.animalSize,
-    };
-    // const token = localStorage.getItem('token');
-    //
-    // // Перевіряємо, чи є токен
-    // if (!token) {
-    //   console.error('Token not found');
-    //   return;
-    // }
-    //
-    // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-    this.http.post('http://localhost:8080/api/forms/adopt', AdoptData).subscribe({
-      next: (response) => {
-        this.successMessage = 'Форма успішно відправлена!';
-        this.errorMessage = null;
-        console.log('Форма успішно відправлена', response);
-        this.clearForm();
-        this.clearMessagesAfterDelay();
-      },
-      error: (error) => {
-        this.errorMessage = 'Сталася помилка під час відправлення форми.';
-        this.successMessage = null;
-        console.error('Сталася помилка', error);
-        this.clearMessagesAfterDelay();
-      }
-    });
   }
 
    // ФОРМА ДЛЯ ОПІКИ
@@ -240,15 +217,6 @@ export class ForAllShelterComponent implements OnInit {
       animalSex: this.animalSex,
       animalSize: this.animalSize,
     };
-     // const token = localStorage.getItem('token');
-     //
-     // // Перевіряємо, чи є токен
-     // if (!token) {
-     //   console.error('Token not found');
-     //   return;
-     // }
-     //
-     // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     this.http.post('http://localhost:8080/api/forms/ward', WardData).subscribe({
       next: (response) => {
@@ -266,7 +234,7 @@ export class ForAllShelterComponent implements OnInit {
       }
     });
   }
-
+  
  clearForm() {
    this.firstName = '';
    this.lastName = '';
@@ -282,5 +250,5 @@ export class ForAllShelterComponent implements OnInit {
      this.successMessage = null;
    }, 5000); // Повідомлення зникне через 5 секунд
    }
-
+ 
 }

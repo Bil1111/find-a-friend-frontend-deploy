@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-blog-and-news',
@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class BlogAndNewsComponent {
 
+  isScrollToTopVisible: boolean = false;
+  @HostListener('window:scroll',[])
+  onWindowScroll() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    this.isScrollToTopVisible = scrollTop > 300;
+  }
+    scrollToTop(){window.scrollTo({top:0,});}
 }

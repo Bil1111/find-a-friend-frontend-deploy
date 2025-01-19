@@ -1,4 +1,3 @@
-
 body {
     font-family: 'e-ukr';
     margin: 0;
@@ -6,9 +5,7 @@ body {
     display: flexbox;
     background-color: #f9f9f9;
 }
-.Id_shelter{
-  display: none;
-}
+.Id_shelter{display: none;}
 .Name_shelter{
   display: flex;
   justify-content: center;
@@ -17,17 +14,15 @@ body {
 }
 .animal-card .buttonn{
   position: absolute; /* Абсолютна позиція відносно animal-card */
-  bottom: 10px;
-  right: 10px;
+  bottom: 10px; 
+  right: 10px; 
   width: 50px;
   height: 50px;
   color: #f9f9f9;
   background-color: #fc8f00;
   border-radius: 100%;
-
-
 }
-/* .animal-card .buttonn:hover{
+/* .animal-card .buttonn:hover{   
     background-color: #e38100;
 } */
 .buttonn{
@@ -52,13 +47,13 @@ body {
     box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     overflow-y: scroll;
-
+    
 }
 
 .sidebar .filter-group,
 .sidebar .filter-groupOther {
     margin-bottom: 10px;
-}
+} 
 .sidebar .filter-group label,
 .filter-groupOther label {
     display: block;
@@ -79,8 +74,8 @@ body {
     font-size: 15px;
     transition: all 0.3s ease-in-out;
     margin-right: 7px;
-
-
+   
+  
 }
 
 .sidebar .filter-group button:hover,
@@ -102,7 +97,7 @@ body {
 /* .V{max-width: 140px;}    .S{ max-width: 146px;}   .P{max-width: 273px;} */
 
 /* /////////////////////////////////////////////////////////////////////////////////////// */
-.animals-container  .animal-cards{margin: auto 170px;}
+.animals-container  .animal-cards{margin: auto 100px; display:flex;justify-content: center; margin-bottom: 10px;}  
 /* .animals-container {margin-top: 100px;} */
 
   .animals-container h2 {
@@ -111,38 +106,34 @@ body {
    margin-bottom: 35px;
   }
   .animals-container .pagination { margin: 25px auto;}
-
+    
   .animal-cards {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-auto-rows: minmax(500px, auto);
-    gap: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
   }
-
+  
   .animal-card {
-
-    position: relative;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    border-radius: 20px;
-
+    width: 359px; /* Ширина картки */
+    /* padding: 10px; */
+    border-radius: 8px;
+    cursor: pointer;
     transition: transform 0.2s;
-
-
+    overflow: hidden; /* Сховати все, що виходить за рамки картки */
+    position: relative; /* Для позиціонування зображення */
   }
-.animal-card:nth-child(2){ grid-column: 2;}
-.animal-card:nth-child(3){grid-column: 3;}
+  
 
   .animal-card img {
-    width: 100%;
-    height: 370px;
-    object-fit: cover;
+    width: 100%; 
+    height: 370px; 
+    object-fit: cover; 
   }
 
   .animal-card h3 { margin-left: 5px; margin-top: 5px; }
-
+  
     .animal-card .info_about_pet {
-      display: flex;
+      display: flex; 
       gap: 10px;
       font-family: 'e-ukrL';
       font-size: 16px;
@@ -158,7 +149,7 @@ body {
     justify-content: space-evenly;
     align-items: center;
     width: 25%;
-
+    
   }
   .previous, .next {margin-top: 13px;}
   .info{
@@ -178,7 +169,7 @@ body {
     z-index: 2;
     backdrop-filter: blur(10px);
   }
-
+  
   .modal-content {
     position: relative;
     background-color: white;
@@ -212,15 +203,15 @@ body {
   .close-button2:hover {
     background-color: #ccccccb4;
   }
-
+  
   .buttonForAdoptAndWard {
    display: flex;
    justify-content: space-evenly;
    align-items: center;
    border-radius: 10px;
-
+   
   }
-
+  
   .modalAdopt{
     position: fixed;
     top: 0;
@@ -234,23 +225,23 @@ body {
     z-index: 3;
   }
   .adopt-content h1{
-
+    
     text-align: center;
-    line-height: 1.5cm;
+    line-height: 1.5cm;   
   }
   .adopt-content{
     position: relative;
     background: #fff;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 8px; 
     text-align: start;
   }
   .adopt{
     display: flex;
     flex-direction: column;
-
+    
   }
-
+  
   .modalWard{
     position: fixed;
     top: 0;
@@ -268,7 +259,7 @@ body {
     margin-bottom: 10px;
     color: #ffffff;
     background-color: #fc8f00
-
+  
   }
   .Adoptbtn:hover,
   .Wardbtn:hover{
@@ -284,19 +275,19 @@ body {
   }
   .ward-content h1{
     text-align: center;
-    line-height: 1.5cm;
+    line-height: 1.5cm;   
   }
-
+  
   .ward{
     display: flex;
     flex-direction: column;
   }
-
+  
   label {
       margin-bottom: 8px;
       font-weight: bold;
   }
-
+  
   input, select,  button {
       margin-bottom: 15px;
       padding: 10px;
@@ -307,12 +298,109 @@ body {
   button{
       color: #ffffff;
       background-color: #fc8f00
-
-
+      
+      
   }
   button:hover{
       background-color: #d97b00;
       transition: 0.2s ease-in-out;
-
+      
   }
 
+  
+
+@media (max-width: 1150px) {
+  .animals-container .pagination { margin: 25px auto;}
+  .pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 37%; 
+  }
+.close-button2{height: 45px; width: 45px; position: absolute; right: -10px; top: -10px;}
+.ward-content{ height: 95%; width: 95%; overflow-x:scroll; }
+.close-button1{height: 45px; width: 45px; position: absolute; right: 5px; top: 0px;}
+.adopt-content{ height: 95%; width: 95%; overflow-x:scroll;}
+}
+@media (min-width: 320px) and (max-width: 995px) {
+ 
+}
+
+
+@media (min-width: 768px) and (max-width: 995px) {
+  /* .animals-container  .animal-cards{margin: auto 0px;}   */
+  .animal-cards { gap: 40px; }
+  .animal-card { width: 340px; /* Ширина картки */}
+.animals-container  .animal-cards{margin: auto 60px;}  
+.sidebar {max-width: 100%; max-height: 500px;}
+/* .animals-container .pagination { margin: 25px auto;} */
+.pagination {width: 40%; }
+.animal-card .info_about_pet {display: flex;  gap: 10px;font-family: 'e-ukrL';   font-size: 14px;padding-left: 5px;line-height: 0.4cm;}
+.animal-card img {  height: 200px; }
+.animal-card .buttonn{bottom: 75px;  right: 10px; }
+}
+
+@media (max-width: 860px) {
+  .animal-cards { gap: 20px; }
+  .animal-card { width: 270px; /* Ширина картки */}
+.animals-container  .animal-cards{margin: auto 60px;}  
+.sidebar {max-width: 100%; max-height: 500px;}
+/* .animals-container .pagination { margin: 25px auto;} */
+.pagination {width: 40%; }
+.animal-card .info_about_pet {
+  display: flex; 
+  gap: 10px;
+  font-family: 'e-ukrL';  
+  font-size: 14px;
+  padding-left: 5px;
+  line-height: 0.4cm;
+}
+.animal-card img {  height: 200px; }
+.animal-card .buttonn{bottom: 75px;  right: 10px; }
+.close-button2{height: 45px; width: 45px; position: absolute; right: -10px; top: -10px;}
+.ward-content{ height: 85%; width: 95%; overflow-x:scroll;}
+.close-button1{height: 45px; width: 45px; position: absolute; right: 5px; top: 0px;}
+.adopt-content{ height: 85%; width: 95%; overflow-x:scroll;}
+}
+
+@media (max-width: 668px) {
+  .animal-cards { gap: 40px; }
+  .animal-card { width: 259px; /* Ширина картки */}
+  .pagination { width: 65%;}
+  .close-button,.close-button1,.close-button2{height: 45px; width: 45px; position: absolute; right: -20px; top: -20px;}
+}
+
+
+@media (max-width: 426px) {
+  .animals-container  .animal-cards{margin: auto 0px;}  
+  .animal-cards { gap: 40px; }
+  .animal-card { width: 259px; /* Ширина картки */}
+  .pagination { width: 100%;}
+  .sidebar { max-width: 100%;max-height: 320px; }
+  .close-button1{height: 45px; width: 45px; position: absolute; right: 5px; top: 0px;}
+  .adopt-content h1{line-height: 1.0cm;}
+  .adopt-content{ height: 95%; width: 95%; overflow-x:scroll;}
+  .adopt{display: flex;flex-direction: column;}
+
+  .close-button2{height: 45px; width: 45px; position: absolute; right: -10px; top: -10px;}
+  .ward-content{ height: 95%; width: 95%; overflow-x:scroll; }
+  .ward-content h1{line-height: 1.0cm;   }
+  .ward{ display: flex; flex-direction: column;}
+}
+
+
+@media (max-width: 375px) {
+  .animal-cards {gap: 40px; }
+  .animal-card {width: 259px; /* Ширина картки */}
+}
+
+
+@media (max-width: 320px) {
+  .animal-cards { gap: 40px; }
+  .animal-card { width: 259px; /* Ширина картки */}
+  .animal-card .info_about_pet { font-size: 11px; line-height: 0.2cm;}
+  .circle{width: 8px; height: 8px; margin-top: 0px;}
+  .animal-card .buttonn{bottom: 55px;  right: 10px; }
+  .animal-card .info_about_pet {gap: 6px;}
+}

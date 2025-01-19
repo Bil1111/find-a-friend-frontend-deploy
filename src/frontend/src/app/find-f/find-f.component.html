@@ -5,11 +5,11 @@
 
     <div class="sidebar" >
       <div class="filter-group">
-          <label>Тип тварини</label>
-          <button [ngClass]="{'active': activeFilters['type'].length === 0 || activeFilters['type'].includes('')}" (click)="toggleFilter('type', '')">Усі</button>
-          <button [ngClass]="{'active': activeFilters['type'].includes('dog')}" (click)="toggleFilter('type','dog')">Песики</button>
-          <button [ngClass]="{'active': activeFilters['type'].includes('cat')}"(click)="toggleFilter('type','cat')">Котики</button>
-          <button [ngClass]="{'active': activeFilters['type'].includes('rabbit')}"(click)="toggleFilter('type','rabbit')">Кролик</button>
+        <label>Тип тварини</label>
+        <button [ngClass]="{'active': activeFilters['type'].length === 0 || activeFilters['type'].includes('')}" (click)="toggleFilter('type', '')">Усі</button>
+        <button [ngClass]="{'active': activeFilters['type'].includes('Собака')}" (click)="toggleFilter('type','Собака')">Песики</button>
+        <button [ngClass]="{'active': activeFilters['type'].includes('Кіт')}" (click)="toggleFilter('type','Кіт')">Котики</button>
+        <button [ngClass]="{'active': activeFilters['type'].includes('Кролик')}" (click)="toggleFilter('type','Кролик')">Кролик</button>
       </div>
       <div class="filter-group">
           <label>Стать</label>
@@ -133,8 +133,6 @@
     <input type="hidden" [(ngModel)]="animalSex" name="animalSex" >
     <input type="hidden" [(ngModel)]="animalSize" name="animalSize" >
     <input type="hidden" [(ngModel)]="typeOfAnimal" name="typeOfAnimal" >
-      <input type="hidden" [(ngModel)]="Shelter" name="shelter" [value]="isAdoptFormOpen.shelter">
-      <input type="hidden" [(ngModel)]="City" name="City" [value]="isAdoptFormOpen.city">
 
 
     <button type="submit">Надіслати заявку</button>

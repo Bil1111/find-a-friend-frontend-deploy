@@ -27,35 +27,42 @@ public class AnimalService {
         animal.setSize(request.getSize());
         animal.setDescription(request.getDescription());
         animal.setShelter(shelter);
-        if(request.getSex() == 0){
+        if (request.getSex() == 0) {
             animal.setSex("Хлопчик");
         } else if (request.getSex() == 1) {
             animal.setSex("Дівчинка");
         }
         animal.setCity(shelter.getCity());
         animal.setShelterPhoneNumber(shelter.getContactNumber());
-
+        animal.setImageURL(request.getImageURL());
         animalRepository.save(animal);
 
     }
-    public void updateAnimalDetails(AnimalRequest request, Long animalId,Shelter shelter) {
+
+    public void updateAnimalDetails(AnimalRequest request, Long animalId, Shelter shelter) {
         Optional<Animal> animalOptional = animalRepository.findById(animalId);
 
         animalOptional.ifPresentOrElse(animal -> {
             if (StringUtils.isNotBlank(request.getName())) {
                 animal.setName(request.getName());
-            }if (StringUtils.isNotBlank(request.getType())) {
+            }
+            if (StringUtils.isNotBlank(request.getType())) {
                 animal.setName(request.getType());
-            }if (request.getAge() != null) {
+            }
+            if (request.getAge() != null) {
                 animal.setAge(request.getAge());
-            }if (StringUtils.isNotBlank(request.getSize())) {
+            }
+            if (StringUtils.isNotBlank(request.getSize())) {
                 animal.setSize(request.getSize());
-            }if (StringUtils.isNotBlank(request.getDescription())) {
+            }
+            if (StringUtils.isNotBlank(request.getDescription())) {
                 animal.setDescription(request.getDescription());
-            }if (request.getShelter() != null) {
+            }
+            if (request.getShelter() != null) {
                 animal.setShelter(shelter);
-            }if (request.getSex() != null) {
-                if(request.getSex() == 0){
+            }
+            if (request.getSex() != null) {
+                if (request.getSex() == 0) {
                     animal.setSex("Хлопчик");
                 } else if (request.getSex() == 1) {
                     animal.setSex("Дівчинка");

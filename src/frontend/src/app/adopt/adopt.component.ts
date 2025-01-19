@@ -12,11 +12,11 @@ export class AdoptComponent implements OnInit {
   email: string = '';
   contactNumber: string = '';
   shelter:  string = ''; //id притулку
-  Name_Animal: string ='';
   experience: string = '';
   errorMessage: string | null = null;
   successMessage: string | null = null;
 
+  animalName: string ='';
   animalAge: string = '';
   animalSex: string = '';
   animalSize: string = '';
@@ -82,6 +82,7 @@ export class AdoptComponent implements OnInit {
           this.animalSex = selectedAnimal.sex;
           this.animalSize = selectedAnimal.size;
           this.typeOfAnimal = selectedAnimal.type;
+          this.animalName=selectedAnimal.name;
         }
       }
 
@@ -91,7 +92,6 @@ export class AdoptComponent implements OnInit {
       lastName: this.lastName,
       email: this.email,
       contactNumber: this.contactNumber,
-      Name_Animal: this.Name_Animal,
       experience: this.experience,
       shelter: this.shelter,
 
@@ -99,6 +99,7 @@ export class AdoptComponent implements OnInit {
       animalSex: this.animalSex,
       animalSize: this.animalSize,
       typeOfAnimal: this.typeOfAnimal,
+      animalName: this.animalName
     };
 
     this.http.post('http://localhost:8080/api/forms/adopt', adoptData).subscribe({

@@ -156,10 +156,4 @@ public class Animal {
     public void setShelterPhoneNumber(String shelterPhoneNumber) {
         this.shelterPhoneNumber = shelterPhoneNumber;
     }
-
-    public void setImageUrl(String s) {
-    }
-
-    
-    
 }

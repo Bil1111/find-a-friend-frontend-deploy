@@ -46,7 +46,6 @@ export class FindFComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    // this.fetchAnimals(this.currentPage);
     this.fetchAllShelterAnimals(this.currentPage);
   }
 
@@ -118,8 +117,8 @@ export class FindFComponent implements OnInit {
     this.animalSex = this.selectedAnimal.sex || 'empty';
     this.animalSize = this.selectedAnimal.size || 'empty';
     this.typeOfAnimal = this.selectedAnimal.type || 'empty';
-         this.Shelter = this.selectedAnimal.shelterName || 'empty';
-         this.City = this.selectedAnimal.city || 'empty';
+    this.Shelter = this.selectedAnimal.shelterName || 'empty';
+    this.City = this.selectedAnimal.city || 'empty';
   }
 
  openWardForm(){
@@ -209,7 +208,44 @@ export class FindFComponent implements OnInit {
 
  // ФОРМА ДЛЯ УСИНОВЛЕННЯ
   ModalAdopt(){
+    const AdoptData= {
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
+      contactNumber: this.contactNumber,
+      experience: this.experience,
+      typeOfAnimal: this.typeOfAnimal,
 
+      animalName: this.animalName,
+      animalAge: this.animalAge,
+      animalSex: this.animalSex,
+      animalSize: this.animalSize,
+    };
+    // const token = localStorage.getItem('token');
+    //
+    // // Перевіряємо, чи є токен
+    // if (!token) {
+    //   console.error('Token not found');
+    //   return;
+    // }
+    //
+    // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    this.http.post('http://localhost:8080/api/forms/adopt', AdoptData).subscribe({
+      next: (response) => {
+        this.successMessage = 'Форма успішно відправлена!';
+        this.errorMessage = null;
+        console.log('Форма успішно відправлена', response);
+        this.clearForm();
+        this.clearMessagesAfterDelay();
+      },
+      error: (error) => {
+        this.errorMessage = 'Сталася помилка під час відправлення форми.';
+        this.successMessage = null;
+        console.error('Сталася помилка', error);
+        this.clearMessagesAfterDelay();
+      }
+    });
   }
 
    // ФОРМА ДЛЯ ОПІКИ

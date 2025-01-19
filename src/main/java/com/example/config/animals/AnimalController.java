@@ -16,10 +16,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/animals")
 public class AnimalController {
-
-    @Value("src/main/resources/images}")
-    private String uploadDir;
-
     @Autowired
     private AnimalService animalService;
 

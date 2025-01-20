@@ -56,15 +56,14 @@ public class AnimalController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping({"/next/{id}"})
-    public ResponseEntity<List<Animal>> getNextAnimal(@PathVariable("id") int id) {
-        try{
-            List<Animal> animals = animalService.getNextAnimals(id);
+    @GetMapping("/next/{startId}")
+    public ResponseEntity<List<Animal>> getNextAnimal(@PathVariable("startId") int startId) {
+        try {
+            List<Animal> animals = animalService.getNextAnimals(startId, 10);  // Запитуємо 10 елементів, починаючи з startId
             return new ResponseEntity<>(animals, HttpStatus.OK);
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
 }

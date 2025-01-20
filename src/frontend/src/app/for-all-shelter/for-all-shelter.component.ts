@@ -42,37 +42,65 @@ export class ForAllShelterComponent implements OnInit {
       this.route.queryParams.subscribe(params => {
         this.shelter_Name = params['shelterName'];
         this.shelter_ID = +params['shelterId'];
-        this.fetchShelterData(this.shelter_ID);
+        this.fetchShelterData(this.currentPage);
       });
 
   }
 
-  // filterAnimals(shelter: number){
-  //   this.SheletrAnimals = this.allAnimals.filter(animal => animal.id === shelter);
+  // fetchShelterData(shelterID: number) {
+  //   this.http.get<any>(`http://localhost:8080/api/shelters/${this.shelter_ID}`)
+  //     .subscribe(
+  //       response => {
+  //         this.shelter = response;
+  //         this.animals = response.animals || [];
+  //
+  //         // Генерація локального фото для кожної тварини
+  //         this.animals = this.animals.map(animal => {
+  //           // Якщо фото не надано, можна додати дефолтне фото або генерувати його за умовами
+  //           animal.imageURL = `http://localhost:8080/images/${animal.id}.png`
+  //           // Якщо потрібно додавати більше властивостей, ви можете це зробити тут
+  //           return animal;
+  //         });
+  //
+  //         this.filteredAnimals = [...this.animals];
+  //         this.totalPages = response.totalPages; // Ensure your API returns totalPages
+  //       },
+  //       error => console.error('Error fetching shelter data:', error)
+  //     );
   // }
 
-  // &limit=${this.itemsPerPage}?start=${startId}
-  fetchShelterData(shelterID: number) {
-    this.http.get<any>(`http://localhost:8080/api/shelters/${this.shelter_ID}?page=${this.currentPage}&limit=${this.itemsPerPage}`)
+  fetchShelterData(page: number) {
+    const startId = (page - 1) * this.itemsPerPage;
+
+    this.http.get<any[]>(`http://localhost:8080/api/shelters/${this.shelter_ID}/animals/next/${startId}`)
       .subscribe(
         response => {
-          this.shelter = response;
-          this.animals = response.animals || [];
+          this.animals = response || []; // Тепер відповідь — це список тварин
 
           // Генерація локального фото для кожної тварини
           this.animals = this.animals.map(animal => {
-            // Якщо фото не надано, можна додати дефолтне фото або генерувати його за умовами
-              animal.imageURL = `http://localhost:8080/images/${animal.id}.png`
-            // Якщо потрібно додавати більше властивостей, ви можете це зробити тут
+            animal.imageURL = `http://localhost:8080/images/${animal.id}.png`;
             return animal;
           });
 
           this.filteredAnimals = [...this.animals];
-          this.totalPages = response.totalPages; // Ensure your API returns totalPages
+
+          // Запит на отримання всіх тварин для обчислення загальної кількості сторінок
+          this.http.get<any[]>(`http://localhost:8080/api/shelters/${this.shelter_ID}/animals`)
+            .subscribe(
+              allAnimals => {
+                this.totalPages = Math.ceil(allAnimals.length / this.itemsPerPage); // Округлюємо до більшого
+                console.log('Total pages:', this.totalPages);
+              },
+              error => {
+                console.error('Error fetching all animals:', error);
+              }
+            );
         },
         error => console.error('Error fetching shelter data:', error)
       );
   }
+
 
 
   nextPage() {

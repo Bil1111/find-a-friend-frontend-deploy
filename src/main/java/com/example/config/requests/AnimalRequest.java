@@ -41,7 +41,7 @@ public class AnimalRequest {
         this.shelter = shelter;
         this.description = description;
         this.sex = sex;
-        this.imageURL=imageURL;
+        this.imageURL = imageURL;
     }
 
     // Геттери та сеттери

@@ -1,7 +1,6 @@
 package com.example.config.shelters;
 
 import com.example.config.animals.Animal;
-import com.example.config.requests.AnimalRequest;
 import com.example.config.requests.ShelterRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micrometer.common.util.StringUtils;
@@ -12,6 +11,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,6 +64,32 @@ public class ShelterService {
     public Optional<Shelter> getShelterById(Long id) {
         return shelterRepository.findById(id);
     }
+    public List<Animal> getShelterAnimalsById(Long id) {
+        Optional<Shelter> shelter = shelterRepository.findById(id);
+        if (shelter.isPresent()) {
+            return shelter.get().getAnimals();
+        } else {
+            return Collections.emptyList();  // Повертаємо порожній список, якщо притулок не знайдений
+        }
+    }
+
+    public List<Animal> getNextAnimals(Long id, int startId, int itemsPerPage) {
+        Optional<Shelter> shelterOptional = shelterRepository.findById(id);
+        if (shelterOptional.isEmpty()) {
+            return Collections.emptyList();  // Якщо притулок не знайдений
+        }
+
+        List<Animal> animals = shelterOptional.get().getAnimals();
+        List<Animal> nextAnimals = new ArrayList<>();
+        int endId = Math.min(startId + itemsPerPage, animals.size()); // Визначаємо кінець індексу
+
+        // Додаємо елементи між startId і endId
+        for (int i = startId; i < endId; i++) {
+            nextAnimals.add(animals.get(i));
+        }
+
+        return nextAnimals;
+    }
 
     public List<Shelter> getAllShelters() {
         return shelterRepository.findAll();
@@ -86,9 +113,6 @@ public class ShelterService {
             e.printStackTrace();
         }
     }
-
-
-
 
     public void deleteShelter(Long id) {
         if (shelterRepository.existsById(id)) {

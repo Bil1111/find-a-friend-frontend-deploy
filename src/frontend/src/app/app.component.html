@@ -1,5 +1,5 @@
 
-<header>
+<header *ngIf=" ShowHeader">
   <div class="LinkIcon">
     <a class="d-none d-lg-block " href="" >
      <img class="img" src="/Logo.svg" alt="FF_LOGO"/>
@@ -101,9 +101,9 @@
 </header>
 
 
-
-
 <router-outlet></router-outlet>
+
+
 
 <div class="map-container" *ngIf="isHomePage">
   <h1>Map Shelters</h1>

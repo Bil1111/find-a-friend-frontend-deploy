@@ -1,0 +1,52 @@
+<div class="all-items">
+
+    <div class="function">
+        <input class="search" type="search" placeholder="Пошук">
+        <button class="add">Додати притулок</button>
+        <button class="delete">Видалити</button>
+    </div>
+
+    <div class="table">
+        <table>
+            <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Назва</th>
+                <th>Місто</th>
+                <th>Адреса</th>
+                <th>Телефон</th>
+                <th>Кіл. Tварин</th>
+            </tr>
+            <tr *ngFor="let shelters of Shelters">
+                <button class="edit" (click)="selectShelter(shelters)"></button>
+                <td>{{shelters.id}}</td>
+                <td>{{shelters.name}}</td>
+                <td>{{shelters.city}}</td>
+                <td>{{shelters.address}}</td>
+                <td>{{shelters.contactNumber}}</td>
+                <td>{{shelters.animals}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Модальне вікно для детальної інформації про притулок -->
+  <div *ngIf="selectedShelter" class="modal">
+    <div class="modal-content">
+      <span (click)="closeModal()" class="close-button">&times;</span>
+       
+             <h3>Редагування інформації про притулок</h3>
+        <label for="name">Ім'я:</label>
+        <input type="text" id="name" [(ngModel)]="name">
+        <label for="city">Місто:</label>
+        <input type="text" id="city" [(ngModel)]="city">
+        <label for="address">Адреса:</label>
+        <input type="text" id="address" [(ngModel)]="address">
+        <label for="contactNumber">Телефон</label>
+        <input type="text" id="contactNumber" [(ngModel)]="telephon">
+        <div>
+            <button class="confirm_edit" (click)="SendEditedShelter()">Внести зміни</button>
+        </div>
+      
+    </div>
+  </div>
+</div>

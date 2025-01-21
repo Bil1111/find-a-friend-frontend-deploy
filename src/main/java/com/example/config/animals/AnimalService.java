@@ -4,6 +4,9 @@ import com.example.config.requests.AnimalRequest;
 import com.example.config.shelters.Shelter;
 import io.micrometer.common.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -88,31 +91,18 @@ public class AnimalService {
         animalRepository.deleteById(id);
     }
 
-    public List<Animal> getNextAnimals(int index) {
+    public List<Animal> getNextAnimals(int startId, int itemsPerPage) {
         List<Animal> animals = new ArrayList<>();
-        animalRepository.findAll().forEach(animal -> animals.add(animal));
+        animalRepository.findAll().forEach(animals::add);  // Завантажуємо всі елементи з бази
 
         List<Animal> nextAnimals = new ArrayList<>();
-        if ((index + 10 < animals.size())) {
-            for (int i = index; i < index + 10; i++) {
-                nextAnimals.add(animals.get(i));
-            }
-            return nextAnimals;
-        } else {
-            try {
-                for (int i = index; i < index + 10; i++) {
-                    nextAnimals.add(animals.get(i));
-                }                                                   //TODO пофіксити затичку
-            } catch (Exception e) {
-                return nextAnimals;
-            }
-        }
-        if (!(index + 10 < animals.size())) {
-            for (int i = index; i < index + 10; i++) {
-                nextAnimals.add(animals.get(i));
-            }
+        int endId = Math.min(startId + itemsPerPage, animals.size()); // Визначаємо кінець індексу
 
+        // Додаємо елементи між startId і endId
+        for (int i = startId; i < endId; i++) {
+            nextAnimals.add(animals.get(i));
         }
+
         return nextAnimals;
     }
 }

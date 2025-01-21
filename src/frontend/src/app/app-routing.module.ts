@@ -13,7 +13,6 @@ import { ThignsComponent } from './thigns/thigns.component';
 import { ForAllShelterComponent } from './for-all-shelter/for-all-shelter.component';
 
 
-
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'find-f', component: FindFComponent },
@@ -26,6 +25,9 @@ const routes: Routes = [
   { path: 'gifthouse', component: GifthouseComponent },
   { path: 'thigns', component: ThignsComponent },
   { path: 'for-all-shelter', component: ForAllShelterComponent },
+
+  { path: 'admin', loadChildren: () => import('./Admin/admin.module').then((m) => m.AdminModule) },
+
   //{ path: '', redirectTo: '/about', pathMatch: 'full' }, // Опціонально, щоб перенаправити на нову сторінку за замовчуванням
 ];
 

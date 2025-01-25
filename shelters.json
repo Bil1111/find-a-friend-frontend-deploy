@@ -41,7 +41,8 @@
     "imageURL" : "",
     "city" : "Київ",
     "shelterPhoneNumber" : "+380 931 112 222"
-  } ]
+  } ],
+  "volunteerForms" : [ ]
 }, {
   "id" : 2,
   "name" : "Притулок №2",
@@ -85,7 +86,8 @@
     "imageURL" : "",
     "city" : "Львів",
     "shelterPhoneNumber" : "+380 932 223 333"
-  } ]
+  } ],
+  "volunteerForms" : [ ]
 }, {
   "id" : 3,
   "name" : "Притулок №3",
@@ -118,7 +120,8 @@
     "imageURL" : "",
     "city" : "Одеса",
     "shelterPhoneNumber" : "+380 933 334 444"
-  } ]
+  } ],
+  "volunteerForms" : [ ]
 }, {
   "id" : 4,
   "name" : "Притулок №4",
@@ -151,7 +154,8 @@
     "imageURL" : "",
     "city" : "Харків",
     "shelterPhoneNumber" : "+380 934 445 555"
-  } ]
+  } ],
+  "volunteerForms" : [ ]
 }, {
   "id" : 5,
   "name" : "Притулок №5",
@@ -184,5 +188,6 @@
     "imageURL" : "",
     "city" : "Дніпро",
     "shelterPhoneNumber" : "+380 935 556 666"
-  } ]
+  } ],
+  "volunteerForms" : [ ]
 } ]

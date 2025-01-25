@@ -1,5 +1,6 @@
 package com.example.config.requests;
 
+import com.example.config.shelters.Shelter;
 import jakarta.persistence.Column;
 
 import javax.validation.constraints.Email;
@@ -29,10 +30,12 @@ public class WardRequest {
     private String animalSex;
     @NotBlank(message = "Animal size is required")
     private String animalSize;
+    @NotBlank(message = "Shelter is required")
+    private Long shelter;
 //    @NotBlank(message = "User is required")
 //    private Long user;
 
-    public WardRequest(String firstName, String lastName, String email, String contactNumber, String experience, String typeOfAnimal, String animalName, String animalAge, String animalSex, String animalSize) {
+    public WardRequest(String firstName, String lastName, String email, String contactNumber, String experience, String typeOfAnimal, String animalName, String animalAge, String animalSex, String animalSize, Long shelter) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -43,6 +46,7 @@ public class WardRequest {
         this.animalAge = animalAge;
         this.animalSex = animalSex;
         this.animalSize = animalSize;
+        this.shelter = shelter;
    //     this.user=user;
     }
 
@@ -130,7 +134,14 @@ public class WardRequest {
         this.animalSize = animalSize;
     }
 
-//    public Long getUser() {
+    public Long getShelter() {
+        return shelter;
+    }
+
+    public void setShelter(Long shelter) {
+        this.shelter = shelter;
+    }
+    //    public Long getUser() {
 //        return user;
 //    }
 //

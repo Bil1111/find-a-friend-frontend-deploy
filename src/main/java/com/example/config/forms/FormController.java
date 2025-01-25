@@ -35,9 +35,6 @@ public class FormController {
     public ResponseEntity<String> volunteerForm(@RequestBody VolunteerRequest request) {
         Shelter shelter = shelterRepository.findById(request.getShelter())
                 .orElseThrow(() -> new RuntimeException("Shelter not found"));
-//        Long userId = jwtTokenProvider.getUserIdFromToken(token.substring(7));
-//        User user = userRepository.findById(userId)
-//                .orElseThrow(() -> new EntityNotFoundException("User not found"));
 
         formService.addVolunteerForm(request, shelter);
         return new ResponseEntity<>(HttpStatus.CREATED);
@@ -65,11 +62,9 @@ public class FormController {
 //   }
     @PostMapping("/adopt")
     public ResponseEntity<Map<String, String>> adoptForm(@RequestBody AdoptRequest request) {
-//        System.out.println("Received token: " + token);
-//        Long userId = jwtTokenProvider.getUserIdFromToken(token.substring(7)); // Витягуємо токен без "Bearer "
-//        User user = userRepository.findById(userId)
-//                .orElseThrow(() -> new EntityNotFoundException("User not found"));
-        formService.addAdoptForm(request);
+        Shelter shelter = shelterRepository.findById(request.getShelter())
+                .orElseThrow(() -> new RuntimeException("Shelter not found"));
+        formService.addAdoptForm(request,shelter);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -96,10 +91,9 @@ public class FormController {
 //    }
     @PostMapping("/ward")
     public ResponseEntity<Map<String, String>> wardForm(@RequestBody WardRequest request) {
-//        Long userId = jwtTokenProvider.getUserIdFromToken(token.substring(7));
-//        User user = userRepository.findById(userId)
-//                .orElseThrow(() -> new EntityNotFoundException("User not found"));
-        formService.addWardForm(request);
+        Shelter shelter = shelterRepository.findById(request.getShelter())
+                .orElseThrow(() -> new RuntimeException("Shelter not found"));
+        formService.addWardForm(request, shelter);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

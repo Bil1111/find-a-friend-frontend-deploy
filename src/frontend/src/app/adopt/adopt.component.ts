@@ -11,16 +11,16 @@ export class AdoptComponent implements OnInit {
   lastName: string = '';
   email: string = '';
   contactNumber: string = '';
-  shelter:  string = ''; //id притулку
   experience: string = '';
-  errorMessage: string | null = null;
-  successMessage: string | null = null;
-
+  shelter:  string = ''; //id притулку
+  typeOfAnimal: string = '';
   animalName: string ='';
   animalAge: string = '';
   animalSex: string = '';
   animalSize: string = '';
-  typeOfAnimal: string = '';
+ 
+  errorMessage: string | null = null;
+  successMessage: string | null = null;
 
   shelters: any[] = []; // Масив для зберігання всіх притулків
   // selectedShelter: any = null; // Для зберігання вибраного притулку
@@ -51,17 +51,17 @@ export class AdoptComponent implements OnInit {
 
 
  // Метод для отримання всіх тварин
-   fetchAnimals() {
-    this.http.get<any[]>(`http://localhost:8080/api/animals`).subscribe(
-      data => {
-        console.log('Received data:', data); // Додайте це логування
-        this.allAnimals = data.map(animal => {
-          return animal; });
-        this.animals = [...this.allAnimals]; // Ініціалізуємо тварин
-      },
-      error => {console.error('Error fetching animals:', error);}
-    );
-  }
+  //  fetchAnimals() {
+  //   this.http.get<any[]>(`http://localhost:8080/api/animals`).subscribe(
+  //     data => {
+  //       console.log('Received data:', data); // Додайте це логування
+  //       this.allAnimals = data.map(animal => {
+  //         return animal; });
+  //       this.animals = [...this.allAnimals]; // Ініціалізуємо тварин
+  //     },
+  //     error => {console.error('Error fetching animals:', error);}
+  //   );
+  // }
 
 
   // Метод для отримання всіх притулків
@@ -77,6 +77,7 @@ export class AdoptComponent implements OnInit {
 
       hidden_info_for_animals(selectedAnimalName: string){
         const selectedAnimal = this.animals.find(animal => animal.name === selectedAnimalName);
+
         if(selectedAnimal){
           this.animalAge = selectedAnimal.age;
           this.animalSex = selectedAnimal.sex;
@@ -92,21 +93,22 @@ export class AdoptComponent implements OnInit {
       lastName: this.lastName,
       email: this.email,
       contactNumber: this.contactNumber,
-      experience: this.experience,
-      shelter: this.shelter,
-
       animalAge: this.animalAge,
       animalSex: this.animalSex,
       animalSize: this.animalSize,
       typeOfAnimal: this.typeOfAnimal,
-      animalName: this.animalName
+      shelter: this.shelter,
+      animalName: this.animalName,
+      experience: this.experience
+    
     };
-
-    this.http.post('http://localhost:8080/api/forms/adopt', adoptData).subscribe({
+    console.log('Дані форми:', adoptData);
+    
+    this.http.post(`http://localhost:8080/api/forms/adopt`, adoptData).subscribe({
       next: (response) => {
         this.successMessage = 'Форма успішно відправлена!';
         this.errorMessage = null;
-        console.log('Форма успішно відправлена', response);
+        console.log(response);
         this.clearForm();
         this.clearMessagesAfterDelay();
       },

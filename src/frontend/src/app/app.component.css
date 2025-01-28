@@ -62,7 +62,9 @@ nav ul li a {
   font-size: 1.0rem;
 
 }
-
+nav ul li a.active {
+ border-bottom: solid;
+}
 nav ul li a:hover {
   color: #000000;
   transition: 0.2s ease-in-out;

@@ -30,7 +30,7 @@ export class FindFComponent implements OnInit {
   selectedAnimal: any = null; // Для зберігання вибраної тварини
   isAdoptFormOpen: any = null;
   isWardFormOpen: any = null;
-
+  shelter:  string = '';
   firstName: string = '';
   lastName: string = '';
   email: string = '';
@@ -160,10 +160,12 @@ export class FindFComponent implements OnInit {
 
   closeAdoptForm() {
     this.isAdoptFormOpen = null;
+    this.clearForm();
   }
 
   closeWardForm() {
     this.isWardFormOpen = null;
+    this.clearForm();
   }
 
   // Змінні для фільтрів
@@ -239,12 +241,13 @@ export class FindFComponent implements OnInit {
       contactNumber: this.contactNumber,
       experience: this.experience,
       typeOfAnimal: this.typeOfAnimal,
-
+      shelter: this.shelter,
       animalName: this.animalName,
       animalAge: this.animalAge,
       animalSex: this.animalSex,
       animalSize: this.animalSize,
     };
+    console.log('Дані форми:', AdoptData);
     // const token = localStorage.getItem('token');
     //
     // // Перевіряємо, чи є токен

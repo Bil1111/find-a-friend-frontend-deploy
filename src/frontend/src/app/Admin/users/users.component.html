@@ -1,0 +1,76 @@
+<div class="all-items">
+
+    <div class="function">
+        <button (click)="CleanSearchForm()" *ngIf="search_data_id.id || search_data_id.email 
+        || search_data_id.password || search_data_id.role">Очистити пошук</button>
+        <button class="search" (click)="OpenSearchForm()"> <img src="search.png" alt=""> Пошук</button>
+   
+    </div>
+
+    <div class="table">
+        <table>
+            <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Почта</th>
+                <th>Пароль</th>
+                <!-- <th>Токен</th> -->
+                <th>Роль</th>
+            </tr>
+            <tr  *ngFor="let user of Users | filterBy : search_data_id || search_user_email ||search_user_password||search_user_role" >
+                <button class="edit" (click)="selectUser(user)"><img src="image_admin_edit.png" alt=""></button>
+                <td>{{user.id}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.password}}</td>
+                <!-- <td>{{user.authToken}}</td> -->
+                <td>{{user.role}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+
+    <div *ngIf="selectedUser" class="modal">
+        <div class="modal-content">
+          <span (click)="closeModal()" class="close-button">&times;</span>
+            <!-- <input type="text" id="name" [(ngModel)]="id"> -->
+                 <h3>Редагування інформації про користувачів</h3>
+
+            <label for="email">Почта</label>
+            <input type="text" id="email" [(ngModel)]="email">
+
+            <label for="password">Пароль:</label>
+            <input type="text" id="password" [(ngModel)]="password">
+
+            <label for="role">Роль:</label>
+            <input type="text" id="role" [(ngModel)]="role">
+
+            <!-- <label for="auth_token">Токен</label>
+            <input type="text" id="auth_token" [(ngModel)]="auth_token"> -->
+            <div>
+                <button class="confirm_edit" (click)="SendEditedUser()">Внести зміни</button>
+            </div>
+          
+        </div>
+      </div>
+
+  <div *ngIf="searchInfo" class="modal_for_search">
+    <div class="modal-content">
+      <span (click)="closeSearch()" class="close-button1">&times;</span>
+
+         <label for="id">ID:</label>
+         <input type="text" [(ngModel)]="search_data_id.id" placeholder="">
+
+         <label for="name">Почта:</label>
+         <input type="text" [(ngModel)]="search_data_id.email" placeholder="">
+
+         <label for="password">Пароль:</label>
+         <input type="text" [(ngModel)]="search_data_id.password" placeholder="">
+
+         <label for="role">Роль:</label>
+         <input type="text" [(ngModel)]="search_data_id.role"  placeholder="">
+
+         <button (click)="closeSearch()">Знайти</button>
+    </div>
+  </div>
+</div>

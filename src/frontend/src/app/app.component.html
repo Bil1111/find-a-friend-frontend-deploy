@@ -34,22 +34,22 @@
     <ul class="navbar-nav">
 
       <div class="Descktop d-none d-lg-block">
-      <li class="nav-item "><a class="nav-link" routerLink='/find-f'>Знайти друга</a></li>
+      <li class="nav-item "><a class="nav-link" routerLink='/find-f'  routerLinkActive="active">Знайти друга</a></li>
       <li class="nav-item "><a class="nav-link" >Волонтерство</a>
         <div class="dropdown-content">
-          <a routerLink="/free-people" >Стати волонтером</a>
-          <a routerLink="/adopt">Усиновити тваринку</a>
-          <a routerLink="/thigns">Допомога</a>
+          <a routerLink="/free-people"  >Стати волонтером</a>
+          <a routerLink="/adopt"  >Усиновити тваринку</a>
+          <a routerLink="/thigns"  >Допомога</a>
 <!--          <a routerLink="/for-all-shelter">Подарувати дім</a>-->
         </div>
       </li>
-      <li class="nav-item "><a class="nav-link" routerLink='/donate'>Донат</a></li>
-      <li class="nav-item "><a class="nav-link" routerLink='/about'>Про нас</a></li>
-      <li class="nav-item "><a class="nav-link" routerLink='/blog-and-news'>Блог та новини</a></li>
+      <li class="nav-item "><a class="nav-link" routerLink='/donate'  routerLinkActive="active">Донат</a></li>
+      <li class="nav-item "><a class="nav-link" routerLink='/about'  routerLinkActive="active">Про нас</a></li>
+      <li class="nav-item "><a class="nav-link" routerLink='/blog-and-news'  routerLinkActive="active">Блог та новини</a></li>
       </div>
 
       <div class="Phone_and_Tablet d-block d-lg-none ">
-      <li class="nav-item "><a class="nav-link" routerLink='/find-f'>Знайти друга</a></li>
+      <li class="nav-item "><a class="nav-link" routerLink='/find-f' >Знайти друга</a></li>
       <li class="nav-item "><a class="nav-link" (click)="Openmemu()">Волонтерство</a>
         <div class="dropdown-content" *ngIf="visible">
           <a routerLink="/free-people" (click)="closeMenu()">Стати волонтером</a>
@@ -57,7 +57,7 @@
           <a routerLink="/"(click)="closeMenu()">Допомогти речами</a>
         </div>
       </li>
-      <li class="nav-item "><a class="nav-link" routerLink='/donate'>Донат</a></li>
+      <li class="nav-item "><a class="nav-link" routerLink='/donate' >Донат</a></li>
       <li class="nav-item "><a class="nav-link" routerLink='/about'>Про нас</a></li>
       <li class="nav-item "><a class="nav-link" routerLink='/blog-and-news'>Блог та новини</a></li>
       </div>

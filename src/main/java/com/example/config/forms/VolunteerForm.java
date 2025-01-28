@@ -31,6 +31,7 @@ public class VolunteerForm {
     @NotEmpty(message = "Контактний номер не може бути порожнім")
     @Size(max = 15, message = "Контактний номер не повинен перевищувати 15 символів")
     private String contactNumber;
+
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "shelter_id", nullable = false)

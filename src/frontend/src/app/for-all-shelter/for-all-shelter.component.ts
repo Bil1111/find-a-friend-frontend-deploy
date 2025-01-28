@@ -227,12 +227,13 @@ export class ForAllShelterComponent implements OnInit {
       contactNumber: this.contactNumber,
       experience: this.experience,
       typeOfAnimal: this.typeOfAnimal,
-
+  
       animalName: this.animalName,
       animalAge: this.animalAge,
       animalSex: this.animalSex,
       animalSize: this.animalSize,
     };
+    console.log('Дані форми:', AdoptData);
     // const token = localStorage.getItem('token');
     //
     // // Перевіряємо, чи є токен

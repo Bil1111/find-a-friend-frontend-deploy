@@ -26,12 +26,12 @@ export class FreePeopleComponent implements OnInit {
    ngOnInit() {
     this.fetchShelters();
    }
-
+// 'Received shelters data:',
   // Метод для отримання всіх притулків
   fetchShelters() {
     this.http.get<any[]>('http://localhost:8080/api/shelters').subscribe(
       data => {
-        console.log('Received shelters data:', data); // Логування отриманих даних
+        console.log( data); // Логування отриманих даних
         this.shelters = data.map(shelter => {
           // Генеруємо URL для зображення кожного притулку
           // shelter.imageURL = `http://localhost:8080/images/shelters/${shelter.id}.png`;

@@ -1,0 +1,129 @@
+<div class="all-items">
+
+    <div class="function">
+
+        <!-- <div class="search-conteiner">
+           <p class="search-button">
+            <span class="search-icon"><img src="search.png" alt=""></span>
+           </p> 
+          <input class="search" type="search" placeholder="Пошук" [(ngModel)]="search_data.name">
+        </div> -->
+        <button (click)="CleanSearchForm()" *ngIf="search_data_id.id || search_data_id.name || search_data_id.city
+         ||search_data_id.age ||search_data_id.sex ||search_data_id.size ||search_data_id.type">Очистити пошук</button>
+        <button class="search" (click)="OpenSearchForm()"> <img src="search.png" alt=""> Пошук</button>
+        <!-- <button class="add" (click)="OpenAddForm()"> <img src="add.png" alt="/"> Додати притулок</button> -->
+        <button class="delete" (click)="OpeneDelete()"><img src="delete.png" alt="/" class="del"> Видалити</button>
+    </div>
+
+    <div class="table">
+        <table>
+            <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Ім'я</th>
+                <th>Вік</th>
+                <th>Місто</th>
+                <th>Опис</th>
+                <th>Стать</th>
+                <th>Розмір</th>
+                <th>Тип</th>
+                <th>Телефон</th>
+                <th>Назва притулку</th>
+             
+            </tr>
+            <tr *ngFor="let shelters of Shelters | filterBy : search_data_id || search_data_name ||search_data_city
+            ||search_data_age||search_data_sex ||search_data_size ||search_data_type ">
+                <td><button class="edit" (click)="selectShelter(shelters)"><img src="image_admin_edit.png" alt=""></button></td>
+                <td>{{shelters.id}}</td>
+                <td>{{shelters.name}}</td>
+                <td>{{shelters.age}}</td>
+                <td>{{shelters.city}}</td>
+                <td>{{shelters.description}}</td>
+                <td>{{shelters.sex}}</td>
+                <td>{{shelters.size}}</td>
+                <td>{{shelters.type}}</td>
+                <td>{{shelters.shelterPhoneNumber}}</td>
+                <td>{{shelters.shelterName}}</td>
+              
+            </tr>
+        </table>
+    </div>
+<!-- || search_data_city || search_data_address || search_data_contactNumber -->
+    <!-- Модальне вікно для детальної інформації про притулок -->
+
+    <div *ngIf="selectedShelter" class="modal">
+        <div class="modal-content">
+          <span (click)="closeModal()" class="close-button">&times;</span>
+             <input type="hidden" id="name" [(ngModel)]="id">
+             <input type="hidden" name="" id="idshelter" [(ngModel)]="idsgelter">
+
+                 <h3>Редагування інформації про притулок</h3>
+            <label for="name">Ім'я:</label>
+            <input type="text" id="name" [(ngModel)]="name">
+
+            <label for="address">Вік:</label>
+            <input type="text" id="address" [(ngModel)]="age">
+
+            <label for="city">Місто:</label>
+            <input type="text" id="city" [(ngModel)]="city">
+
+            <label for="address">Опис:</label>
+            <input type="text" id="address" [(ngModel)]="descript">
+
+            <label for="contactNumber">Розмір</label>
+            <input type="text" id="contactNumber" [(ngModel)]="size">
+          
+
+            <div>
+                <button class="confirm_edit" (click)="SendEditedShelter()">Внести зміни</button>
+            </div>
+          
+        </div>
+      </div>
+
+  <div *ngIf="searchInfo" class="modal_for_search">
+    <div class="modal-content">
+      <span (click)="closeSearch()" class="close-button1">&times;</span>
+
+         <label for="id">ID:</label>
+         <input type="text" [(ngModel)]="search_data_id.id" placeholder="ID притулку">
+
+         <label for="name">Ім'я:</label>
+         <input type="text" [(ngModel)]="search_data_id.name" placeholder="Ім'я">
+
+         <label for="city">Місто:</label>
+         <input type="text" [(ngModel)]="search_data_id.city" placeholder="Місто">
+
+         <label for="address">Вік:</label>
+         <input type="text" [(ngModel)]="search_data_id.age"  placeholder="Адреса">
+
+         <label for="contactNumber">Стать:</label>
+         <input type="text" [(ngModel)]="search_data_id.sex"  placeholder="Номер телефону">
+
+         <label for="contactNumber">Розмір:</label>
+         <input type="text" [(ngModel)]="search_data_id.size"  placeholder="Номер телефону">
+
+         <label for="contactNumber">Тип:</label>
+         <input type="text" [(ngModel)]="search_data_id.type"  placeholder="Номер телефону">
+
+         <button (click)="closeSearch()">Знайти</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="DELETE" class="modal">
+  <div class="modal-content">
+    <span (click)="closeModalDelete()" class="close-button">&times;</span>
+     
+           <h3></h3>
+      <label for="name">ID:</label>
+      <input type="text" id="name" [(ngModel)]="id_for_delete">
+      
+      <div>
+          <button class="confirm_edit" (click)="confirmDelete()">Видалити</button>
+      </div>
+    <!-- (click)="seandDelete()" -->
+  </div>
+</div>
+
+

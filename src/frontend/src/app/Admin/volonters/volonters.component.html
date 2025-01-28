@@ -1,0 +1,87 @@
+<div class="all-items">
+
+    <div class="function">
+        <button (click)="CleanSearchForm()" *ngIf="search_data_id.id || search_data_id.email 
+        || search_data_id.contactNumber || search_data_id.firstName || search_data_id.lastName || search_data_id.shelter">Очистити пошук</button>
+        <button class="search" (click)="OpenSearchForm()"> <img src="search.png" alt=""> Пошук</button>
+   
+    </div>
+
+    <div class="table">
+        <table>
+            <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Телефон</th>
+                <th>Почта</th>
+                <th>Ім'я</th>
+                <th>Прізвище</th>
+                <th>Притулок</th>
+            </tr>
+            <tr  *ngFor="let volonter of Volonter | filterBy : search_data_id || search_user_email ||search_user_contactNumber||search_user_firstName ||search_user_lastName ||search_user_shelter" >
+                <button class="edit" (click)="selectUser(volonter)"><img src="image_admin_edit.png" alt=""></button>
+                <td>{{volonter.id}}</td>
+                <td>{{volonter.contactNumber}}</td>
+                <td>{{volonter.email}}</td>
+                <td>{{volonter.firstName}}</td>
+                <td>{{volonter.lastName}}</td>
+                <td>{{volonter.shelter}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+
+    <div *ngIf="selectedVolonter" class="modal">
+        <div class="modal-content">
+          <span (click)="closeModal()" class="close-button">&times;</span>
+                 <h3>Редагування інформації про користувачів</h3>
+
+            <label for="email">Телефон</label>
+            <input type="text" id="email" [(ngModel)]="contactnumber">
+
+            <label for="password">Почта:</label>
+            <input type="text" id="password" [(ngModel)]="email">
+
+            <label for="role">Ім'я:</label>
+            <input type="text" id="role" [(ngModel)]="name">
+
+            <label for="role">Прізвище:</label>
+            <input type="text" id="role" [(ngModel)]="surname">
+
+            <label for="role">Притулок:</label>
+            <input type="text" id="role" [(ngModel)]="shelter">
+
+            <div>
+                <button class="confirm_edit" (click)="SendEditedUser()">Внести зміни</button>
+            </div>
+          
+        </div>
+      </div>
+
+  <div *ngIf="searchInfo" class="modal_for_search">
+    <div class="modal-content">
+      <span (click)="closeSearch()" class="close-button1">&times;</span>
+
+         <label for="id">ID:</label>
+         <input type="text" [(ngModel)]="search_data_id.id" placeholder="">
+
+         <label for="email">Телефон</label>
+         <input type="text" [(ngModel)]="search_data_id.contactNumber" placeholder="">
+
+         <label for="password">Почта:</label>
+         <input type="text" [(ngModel)]="search_data_id.email" placeholder="">
+
+         <label for="role">Ім'я:</label>
+         <input type="text" [(ngModel)]="search_data_id.firstName"  placeholder="">
+
+         <label for="role">Прізвище:</label>
+         <input type="text" [(ngModel)]="search_data_id.lastName"  placeholder="">
+
+         <!-- <label for="role">Притулок:</label>
+         <input type="text" [(ngModel)]="search_data_id.shelter"  placeholder=""> -->
+
+         <button (click)="closeSearch()">Знайти</button>
+    </div>
+  </div>
+</div>

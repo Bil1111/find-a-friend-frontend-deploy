@@ -1,14 +1,23 @@
 <div class="all-items">
 
     <div class="function">
-        <input class="search" type="search" placeholder="Пошук">
-        <button class="add">Додати притулок</button>
-        <button class="delete">Видалити</button>
+
+        <!-- <div class="search-conteiner">
+           <p class="search-button">
+            <span class="search-icon"><img src="search.png" alt=""></span>
+           </p> 
+          <input class="search" type="search" placeholder="Пошук" [(ngModel)]="search_data.name">
+        </div> -->
+        <button (click)="CleanSearchForm()" *ngIf="search_data_id.id || search_data_id.name || search_data_id.city || search_data_id.address ||search_data_id.contactNumber">Очистити пошук</button>
+        <button class="search" (click)="OpenSearchForm()"> <img src="search.png" alt=""> Пошук</button>
+        <button class="add" (click)="OpenAddForm()"> <img src="add.png" alt="/"> Додати притулок</button>
+        <button class="delete" (click)="OpeneDelete()"><img src="delete.png" alt="/" class="del"> Видалити</button>
     </div>
 
     <div class="table">
         <table>
             <tr>
+                <th></th>
                 <th></th>
                 <th>ID</th>
                 <th>Назва</th>
@@ -17,8 +26,10 @@
                 <th>Телефон</th>
                 <th>Кіл. Tварин</th>
             </tr>
-            <tr *ngFor="let shelters of Shelters">
-                <button class="edit" (click)="selectShelter(shelters)"></button>
+            <tr *ngFor="let shelters of Shelters | filterBy : search_data_id || search_data_name ||search_data_city||search_data_address||search_data_contactNumber">
+                
+                <td><button class="edit" (click)="selectShelter(shelters)"><img src="image_admin_edit.png" alt=""></button></td>
+                <td> <button class="edit" (click)="selectShelter_froanimals(shelters)">д</button></td>
                 <td>{{shelters.id}}</td>
                 <td>{{shelters.name}}</td>
                 <td>{{shelters.city}}</td>
@@ -28,7 +39,7 @@
             </tr>
         </table>
     </div>
-
+<!-- || search_data_city || search_data_address || search_data_contactNumber -->
     <!-- Модальне вікно для детальної інформації про притулок -->
   <div *ngIf="selectedShelter" class="modal">
     <div class="modal-content">
@@ -36,17 +47,132 @@
        
              <h3>Редагування інформації про притулок</h3>
         <label for="name">Ім'я:</label>
+        <!-- <input type="text" id="name" [(ngModel)]="id"> -->
         <input type="text" id="name" [(ngModel)]="name">
         <label for="city">Місто:</label>
         <input type="text" id="city" [(ngModel)]="city">
         <label for="address">Адреса:</label>
         <input type="text" id="address" [(ngModel)]="address">
         <label for="contactNumber">Телефон</label>
-        <input type="text" id="contactNumber" [(ngModel)]="telephon">
+        <input type="text" id="contactNumber" [(ngModel)]="contactNumber">
         <div>
             <button class="confirm_edit" (click)="SendEditedShelter()">Внести зміни</button>
         </div>
       
     </div>
+  </div>
+
+  <div *ngIf="selectedShelterForadd" class="modal_for_add">
+    <div class="modal-content">
+      <span (click)="close()" class="close-button1">&times;</span>
+       
+             <h3>Додавання притулку</h3>
+
+             <!-- <label for="name">ID:</label>
+             <input type="text" id="name" [(ngModel)]="id"> -->
+        <label for="name">Ім'я:</label>
+        <input type="text" id="name" [(ngModel)]="name">
+        <label for="city">Місто:</label>
+        <input type="text" id="city" [(ngModel)]="city">
+
+        <label for="city">Aдрес:</label>
+        <input type="text" id="city" [(ngModel)]="address">
+
+        <label for="contactNumber">Телефон</label>
+        <input type="text" id="contactNumber" [(ngModel)]="contactNumber">
+        <label for="description">Опис притулку</label>
+        <input type="text" id="description" [(ngModel)]="description">
+
+        <label for="description">Зображення</label>
+        <input type="text" id="description" [(ngModel)]="imgurl">
+
+        <label for="description">Широта</label>
+        <input type="text" id="description" [(ngModel)]="latitude">
+
+        <label for="description">Довгота</label>
+        <input type="text" id="description" [(ngModel)]="longitude">
+        <div>
+            <button class="confirm_edit" (click)="AddShelter()">Додати притулок</button>
+        </div>
+      
+    </div>
+  </div>
+
+  <div *ngIf="searchInfo" class="modal_for_search">
+    <div class="modal-content">
+      <span (click)="closeSearch()" class="close-button1">&times;</span>
+
+         <label for="id">ID:</label>
+         <input type="text" [(ngModel)]="search_data_id.id" placeholder="ID притулку">
+
+         <label for="name">Ім'я:</label>
+         <input type="text" [(ngModel)]="search_data_id.name" placeholder="Ім'я">
+
+         <label for="city">Місто:</label>
+         <input type="text" [(ngModel)]="search_data_id.city" placeholder="Місто">
+
+         <label for="address">Адреса:</label>
+         <input type="text" [(ngModel)]="search_data_id.address"  placeholder="Адреса">
+
+         <label for="contactNumber">Номер телефону:</label>
+         <input type="text" [(ngModel)]="search_data_id.contactNumber"  placeholder="Номер телефону">
+
+         <button (click)="closeSearch()">Знайти</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="DELETE" class="modal">
+  <div class="modal-content">
+    <span (click)="closeModalDelete()" class="close-button">&times;</span>
+     
+           <h3></h3>
+      <label for="name">ID:</label>
+      <input type="text" id="name" [(ngModel)]="id_for_delete">
+      
+      <div>
+          <button class="confirm_edit" (click)="confirmDelete()">Видалити</button>
+      </div>
+    <!-- (click)="seandDelete()" -->
+  </div>
+</div>
+
+<div *ngIf="selectedShelter_For_Add_Animals" class="modal">
+  <div class="modal-content">
+    <span (click)="closeFor_Add_Animals()" class="close-button">&times;</span>
+           <h3>Додвання тваринки до притулку</h3>
+           <label for="id">ID притулку куди буде додана тваринка:</label>
+            <input type="number" id="id" [(ngModel)]="id" placeholder="ID притулку куди буде додана тваринка">
+
+            <!-- <label for="name">ID тваринки:</label>
+            <input type="number" id="name" [(ngModel)]="id_animals"> -->
+
+            <label for="age">Вік тваринки:</label>
+            <input type="number" id="age" [(ngModel)]="age_animals">
+
+            <label for="des">Опис тваринки:</label>
+            <input type="text" id="des" [(ngModel)]="descript_animals">
+
+            <label for="name">Ім'я тваринки:</label>
+            <input type="text" id="name" [(ngModel)]="name_animals">
+
+            <label for="sex">Стать тваринки:</label>
+            <input type="text" id="sex" [(ngModel)]="sex_animals">
+
+            <label for="size">Розмір тваринки:</label>
+            <input type="text" id="size" [(ngModel)]="size_animals">
+
+            <label for="type">Тип тваринки:</label>
+            <input type="text" id="type" [(ngModel)]="type_animals">
+
+            <label for="url">Посилання на зображення:</label>
+            <input type="text" id="url" [(ngModel)]="url_animals">
+
+            <input type="hidden" id="city" [(ngModel)]="city_animals">
+            <input type="hidden" id="shelterphine" [(ngModel)]="contactshelter_animals">
+      <div>
+          <button class="confirm_edit" (click)="Aniamls()">Додати тваринку</button>
+      </div>
+    
   </div>
 </div>

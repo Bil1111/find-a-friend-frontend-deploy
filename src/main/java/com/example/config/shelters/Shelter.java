@@ -50,6 +50,7 @@ public class Shelter {
     @OneToMany(mappedBy = "shelter", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Animal> animals;
 
+
     public Shelter(String name, String address, String contactNumber, String description, String city,double latitude,double longitude, String imageURL) {
         this.name = name;
         this.address = address;

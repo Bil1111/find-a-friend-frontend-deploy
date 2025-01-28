@@ -10,7 +10,6 @@
     <div class="table">
         <table>
             <tr>
-                <th></th>
                 <th>ID</th>
                 <th>Телефон</th>
                 <th>Почта</th>
@@ -19,20 +18,19 @@
                 <th>Притулок</th>
             </tr>
             <tr  *ngFor="let volonter of Volonter | filterBy : search_data_id || search_user_email ||search_user_contactNumber||search_user_firstName ||search_user_lastName ||search_user_shelter" >
-                <button class="edit" (click)="selectUser(volonter)"><img src="image_admin_edit.png" alt=""></button>
                 <td>{{volonter.id}}</td>
                 <td>{{volonter.contactNumber}}</td>
                 <td>{{volonter.email}}</td>
                 <td>{{volonter.firstName}}</td>
                 <td>{{volonter.lastName}}</td>
-                <td>{{volonter.shelter}}</td>
+                <td>{{volonter.shelterName}}</td>
             </tr>
         </table>
     </div>
 
 
 
-    <div *ngIf="selectedVolonter" class="modal">
+    <!-- <div *ngIf="selectedVolonter" class="modal">
         <div class="modal-content">
           <span (click)="closeModal()" class="close-button">&times;</span>
                  <h3>Редагування інформації про користувачів</h3>
@@ -57,7 +55,7 @@
             </div>
           
         </div>
-      </div>
+      </div> -->
 
   <div *ngIf="searchInfo" class="modal_for_search">
     <div class="modal-content">

@@ -36,6 +36,7 @@ export class FindFComponent implements OnInit {
   email: string = '';
   contactNumber: string = '';
   experience: string = '';
+  
   errorMessage: string | null = null;
   successMessage: string | null = null;
   //ТВАРИНКА
@@ -44,6 +45,7 @@ export class FindFComponent implements OnInit {
   animalSex: string = '';
   animalSize: string = '';
   typeOfAnimal: string = '';
+    ID_shelter: string ='';
   Shelter: string = '';
   City: string = '';
 
@@ -54,60 +56,74 @@ export class FindFComponent implements OnInit {
     this.fetchAnimals(this.currentPage);
   }
 
+  // fetchAnimals(page: number) {
+  //   const startId = (page - 1) * this.itemsPerPage;
+
+  //   // Запит на отримання 10 тварин
+  //   this.http.get<any[]>(`http://localhost:8080/api/animals/next/${startId}`).subscribe(
+  //     data => {
+  //       console.log('Received data:', data);
+
+  //       // Генеруємо URL для зображення
+  //       this.AllAnimals = data.map(animal => {
+  //         animal.imageURL = `http://localhost:8080/images/${animal.id}.png`;
+  //         return animal;
+          
+  //       });
+        
+
+  //       this.animals = [...this.AllAnimals]; // Ініціалізуємо тварин
+
+  //       // Запит на отримання всіх тварин для обчислення загальної кількості сторінок
+  //       this.http.get<any[]>('http://localhost:8080/api/animals').subscribe(
+  //         allAnimals => {
+  //           // Обчислюємо кількість сторінок
+  //           this.totalPages = Math.ceil(allAnimals.length / this.itemsPerPage); // Округлюємо до більшого
+  //           console.log('Total pages:', this.totalPages);
+  //         },
+  //         error => {
+  //           console.error('Error fetching all animals:', error);
+  //         }
+  //       );
+        
+  //     },
+  //     error => {
+  //       console.error('Error fetching animals:', error); // Логування помилки
+  //     }
+  //   );
+  // }
+
   fetchAnimals(page: number) {
     const startId = (page - 1) * this.itemsPerPage;
-
-    // Запит на отримання 10 тварин
-    this.http.get<any[]>(`http://localhost:8080/api/animals/next/${startId}`).subscribe(
-      data => {
-        console.log('Received data:', data);
-
-        // Генеруємо URL для зображення
-        this.AllAnimals = data.map(animal => {
-          animal.imageURL = `http://localhost:8080/images/${animal.id}.png`;
-          return animal;
-        });
-
-        this.animals = [...this.AllAnimals]; // Ініціалізуємо тварин
-
-        // Запит на отримання всіх тварин для обчислення загальної кількості сторінок
-        this.http.get<any[]>('http://localhost:8080/api/animals').subscribe(
-          allAnimals => {
-            // Обчислюємо кількість сторінок
-            this.totalPages = Math.ceil(allAnimals.length / this.itemsPerPage); // Округлюємо до більшого
-            console.log('Total pages:', this.totalPages);
-          },
-          error => {
-            console.error('Error fetching all animals:', error);
+  
+    // Запит на отримання всіх притулків
+    this.http.get<any[]>('http://localhost:8080/api/shelters').subscribe(
+      shelters => {
+        const allAnimals: any[] = [];
+  
+        // Обробка кожного притулку
+        shelters.forEach(shelter => {
+          if (shelter.animals) {
+            const animalsWithShelterName = shelter.animals.map((animal: any) => ({
+              ...animal, // Копіювання всіх властивостей об'єкта
+              shelterId: shelter.id, // Додаємо назву притулку до кожної тварини
+              imageURL: `http://localhost:8080/images/${animal.id}.png` // Генеруємо URL для зображення на основі ID тварини
+            }));
+            allAnimals.push(...animalsWithShelterName); // Додаємо до загального списку
           }
-        );
+        });
+  
+        // Пагінація: вибираємо тварин для поточної сторінки
+        this.animals = allAnimals.slice(startId, startId + this.itemsPerPage);
+        this.AllAnimals = [...allAnimals]; // Зберігаємо копію для подальшої фільтрації чи обробки
+  
+        // Обчислюємо кількість сторінок
+        this.totalPages = Math.ceil(allAnimals.length / this.itemsPerPage);
+        console.log('Total pages:', this.totalPages);
       },
-      error => {
-        console.error('Error fetching animals:', error); // Логування помилки
-      }
+      error => console.error('Error fetching shelter data:', error)
     );
   }
-
-  // fetchAllShelterAnimals(page: number) {
-  //   const startId = (page - 1) * this.itemsPerPage;
-  //   this.http.get<any[]>('http://localhost:8080/api/shelters') // Отримуємо всі притулки
-  //     .subscribe(
-  //       shelters => {
-  //         shelters.forEach(shelter => {
-  //           if (shelter.animals) {
-  //             const animalsWithShelterName = shelter.animals.map((animal: any) => ({
-  //               ...animal, // копіювання всіх властивостей об'єкта
-  //               shelterName: shelter.name, // Додаємо назву притулку до кожної тварини
-  //               imageURL: `http://localhost:8080/images/${animal.id}.png` // Генеруємо URL для зображення на основі ID тварини
-  //             }));
-  //             this.animals.push(...animalsWithShelterName); // Додаємо до загального списку
-  //           }
-  //         });
-  //         this.AllAnimals = [...this.animals]; // Зберігаємо копію для подальшої фільтрації чи обробки
-  //       },
-  //       error => console.error('Error fetching shelter data:', error)
-  //     );
-  // }
 
   nextPage() {
     if (this.currentPage < this.totalPages) {
@@ -137,8 +153,9 @@ export class FindFComponent implements OnInit {
     this.animalSex = this.selectedAnimal.sex || 'empty';
     this.animalSize = this.selectedAnimal.size || 'empty';
     this.typeOfAnimal = this.selectedAnimal.type || 'empty';
-    this.Shelter = this.selectedAnimal.shelterName || 'empty';
-    this.City = this.selectedAnimal.city || 'empty';
+    this.ID_shelter = this.selectedAnimal.shelterId || 'empty';
+    // this.Shelter = this.selectedAnimal.shelterName || 'empty';
+    // this.City = this.selectedAnimal.city || 'empty';
   }
 
   openWardForm() {
@@ -148,8 +165,10 @@ export class FindFComponent implements OnInit {
     this.animalSex = this.selectedAnimal.sex || 'empty';
     this.animalSize = this.selectedAnimal.size || 'empty';
     this.typeOfAnimal = this.selectedAnimal.type || 'empty';
-    this.Shelter = this.selectedAnimal.shelterName || 'empty';
-    this.City = this.selectedAnimal.city || 'empty';
+    this.ID_shelter = this.selectedAnimal.shelterId || 'empty';
+
+    // this.Shelter = this.selectedAnimal.shelterName || 'empty';
+    // this.City = this.selectedAnimal.city || 'empty';
   }
 
   // Метод для закриття модального вікна
@@ -241,7 +260,7 @@ export class FindFComponent implements OnInit {
       contactNumber: this.contactNumber,
       experience: this.experience,
       typeOfAnimal: this.typeOfAnimal,
-      shelter: this.shelter,
+      shelter: this.ID_shelter,
       animalName: this.animalName,
       animalAge: this.animalAge,
       animalSex: this.animalSex,
@@ -284,14 +303,15 @@ export class FindFComponent implements OnInit {
       contactNumber: this.contactNumber,
       experience: this.experience,
       typeOfAnimal: this.typeOfAnimal,
+      shelter: this.ID_shelter,
 
       animalName: this.animalName,
       animalAge: this.animalAge,
       animalSex: this.animalSex,
       animalSize: this.animalSize,
 
-      Shelter: this.Shelter,
-      City: this.City,
+      // Shelter: this.Shelter,
+      // City: this.City,
     };
 
     this.http.post('http://localhost:8080/api/forms/ward', WardData).subscribe({
@@ -318,6 +338,7 @@ export class FindFComponent implements OnInit {
     this.contactNumber = '';
     this.typeOfAnimal = '';
     this.experience = '';
+    this.ID_shelter = '';
   }
 
   clearMessagesAfterDelay() {

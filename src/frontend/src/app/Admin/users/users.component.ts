@@ -41,33 +41,33 @@ export class UsersComponent {
     this.search_data_id.role = '';
   }
 
-  selectUser(user:any){
-   this. selectedUser = user;
-   this.Id = user.id;
-   this.email = user.email;
-   this.password = user.password;
-   this.role = user.role;
-  }
+  // selectUser(user:any){
+  //  this. selectedUser = user;
+  //  this.Id = user.id;
+  //  this.email = user.email;
+  //  this.password = user.password;
+  //  this.role = user.role;
+  // }
   closeModal(){this.selectedUser = null;}
 
-  SendEditedUser(){
+  // SendEditedUser(){
 
-    const datauser = {
-      id: this.Id,
-      email: this.email,
-      password: this.password,
-      role: this.role
-    };
+  //   const datauser = {
+  //     id: this.Id,
+  //     email: this.email,
+  //     password: this.password,
+  //     role: this.role
+  //   };
 
-    this.http.put<any[]>(`http://localhost:8080/api/users/update/${datauser.id}` , datauser , {responseType: 'text' as 'json'}).subscribe(
-    {next: (response) => {
-      console.log(response); 
-      this.closeModal();
-      this.AllUsers();
-    },
-    error: (error) => {
-      console.error('Помилка при оновленні користувача', error);
+  //   this.http.put<any[]>(`http://localhost:8080/api/users/update/${datauser.id}` , datauser , {responseType: 'text' as 'json'}).subscribe(
+  //   {next: (response) => {
+  //     console.log(response); 
+  //     this.closeModal();
+  //     this.AllUsers();
+  //   },
+  //   error: (error) => {
+  //     console.error('Помилка при оновленні користувача', error);
       
-    }})
-  }
+  //   }})
+  // }
 }

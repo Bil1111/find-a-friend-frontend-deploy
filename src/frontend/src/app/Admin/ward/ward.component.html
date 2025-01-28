@@ -11,7 +11,7 @@
     <div class="table">
         <table>
             <tr>
-                <th></th>
+            
                 <th>ID</th>
                 <th>Ім'я</th>
                 <th>Прізвище</th>
@@ -26,9 +26,7 @@
                 
             </tr>
             <tr  *ngFor="let volonter of Volonter | filterBy : search_data_id || search_user_firstName ||search_user_lastName||search_user_contactNumber ||search_user_email ||search_user_typeOfAnimal 
-            ||search_user_animalName ||search_user_animalAge ||search_user_animalSex ||search_user_animalSize ||search_user_experience" >
-                <button class="edit" (click)="selectUser(volonter)"><img src="image_admin_edit.png" alt=""></button>
-                <td>{{volonter.id}}</td>
+            ||search_user_animalName ||search_user_animalAge ||search_user_animalSex ||search_user_animalSize ||search_user_experience" >                <td>{{volonter.id}}</td>
                 <td>{{volonter.firstName}}</td>
                 <td>{{volonter.lastName}}</td>
                 <td>{{volonter.contactNumber}}</td>
@@ -45,32 +43,19 @@
 
 
 
-    <div *ngIf="selectedVolonter" class="modal">
+    <!-- <div *ngIf="selectedVolonter" class="modal">
         <div class="modal-content">
           <span (click)="closeModal()" class="close-button">&times;</span>
                  <h3>Редагування інформації про користувачів</h3>
 
-            <!-- <label for="email">Телефон</label>
-            <input type="text" id="email" [(ngModel)]="contactnumber">
-
-            <label for="password">Почта:</label>
-            <input type="text" id="password" [(ngModel)]="email">
-
-            <label for="role">Ім'я:</label>
-            <input type="text" id="role" [(ngModel)]="name">
-
-            <label for="role">Прізвище:</label>
-            <input type="text" id="role" [(ngModel)]="surname">
-
-            <label for="role">Притулок:</label>
-            <input type="text" id="role" [(ngModel)]="shelter"> -->
+          
 
             <div>
                 <button class="confirm_edit" (click)="SendEditedUser()">Внести зміни</button>
             </div>
           
         </div>
-      </div>
+      </div> -->
 
   <div *ngIf="searchInfo" class="modal_for_search">
     <div class="modal-content">

@@ -23,6 +23,7 @@
                 <th>Стать</th>
                 <th>Розмір</th>
                 <th>Досвід</th>
+                <th>Притулок</th>
                 
             </tr>
             <tr  *ngFor="let volonter of Volonter | filterBy : search_data_id || search_user_firstName ||search_user_lastName||search_user_contactNumber ||search_user_email ||search_user_typeOfAnimal 
@@ -39,6 +40,7 @@
                 <td>{{volonter.animalSex}}</td>
                 <td>{{volonter.animalSize}}</td>
                 <td>{{volonter.experience}}</td>
+                <td>{{volonter.shelterName}}</td>
             </tr>
         </table>
     </div>

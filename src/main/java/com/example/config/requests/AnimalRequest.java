@@ -1,32 +1,30 @@
 package com.example.config.requests;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
+import jakarta.validation.constraints.*;
 public class AnimalRequest {
 
-    @NotBlank(message = "Name is required")
+    @NotEmpty(message = "Ім'я не може бути порожнім")
+    @Size(max = 50, message = "Ім'я не повинно перевищувати 50 символів")
     private String name;
 
-    @NotBlank(message = "Type is required")
+    @NotEmpty(message = "Тип не може бути порожнім")
     private String type;
 
-    @NotNull(message = "Age is required")
+    @NotNull(message = "Вік не може бути порожнім")
     private Integer age;
 
-    @NotBlank(message = "Size is required")
+    @NotEmpty(message = "Розмір не може бути порожнім")
     private String size;
 
     @NotNull(message = "Shelter ID is required")
     private Long shelter;
 
-    @Size(max = 255, message = "Description must not exceed 255 characters")
+    @Size(max = 255, message = "Опис не повинен перевищувати 255 символів")
     private String description;
 
     @NotNull(message = "Sex is required")
     private Integer sex;
-    @NotBlank(message = "Image is required")
+    @NotNull(message = "File")
     private String imageURL;
 
     // Конструктор без параметрів

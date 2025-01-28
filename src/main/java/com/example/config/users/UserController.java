@@ -3,9 +3,12 @@ package com.example.config.users;
 import com.example.config.requests.UserLoginRequest;
 import com.example.config.requests.UserRegistrationRequest;
 import com.example.config.token.JwtTokenProvider;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -46,7 +49,17 @@ public class UserController {
         return new ResponseEntity<>("User updated successfully", HttpStatus.OK);
     }
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody UserRegistrationRequest request) {
+    public ResponseEntity<String> registerUser(@RequestBody @Valid UserRegistrationRequest request,
+                                               BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            // Якщо є помилки валідації, повертаємо їх
+            StringBuilder errorMessages = new StringBuilder();
+            for (FieldError error : bindingResult.getFieldErrors()) {
+                errorMessages.append(error.getField()).append(": ").append(error.getDefaultMessage()).append("\n");
+            }
+            return new ResponseEntity<>(errorMessages.toString(), HttpStatus.BAD_REQUEST);
+        }
+
         try {
             Optional<User> existingCustomer = userService.findByLogin(request.getEmail());
             if (existingCustomer.isPresent()) {
@@ -57,10 +70,21 @@ public class UserController {
         } catch (UserAlreadyExistsException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }
-
     }
+
+
     @PostMapping("/login")
-    public ResponseEntity<Map<String, String>> loginUser(@RequestBody UserLoginRequest request) {
+    public ResponseEntity<Map<String, String>> loginUser(@RequestBody @Valid UserLoginRequest request,
+                                                         BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            // Якщо є помилки валідації, повертаємо їх
+            Map<String, String> errorMessages = new HashMap<>();
+            for (FieldError error : bindingResult.getFieldErrors()) {
+                errorMessages.put(error.getField(), error.getDefaultMessage());
+            }
+            return new ResponseEntity<>(errorMessages, HttpStatus.BAD_REQUEST);
+        }
+
         try {
             Optional<User> user = userService.findByEmail(request.getEmail());
             if (user.isPresent() && userService.loginUser(request.getEmail(), request.getPassword())) {

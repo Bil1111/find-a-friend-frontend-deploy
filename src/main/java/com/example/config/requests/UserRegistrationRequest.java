@@ -1,7 +1,17 @@
 package com.example.config.requests;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class UserRegistrationRequest {
+
+    @Email(message = "Вкажіть валідний email")
+    @NotBlank(message = "Email не може бути порожнім")
     private String email;
+
+    @NotBlank(message = "Пароль не може бути порожнім")
+    @Size(min = 6, max = 20, message = "Пароль має бути від 8 до 30 символів")
     private String password;
 
     public String getEmail() {
@@ -19,5 +29,4 @@ public class UserRegistrationRequest {
     public void setPassword(String password) {
         this.password = password;
     }
-
 }

@@ -20,12 +20,13 @@ public class FormService {
     @Autowired
     private WardFormRepository wardFormRepository;
 
-    public void addVolunteerForm(VolunteerRequest request, Shelter shelter) {
+    public void addVolunteerForm(VolunteerRequest request, Shelter shelter, String shelterName) {
         VolunteerForm volunteerForm = new VolunteerForm(request.getFirstName(),
                 request.getLastName(),
                 request.getEmail(),
                 request.getContactNumber(),
-                shelter);
+                shelter,
+                shelterName);
         volunteerFormRepository.save(volunteerForm);
     }
     public Optional<VolunteerForm> getVolunteerFormById(Long id) {
@@ -35,7 +36,7 @@ public class FormService {
     public List<VolunteerForm> getAllVolunteerForms() {
         return volunteerFormRepository.findAll();
     }
-    public void addAdoptForm(AdoptRequest request, Shelter shelter) {
+    public void addAdoptForm(AdoptRequest request, Shelter shelter, String shelterName) {
         AdoptForm adoptForm = new AdoptForm(
                 request.getFirstName(),
                 request.getLastName(),
@@ -47,7 +48,8 @@ public class FormService {
                 request.getAnimalAge(),
                 request.getAnimalSex(),
                 request.getAnimalSize(),
-                shelter
+                shelter,
+                shelterName
         );
         adoptFormRepository.save(adoptForm);
     }
@@ -58,7 +60,7 @@ public class FormService {
     public List<AdoptForm> getAllAdoptForms() {
         return adoptFormRepository.findAll();
     }
-    public void addWardForm(WardRequest request, Shelter shelter) {
+    public void addWardForm(WardRequest request, Shelter shelter, String shelterName) {
         WardForm wardForm=new WardForm(
                 request.getFirstName(),
                 request.getLastName(),
@@ -70,7 +72,8 @@ public class FormService {
                 request.getAnimalAge(),
                 request.getAnimalSex(),
                 request.getAnimalSize(),
-                shelter);
+                shelter,
+                shelterName);
 
         wardFormRepository.save(wardForm);
     }

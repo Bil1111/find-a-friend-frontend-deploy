@@ -4,9 +4,7 @@ import com.example.config.animals.Animal;
 import com.example.config.forms.VolunteerForm;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import java.util.List;
 
 @Entity

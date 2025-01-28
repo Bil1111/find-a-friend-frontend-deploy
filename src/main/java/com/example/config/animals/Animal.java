@@ -2,12 +2,9 @@ package com.example.config.animals;
 
 import com.example.config.shelters.Shelter;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.*;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "animal")

@@ -5,6 +5,7 @@ import com.example.config.requests.VolunteerRequest;
 import com.example.config.requests.WardRequest;
 import com.example.config.shelters.Shelter;
 import com.example.config.shelters.ShelterRepository;
+import com.example.config.shelters.ShelterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,23 +21,16 @@ public class FormController {
     @Autowired
     private FormService formService;
     @Autowired
+    private ShelterService shelterService;
+    @Autowired
     private ShelterRepository shelterRepository;
 
-//    @PostMapping("/volunteer")
-//    public ResponseEntity<String> volunteerForm(@RequestBody VolunteerRequest request) {
-//        Shelter shelter = shelterRepository.findById(request.getShelter())
-//                .orElseThrow(() -> new RuntimeException("Shelter not found"));
-//        User user = userRepository.findById(request.getUser())
-//                .orElseThrow(() -> new RuntimeException("User not found"));
-//        formService.addVolunteerForm(request, shelter, user);
-//        return new ResponseEntity<>(HttpStatus.CREATED);
-//    }
     @PostMapping("/volunteer")
     public ResponseEntity<String> volunteerForm(@RequestBody VolunteerRequest request) {
         Shelter shelter = shelterRepository.findById(request.getShelter())
                 .orElseThrow(() -> new RuntimeException("Shelter not found"));
 
-        formService.addVolunteerForm(request, shelter);
+        formService.addVolunteerForm(request, shelter,shelterService.getShelterNameById(request.getShelter()));
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping("/volunteer/all")
@@ -52,22 +46,14 @@ public class FormController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-//    @PostMapping("/adopt")
-//    public ResponseEntity<Map<String, String>> adoptForm(@RequestBody AdoptRequest request) {
-//        User user = userRepository.findById(request.getUser())
-//                .orElseThrow(() -> new RuntimeException("User not found"));
-//        formService.addAdoptForm(request, user);
-//
-//        return new ResponseEntity<>(HttpStatus.CREATED);
-//   }
     @PostMapping("/adopt")
     public ResponseEntity<Map<String, String>> adoptForm(@RequestBody AdoptRequest request) {
         Shelter shelter = shelterRepository.findById(request.getShelter())
                 .orElseThrow(() -> new RuntimeException("Shelter not found"));
-        formService.addAdoptForm(request,shelter);
-
+        formService.addAdoptForm(request,shelter,shelterService.getShelterNameById(request.getShelter()));
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
     @GetMapping("/adopt/all")
     public ResponseEntity<List<AdoptForm>> getAllAdoptForms() {
         List<AdoptForm> adoptForms = formService.getAllAdoptForms();
@@ -93,7 +79,7 @@ public class FormController {
     public ResponseEntity<Map<String, String>> wardForm(@RequestBody WardRequest request) {
         Shelter shelter = shelterRepository.findById(request.getShelter())
                 .orElseThrow(() -> new RuntimeException("Shelter not found"));
-        formService.addWardForm(request, shelter);
+        formService.addWardForm(request, shelter,shelterService.getShelterNameById(request.getShelter()));
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

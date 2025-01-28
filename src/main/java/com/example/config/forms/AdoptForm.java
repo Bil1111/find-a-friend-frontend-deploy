@@ -1,14 +1,11 @@
 package com.example.config.forms;
 
 import com.example.config.shelters.Shelter;
-import com.example.config.users.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "adopt_forms")
@@ -62,8 +59,7 @@ public class AdoptForm {
     @ManyToOne
     @JoinColumn(name = "shelter_id", nullable = false)
     private Shelter shelter;
-    @Transient
-    @JsonProperty("shelterName")
+    @Column(columnDefinition = "VARCHAR(255)")
     private String shelterName;
 //    @JsonBackReference
 //    @ManyToOne
@@ -71,7 +67,7 @@ public class AdoptForm {
 //    private User user;
 
 
-    public AdoptForm(String firstName, String lastName, String email, String contactNumber, String experience, String typeOfAnimal, String animalName, String animalAge, String animalSex, String animalSize, Shelter shelter) {
+    public AdoptForm(String firstName, String lastName, String email, String contactNumber, String experience, String typeOfAnimal, String animalName, String animalAge, String animalSex, String animalSize, Shelter shelter, String shelterName) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -83,7 +79,7 @@ public class AdoptForm {
         this.animalSex = animalSex;
         this.animalSize = animalSize;
         this.shelter = shelter;
-        this.shelterName = shelter != null ? shelter.getName() : null;
+        this.shelterName = shelterName;
     }
 
     public AdoptForm() {

@@ -1,14 +1,13 @@
 package com.example.config.animals;
 
 import com.example.config.requests.AnimalRequest;
-import com.example.config.requests.UserRegistrationRequest;
 import com.example.config.shelters.Shelter;
 import com.example.config.shelters.ShelterRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.annotation.Value;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +22,7 @@ public class AnimalController {
     private ShelterRepository shelterRepository; // Додайте поле для ShelterRepository
 
     @PostMapping("/add")
-    public ResponseEntity<String> addAnimal(@RequestBody AnimalRequest request) {
+    public ResponseEntity<String> addAnimal(@RequestBody @Valid AnimalRequest request) {
         Shelter shelter = shelterRepository.findById(request.getShelter())
                 .orElseThrow(() -> new RuntimeException("Shelter not found"));
         animalService.addAnimal(request, shelter);

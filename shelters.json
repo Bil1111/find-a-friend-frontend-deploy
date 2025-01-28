@@ -41,6 +41,17 @@
     "imageURL" : "",
     "city" : "Київ",
     "shelterPhoneNumber" : "+380 931 112 222"
+  }, {
+    "id" : 13,
+    "name" : "",
+    "type" : "Кіт",
+    "age" : 1,
+    "size" : "Малий",
+    "description" : "Чарівна, мила кішка",
+    "sex" : "Дівчинка",
+    "imageURL" : null,
+    "city" : "Київ",
+    "shelterPhoneNumber" : "+380 931 112 222"
   } ],
   "volunteerForms" : [ ]
 }, {

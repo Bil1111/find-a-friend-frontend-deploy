@@ -1,14 +1,10 @@
 package com.example.config.forms;
 
 import com.example.config.shelters.Shelter;
-import com.example.config.users.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "volunteer_forms")
@@ -36,8 +32,7 @@ public class VolunteerForm {
     @ManyToOne
     @JoinColumn(name = "shelter_id", nullable = false)
     private Shelter shelter;
-    @Transient
-    @JsonProperty("shelterName")
+    @Column(columnDefinition = "VARCHAR(255)")
     private String shelterName;
 
 //    @JsonBackReference
@@ -45,13 +40,13 @@ public class VolunteerForm {
 //    @JoinColumn(name = "user_id", nullable = false)
 //    private User user;
 
-    public VolunteerForm(String firstName, String lastName, String email, String contactNumber, Shelter shelter) {
+    public VolunteerForm(String firstName, String lastName, String email, String contactNumber, Shelter shelter, String shelterName) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.contactNumber = contactNumber;
         this.shelter = shelter;
-        this.shelterName = shelter != null ? shelter.getName() : null;
+        this.shelterName = shelterName;
 //        this.user=user;
     }
 

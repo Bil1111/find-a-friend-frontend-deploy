@@ -1,7 +1,6 @@
 package com.example.config.requests;
 
-import javax.validation.constraints.NotBlank;
-
+import jakarta.validation.constraints.*;
 
 public class AdoptRequest {
     @NotBlank(message = "First name is required")

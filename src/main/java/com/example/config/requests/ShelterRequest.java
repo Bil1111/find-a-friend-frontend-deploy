@@ -1,7 +1,6 @@
 package com.example.config.requests;
 
-
-import javax.validation.constraints.*;
+import jakarta.validation.constraints.*;
 
 public class ShelterRequest {
 

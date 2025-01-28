@@ -64,6 +64,11 @@ public class ShelterService {
     public Optional<Shelter> getShelterById(Long id) {
         return shelterRepository.findById(id);
     }
+    public String getShelterNameById(Long shelterId) {
+        return shelterRepository.findById(shelterId)
+                .map(Shelter::getName)
+                .orElseThrow(() -> new RuntimeException("Shelter not found"));
+    }
     public List<Animal> getShelterAnimalsById(Long id) {
         Optional<Shelter> shelter = shelterRepository.findById(id);
         if (shelter.isPresent()) {

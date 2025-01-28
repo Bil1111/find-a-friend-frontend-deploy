@@ -3,6 +3,7 @@ package com.example.config.forms;
 import com.example.config.shelters.Shelter;
 import com.example.config.users.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import javax.validation.constraints.Email;
@@ -57,14 +58,20 @@ public class AdoptForm {
     @NotEmpty(message = "animalSize не може бути порожнім")
     @Size(max = 15, message = "animalSize не повинен перевищувати 15 символів")
     private String animalSize;
-
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "shelter_id", nullable = false)
+    private Shelter shelter;
+    @Transient
+    @JsonProperty("shelterName")
+    private String shelterName;
 //    @JsonBackReference
 //    @ManyToOne
 //    @JoinColumn(name = "user_id", nullable = false)
 //    private User user;
 
 
-    public AdoptForm(String firstName, String lastName, String email, String contactNumber, String experience,String typeOfAnimal, String animalName, String animalAge, String animalSex, String animalSize) {
+    public AdoptForm(String firstName, String lastName, String email, String contactNumber, String experience, String typeOfAnimal, String animalName, String animalAge, String animalSex, String animalSize, Shelter shelter) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -75,6 +82,8 @@ public class AdoptForm {
         this.animalAge = animalAge;
         this.animalSex = animalSex;
         this.animalSize = animalSize;
+        this.shelter = shelter;
+        this.shelterName = shelter != null ? shelter.getName() : null;
     }
 
     public AdoptForm() {
@@ -177,5 +186,20 @@ public class AdoptForm {
         this.animalSize = animalSize;
     }
 
+    public Shelter getShelter() {
+        return shelter;
+    }
+
+    public void setShelter(Shelter shelter) {
+        this.shelter = shelter;
+    }
+
+    public String getShelterName() {
+        return shelterName;
+    }
+
+    public void setShelterName(String shelterName) {
+        this.shelterName = shelterName;
+    }
 }
 

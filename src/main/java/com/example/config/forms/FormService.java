@@ -35,7 +35,7 @@ public class FormService {
     public List<VolunteerForm> getAllVolunteerForms() {
         return volunteerFormRepository.findAll();
     }
-    public void addAdoptForm(AdoptRequest request) {
+    public void addAdoptForm(AdoptRequest request, Shelter shelter) {
         AdoptForm adoptForm = new AdoptForm(
                 request.getFirstName(),
                 request.getLastName(),
@@ -46,7 +46,8 @@ public class FormService {
                 request.getAnimalName(),
                 request.getAnimalAge(),
                 request.getAnimalSex(),
-                request.getAnimalSize()
+                request.getAnimalSize(),
+                shelter
         );
         adoptFormRepository.save(adoptForm);
     }
@@ -57,7 +58,7 @@ public class FormService {
     public List<AdoptForm> getAllAdoptForms() {
         return adoptFormRepository.findAll();
     }
-    public void addWardForm(WardRequest request) {
+    public void addWardForm(WardRequest request, Shelter shelter) {
         WardForm wardForm=new WardForm(
                 request.getFirstName(),
                 request.getLastName(),
@@ -68,7 +69,8 @@ public class FormService {
                 request.getAnimalName(),
                 request.getAnimalAge(),
                 request.getAnimalSex(),
-                request.getAnimalSize());
+                request.getAnimalSize(),
+                shelter);
 
         wardFormRepository.save(wardForm);
     }

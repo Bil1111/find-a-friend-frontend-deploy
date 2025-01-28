@@ -3,6 +3,7 @@ package com.example.config.forms;
 import com.example.config.shelters.Shelter;
 import com.example.config.users.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import javax.validation.constraints.Email;
@@ -36,6 +37,9 @@ public class VolunteerForm {
     @ManyToOne
     @JoinColumn(name = "shelter_id", nullable = false)
     private Shelter shelter;
+    @Transient
+    @JsonProperty("shelterName")
+    private String shelterName;
 
 //    @JsonBackReference
 //    @ManyToOne
@@ -48,6 +52,7 @@ public class VolunteerForm {
         this.email = email;
         this.contactNumber = contactNumber;
         this.shelter = shelter;
+        this.shelterName = shelter != null ? shelter.getName() : null;
 //        this.user=user;
     }
 
@@ -103,7 +108,14 @@ public class VolunteerForm {
         this.shelter = shelter;
     }
 
-//    public User getUser() {
+    public String getShelterName() {
+        return shelterName;
+    }
+
+    public void setShelterName(String shelterName) {
+        this.shelterName = shelterName;
+    }
+    //    public User getUser() {
 //        return user;
 //    }
 //

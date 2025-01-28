@@ -1,6 +1,7 @@
 package com.example.config.shelters;
 
 import com.example.config.animals.Animal;
+import com.example.config.forms.VolunteerForm;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -49,6 +50,9 @@ public class Shelter {
     @JsonManagedReference
     @OneToMany(mappedBy = "shelter", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Animal> animals;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "shelter", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<VolunteerForm> volunteerForms;
 
 
     public Shelter(String name, String address, String contactNumber, String description, String city,double latitude,double longitude, String imageURL) {

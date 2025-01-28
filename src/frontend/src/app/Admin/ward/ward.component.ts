@@ -58,16 +58,16 @@ export class WardComponent {
     this.search_data_id.experience = '';
   }
 
-  selectUser(volonter:any){
-   this.selectedVolonter = volonter;
+  // selectUser(volonter:any){
+  //  this.selectedVolonter = volonter;
 
-   this.Id = volonter.id;
-   this.email = volonter.email;
-   this.contactnumber = volonter.contactNumber;
-   this.name = volonter.firstName;
-   this.surname = volonter.lastName;
+  //  this.Id = volonter.id;
+  //  this.email = volonter.email;
+  //  this.contactnumber = volonter.contactNumber;
+  //  this.name = volonter.firstName;
+  //  this.surname = volonter.lastName;
   
-  }
+  // }
   closeModal(){this.selectedVolonter = null;}
 
   SendEditedUser(){
@@ -80,15 +80,15 @@ export class WardComponent {
       lastName:  this.surname
     };
 
-    // this.http.put<any[]>(`http://localhost:8080/api/forms/volunteer` , DataVolonter , {responseType: 'text' as 'json'}).subscribe(
-    // {next: (response) => {
-    //   // console.log(response); 
-    //   this.closeModal();
-    //   this.AllUsers();
-    // },
-    // error: (error) => {
-    //   console.error('Помилка при оновленні користувача', error);
+    this.http.put<any[]>(`http://localhost:8080/api/forms/volunteer` , DataVolonter , {responseType: 'text' as 'json'}).subscribe(
+    {next: (response) => {
+      // console.log(response); 
+      this.closeModal();
+      this.AllUsers();
+    },
+    error: (error) => {
+      console.error('Помилка при оновленні користувача', error);
       
-    // }})
+    }})
   }
 }

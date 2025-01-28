@@ -133,7 +133,7 @@
     <input type="hidden" [(ngModel)]="animalSex" name="animalSex" >
     <input type="hidden" [(ngModel)]="animalSize" name="animalSize" >
     <input type="hidden" [(ngModel)]="typeOfAnimal" name="typeOfAnimal" >
-
+    <input type="hidden" [(ngModel)]="ID_shelter" name="ID_shelter" >
 
     <button type="submit">Надіслати заявку</button>
  </form>
@@ -173,8 +173,9 @@
       <input type="hidden" [(ngModel)]="animalSex" name="animalSex" >
       <input type="hidden" [(ngModel)]="animalSize" name="animalSize" >
       <input type="hidden" [(ngModel)]="typeOfAnimal" name="typeOfAnimal" >
-        <input type="hidden" [(ngModel)]="Shelter" name="shelter" [value]="isWardFormOpen.shelter">
-        <input type="hidden" [(ngModel)]="City" name="City" [value]="isAdoptFormOpen.city">
+      <input type="hidden" [(ngModel)]="ID_shelter" name="ID_shelter" >
+        <!-- <input type="hidden" [(ngModel)]="Shelter" name="shelter" [value]="isWardFormOpen.shelter"> -->
+        <!-- <input type="hidden" [(ngModel)]="City" name="City" [value]="isAdoptFormOpen.city"> -->
 
 
       <button type="submit">Надіслати заявку</button>

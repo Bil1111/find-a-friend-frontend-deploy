@@ -10,7 +10,7 @@
     <div class="table">
         <table>
             <tr>
-                <th></th>
+              
                 <th>ID</th>
                 <th>Почта</th>
                 <th>Пароль</th>
@@ -18,7 +18,6 @@
                 <th>Роль</th>
             </tr>
             <tr  *ngFor="let user of Users | filterBy : search_data_id || search_user_email ||search_user_password||search_user_role" >
-                <button class="edit" (click)="selectUser(user)"><img src="image_admin_edit.png" alt=""></button>
                 <td>{{user.id}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.password}}</td>
@@ -29,11 +28,11 @@
     </div>
 
 
-
+<!-- 
     <div *ngIf="selectedUser" class="modal">
         <div class="modal-content">
           <span (click)="closeModal()" class="close-button">&times;</span>
-            <!-- <input type="text" id="name" [(ngModel)]="id"> -->
+            <input type="text" id="name" [(ngModel)]="id">
                  <h3>Редагування інформації про користувачів</h3>
 
             <label for="email">Почта</label>
@@ -45,14 +44,14 @@
             <label for="role">Роль:</label>
             <input type="text" id="role" [(ngModel)]="role">
 
-            <!-- <label for="auth_token">Токен</label>
-            <input type="text" id="auth_token" [(ngModel)]="auth_token"> -->
+            <label for="auth_token">Токен</label>
+            <input type="text" id="auth_token" [(ngModel)]="auth_token">
             <div>
                 <button class="confirm_edit" (click)="SendEditedUser()">Внести зміни</button>
             </div>
           
         </div>
-      </div>
+      </div> -->
 
   <div *ngIf="searchInfo" class="modal_for_search">
     <div class="modal-content">

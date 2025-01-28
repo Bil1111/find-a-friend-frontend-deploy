@@ -38,7 +38,9 @@ export class AdoptComponent {
 
   AllUsers(){
     this.http.get<any[]>('http://localhost:8080/api/forms/adopt/all').subscribe(
-      data =>{this.Volonter = data.map( volonter => { return volonter;});},
+      data =>{this.Volonter = data.map( volonter => {
+        console.log(volonter);
+        return volonter;});},
        error =>{console.error('Error fetching shelters:', error);});
   }
 

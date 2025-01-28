@@ -35,7 +35,7 @@ export class VolontersComponent {
       data => {
         console.log("API Response:", data);  // Логуємо всю відповідь від API
         this.Volonter = data.map(volonter => { 
-          console.log(volonter.shelter);  // Логуємо кожного волонтера окремо
+          // console.log(volonter.shelter);  // Логуємо кожного волонтера окремо
           return volonter;
         });
       },
@@ -55,37 +55,37 @@ export class VolontersComponent {
     // this.search_data_id.shelter = '';
   }
 
-  selectUser(volonter:any){
-   this.selectedVolonter = volonter;
+  // selectUser(volonter:any){
+  //  this.selectedVolonter = volonter;
 
-   this.Id = volonter.id;
-   this.email = volonter.email;
-   this.contactnumber = volonter.contactNumber;
-   this.name = volonter.firstName;
-   this.surname = volonter.lastName;
-   this.shelter = volonter.shelter;
-  }
+  //  this.Id = volonter.id;
+  //  this.email = volonter.email;
+  //  this.contactnumber = volonter.contactNumber;
+  //  this.name = volonter.firstName;
+  //  this.surname = volonter.lastName;
+  //  this.shelter = volonter.shelter;
+  // }
   closeModal(){this.selectedVolonter = null;}
 
-  SendEditedUser(){
+  // SendEditedUser(){
 
-    const DataVolonter = {
-      id: this.Id,
-      email:  this.email,
-      contactNumber: this.contactnumber,
-      firstName: this.name,
-      lastName:  this.surname
-    };
+  //   const DataVolonter = {
+  //     id: this.Id,
+  //     email:  this.email,
+  //     contactNumber: this.contactnumber,
+  //     firstName: this.name,
+  //     lastName:  this.surname
+  //   };
 
-    // this.http.put<any[]>(`http://localhost:8080/api/forms/volunteer` , DataVolonter , {responseType: 'text' as 'json'}).subscribe(
-    // {next: (response) => {
-    //   // console.log(response); 
-    //   this.closeModal();
-    //   this.AllUsers();
-    // },
-    // error: (error) => {
-    //   console.error('Помилка при оновленні користувача', error);
+  //   this.http.put<any[]>(`http://localhost:8080/api/forms/volunteer` , DataVolonter , {responseType: 'text' as 'json'}).subscribe(
+  //   {next: (response) => {
+  //     // console.log(response); 
+  //     this.closeModal();
+  //     this.AllUsers();
+  //   },
+  //   error: (error) => {
+  //     console.error('Помилка при оновленні користувача', error);
       
-    // }})
-  }
+  //   }})
+  // }
 }

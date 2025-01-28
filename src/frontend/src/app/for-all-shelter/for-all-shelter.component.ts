@@ -31,6 +31,7 @@ export class ForAllShelterComponent implements OnInit {
   animalSex: string ='';
   animalSize: string ='';
   typeOfAnimal: string ='';
+  IDshelter: string = '';
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
   shelter_Name: string = '';
@@ -80,6 +81,7 @@ export class ForAllShelterComponent implements OnInit {
           // Генерація локального фото для кожної тварини
           this.animals = this.animals.map(animal => {
             animal.imageURL = `http://localhost:8080/images/${animal.id}.png`;
+            
             return animal;
           });
 
@@ -131,6 +133,8 @@ export class ForAllShelterComponent implements OnInit {
     this.animalSex = this.selectedAnimal.sex || 'empty';
     this.animalSize = this.selectedAnimal.size || 'empty';
     this.typeOfAnimal = this.selectedAnimal.type || 'empty';
+    // this.IDshelter = this.selectedAnimal.ShelterID || 'empty';
+
   }
 
  openWardForm(){
@@ -142,6 +146,8 @@ export class ForAllShelterComponent implements OnInit {
      this.animalSex = this.selectedAnimal.sex || 'empty';
      this.animalSize = this.selectedAnimal.size || 'empty';
      this.typeOfAnimal = this.selectedAnimal.type || 'empty';
+    //  this.IDshelter = this.selectedAnimal.ShelterID || 'empty';
+
   }
 
   // Метод для закриття модального вікна
@@ -227,7 +233,7 @@ export class ForAllShelterComponent implements OnInit {
       contactNumber: this.contactNumber,
       experience: this.experience,
       typeOfAnimal: this.typeOfAnimal,
-  
+      shelter: this.shelter_ID,
       animalName: this.animalName,
       animalAge: this.animalAge,
       animalSex: this.animalSex,
@@ -269,6 +275,7 @@ export class ForAllShelterComponent implements OnInit {
       contactNumber: this.contactNumber,
       experience: this.experience,
       typeOfAnimal: this.typeOfAnimal,
+      shelter: this.shelter_ID,
 
       animalName: this.animalName,
       animalAge: this.animalAge,

@@ -8,17 +8,19 @@
            </p> 
           <input class="search" type="search" placeholder="Пошук" [(ngModel)]="search_data.name">
         </div> -->
-        <button (click)="CleanSearchForm()" *ngIf="search_data_id.id || search_data_id.name || search_data_id.city || search_data_id.address ||search_data_id.contactNumber">Очистити пошук</button>
+
+        <button class="clearbutton" (click)="CleanSearchForm()" *ngIf="search_data_id.id || search_data_id.name || search_data_id.city 
+        || search_data_id.address ||search_data_id.contactNumber">Очистити пошук</button>
         <button class="search" (click)="OpenSearchForm()"> <img src="search.png" alt=""> Пошук</button>
         <button class="add" (click)="OpenAddForm()"> <img src="add.png" alt="/"> Додати притулок</button>
         <button class="delete" (click)="OpeneDelete()"><img src="delete.png" alt="/" class="del"> Видалити</button>
     </div>
 
     <div class="table">
-        <table>
+        <table class="table1">
             <tr>
-                <th></th>
-                <th></th>
+                <th class="exclude"></th>
+                <th class="exclude"></th>
                 <th>ID</th>
                 <th>Назва</th>
                 <th>Місто</th>
@@ -28,14 +30,14 @@
             </tr>
             <tr *ngFor="let shelters of Shelters | filterBy : search_data_id || search_data_name ||search_data_city||search_data_address||search_data_contactNumber">
                 
-                <td><button class="edit" (click)="selectShelter(shelters)"><img src="image_admin_edit.png" alt=""></button></td>
-                <td> <button class="edit" (click)="selectShelter_froanimals(shelters)">д</button></td>
+                <td class="exclude"><button class="edit" (click)="selectShelter(shelters)"><img src="image_admin_edit.png" alt=""></button></td>
+                <td class="exclude"> <button class="addpet" (click)="selectShelter_froanimals(shelters)"><img src="BlackCross.png" alt=""></button></td>
                 <td>{{shelters.id}}</td>
                 <td>{{shelters.name}}</td>
                 <td>{{shelters.city}}</td>
                 <td>{{shelters.address}}</td>
                 <td>{{shelters.contactNumber}}</td>
-                <td>{{shelters.animals}}</td>
+                <td>{{shelters.animals?.length}}</td>
             </tr>
         </table>
     </div>
@@ -44,17 +46,16 @@
   <div *ngIf="selectedShelter" class="modal">
     <div class="modal-content">
       <span (click)="closeModal()" class="close-button">&times;</span>
-       
+        <!-- <input type="text" id="name" [(ngModel)]="id"> -->
              <h3>Редагування інформації про притулок</h3>
         <label for="name">Ім'я:</label>
-        <!-- <input type="text" id="name" [(ngModel)]="id"> -->
-        <input type="text" id="name" [(ngModel)]="name">
+        <input type="text" id="name" [(ngModel)]="name" placeholder="Ім'я">
         <label for="city">Місто:</label>
-        <input type="text" id="city" [(ngModel)]="city">
+        <input type="text" id="city" [(ngModel)]="city" placeholder="Місто">
         <label for="address">Адреса:</label>
-        <input type="text" id="address" [(ngModel)]="address">
-        <label for="contactNumber">Телефон</label>
-        <input type="text" id="contactNumber" [(ngModel)]="contactNumber">
+        <input type="text" id="address" [(ngModel)]="address" placeholder="Адреса">
+        <label for="contactNumber">Телефон:</label>
+        <input type="text" id="contactNumber" [(ngModel)]="contactNumber" placeholder="Телефон">
         <div>
             <button class="confirm_edit" (click)="SendEditedShelter()">Внести зміни</button>
         </div>
@@ -62,7 +63,7 @@
     </div>
   </div>
 
-  <div *ngIf="selectedShelterForadd" class="modal_for_add">
+  <div *ngIf="selectedShelterForadd" class="modal">
     <div class="modal-content">
       <span (click)="close()" class="close-button1">&times;</span>
        
@@ -71,26 +72,26 @@
              <!-- <label for="name">ID:</label>
              <input type="text" id="name" [(ngModel)]="id"> -->
         <label for="name">Ім'я:</label>
-        <input type="text" id="name" [(ngModel)]="name">
+        <input type="text" id="name" [(ngModel)]="name" placeholder="Ім'я">
         <label for="city">Місто:</label>
-        <input type="text" id="city" [(ngModel)]="city">
+        <input type="text" id="city" [(ngModel)]="city" placeholder="Місто">
 
         <label for="city">Aдрес:</label>
-        <input type="text" id="city" [(ngModel)]="address">
+        <input type="text" id="city" [(ngModel)]="address" placeholder="Aдрес">
 
         <label for="contactNumber">Телефон</label>
-        <input type="text" id="contactNumber" [(ngModel)]="contactNumber">
+        <input type="text" id="contactNumber" [(ngModel)]="contactNumber" placeholder="Телефон">
         <label for="description">Опис притулку</label>
-        <input type="text" id="description" [(ngModel)]="description">
+        <input type="text" id="description" [(ngModel)]="description" placeholder="Опис притулку">
 
         <label for="description">Зображення</label>
-        <input type="text" id="description" [(ngModel)]="imgurl">
+        <input type="text" id="description" [(ngModel)]="imgurl" placeholder="Зображення">
 
         <label for="description">Широта</label>
-        <input type="text" id="description" [(ngModel)]="latitude">
+        <input type="text" id="description" [(ngModel)]="latitude" placeholder="Широта">
 
         <label for="description">Довгота</label>
-        <input type="text" id="description" [(ngModel)]="longitude">
+        <input type="text" id="description" [(ngModel)]="longitude" placeholder="Довгота">
         <div>
             <button class="confirm_edit" (click)="AddShelter()">Додати притулок</button>
         </div>
@@ -128,7 +129,7 @@
      
            <h3></h3>
       <label for="name">ID:</label>
-      <input type="text" id="name" [(ngModel)]="id_for_delete">
+      <input type="text" id="name" [(ngModel)]="id_for_delete"  placeholder="ID притулку">
       
       <div>
           <button class="confirm_edit" (click)="confirmDelete()">Видалити</button>
@@ -139,7 +140,7 @@
 
 <div *ngIf="selectedShelter_For_Add_Animals" class="modal">
   <div class="modal-content">
-    <span (click)="closeFor_Add_Animals()" class="close-button">&times;</span>
+    <span (click)="closeFor_Add_Animals()" class="close-button2">&times;</span>
            <h3>Додвання тваринки до притулку</h3>
            <label for="id">ID притулку куди буде додана тваринка:</label>
             <input type="number" id="id" [(ngModel)]="id" placeholder="ID притулку куди буде додана тваринка">
@@ -148,27 +149,27 @@
             <input type="number" id="name" [(ngModel)]="id_animals"> -->
 
             <label for="age">Вік тваринки:</label>
-            <input type="number" id="age" [(ngModel)]="age_animals">
+            <input type="number" id="age" [(ngModel)]="age_animals"  placeholder="Вік тваринки">
 
             <label for="des">Опис тваринки:</label>
-            <input type="text" id="des" [(ngModel)]="descript_animals">
+            <input type="text" id="des" [(ngModel)]="descript_animals" placeholder="Опис тваринки">
 
             <label for="name">Ім'я тваринки:</label>
-            <input type="text" id="name" [(ngModel)]="name_animals">
+            <input type="text" id="name" [(ngModel)]="name_animals" placeholder="Ім'я тваринки">
 
             <label for="sex">Стать тваринки:</label>
-            <input type="text" id="sex" [(ngModel)]="sex_animals">
+            <input type="text" id="sex" [(ngModel)]="sex_animals" placeholder="Стать тваринки">
 
             <label for="size">Розмір тваринки:</label>
-            <input type="text" id="size" [(ngModel)]="size_animals">
+            <input type="text" id="size" [(ngModel)]="size_animals" placeholder="Розмір тваринки">
 
             <label for="type">Тип тваринки:</label>
-            <input type="text" id="type" [(ngModel)]="type_animals">
+            <input type="text" id="type" [(ngModel)]="type_animals" placeholder="Тип тваринки">
 
             <label for="url">Посилання на зображення:</label>
-            <input type="text" id="url" [(ngModel)]="url_animals">
+            <input type="text" id="url" [(ngModel)]="url_animals" placeholder="Посилання на зображення">
 
-            <input type="hidden" id="city" [(ngModel)]="city_animals">
+            <input type="hidden" id="city" [(ngModel)]="city_animals" >
             <input type="hidden" id="shelterphine" [(ngModel)]="contactshelter_animals">
       <div>
           <button class="confirm_edit" (click)="Aniamls()">Додати тваринку</button>

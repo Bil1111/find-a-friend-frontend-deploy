@@ -49,7 +49,16 @@ body{
  text-align: center;
 }
 
-
+.blog-content {
+   /* background: rgba(0, 0, 0, 0.1);
+    border-radius: 15px; */
+    font-size: large;
+    line-height: 1.8;
+    /* margin-bottom: 50px; */
+    width: 85%;
+    text-align:justify;
+    margin: 40px auto;
+}
 
 .Blog p{
    /* background: rgba(0, 0, 0, 0.1);

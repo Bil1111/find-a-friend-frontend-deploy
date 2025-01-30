@@ -49,10 +49,42 @@ input[type='search']{padding: 10px;}
     background-color: white;
     width: 90%;
     padding: 10px;
+    border-radius: 10px;
   }
   .edit{border: none;}
   .edit img{ width: 15px; height: 15px;}
 
-
-
-
+.modal_for_search button{
+    border: none;
+    background-color: #01bfbf;
+    padding: 3px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.modal_for_search button:hover{background-color: #01a9a9;}
+.modal_for_search input{
+    border-radius: 7px;
+    border: 1px solid #b1b1b1;
+    padding: 2px;
+}
+.modal_for_search label{font-weight: bold;}
+th, td {
+    border: 2px solid rgb(194, 192, 192);
+  }
+  th{
+    text-align: center;
+   }
+  th.exclude, td.exclude {
+    border: none; 
+    background-color: white;
+  }
+  .clearbutton{
+    border: none;
+  background-color: #727272;
+  padding: 8px;
+  border-radius: 5px;
+  color: aliceblue;
+  transition: 0.3s ease-in-out;
+  }
+  .clearbutton:hover{  background-color: #646262;
+  }

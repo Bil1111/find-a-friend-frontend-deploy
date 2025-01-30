@@ -8,8 +8,8 @@
            </p> 
           <input class="search" type="search" placeholder="Пошук" [(ngModel)]="search_data.name">
         </div> -->
-        <button (click)="CleanSearchForm()" *ngIf="search_data_id.id || search_data_id.name || search_data_id.city
-         ||search_data_id.age ||search_data_id.sex ||search_data_id.size ||search_data_id.type">Очистити пошук</button>
+        <button class="clearbutton" (click)="CleanSearchForm()" *ngIf="search_data_id.id || search_data_id.name || search_data_id.city
+         ||search_data_id.age ||search_data_id.sex ||search_data_id.size ||search_data_id.type || search_data_id.shelterName">Очистити пошук</button>
         <button class="search" (click)="OpenSearchForm()"> <img src="search.png" alt=""> Пошук</button>
         <!-- <button class="add" (click)="OpenAddForm()"> <img src="add.png" alt="/"> Додати притулок</button> -->
         <button class="delete" (click)="OpeneDelete()"><img src="delete.png" alt="/" class="del"> Видалити</button>
@@ -18,7 +18,7 @@
     <div class="table">
         <table>
             <tr>
-                <th></th>
+                <th  class="exclude"></th>
                 <th>ID</th>
                 <th>Ім'я</th>
                 <th>Вік</th>
@@ -32,8 +32,8 @@
              
             </tr>
             <tr *ngFor="let shelters of Shelters | filterBy : search_data_id || search_data_name ||search_data_city
-            ||search_data_age||search_data_sex ||search_data_size ||search_data_type ">
-                <td><button class="edit" (click)="selectShelter(shelters)"><img src="image_admin_edit.png" alt=""></button></td>
+            ||search_data_age||search_data_sex ||search_data_size ||search_data_type || search_data_shelterName ">
+                <td  class="exclude"><button class="edit" (click)="selectShelter(shelters)"><img src="image_admin_edit.png" alt=""></button></td>
                 <td>{{shelters.id}}</td>
                 <td>{{shelters.name}}</td>
                 <td>{{shelters.age}}</td>
@@ -48,8 +48,7 @@
             </tr>
         </table>
     </div>
-<!-- || search_data_city || search_data_address || search_data_contactNumber -->
-    <!-- Модальне вікно для детальної інформації про притулок -->
+
 
     <div *ngIf="selectedShelter" class="modal">
         <div class="modal-content">
@@ -86,7 +85,7 @@
       <span (click)="closeSearch()" class="close-button1">&times;</span>
 
          <label for="id">ID:</label>
-         <input type="text" [(ngModel)]="search_data_id.id" placeholder="ID притулку">
+         <input type="text" [(ngModel)]="search_data_id.id" placeholder="ID тваринки">
 
          <label for="name">Ім'я:</label>
          <input type="text" [(ngModel)]="search_data_id.name" placeholder="Ім'я">
@@ -95,16 +94,19 @@
          <input type="text" [(ngModel)]="search_data_id.city" placeholder="Місто">
 
          <label for="address">Вік:</label>
-         <input type="text" [(ngModel)]="search_data_id.age"  placeholder="Адреса">
+         <input type="text" [(ngModel)]="search_data_id.age"  placeholder="Вік">
 
-         <label for="contactNumber">Стать:</label>
-         <input type="text" [(ngModel)]="search_data_id.sex"  placeholder="Номер телефону">
+         <label for="sex">Стать:</label>
+         <input type="text" [(ngModel)]="search_data_id.sex"  placeholder="Стать">
 
-         <label for="contactNumber">Розмір:</label>
-         <input type="text" [(ngModel)]="search_data_id.size"  placeholder="Номер телефону">
+         <label for="size">Розмір:</label>
+         <input type="text" [(ngModel)]="search_data_id.size"  placeholder="Розмір">
 
-         <label for="contactNumber">Тип:</label>
-         <input type="text" [(ngModel)]="search_data_id.type"  placeholder="Номер телефону">
+         <label for="type">Тип:</label>
+         <input type="text" [(ngModel)]="search_data_id.type"  placeholder="Тип">
+
+         <label for="namesh">Назва притулку:</label>
+         <input type="text" [(ngModel)]="search_data_id.shelterName"  placeholder="Назва притулку">
 
          <button (click)="closeSearch()">Знайти</button>
     </div>
@@ -117,7 +119,7 @@
      
            <h3></h3>
       <label for="name">ID:</label>
-      <input type="text" id="name" [(ngModel)]="id_for_delete">
+      <input type="text" id="name" [(ngModel)]="id_for_delete" placeholder="ID тваринки">
       
       <div>
           <button class="confirm_edit" (click)="confirmDelete()">Видалити</button>

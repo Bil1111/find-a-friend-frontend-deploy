@@ -17,6 +17,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { ThignsComponent } from './thigns/thigns.component';
 import { ForAllShelterComponent } from './for-all-shelter/for-all-shelter.component';
 // import { AdminModule } from './Admin/admin.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -43,6 +44,7 @@ import { ForAllShelterComponent } from './for-all-shelter/for-all-shelter.compon
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    BrowserAnimationsModule
     // AdminModule
   ],
   providers: [],

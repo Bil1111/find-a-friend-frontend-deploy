@@ -10,7 +10,7 @@ export class VolontersComponent {
   searchInfo: boolean = false;
   selectedVolonter: any = null;
 
-  Id: number = 0;
+  Id: string = '';
   email: string = '';
   contactnumber: string = '';
   name: string = '';
@@ -22,7 +22,7 @@ export class VolontersComponent {
   search_user_contactNumber: any = {contactNumber:''};
   search_user_firstName: any = {firstName:''};
   search_user_lastName: any = {lastName:''};
-  search_user_shelter: any = {rolsheltere:''};
+  search_user_shelter: any = {shelterName:''};
 
 
   constructor(private http : HttpClient){}
@@ -43,16 +43,17 @@ export class VolontersComponent {
         console.error('Error fetching shelters:', error);
       });
   }
-
+ closeModal(){this.selectedVolonter = null;}
   OpenSearchForm(){this.searchInfo = true;}
   closeSearch(){this.searchInfo =false;}
+
   CleanSearchForm(){
     this.search_data_id.id = '';
+     this.search_data_id.firstName = '';
+    this.search_data_id.lastName = '';
     this.search_data_id.contactNumber = '';
     this.search_data_id.email = '';
-    this.search_data_id.firstName = '';
-    this.search_data_id.lastName = '';
-    // this.search_data_id.shelter = '';
+    this.search_data_id.shelterName = '';
   }
 
   // selectUser(volonter:any){
@@ -65,7 +66,7 @@ export class VolontersComponent {
   //  this.surname = volonter.lastName;
   //  this.shelter = volonter.shelter;
   // }
-  closeModal(){this.selectedVolonter = null;}
+ 
 
   // SendEditedUser(){
 

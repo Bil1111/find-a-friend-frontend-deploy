@@ -40,6 +40,10 @@
     Це чудова можливість спробувати себе в ролі господаря та, можливо, знайти свого майбутнього друга. </p>
 
 </div>
+<div class="Blog" *ngFor="let blog of blogData">
+  <h2>{{ blog.title }}</h2>
+  <div [innerHTML]="blog.content" class="blog-content"></div>
+</div>
 
 <div class="paw">
   <img src="paw.png" alt="paw">

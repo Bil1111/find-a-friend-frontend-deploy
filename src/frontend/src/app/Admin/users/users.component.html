@@ -1,7 +1,7 @@
 <div class="all-items">
 
     <div class="function">
-        <button (click)="CleanSearchForm()" *ngIf="search_data_id.id || search_data_id.email 
+        <button class="clearbutton" (click)="CleanSearchForm()" *ngIf="search_data_id.id || search_data_id.email 
         || search_data_id.password || search_data_id.role">Очистити пошук</button>
         <button class="search" (click)="OpenSearchForm()"> <img src="search.png" alt=""> Пошук</button>
    
@@ -58,16 +58,16 @@
       <span (click)="closeSearch()" class="close-button1">&times;</span>
 
          <label for="id">ID:</label>
-         <input type="text" [(ngModel)]="search_data_id.id" placeholder="">
+         <input type="text" [(ngModel)]="search_data_id.id" placeholder="ID">
 
          <label for="name">Почта:</label>
-         <input type="text" [(ngModel)]="search_data_id.email" placeholder="">
+         <input type="text" [(ngModel)]="search_data_id.email" placeholder="Пошта">
 
          <label for="password">Пароль:</label>
-         <input type="text" [(ngModel)]="search_data_id.password" placeholder="">
+         <input type="text" [(ngModel)]="search_data_id.password" placeholder="Пароль">
 
          <label for="role">Роль:</label>
-         <input type="text" [(ngModel)]="search_data_id.role"  placeholder="">
+         <input type="text" [(ngModel)]="search_data_id.role"  placeholder="Роль">
 
          <button (click)="closeSearch()">Знайти</button>
     </div>

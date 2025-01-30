@@ -1,9 +1,9 @@
 <div class="all-items">
 
     <div class="function">
-        <button (click)="CleanSearchForm()" *ngIf="search_data_id.id || search_data_id.email 
+        <button class="clearbutton" (click)="CleanSearchForm()" *ngIf="search_data_id.id || search_data_id.email 
         || search_data_id.contactNumber || search_data_id.firstName || search_data_id.lastName || search_data_id.animalName
-        || search_data_id.typeOfAnimal || search_data_id.animalAge || search_data_id.animalSex || search_data_id.animalSize || search_data_id.experience">Очистити пошук</button>
+        || search_data_id.typeOfAnimal || search_data_id.animalAge || search_data_id.animalSex || search_data_id.animalSize || search_data_id.experience || search_data_id.shelterName">Очистити пошук</button>
         <button class="search" (click)="OpenSearchForm()"> <img src="search.png" alt=""> Пошук</button>
    
     </div>
@@ -11,14 +11,14 @@
     <div class="table">
         <table>
             <tr>
-                <th></th>
-                <th>ID</th>
+                <!-- <th></th> -->
+                <th >ID</th>
                 <th>Ім'я</th>
                 <th>Прізвище</th>
                 <th>Телефон</th>
                 <th>Почта</th>
                 <th>Тип тваринки</th>
-                <th>Ім'я</th>
+                <th>Ім'я тваринки</th>
                 <th>Вік тваринки</th>
                 <th>Стать</th>
                 <th>Розмір</th>
@@ -27,8 +27,8 @@
                 
             </tr>
             <tr  *ngFor="let volonter of Volonter | filterBy : search_data_id || search_user_firstName ||search_user_lastName||search_user_contactNumber ||search_user_email ||search_user_typeOfAnimal 
-            ||search_user_animalName ||search_user_animalAge ||search_user_animalSex ||search_user_animalSize ||search_user_experience" >
-                <button class="edit" (click)="selectUser(volonter)"><img src="image_admin_edit.png" alt=""></button>
+            ||search_user_animalName ||search_user_animalAge ||search_user_animalSex ||search_user_animalSize ||search_user_experience || search_user_shelterName" >
+                <!-- <td><button class="edit" (click)="selectUser(volonter)"><img src="image_admin_edit.png" alt=""></button></td> -->
                 <td>{{volonter.id}}</td>
                 <td>{{volonter.firstName}}</td>
                 <td>{{volonter.lastName}}</td>
@@ -79,37 +79,40 @@
       <span (click)="closeSearch()" class="close-button1">&times;</span>
 
          <label for="id">ID:</label>
-         <input type="text" [(ngModel)]="search_data_id.id" placeholder="">
+         <input type="text" [(ngModel)]="search_data_id.id" placeholder="ID" name="id">
 
          <label for="email">Ім'я:</label>
-         <input type="text" [(ngModel)]="search_data_id.firstName" placeholder="">
+         <input type="text" [(ngModel)]="search_data_id.firstName" placeholder="Ім'я"  name="id">
 
-         <label for="password">Прізвище:</label>
-         <input type="text" [(ngModel)]="search_data_id.lastName" placeholder="">
+         <label for="surn">Прізвище:</label>
+         <input type="text" [(ngModel)]="search_data_id.lastName" placeholder="Прізвище"  name="surn">
 
-         <label for="role">Телефон:</label>
-         <input type="text" [(ngModel)]="search_data_id.contactNumber"  placeholder="">
+         <label for="contactNumber">Телефон:</label>
+         <input type="text" [(ngModel)]="search_data_id.contactNumber"  placeholder="Телефон"  name="contactNumber">
 
-         <label for="role">Почта:</label>
-         <input type="text" [(ngModel)]="search_data_id.email"  placeholder="">
+         <label for="email">Почта:</label>
+         <input type="text" [(ngModel)]="search_data_id.email"  placeholder="Почта" name="email">
 
-         <label for="role">Тип тваринки:</label>
-         <input type="text" [(ngModel)]="search_data_id.typeOfAnimal"  placeholder="">
+         <label for="type">Тип тваринки:</label>
+         <input type="text" [(ngModel)]="search_data_id.typeOfAnimal"  placeholder="Тип тваринки" name="type">
 
-         <label for="role">Ім'я:</label>
-         <input type="text" [(ngModel)]="search_data_id.animalName"  placeholder="">
+         <label for="name">Ім'я:</label>
+         <input type="text" [(ngModel)]="search_data_id.animalName"  placeholder="Ім'я" name="name">
 
-         <label for="role">Вік тваринки:</label>
-         <input type="text" [(ngModel)]="search_data_id.animalAge"  placeholder="">
+         <label for="age">Вік тваринки:</label>
+         <input type="text" [(ngModel)]="search_data_id.animalAge"  placeholder="Вік тваринки" name="age">
 
-         <label for="role">Стать:</label>
-         <input type="text" [(ngModel)]="search_data_id.animalSex"  placeholder="">
+         <label for="sex">Стать:</label>
+         <input type="text" [(ngModel)]="search_data_id.animalSex"  placeholder="Стать" name="sex">
          
-         <label for="role">Розмір:</label>
-         <input type="text" [(ngModel)]="search_data_id.animalSize"  placeholder="">
+         <label for="animalSize">Розмір:</label>
+         <input type="text" [(ngModel)]="search_data_id.animalSize"  placeholder="Розмір" name="animalSize">
 
-         <label for="role">Досвід:</label>
-         <input type="text" [(ngModel)]="search_data_id.experience"  placeholder="">
+         <label for="experience">Досвід:</label>
+         <input type="text" [(ngModel)]="search_data_id.experience"  placeholder="Досвід" name="experience">
+
+         <label for="namesh">Назва притулку:</label>
+         <input type="text" [(ngModel)]="search_data_id.shelterName"  placeholder="Назва притулку" name="namesh">
          <button (click)="closeSearch()">Знайти</button>
     </div>
   </div>

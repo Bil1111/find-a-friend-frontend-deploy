@@ -51,10 +51,6 @@ city_animals: string = '';
 contactshelter_animals: string = '';
 
 
-// ВИПРАВИ ДОДАВАННЯ ПРИТУЛКУВ І ТВАРИНОК НЕ ПРАВИЛЬНО РАХУЄ ID !!!! TO DO
-//
-
-
 constructor(private http: HttpClient) { }
 
 ngOnInit() {
@@ -92,7 +88,11 @@ selectShelter_froanimals(shelters: any){
 }
 closeFor_Add_Animals(){this.selectedShelter_For_Add_Animals = null;}
 
-closeModal() {this.selectedShelter = null; }
+closeModal() {this.selectedShelter = null; 
+   this.name = '';
+  this.city = '';
+  this.address = '';
+  this.contactNumber = '';}
 close(){this.selectedShelterForadd = false;
   this.name = '';
   this.city = '';

@@ -12,6 +12,11 @@ import { AdoptComponent } from './adopt/adopt.component';
 import { WardComponent } from './ward/ward.component';
 import { BlogComponent } from './blog/blog.component';
 import { TabelAnimalsComponent } from './tabel-animals/tabel-animals.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+// import { ShareService } from '../service/share.service';
 @NgModule({
   declarations: [
     AdmindashbordComponent,
@@ -22,13 +27,19 @@ import { TabelAnimalsComponent } from './tabel-animals/tabel-animals.component';
     AdoptComponent,
     WardComponent,
     BlogComponent,
-    TabelAnimalsComponent
+    TabelAnimalsComponent,
+    
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    FilterPipeModule
-  ]
+    FilterPipeModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatFormFieldModule,],
+    // providers: [ShareService],
+  
 })
 export class AdminModule { }

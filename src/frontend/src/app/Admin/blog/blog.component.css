@@ -1,0 +1,33 @@
+.example-full-width{
+    width: 80%;
+    margin: 10px 100px;
+}
+.example-form{
+    margin-top: 100px;
+}
+.text-editor {
+  margin: 10px 100px;
+    width: 80%;
+    min-height: 200px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    outline: none;
+  }
+  .toolbar{
+    margin: 10px 100px;
+  }
+  .addblods{
+    margin: 10px 100px;
+    text-align: center;
+    font-family: 'e-ukr';
+    color: aliceblue;
+    border: none;
+    padding: 5px;
+    background-color: #01bfbf;
+    border-radius: 5px;
+  }
+  .addblods:hover{
+    background-color: #00afaf;
+
+  }
+  

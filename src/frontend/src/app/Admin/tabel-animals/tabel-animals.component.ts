@@ -40,6 +40,7 @@ export class TabelAnimalsComponent {
  search_data_sex: any = {sex:''};
  search_data_size: any = {size:''};
  search_data_type: any = {type:''};
+ search_data_shelterName: any ={shelterName: ''};
 
 // МОДАЛЬНЕ ВІКНО ДЛЯ ВИДАЛЕННЯ
  id_for_delete: string = '';
@@ -176,6 +177,7 @@ CleanSearchForm(){
   this.search_data_id.sex = '';
   this.search_data_id.size = '';
   this.search_data_id.type= '';
+  this.search_data_id.shelterName = '';
 }
 OpeneDelete(){this.DELETE = true;}
 closeModalDelete(){this.DELETE = false; }

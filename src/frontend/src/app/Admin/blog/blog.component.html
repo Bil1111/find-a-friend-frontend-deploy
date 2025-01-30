@@ -1,1 +1,39 @@
-<p>blog works!</p>
+
+
+<form class="example-form">
+ 
+  <!-- <div class="toolbar">
+    <button mat-icon-button (click)="formatText('bold')">
+      <mat-icon>format_bold</mat-icon>
+    </button>
+    <button mat-icon-button (click)="formatText('italic')">
+      <mat-icon>format_italic</mat-icon>
+    </button>
+    <button mat-icon-button (click)="formatText('underline')">
+      <mat-icon>format_underlined</mat-icon>
+    </button>
+    <button mat-icon-button (click)="formatText('strikeThrough')">
+      <mat-icon>format_strikethrough</mat-icon>
+    </button>
+    <button mat-icon-button (click)="formatText('justifyLeft')">
+      <mat-icon>format_align_left</mat-icon>
+    </button>
+    <button mat-icon-button (click)="formatText('justifyCenter')">
+      <mat-icon>format_align_center</mat-icon>
+    </button>
+    <button mat-icon-button (click)="formatText('justifyRight')">
+      <mat-icon>format_align_right</mat-icon>
+    </button>
+
+  </div> -->
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Заголовок блогу" [(ngModel)]="blogTitle" name="blogTitle">
+  </mat-form-field>
+  
+    <div class="text-editor" contenteditable="true" #editor matInput></div>
+  
+  <button (click)="saveBlogData()" class="addblods">Зберегти блог</button>
+  <!-- <button (click)="getBlog()" >взятиблог</button> -->
+
+</form>

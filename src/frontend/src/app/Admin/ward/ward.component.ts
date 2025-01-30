@@ -29,6 +29,8 @@ export class WardComponent {
   search_user_animalSex: any = {animalSex:''};
   search_user_animalSize: any = {animalSize:''};
   search_user_experience: any = {experience:''};
+  search_user_shelterName: any = {shelterName:''};
+
 
 
   constructor(private http : HttpClient){}
@@ -56,6 +58,7 @@ export class WardComponent {
     this.search_data_id.animalSex = '';
     this.search_data_id.animalSize = '';
     this.search_data_id.experience = '';
+    this.search_data_id.shelterName = '';
   }
 
   // selectUser(volonter:any){

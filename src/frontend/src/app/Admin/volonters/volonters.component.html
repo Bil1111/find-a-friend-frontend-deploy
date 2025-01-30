@@ -1,8 +1,9 @@
 <div class="all-items">
 
     <div class="function">
-        <button (click)="CleanSearchForm()" *ngIf="search_data_id.id || search_data_id.email 
-        || search_data_id.contactNumber || search_data_id.firstName || search_data_id.lastName || search_data_id.shelter">Очистити пошук</button>
+        <button class="clearbutton" (click)="CleanSearchForm()" *ngIf="search_data_id.id || search_data_id.firstName || search_data_id.lastName ||search_data_id.contactNumber 
+        || search_data_id.email || search_data_id.shelterName   ">Очистити пошук</button>
+
         <button class="search" (click)="OpenSearchForm()"> <img src="search.png" alt=""> Пошук</button>
    
     </div>
@@ -11,18 +12,18 @@
         <table>
             <tr>
                 <th>ID</th>
-                <th>Телефон</th>
-                <th>Почта</th>
                 <th>Ім'я</th>
                 <th>Прізвище</th>
+                <th>Телефон</th>
+                <th>Почта</th>
                 <th>Притулок</th>
             </tr>
-            <tr  *ngFor="let volonter of Volonter | filterBy : search_data_id || search_user_email ||search_user_contactNumber||search_user_firstName ||search_user_lastName ||search_user_shelter" >
+            <tr  *ngFor="let volonter of Volonter | filterBy : search_data_id ||  search_user_firstName || search_user_lastName ||  search_user_contactNumber || search_user_email ||  search_user_shelter" >
                 <td>{{volonter.id}}</td>
-                <td>{{volonter.contactNumber}}</td>
-                <td>{{volonter.email}}</td>
                 <td>{{volonter.firstName}}</td>
                 <td>{{volonter.lastName}}</td>
+                <td>{{volonter.contactNumber}}</td>
+                <td>{{volonter.email}}</td>
                 <td>{{volonter.shelterName}}</td>
             </tr>
         </table>
@@ -62,22 +63,22 @@
       <span (click)="closeSearch()" class="close-button1">&times;</span>
 
          <label for="id">ID:</label>
-         <input type="text" [(ngModel)]="search_data_id.id" placeholder="">
-
-         <label for="email">Телефон</label>
-         <input type="text" [(ngModel)]="search_data_id.contactNumber" placeholder="">
-
-         <label for="password">Почта:</label>
-         <input type="text" [(ngModel)]="search_data_id.email" placeholder="">
+         <input type="number" [(ngModel)]="search_data_id.id" placeholder="ID" name="id">
 
          <label for="role">Ім'я:</label>
-         <input type="text" [(ngModel)]="search_data_id.firstName"  placeholder="">
+         <input type="text" [(ngModel)]="search_data_id.firstName"  placeholder="Ім'я" name="role">
 
-         <label for="role">Прізвище:</label>
-         <input type="text" [(ngModel)]="search_data_id.lastName"  placeholder="">
+         <label for="name">Прізвище:</label>
+         <input type="text" [(ngModel)]="search_data_id.lastName"  placeholder="Прізвище" name="name">
 
-         <!-- <label for="role">Притулок:</label>
-         <input type="text" [(ngModel)]="search_data_id.shelter"  placeholder=""> -->
+         <label for="contactnumber">Телефон:</label>
+         <input type="text" [(ngModel)]="search_data_id.contactNumber" placeholder="Телефон" name="contactnumber">
+
+         <label for="email">Почта:</label>
+         <input type="text" [(ngModel)]="search_data_id.email" placeholder="Почта" name="email">
+
+         <label for="shelter">Притулок:</label>
+         <input type="text" [(ngModel)]="search_data_id.shelterName" placeholder="Введіть притулок" name="shelter">
 
          <button (click)="closeSearch()">Знайти</button>
     </div>

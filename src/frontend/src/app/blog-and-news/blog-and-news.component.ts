@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { ShareService } from '../service/share.service';
 
 @Component({
   selector: 'app-blog-and-news',
@@ -6,7 +7,7 @@ import { Component, HostListener } from '@angular/core';
   styleUrl: './blog-and-news.component.css'
 })
 export class BlogAndNewsComponent {
-
+constructor(private shareService: ShareService) {}
   isScrollToTopVisible: boolean = false;
   @HostListener('window:scroll',[])
   onWindowScroll() {
@@ -14,4 +15,11 @@ export class BlogAndNewsComponent {
     this.isScrollToTopVisible = scrollTop > 300;
   }
     scrollToTop(){window.scrollTo({top:0,});}
+
+    blogData: { title: string, content: string }[] = [];
+
+    ngOnInit(): void {
+      this.blogData = this.shareService.getBlogData();
+      console.log(this.blogData);
+    }
 }

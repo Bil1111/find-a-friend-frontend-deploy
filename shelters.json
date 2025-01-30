@@ -42,7 +42,14 @@
     "city" : "Львів",
     "shelterPhoneNumber" : "+380 932 223 333"
   } ],
-  "volunteerForms" : [ ]
+  "volunteerForms" : [ {
+    "id" : 1,
+    "firstName" : "dfgfgffdgdfg",
+    "lastName" : "dfgdfgfdg",
+    "email" : "fdgfgfgffgd",
+    "contactNumber" : "gdgfgf",
+    "shelterName" : "Притулок №2"
+  } ]
 }, {
   "id" : 3,
   "name" : "Притулок №3",
@@ -87,14 +94,7 @@
     "city" : "Одеса",
     "shelterPhoneNumber" : "+380 933 334 444"
   } ],
-  "volunteerForms" : [ {
-    "id" : 1,
-    "firstName" : "sdfsdf",
-    "lastName" : "sdfsdf",
-    "email" : "sdfsdf",
-    "contactNumber" : "sdfsdf",
-    "shelterName" : null
-  } ]
+  "volunteerForms" : [ ]
 }, {
   "id" : 4,
   "name" : "Притулок №4",
@@ -178,7 +178,7 @@
 }, {
   "id" : 8,
   "name" : "Притулок \"Бідний Єврей\"",
-  "address" : "Аушвіц",
+  "address" : "Берлін",
   "contactNumber" : "+380 931 112 222",
   "description" : "Тільки для євреїв, циганів і поляків ",
   "city" : "Берлін",
@@ -210,10 +210,10 @@
   } ],
   "volunteerForms" : [ {
     "id" : 2,
-    "firstName" : "87i6u545t5ythgbfv",
-    "lastName" : ";liukjhrbf ",
-    "email" : "4u6rtjgndc",
-    "contactNumber" : "98675654434",
-    "shelterName" : null
+    "firstName" : "mbnbffd",
+    "lastName" : "jhfdsgf",
+    "email" : "hnfgbsdvfd",
+    "contactNumber" : "gfdsd",
+    "shelterName" : "Притулок \"Бідний Єврей\""
   } ]
 } ]

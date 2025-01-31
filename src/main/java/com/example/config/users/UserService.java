@@ -69,6 +69,18 @@ public class UserService {
         userRepository.save(user); // Оновлюємо користувача в базі
     }
 
+    public void registerAdmin(UserRegistrationRequest request) {
+        User user = new User(
+                request.getEmail(),
+                passwordEncoder.encode(request.getPassword()),
+                Role.ADMIN
+        );
+        userRepository.save(user);
+        String token = jwtTokenProvider.generateToken(user);
+        user.setAuthToken(token);
+        userRepository.save(user);
+    }
+
 
 
     public boolean loginUser(String email, String password) {

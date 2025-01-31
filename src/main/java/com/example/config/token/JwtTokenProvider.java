@@ -35,23 +35,6 @@ public class JwtTokenProvider {
                 .getBody(); // Отримуємо Claims
         return claims.get("role", List.class); // "role" — ключ, під яким зберігається роль
     }
-    public Long getUserIdFromToken(String token) {
-        try {
-            Claims claims = Jwts.parser()
-                    .setSigningKey(jwtSecret)
-                    .parseClaimsJws(token)
-                    .getBody();
-            return claims.get("id", Long.class); // Припускаємо, що userId зберігається в токені
-        } catch (ExpiredJwtException e) {
-            throw new RuntimeException("JWT token has expired", e);
-        } catch (MalformedJwtException e) {
-            throw new RuntimeException("Malformed JWT token", e);
-        } catch (SignatureException e) {
-            throw new RuntimeException("Invalid JWT signature", e);
-        } catch (Exception e) {
-            throw new RuntimeException("Invalid JWT token", e);
-        }
-    }
     // Отримуємо email з токена
     public String getEmailFromToken(String token) {
         try {
@@ -70,8 +53,4 @@ public class JwtTokenProvider {
         }
     }
 
-    public boolean checkUser(String token, String email) {
-        String tEmail = getEmailFromToken(token);
-        return tEmail.equals(email);
-    }
 }

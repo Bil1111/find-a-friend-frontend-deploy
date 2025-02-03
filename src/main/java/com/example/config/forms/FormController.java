@@ -45,6 +45,11 @@ public class FormController {
         return volunteerForm.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+    @DeleteMapping("/volunteer/{id}")
+    public ResponseEntity<String> deleteVolunteerForm(@PathVariable("id") Long id) {
+        formService.deleteVolunteerForm(id);
+        return new ResponseEntity<>("Volunteer form deleted successfully", HttpStatus.OK);
+    }
 
     @PostMapping("/adopt")
     public ResponseEntity<Map<String, String>> adoptForm(@RequestBody AdoptRequest request) {
@@ -67,14 +72,12 @@ public class FormController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-//    @PostMapping("/ward")
-//    public ResponseEntity<Map<String, String>> wardForm(@RequestBody WardRequest request) {
-//        User user = userRepository.findById(request.getUser())
-//                .orElseThrow(() -> new RuntimeException("User not found"));
-//        formService.addWardForm(request, user);
-//
-//        return new ResponseEntity<>(HttpStatus.CREATED);
-//    }
+    @DeleteMapping("/adopt/{id}")
+    public ResponseEntity<String> deleteAdoptForm(@PathVariable("id") Long id) {
+        formService.deleteAdoptForm(id);
+        return new ResponseEntity<>("Adopt form deleted successfully", HttpStatus.OK);
+    }
+
     @PostMapping("/ward")
     public ResponseEntity<Map<String, String>> wardForm(@RequestBody WardRequest request) {
         Shelter shelter = shelterRepository.findById(request.getShelter())
@@ -94,5 +97,11 @@ public class FormController {
         Optional<WardForm> wardForm = formService.getWardFormById(id);
         return wardForm.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @DeleteMapping("/ward/{id}")
+    public ResponseEntity<String> deleteWardForm(@PathVariable("id") Long id) {
+        formService.deleteWardForm(id);
+        return new ResponseEntity<>("Ward form deleted successfully", HttpStatus.OK);
     }
 }

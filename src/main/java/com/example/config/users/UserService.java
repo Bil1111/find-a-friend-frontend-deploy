@@ -33,7 +33,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public void updateCustomerDetails(UserRegistrationRequest request, Long userId) {
+    public void updateUserDetails(UserRegistrationRequest request, Long userId) {
         Optional<User> userOptional = userRepository.findById(userId);
 
         userOptional.ifPresentOrElse(user -> {
@@ -57,13 +57,10 @@ public class UserService {
                 passwordEncoder.encode(request.getPassword()),
                 Role.USER // Роль користувача
         );
-
         // Зберігаємо користувача в базу
         userRepository.save(user);
-
         // Генеруємо токен
         String token = jwtTokenProvider.generateToken(user); // передаємо об'єкт користувача
-
         // Зберігаємо токен в базі даних
         user.setAuthToken(token); // Зберігаємо токен в користувача
         userRepository.save(user); // Оновлюємо користувача в базі

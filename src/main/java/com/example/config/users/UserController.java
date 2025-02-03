@@ -25,27 +25,27 @@ public class UserController {
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
     @GetMapping("/{id}")
-    public ResponseEntity<User> getCustomerById(@PathVariable("id") Long id) {
+    public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
         Optional<User> customer = userService.getUserById(id);
         return customer.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> getAllCustomers() {
+    public ResponseEntity<List<User>> getAllUsers() {
         List<User> customers = userService.getAllUsers();
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteCustomer(@PathVariable("id") Long id) {
+    public ResponseEntity<String> deleteUser(@PathVariable("id") Long id) {
         userService.deleteUser(id);
         return new ResponseEntity<>("Customer deleted successfully", HttpStatus.OK);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateCustomerDetails(@RequestBody UserRegistrationRequest request, @PathVariable("id") Long id) {
-        userService.updateCustomerDetails(request, id);
+    public ResponseEntity<String> updateUserDetails(@RequestBody UserRegistrationRequest request, @PathVariable("id") Long id) {
+        userService.updateUserDetails(request, id);
         return new ResponseEntity<>("User updated successfully", HttpStatus.OK);
     }
     @PostMapping("/register")

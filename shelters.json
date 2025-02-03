@@ -180,10 +180,10 @@
   "name" : "Притулок \"Бідний Єврей\"",
   "address" : "Берлін",
   "contactNumber" : "+380 931 112 222",
-  "description" : "Тільки для євреїв, циганів і поляків ",
+  "description" : "Тільки для євреїв i циганів ",
   "city" : "Берлін",
-  "latitude" : 800.0,
-  "longitude" : 895.0,
+  "latitude" : 80.0,
+  "longitude" : 89.0,
   "imageURL" : "зщшгнеку",
   "animals" : [ {
     "id" : 18,

@@ -77,6 +77,9 @@ selectShelter(shelter: any){
   this.city = shelter.city;
   this.address = shelter.address;
   this.contactNumber = shelter.contactNumber;
+  this.description = shelter.description;
+  this.latitude = shelter.latitude;
+  this.longitude = shelter.longitude;
 }
 
 selectShelter_froanimals(shelters: any){
@@ -92,7 +95,11 @@ closeModal() {this.selectedShelter = null;
    this.name = '';
   this.city = '';
   this.address = '';
-  this.contactNumber = '';}
+  this.contactNumber = '';
+  this.description = '';
+  this.latitude = '';
+  this.longitude = '';
+}
 close(){this.selectedShelterForadd = false;
   this.name = '';
   this.city = '';
@@ -109,7 +116,10 @@ SendEditedShelter(){
      name: this.name,
      city: this.city,
      address: this.address,
-     contactNumber: this.contactNumber
+     contactNumber: this.contactNumber,
+     description:  this.description,
+     latitude:  this.latitude,
+     longitude:  this.longitude
   };
 
   this.http.put(`http://localhost:8080/api/shelters/update/${EditShelter.id}`,EditShelter, { responseType: 'text' }).subscribe(

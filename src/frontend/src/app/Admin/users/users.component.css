@@ -31,7 +31,7 @@ input[type='search']{padding: 10px;}
     margin: 15px 200px;
     width: 80%;
 }
-.modal_for_search, .modal {
+.modal_for_search, .modal, .modal_for_addadmin {
     position: fixed;
     top: 0;
     left: 0;
@@ -45,16 +45,26 @@ input[type='search']{padding: 10px;}
     backdrop-filter: blur(10px);
   }
 
-  .modal-content{
+  .modal-content, .modal-content-addadmin{
     background-color: white;
     width: 90%;
     padding: 10px;
     border-radius: 10px;
+    position: relative;
   }
   .edit{border: none;}
   .edit img{ width: 15px; height: 15px;}
 
-
+.function .add{
+    border-radius: 8px;
+    border: none;
+    background-color: #01bfbf;
+    color:white;
+    width: 190px;
+    height: 27px;
+    
+}
+.function .add img{width: 15px; height: 15px; position: relative; top: -1.5px; right: 5px;}
   th, td {
     border: 2px solid rgb(194, 192, 192);
   }
@@ -73,11 +83,10 @@ input[type='search']{padding: 10px;}
   color: aliceblue;
   transition: 0.3s ease-in-out;
   }
-  .clearbutton:hover{  background-color: #646262;
-  }
+  .clearbutton:hover{  background-color: #646262;}
+
 .close-button,
-.close-button1,
-.close-button2{
+.close-button1{
   height: 45px;
   width: 45px;
   cursor: pointer;
@@ -92,8 +101,7 @@ input[type='search']{padding: 10px;}
   top: -30px;
 }
 .close-button:hover,
-.close-button1:hover,
-.close-button2:hover {
+.close-button1:hover {
   background-color: #ccccccb4;
 }
  .modal_for_search button,.modal button{
@@ -119,3 +127,46 @@ input[type='search']{padding: 10px;}
 
 
 
+.form-group {
+  margin-bottom: 1rem;
+  width: 100%; /* Додаємо ширину для форм-групи */
+}
+
+label {
+  font-family: "e-ukrL";
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #555;
+}
+
+input {
+ 
+  width: 100%;
+  padding: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border 0.3s;
+}
+
+input:focus {
+  border: 1px solid #007bff;
+  outline: none;
+}
+
+.btn {
+  width: 100%;
+  padding: 0.3rem;
+  background-color: #01bfbf;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 15px;
+  margin-bottom: -5px;
+}
+
+.btn:hover {
+  background-color: #009999;
+}

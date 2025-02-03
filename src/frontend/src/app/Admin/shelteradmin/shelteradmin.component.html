@@ -27,6 +27,10 @@
                 <th>Адреса</th>
                 <th>Телефон</th>
                 <th>Кіл. Tварин</th>
+                <th>Опис</th>
+                <th>Довгота</th>
+                <th>Широта</th>
+
             </tr>
             <tr *ngFor="let shelters of Shelters | filterBy : search_data_id || search_data_name ||search_data_city||search_data_address||search_data_contactNumber">
                 
@@ -38,6 +42,10 @@
                 <td>{{shelters.address}}</td>
                 <td>{{shelters.contactNumber}}</td>
                 <td>{{shelters.animals?.length}}</td>
+                <td>{{shelters.description}}</td>
+                <td>{{shelters.longitude}}</td>
+                <td>{{shelters.latitude}}</td>
+
             </tr>
         </table>
     </div>
@@ -56,6 +64,13 @@
         <input type="text" id="address" [(ngModel)]="address" placeholder="Адреса">
         <label for="contactNumber">Телефон:</label>
         <input type="text" id="contactNumber" [(ngModel)]="contactNumber" placeholder="Телефон">
+
+        <label for="longitude">Довгота:</label>
+        <input type="text" id="longitude" [(ngModel)]="longitude" placeholder="Довгота">
+        <label for="latitude">Широта:</label>
+        <input type="text" id="latitude" [(ngModel)]="latitude" placeholder="Широта">
+        <label for="description">Опис:</label>
+        <input type="text" id="description" [(ngModel)]="description" placeholder="Опис">
         <div>
             <button class="confirm_edit" (click)="SendEditedShelter()">Внести зміни</button>
         </div>

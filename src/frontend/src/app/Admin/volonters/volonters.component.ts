@@ -24,6 +24,7 @@ export class VolontersComponent {
   search_user_lastName: any = {lastName:''};
   search_user_shelter: any = {shelterName:''};
 
+  DELETE: boolean = false;
 
   constructor(private http : HttpClient){}
   ngOnInit(){
@@ -89,4 +90,29 @@ export class VolontersComponent {
       
   //   }})
   // }
+  OpeneDelete(){this.DELETE = true;}
+  closeModalDelete(){this.DELETE = false;}
+  confirmDelete(){
+    const confirmation = confirm('Ви впевнені, що хочете видалити заявку на волонтерство?');
+    if(confirmation){
+     const confirmsecond = confirm('Дані про заявку будуть видалені без можливості відновити.')
+     if(confirmsecond){
+      this.seandDelete();
+     }
+    }
+  }
+  seandDelete(){
+
+    this.http.delete<any[]>(`http://localhost:8080/api/forms/volunteer/${this.Id}` , {responseType: ('text' as 'json')}).subscribe( 
+   {next: (response) => {
+    console.log(response);
+    this.closeModalDelete();
+    this.AllUsers();
+    this.Id = '';
+  },
+  error: (error) => {
+    console.error('Помилка при видаленні', error);
+    
+  }})
+  }
 }

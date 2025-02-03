@@ -12,7 +12,7 @@ export class UsersComponent {
   searchInfo: boolean = false;
   selectedUser: any = null;
   addform: boolean = false;
-
+  DELETE: boolean = false;
   Id: number = 0;
   email: string = '';
   password: string ='';
@@ -30,6 +30,7 @@ export class UsersComponent {
   errorMessage: string | null = null;
   loading: boolean = false;
 
+  id_for_delete: string = '';
 
   constructor(private http: HttpClient, private router: Router) {}
   ngOnInit(){
@@ -104,34 +105,58 @@ export class UsersComponent {
 
       this.loading = true; // Включаємо стан завантаження
 
-      // this.http.post('http://localhost:8080/api/users/register', registrationData, httpOptions)
-      //   .subscribe({
-      //     next: (response) => {
-      //       this.loading = false; // Вимикаємо стан завантаження
-      //       console.log('Response status:', response.status);
-      //       console.log('Response body:', response.body);
-      //       if (response.status === 201) {
-      //         //
-      //         console.log('Реєстрація успішна', response);
-      //         this.router.navigate(['/sing-in']);
-      //         window.location.reload;
-      //       } else {
-      //         this.errorMessage = 'Сталася невідома помилка';
-      //       }
-      //     },
-      //     error: (error) => {
-      //       this.loading = false; // Вимикаємо стан завантаження
-      //       console.error('Помилка:', error);
-      //       if (error.status === 409) {
-      //         this.errorMessage = 'Користувач з такою поштою вже існує';
-      //       } else {
-      //         this.errorMessage = 'Реєстрація не вдалася';
-      //       }
-      //     }
+      this.http.post('http://localhost:8080/api/users/register/admin', registrationData, httpOptions)
+        .subscribe({
+          next: (response) => {
+            this.loading = false; // Вимикаємо стан завантаження
+            console.log('Response status:', response.status);
+            console.log('Response body:', response.body);
+            if (response.status === 201) {
+              //
+              console.log('Реєстрація успішна', response);
+              this.router.navigate(['/admin']);
+              window.location.reload;
+            } else {
+              this.errorMessage = 'Сталася невідома помилка';
+            }
+          },
+          error: (error) => {
+            this.loading = false; // Вимикаємо стан завантаження
+            console.error('Помилка:', error);
+            if (error.status === 409) {
+              this.errorMessage = 'Користувач з такою поштою вже існує';
+            } else {
+              this.errorMessage = 'Реєстрація не вдалася';
+            }
+          }
 
-      //   });
+        });
 
     }
 
-
+    OpeneDelete(){this.DELETE = true;}
+    closeModalDelete(){this.DELETE = false;}
+    confirmDelete(){
+      const confirmation = confirm('Ви впевнені, що хочете видалити користувача?');
+      if(confirmation){
+       const confirmsecond = confirm('Дані про користувача будуть видалені без можливості відновити.')
+       if(confirmsecond){
+        this.seandDelete();
+       }
+      }
+    }
+    seandDelete(){
+  
+      this.http.delete<any[]>(`http://localhost:8080/api/users/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe( 
+     {next: (response) => {
+      console.log(response);
+      this.closeModalDelete();
+      this.AllUsers();
+      this.id_for_delete = '';
+    },
+    error: (error) => {
+      console.error('Помилка при видаленні користувача', error);
+      
+    }})
+    }
 }

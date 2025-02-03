@@ -5,7 +5,8 @@
         || search_data_id.email || search_data_id.shelterName   ">Очистити пошук</button>
 
         <button class="search" (click)="OpenSearchForm()"> <img src="search.png" alt=""> Пошук</button>
-   
+        <button class="delete" (click)="OpeneDelete()"><img src="delete.png" alt="/" class="del"> Видалити</button>
+
     </div>
 
     <div class="table">
@@ -81,6 +82,20 @@
          <input type="text" [(ngModel)]="search_data_id.shelterName" placeholder="Введіть притулок" name="shelter">
 
          <button (click)="closeSearch()">Знайти</button>
+    </div>
+  </div>
+  
+  <div *ngIf="DELETE" class="modal">
+    <div class="modal-content">
+      <span (click)="closeModalDelete()" class="close-button">&times;</span>
+       
+             <h3></h3>
+        <label for="name">ID:</label>
+        <input type="text" id="name" [(ngModel)]="Id" placeholder="ID користувача">
+        
+        <div>
+            <button class="confirm_edit" (click)="confirmDelete()">Видалити</button>
+        </div>
     </div>
   </div>
 </div>

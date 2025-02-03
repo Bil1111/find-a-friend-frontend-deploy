@@ -5,6 +5,7 @@
         || search_data_id.password || search_data_id.role">Очистити пошук</button>
         <button class="search" (click)="OpenSearchForm()"> <img src="search.png" alt=""> Пошук</button>
         <button class="add" (click)="OpenAddForm()"> <img src="add.png" alt="/"> Додати адміна</button>
+        <button class="delete" (click)="OpeneDelete()"><img src="delete.png" alt="/" class="del"> Видалити</button>
 
 
     </div>
@@ -100,4 +101,20 @@
     </div>
   </div>
 
+  <div *ngIf="DELETE" class="modal">
+    <div class="modal-content">
+      <span (click)="closeModalDelete()" class="close-button">&times;</span>
+       
+             <h3></h3>
+        <label for="name">ID:</label>
+        <input type="text" id="name" [(ngModel)]="id_for_delete" placeholder="ID користувача">
+        
+        <div>
+            <button class="confirm_edit" (click)="confirmDelete()">Видалити</button>
+        </div>
+      <!-- (click)="seandDelete()" -->
+    </div>
+  </div>
+  
 </div>
+

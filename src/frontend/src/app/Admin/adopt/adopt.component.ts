@@ -10,6 +10,8 @@ export class AdoptComponent {
   Volonter: any [] = [];
   searchInfo: boolean = false;
   selectedVolonter: any = null;
+  DELETE: boolean = false;
+
 
   Id: number = 0;
   email: string = '';
@@ -31,7 +33,7 @@ export class AdoptComponent {
   search_user_experience: any = {experience:''};
   search_user_shelterName: any = {shelterName:''};
 
-
+  id_for_delete: string = '';
 
   constructor(private http : HttpClient){}
   ngOnInit(){
@@ -76,25 +78,51 @@ export class AdoptComponent {
   }
   closeModal(){this.selectedVolonter = null;}
 
-  SendEditedUser(){
+  // SendEditedUser(){
 
-    const DataVolonter = {
-      id: this.Id,
-      email:  this.email,
-      contactNumber: this.contactnumber,
-      firstName: this.name,
-      lastName:  this.surname
-    };
+  //   const DataVolonter = {
+  //     id: this.Id,
+  //     email:  this.email,
+  //     contactNumber: this.contactnumber,
+  //     firstName: this.name,
+  //     lastName:  this.surname
+  //   };
 
-    // this.http.put<any[]>(`http://localhost:8080/api/forms/volunteer` , DataVolonter , {responseType: 'text' as 'json'}).subscribe(
-    // {next: (response) => {
-    //   // console.log(response); 
-    //   this.closeModal();
-    //   this.AllUsers();
-    // },
-    // error: (error) => {
-    //   console.error('Помилка при оновленні користувача', error);
+  //   this.http.put<any[]>(`http://localhost:8080/api/forms/volunteer` , DataVolonter , {responseType: 'text' as 'json'}).subscribe(
+  //   {next: (response) => {
+  //     // console.log(response); 
+  //     this.closeModal();
+  //     this.AllUsers();
+  //   },
+  //   error: (error) => {
+  //     console.error('Помилка при оновленні користувача', error);
       
-    // }})
+  //   }})
+  // }
+
+  OpeneDelete(){this.DELETE = true;}
+  closeModalDelete(){this.DELETE = false;}
+  confirmDelete(){
+    const confirmation = confirm('Ви впевнені, що хочете видалити заявку на усиновлення?');
+    if(confirmation){
+     const confirmsecond = confirm('Дані про заявку будуть видалені без можливості відновити.')
+     if(confirmsecond){
+      this.seandDelete();
+     }
+    }
+  }
+  seandDelete(){
+
+    this.http.delete<any[]>(`http://localhost:8080/api/forms/adopt/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe( 
+   {next: (response) => {
+    console.log(response);
+    this.closeModalDelete();
+    this.AllUsers();
+    this.id_for_delete = '';
+  },
+  error: (error) => {
+    console.error('Помилка при видаленні', error);
+    
+  }})
   }
 }

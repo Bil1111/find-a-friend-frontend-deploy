@@ -5,7 +5,8 @@
         || search_data_id.contactNumber || search_data_id.firstName || search_data_id.lastName || search_data_id.animalName
         || search_data_id.typeOfAnimal || search_data_id.animalAge || search_data_id.animalSex || search_data_id.animalSize || search_data_id.experience || search_data_id.shelterName">Очистити пошук</button>
         <button class="search" (click)="OpenSearchForm()"> <img src="search.png" alt=""> Пошук</button>
-   
+        <button class="delete" (click)="OpeneDelete()"><img src="delete.png" alt="/" class="del"> Видалити</button>
+
     </div>
 
     <div class="table">
@@ -47,12 +48,12 @@
 
 
 
-    <div *ngIf="selectedVolonter" class="modal">
+    <!-- <div *ngIf="selectedVolonter" class="modal">
         <div class="modal-content">
           <span (click)="closeModal()" class="close-button">&times;</span>
                  <h3>Редагування інформації про користувачів</h3>
 
-            <!-- <label for="email">Телефон</label>
+            <label for="email">Телефон</label>
             <input type="text" id="email" [(ngModel)]="contactnumber">
 
             <label for="password">Почта:</label>
@@ -65,14 +66,14 @@
             <input type="text" id="role" [(ngModel)]="surname">
 
             <label for="role">Притулок:</label>
-            <input type="text" id="role" [(ngModel)]="shelter"> -->
+            <input type="text" id="role" [(ngModel)]="shelter">
 
             <div>
                 <button class="confirm_edit" (click)="SendEditedUser()">Внести зміни</button>
             </div>
           
         </div>
-      </div>
+      </div> -->
 
   <div *ngIf="searchInfo" class="modal_for_search">
     <div class="modal-content">
@@ -114,6 +115,21 @@
          <label for="namesh">Назва притулку:</label>
          <input type="text" [(ngModel)]="search_data_id.shelterName"  placeholder="Назва притулку" name="namesh">
          <button (click)="closeSearch()">Знайти</button>
+    </div>
+  </div>
+
+  <div *ngIf="DELETE" class="modal">
+    <div class="modal-content">
+      <span (click)="closeModalDelete()" class="close-button">&times;</span>
+       
+             <h3></h3>
+        <label for="name">ID:</label>
+        <input type="text" id="name" [(ngModel)]="id_for_delete" placeholder="ID користувача">
+        
+        <div>
+            <button class="confirm_edit" (click)="confirmDelete()">Видалити</button>
+        </div>
+      <!-- (click)="seandDelete()" -->
     </div>
   </div>
 </div>

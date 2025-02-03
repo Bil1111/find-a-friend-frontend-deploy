@@ -115,5 +115,24 @@ input[type='search']{padding: 10px;}
   margin-bottom: 10px;
 }
 
+.function .delete{
+  border-radius: 8px;
+  border: none;
+  background-color: #01bfbf;
+  color:white;
+  width: 130px;
+  height: 27px;
+  text-align: start;
+}
+.function .delete .del{width: 22px; height: 22px; position: relative; top: -1.5px; left: 6px; margin-right: 5px;}
+.function .delete:hover{ background-color: #7d8080; transition: 0.2s ease-in-out;}
+.confirm_edit{
+  border: none;
+  background-color: #01bfbf;
+  padding: 3px;
+  border-radius: 5px;
+  margin-top: 10px;
+  color: white;
+}
 
 

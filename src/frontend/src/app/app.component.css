@@ -12,7 +12,9 @@ body {
 
 }
 
-
+.nav-item.active > .nav-link {
+ border-bottom: solid;
+}
 header {
   background-color: #fc8f00;
   padding: 6px;
@@ -342,9 +344,11 @@ nav ul li .Registr_pc:hover {
   margin-right: 100px;
 }
 .btn_out{
+  border: none;
   background-color: #ffffff;
   border-radius: 10px;
   margin-left: 20px;
+  padding: 4px;
 }
 
 .btn_out:hover{

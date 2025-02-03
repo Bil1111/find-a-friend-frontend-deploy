@@ -70,13 +70,13 @@ export class UsersComponent {
 
   //   this.http.put<any[]>(`http://localhost:8080/api/users/update/${datauser.id}` , datauser , {responseType: 'text' as 'json'}).subscribe(
   //   {next: (response) => {
-  //     console.log(response); 
+  //     console.log(response);
   //     this.closeModal();
   //     this.AllUsers();
   //   },
   //   error: (error) => {
   //     console.error('Помилка при оновленні користувача', error);
-      
+
   //   }})
   // }
 
@@ -90,7 +90,7 @@ export class UsersComponent {
         console.error(this.errorMessage);
         return;
       }
-  
+
       const registrationData = {
         email: this.email,
         password: this.password
@@ -101,9 +101,9 @@ export class UsersComponent {
         }),
         observe: 'response' as 'response'
       };
-  
+
       this.loading = true; // Включаємо стан завантаження
-  
+
       // this.http.post('http://localhost:8080/api/users/register', registrationData, httpOptions)
       //   .subscribe({
       //     next: (response) => {
@@ -128,10 +128,10 @@ export class UsersComponent {
       //         this.errorMessage = 'Реєстрація не вдалася';
       //       }
       //     }
-  
+
       //   });
-  
+
     }
-  
+
 
 }

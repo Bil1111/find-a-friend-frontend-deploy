@@ -60,9 +60,9 @@ ngOnInit() {
 SherlterForAdmin() {
   this.http.get<any[]>('http://localhost:8080/api/shelters').subscribe(
     data => {
-      this.Shelters = data.map(shelter => { 
-        
-        return shelter;}); 
+      this.Shelters = data.map(shelter => {
+
+        return shelter;});
     },
     error => {
       console.error('Error fetching shelters:', error); // Логування помилки
@@ -91,7 +91,7 @@ selectShelter_froanimals(shelters: any){
 }
 closeFor_Add_Animals(){this.selectedShelter_For_Add_Animals = null;}
 
-closeModal() {this.selectedShelter = null; 
+closeModal() {this.selectedShelter = null;
    this.name = '';
   this.city = '';
   this.address = '';
@@ -130,7 +130,7 @@ SendEditedShelter(){
   },
   error: (error) => {
     console.error('Помилка при оновленні притулку', error);
-    
+
   }})
 }
 
@@ -161,12 +161,12 @@ AddShelter(){
       console.log(response);
       this.close();
       this.SherlterForAdmin();
-      
-      
+
+
     },
     error: (error) => {
       console.error('Помилка при додавані притулку', error);
-      
+
     }});
 
 }
@@ -192,8 +192,8 @@ confirmDelete(){
   }
 }
 seandDelete(){
-  
-  this.http.delete<any[]>(`http://localhost:8080/api/shelters/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe( 
+
+  this.http.delete<any[]>(`http://localhost:8080/api/shelters/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe(
  {next: (response) => {
   console.log(response);
   this.closeModalDelete();
@@ -201,7 +201,7 @@ seandDelete(){
 },
 error: (error) => {
   console.error('Помилка при видаленні притулку', error);
-  
+
 }})
 }
 
@@ -228,7 +228,7 @@ Aniamls(){
     },
     error: (error) => {
       console.error('Помилка при додаванні тваринки до притулку', error);
-      
+
     }}
   )
 

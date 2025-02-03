@@ -1,18 +1,18 @@
 <div class="all-items">
 
     <div class="function">
-        <button class="clearbutton" (click)="CleanSearchForm()" *ngIf="search_data_id.id || search_data_id.email 
+        <button class="clearbutton" (click)="CleanSearchForm()" *ngIf="search_data_id.id || search_data_id.email
         || search_data_id.password || search_data_id.role">Очистити пошук</button>
         <button class="search" (click)="OpenSearchForm()"> <img src="search.png" alt=""> Пошук</button>
         <button class="add" (click)="OpenAddForm()"> <img src="add.png" alt="/"> Додати адміна</button>
 
-   
+
     </div>
 
     <div class="table">
         <table>
             <tr>
-              
+
                 <th>ID</th>
                 <th>Почта</th>
                 <th>Пароль</th>
@@ -30,7 +30,7 @@
     </div>
 
 
-<!-- 
+<!--
     <div *ngIf="selectedUser" class="modal">
         <div class="modal-content">
           <span (click)="closeModal()" class="close-button">&times;</span>
@@ -51,7 +51,7 @@
             <div>
                 <button class="confirm_edit" (click)="SendEditedUser()">Внести зміни</button>
             </div>
-          
+
         </div>
       </div> -->
 
@@ -91,13 +91,13 @@
           <label for="passwordAgain">Підтвердіть пароль:</label>
           <input id="passwordAgain" [(ngModel)]="passwordAgain" name="passwordAgain" type="password" required placeholder="Підтвердіть пароль">
         </div>
-  
+
         <div *ngIf="loading" class="spinner"></div>
-  
+
         <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
         <button type="submit" class="btn" [disabled]="loading">Зареєструвати адміна</button>
       </form>
     </div>
   </div>
-  
+
 </div>

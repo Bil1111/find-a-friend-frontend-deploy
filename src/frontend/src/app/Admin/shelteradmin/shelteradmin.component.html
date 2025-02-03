@@ -5,11 +5,11 @@
         <!-- <div class="search-conteiner">
            <p class="search-button">
             <span class="search-icon"><img src="search.png" alt=""></span>
-           </p> 
+           </p>
           <input class="search" type="search" placeholder="Пошук" [(ngModel)]="search_data.name">
         </div> -->
 
-        <button class="clearbutton" (click)="CleanSearchForm()" *ngIf="search_data_id.id || search_data_id.name || search_data_id.city 
+        <button class="clearbutton" (click)="CleanSearchForm()" *ngIf="search_data_id.id || search_data_id.name || search_data_id.city
         || search_data_id.address ||search_data_id.contactNumber">Очистити пошук</button>
         <button class="search" (click)="OpenSearchForm()"> <img src="search.png" alt=""> Пошук</button>
         <button class="add" (click)="OpenAddForm()"> <img src="add.png" alt="/"> Додати притулок</button>
@@ -33,7 +33,7 @@
 
             </tr>
             <tr *ngFor="let shelters of Shelters | filterBy : search_data_id || search_data_name ||search_data_city||search_data_address||search_data_contactNumber">
-                
+
                 <td class="exclude"><button class="edit" (click)="selectShelter(shelters)"><img src="image_admin_edit.png" alt=""></button></td>
                 <td class="exclude"> <button class="addpet" (click)="selectShelter_froanimals(shelters)"><img src="BlackCross.png" alt=""></button></td>
                 <td>{{shelters.id}}</td>
@@ -74,14 +74,14 @@
         <div>
             <button class="confirm_edit" (click)="SendEditedShelter()">Внести зміни</button>
         </div>
-      
+
     </div>
   </div>
 
   <div *ngIf="selectedShelterForadd" class="modal">
     <div class="modal-content">
       <span (click)="close()" class="close-button1">&times;</span>
-       
+
              <h3>Додавання притулку</h3>
 
              <!-- <label for="name">ID:</label>
@@ -110,7 +110,7 @@
         <div>
             <button class="confirm_edit" (click)="AddShelter()">Додати притулок</button>
         </div>
-      
+
     </div>
   </div>
 
@@ -141,11 +141,11 @@
 <div *ngIf="DELETE" class="modal">
   <div class="modal-content">
     <span (click)="closeModalDelete()" class="close-button">&times;</span>
-     
+
            <h3></h3>
       <label for="name">ID:</label>
       <input type="text" id="name" [(ngModel)]="id_for_delete"  placeholder="ID притулку">
-      
+
       <div>
           <button class="confirm_edit" (click)="confirmDelete()">Видалити</button>
       </div>
@@ -189,6 +189,6 @@
       <div>
           <button class="confirm_edit" (click)="Aniamls()">Додати тваринку</button>
       </div>
-    
+
   </div>
 </div>

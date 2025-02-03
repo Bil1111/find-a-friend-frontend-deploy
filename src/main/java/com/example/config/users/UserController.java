@@ -25,27 +25,27 @@ public class UserController {
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
     @GetMapping("/{id}")
-    public ResponseEntity<User> getCustomerById(@PathVariable("id") Long id) {
+    public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
         Optional<User> customer = userService.getUserById(id);
         return customer.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> getAllCustomers() {
+    public ResponseEntity<List<User>> getAllUsers() {
         List<User> customers = userService.getAllUsers();
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteCustomer(@PathVariable("id") Long id) {
+    public ResponseEntity<String> deleteUser(@PathVariable("id") Long id) {
         userService.deleteUser(id);
         return new ResponseEntity<>("Customer deleted successfully", HttpStatus.OK);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateCustomerDetails(@RequestBody UserRegistrationRequest request, @PathVariable("id") Long id) {
-        userService.updateCustomerDetails(request, id);
+    public ResponseEntity<String> updateUserDetails(@RequestBody UserRegistrationRequest request, @PathVariable("id") Long id) {
+        userService.updateUserDetails(request, id);
         return new ResponseEntity<>("User updated successfully", HttpStatus.OK);
     }
     @PostMapping("/register")
@@ -59,13 +59,35 @@ public class UserController {
             }
             return new ResponseEntity<>(errorMessages.toString(), HttpStatus.BAD_REQUEST);
         }
-
         try {
             Optional<User> existingCustomer = userService.findByLogin(request.getEmail());
             if (existingCustomer.isPresent()) {
                 return new ResponseEntity<>("User with this email already exists", HttpStatus.CONFLICT);
             }
             userService.registerUser(request);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (UserAlreadyExistsException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        }
+    }
+
+    @PostMapping("/register/admin")
+    public ResponseEntity<String> registerAdmin(@RequestBody @Valid UserRegistrationRequest request,
+                                               BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            // Якщо є помилки валідації, повертаємо їх
+            StringBuilder errorMessages = new StringBuilder();
+            for (FieldError error : bindingResult.getFieldErrors()) {
+                errorMessages.append(error.getField()).append(": ").append(error.getDefaultMessage()).append("\n");
+            }
+            return new ResponseEntity<>(errorMessages.toString(), HttpStatus.BAD_REQUEST);
+        }
+        try {
+            Optional<User> existingCustomer = userService.findByLogin(request.getEmail());
+            if (existingCustomer.isPresent()) {
+                return new ResponseEntity<>("User with this email already exists", HttpStatus.CONFLICT);
+            }
+            userService.registerAdmin(request);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (UserAlreadyExistsException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
@@ -94,7 +116,7 @@ public class UserController {
                 Map<String, String> response = new HashMap<>();
                 response.put("token", token); // Повертаємо токен у відповіді
                 if (loggedInUser.getRole().equals(Role.ADMIN)) {
-                    response.put("redirect", "/donate"); // Адмін
+                    response.put("redirect", "/admin"); // Адмін
                 } else {
                     response.put("redirect", "/about"); // Звичайний користувач
                 }

@@ -4,7 +4,6 @@ import com.example.config.requests.AdoptRequest;
 import com.example.config.requests.VolunteerRequest;
 import com.example.config.requests.WardRequest;
 import com.example.config.shelters.Shelter;
-import com.example.config.users.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +35,11 @@ public class FormService {
     public List<VolunteerForm> getAllVolunteerForms() {
         return volunteerFormRepository.findAll();
     }
+
+    public void deleteVolunteerForm(Long id) {
+        volunteerFormRepository.deleteById(id);
+    }
+
     public void addAdoptForm(AdoptRequest request, Shelter shelter, String shelterName) {
         AdoptForm adoptForm = new AdoptForm(
                 request.getFirstName(),
@@ -60,6 +64,9 @@ public class FormService {
     public List<AdoptForm> getAllAdoptForms() {
         return adoptFormRepository.findAll();
     }
+    public void deleteAdoptForm(Long id) {
+        adoptFormRepository.deleteById(id);
+    }
     public void addWardForm(WardRequest request, Shelter shelter, String shelterName) {
         WardForm wardForm=new WardForm(
                 request.getFirstName(),
@@ -83,5 +90,9 @@ public class FormService {
 
     public List<WardForm> getAllWardForms() {
         return wardFormRepository.findAll();
+    }
+
+    public void deleteWardForm(Long id) {
+        wardFormRepository.deleteById(id);
     }
 }

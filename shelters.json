@@ -8,40 +8,7 @@
   "latitude" : 49.8397,
   "longitude" : 24.0297,
   "imageURL" : "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no",
-  "animals" : [ {
-    "id" : 2,
-    "name" : "Whiskers",
-    "type" : "cat",
-    "age" : 3,
-    "size" : "small",
-    "description" : "Loves to cuddle and nap.",
-    "sex" : "Дівчинка",
-    "imageURL" : null,
-    "city" : "Львів",
-    "shelterPhoneNumber" : "+380 932 223 333"
-  }, {
-    "id" : 5,
-    "name" : "Charlie",
-    "type" : "dog",
-    "age" : 6,
-    "size" : "medium",
-    "description" : "Great with kids and very friendly.",
-    "sex" : "Хлопчик",
-    "imageURL" : null,
-    "city" : "Львів",
-    "shelterPhoneNumber" : "+380 932 223 333"
-  }, {
-    "id" : 8,
-    "name" : "Sophie",
-    "type" : "cat",
-    "age" : 5,
-    "size" : "medium",
-    "description" : "Loves to play and be around people.",
-    "sex" : "Дівчинка",
-    "imageURL" : null,
-    "city" : "Львів",
-    "shelterPhoneNumber" : "+380 932 223 333"
-  } ],
+  "animals" : [ ],
   "volunteerForms" : [ {
     "id" : 1,
     "firstName" : "dfgfgffdgdfg",
@@ -60,40 +27,7 @@
   "latitude" : 46.4825,
   "longitude" : 30.7233,
   "imageURL" : "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no",
-  "animals" : [ {
-    "id" : 3,
-    "name" : "Bella",
-    "type" : "dog",
-    "age" : 2,
-    "size" : "big",
-    "description" : "Very energetic and needs exercise.",
-    "sex" : "Дівчинка",
-    "imageURL" : null,
-    "city" : "Одеса",
-    "shelterPhoneNumber" : "+380 933 334 444"
-  }, {
-    "id" : 6,
-    "name" : "Luna",
-    "type" : "cat",
-    "age" : 4,
-    "size" : "small",
-    "description" : "Independent and playful.",
-    "sex" : "Дівчинка",
-    "imageURL" : null,
-    "city" : "Одеса",
-    "shelterPhoneNumber" : "+380 933 334 444"
-  }, {
-    "id" : 9,
-    "name" : "Daisy",
-    "type" : "dog",
-    "age" : 2,
-    "size" : "small",
-    "description" : "Very playful and loves attention.",
-    "sex" : "Дівчинка",
-    "imageURL" : null,
-    "city" : "Одеса",
-    "shelterPhoneNumber" : "+380 933 334 444"
-  } ],
+  "animals" : [ ],
   "volunteerForms" : [ ]
 }, {
   "id" : 4,
@@ -129,51 +63,7 @@
   "latitude" : 50.4501,
   "longitude" : 30.5931,
   "imageURL" : null,
-  "animals" : [ {
-    "id" : 1,
-    "name" : "Max",
-    "type" : "dog",
-    "age" : 4,
-    "size" : "medium",
-    "description" : "Friendly and playful.",
-    "sex" : "Хлопчик",
-    "imageURL" : null,
-    "city" : "Київ",
-    "shelterPhoneNumber" : "+380 931 112 222"
-  }, {
-    "id" : 4,
-    "name" : "Bunny",
-    "type" : "rabbit",
-    "age" : 1,
-    "size" : "small",
-    "description" : "Cute and loves to hop around.",
-    "sex" : "Дівчинка",
-    "imageURL" : null,
-    "city" : "Київ",
-    "shelterPhoneNumber" : "+380 931 112 222"
-  }, {
-    "id" : 7,
-    "name" : "Rocky",
-    "type" : "dog",
-    "age" : 3,
-    "size" : "big",
-    "description" : "Strong and protective.",
-    "sex" : "Хлопчик",
-    "imageURL" : null,
-    "city" : "Київ",
-    "shelterPhoneNumber" : "+380 931 112 222"
-  }, {
-    "id" : 10,
-    "name" : "Mittens",
-    "type" : "cat",
-    "age" : 7,
-    "size" : "big",
-    "description" : "Calm and loves to lounge around.",
-    "sex" : "Хлопчик",
-    "imageURL" : null,
-    "city" : "Київ",
-    "shelterPhoneNumber" : "+380 931 112 222"
-  } ],
+  "animals" : [ ],
   "volunteerForms" : [ ]
 }, {
   "id" : 8,
@@ -185,28 +75,6 @@
   "latitude" : 80.0,
   "longitude" : 89.0,
   "imageURL" : "зщшгнеку",
-  "animals" : [ {
-    "id" : 18,
-    "name" : "Dick",
-    "type" : "dog",
-    "age" : 1,
-    "size" : "small",
-    "description" : "dsdasdsdasadasd",
-    "sex" : "Дівчинка",
-    "imageURL" : "url",
-    "city" : "Берлін",
-    "shelterPhoneNumber" : "+380 931 112 222"
-  }, {
-    "id" : 11,
-    "name" : "JAck",
-    "type" : "132",
-    "age" : 123,
-    "size" : "middle",
-    "description" : "qwerty",
-    "sex" : null,
-    "imageURL" : "123",
-    "city" : "Берлін",
-    "shelterPhoneNumber" : "+380 931 112 222"
-  } ],
+  "animals" : [ ],
   "volunteerForms" : [ ]
 } ]

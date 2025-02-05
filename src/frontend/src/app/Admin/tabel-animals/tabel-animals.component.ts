@@ -26,12 +26,18 @@ export class TabelAnimalsComponent {
  descript: string = '';
  size: string = '';
  idsgelter: string = '';
+
+  vaccinated: boolean = false;
+  steril: boolean = false;
+  specialCare: boolean = false;
+
  // МОДАЛЬНЕ ВІКНО ДЛЯ ДОдавання  ПРИТУЛКА
 //  name: string = '';
 //  city: string = '';
 //  address: string = '';
 //  contactNumber: string = '';
 //  description: string ='';
+
  // МОДАЛЬНЕ ВІКНО ДЛЯ ПОШУКУ
  search_data_id: any = {id:''};
  search_data_name: any = {name:''};
@@ -110,6 +116,14 @@ selectShelter(shelter: any){
   this.descript = shelter.description;
   this.size = shelter.size;
   this.idsgelter = shelter.shelterid;
+
+  this.vaccinated = Boolean(shelter.vaccinated);
+  this.steril = Boolean(shelter.sterilized);
+  this.specialCare = Boolean(shelter.specialCare);
+  // console.log('Vaccinated:', this.vaccinated);
+  // console.log('Sterilized:', this.steril);
+  // console.log('SpecialCare:', this.specialCare);
+
   // this.contactNumber = shelter.contactNumber;
 }
 
@@ -139,22 +153,29 @@ closeFor_Add_Animals(){this.selectedShelter_For_Add_Animals = null;}
 closeModal() {this.selectedShelter = null; }
 
 
-
 SendEditedShelter(){
+  console.log('Vaccinated:', this.vaccinated);
+  console.log('Sterilized:', this.steril);
+  console.log('SpecialCare:', this.specialCare);
+
   const EditShelter = {
-     id: this.id,
-     name: this.name,
-     city: this.city,
-     age: this.age,
-     description: this.descript,
-     size: this.size,
-     shelter: this.idsgelter   
+    
+      id: this.id,
+      name: this.name,
+      city: this.city,
+      age: this.age,
+      description: this.descript,
+      size: this.size,
+      shelter: this.idsgelter, 
+      vaccinated: Boolean(this.vaccinated),
+      sterilized: Boolean(this.steril),
+      specialCare: Boolean(this.specialCare)
   };
   console.log(EditShelter);
 
-  this.http.put(`http://localhost:8080/api/animals/update/${this.id}`,EditShelter, {responseType: ('text' as 'json')}).subscribe(
+  this.http.put(`http://localhost:8080/api/animals/update/${this.id}`,EditShelter, {responseType: ('text' )}).subscribe(
    {next: (response) => {
-    console.log( response);
+    console.log("Сервер відповів:", response);
     this.closeModal();
     this.Shelters = [];
     this.SherlterForAdmin();

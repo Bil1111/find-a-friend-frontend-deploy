@@ -217,15 +217,15 @@ export class FindFComponent implements OnInit {
     sex: [],
     age: [],
     city: [],
-    vakcin: [],
-    steril: [],
-    need_help: []
+    vaccinated: [],
+    sterilized: [],
+    specialCare: []
   };
 
-  toggleFilter(filterType: string, value: string | number) {
+  toggleFilter(filterType: string, value: string | number | boolean) {
     const filterArray = this.activeFilters[filterType]; // Це масив, в якому зберігаються значення для вибраного фільтра.
     const index = filterArray.indexOf(value);
-    if (value === '' || 0) {
+    if (value === '' || 0 || false)  {
       this.activeFilters[filterType] = [];
     }
 
@@ -244,9 +244,9 @@ export class FindFComponent implements OnInit {
         this.isMatchingFilter(animal, 'sex', this.activeFilters.sex) &&
         this.isMatchingFilter(animal, 'age', this.activeFilters.age) &&
         this.isMatchingFilter(animal, 'city', this.activeFilters.city) &&
-        this.isMatchingFilter(animal, 'vakcin', this.activeFilters.vakcin) &&
-        this.isMatchingFilter(animal, 'steril', this.activeFilters.steril) &&
-        this.isMatchingFilter(animal, 'need_help', this.activeFilters.need_help)
+        this.isMatchingFilter(animal, 'vaccinated', this.activeFilters.vaccinated) &&
+        this.isMatchingFilter(animal, 'sterilized', this.activeFilters.sterilized) &&
+        this.isMatchingFilter(animal, 'specialCare', this.activeFilters.specialCare)
       );
     });
   }
@@ -270,7 +270,9 @@ export class FindFComponent implements OnInit {
 
       return activeValues.some(value => ageRanges[value]?.(animal.age));
     }
-
+    if (typeof animal[filterType] === 'boolean') {
+      return activeValues.includes(animal[filterType]);
+    }
     return activeValues.includes(animal[filterType]);
   }
 

@@ -173,10 +173,10 @@ export class ForAllShelterComponent implements OnInit {
     need_help:[]
   };
 
-  toggleFilter(filterType: string, value: string | number) {
+  toggleFilter(filterType: string, value: string | number | boolean) {
     const filterArray = this.activeFilters[filterType]; // Це масив, в якому зберігаються значення для вибраного фільтра.
     const index = filterArray.indexOf(value);
-    if(value === '' || 0){ this.activeFilters[filterType] = [];}
+    if(value === '' || 0 || false){ this.activeFilters[filterType] = [];}
 
     if (index > -1) {
       filterArray.splice(index, 1);// видаляє за допомогою методу splice.
@@ -219,7 +219,9 @@ export class ForAllShelterComponent implements OnInit {
 
       return activeValues.some(value => ageRanges[value]?.(animal.age));
     }
-
+    if (typeof animal[filterType] === 'boolean') {
+      return activeValues.includes(animal[filterType]);
+    }
     return activeValues.includes(animal[filterType]);
   }
 

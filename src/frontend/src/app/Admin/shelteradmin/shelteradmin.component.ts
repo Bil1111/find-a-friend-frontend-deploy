@@ -50,6 +50,17 @@ url_animals: string ='';
 city_animals: string = '';
 contactshelter_animals: string = '';
 
+vaccinated: boolean = false;
+steril: boolean = false;
+specialCare: boolean = false;
+
+emailShelter: string = '';
+card: string = '';
+PayPal: string = '';
+IBAN: string = '';
+
+
+
 
 constructor(private http: HttpClient) { }
 
@@ -80,6 +91,12 @@ selectShelter(shelter: any){
   this.description = shelter.description;
   this.latitude = shelter.latitude;
   this.longitude = shelter.longitude;
+
+  this.emailShelter = shelter.email;
+  this.card = shelter.card;
+  this.PayPal = shelter.paypal;
+  this.IBAN = shelter.iban;
+
 }
 
 selectShelter_froanimals(shelters: any){
@@ -99,6 +116,10 @@ closeModal() {this.selectedShelter = null;
   this.description = '';
   this.latitude = '';
   this.longitude = '';
+  this.emailShelter ='';
+  this.card = '';
+  this.PayPal ='';
+  this.IBAN = '';
 }
 close(){this.selectedShelterForadd = false;
   this.name = '';
@@ -119,9 +140,15 @@ SendEditedShelter(){
      contactNumber: this.contactNumber,
      description:  this.description,
      latitude:  this.latitude,
-     longitude:  this.longitude
-  };
+     longitude:  this.longitude,
 
+     email:  this.emailShelter,
+     card:  this.card,
+     paypal:  this.PayPal,
+     iban:  this.IBAN
+
+  };
+  console.log(EditShelter);
   this.http.put(`http://localhost:8080/api/shelters/update/${EditShelter.id}`,EditShelter, { responseType: 'text' }).subscribe(
    {next: (response) => {
     console.log('Притулок оновлено успішно', response);
@@ -154,7 +181,11 @@ AddShelter(){
      description: this.description,
      imageURL: this.imgurl,
      latitude: this.latitude,
-     longitude:this.longitude
+     longitude:this.longitude,
+     email:  this.emailShelter,
+     card:  this.card,
+     paypal:  this.PayPal,
+     iban:  this.IBAN
   };
      this.http.post('http://localhost:8080/api/shelters/add', AddShelterData ,{responseType : ('text')}).subscribe(
       {next: (response) => {
@@ -217,7 +248,11 @@ Aniamls(){
     imageURL: this.url_animals,
     city: this.city_animals,
     shelterPhoneNumber: this.contactshelter_animals,
-    shelter: this.id
+    shelter: this.id,
+    vaccinated: this.vaccinated,
+    sterilized: this.steril,
+    specialCare: this.specialCare
+
   };
 
   this.http.post<any[]>(`http://localhost:8080/api/animals/add`,SendDataAboutAnimals ,{responseType: ('text' as 'json')} ).subscribe(

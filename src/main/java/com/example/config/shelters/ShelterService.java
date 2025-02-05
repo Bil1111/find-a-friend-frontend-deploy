@@ -57,6 +57,14 @@ public class ShelterService {
                 shelter.setLatitude(request.getLatitude());
             }if (request.getLongitude()!=null) {
                 shelter.setLongitude(request.getLongitude());
+            }if (StringUtils.isNotBlank(request.getEmail())) {
+                shelter.setEmail(request.getEmail());
+            }if (StringUtils.isNotBlank(request.getCard())) {
+                shelter.setCard((request.getCard()));
+            }if (StringUtils.isNotBlank(request.getPaypal())) {
+                shelter.setPaypal(request.getPaypal());
+            }if (StringUtils.isNotBlank(request.getIban())) {
+                shelter.setIban(request.getIban());
             }
             shelterRepository.save(shelter);
         }, () -> {

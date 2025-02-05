@@ -46,11 +46,10 @@
           </div>
             <div class="filter-groupOther">
                 <label>Інше</label>
-                <button [ngClass]="{'active' :activeFilters['vakcin'].includes('Вакцинована') }" (click)="toggleFilter('vakcin','Вакцинована')" class="V">Вакцинована</button>
-                <button [ngClass]="{'active' :activeFilters['steril'].includes('Стерелізована') }" (click)="toggleFilter('steril','Стерелізована')" class="S">Стерелізована</button>
-                <button [ngClass]="{'active' :activeFilters['need_help'].includes('Потребує особливого догляду') }" (click)="toggleFilter('need_help','Потребує особливого догляду')" class="P">Потребує особливого догляду</button>
-            </div>
-
+                <button [ngClass]="{'active' :activeFilters['vaccinated'].includes(true) }" (click)="toggleFilter('vaccinated',true)" class="V">Вакцинована</button>
+                <button [ngClass]="{'active' :activeFilters['sterilized'].includes(true) }" (click)="toggleFilter('sterilized',true)" class="S">Стерелізована</button>
+                <button [ngClass]="{'active' :activeFilters['specialCare'].includes(true) }" (click)="toggleFilter('specialCare',true)" class="P">Потребує  догляду</button>
+             </div>
         </div>
 
           <div *ngFor="let animal of animals"

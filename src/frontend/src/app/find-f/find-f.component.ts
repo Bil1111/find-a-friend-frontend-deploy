@@ -9,11 +9,25 @@ import {HttpClient} from '@angular/common/http';
 export class FindFComponent implements OnInit {
 
   isScrollToTopVisible: boolean = false;
-
+  isModalOpen: boolean = false;
+  private lastScrollTop: number = 0;
   @HostListener('window:scroll', [])
   onWindowScroll() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    this.isScrollToTopVisible = scrollTop > 300;
+
+    // Показуємо кнопку, якщо користувач прокрутив вниз
+    if (scrollTop > this.lastScrollTop && scrollTop > 300) {
+      this.isScrollToTopVisible = true;
+    } else if (scrollTop < 100) {
+      this.isScrollToTopVisible = false;
+    }
+  
+    this.lastScrollTop = scrollTop;
+  
+    // Якщо відкрите модальне вікно, приховуємо кнопку
+    if (this.isModalOpen) {
+      this.isScrollToTopVisible = false;
+    }
   }
 
   scrollToTop() {
@@ -144,6 +158,8 @@ export class FindFComponent implements OnInit {
     this.selectedAnimal = animal; // Зберігаємо вибрану тварину
     this.isAdoptFormOpen = null;
     this.isWardFormOpen = null;
+    this.isModalOpen = true;
+    this.isScrollToTopVisible = false; // Ховаємо кнопку
   }
 
   openAdoptForm() {
@@ -154,6 +170,8 @@ export class FindFComponent implements OnInit {
     this.animalSize = this.selectedAnimal.size || 'empty';
     this.typeOfAnimal = this.selectedAnimal.type || 'empty';
     this.ID_shelter = this.selectedAnimal.shelterId || 'empty';
+    this.isModalOpen = true;
+    this.isScrollToTopVisible = false; // Ховаємо кнопку
     // this.Shelter = this.selectedAnimal.shelterName || 'empty';
     // this.City = this.selectedAnimal.city || 'empty';
   }
@@ -166,7 +184,8 @@ export class FindFComponent implements OnInit {
     this.animalSize = this.selectedAnimal.size || 'empty';
     this.typeOfAnimal = this.selectedAnimal.type || 'empty';
     this.ID_shelter = this.selectedAnimal.shelterId || 'empty';
-
+    this.isModalOpen = true;
+    this.isScrollToTopVisible = false; // Ховаємо кнопку
     // this.Shelter = this.selectedAnimal.shelterName || 'empty';
     // this.City = this.selectedAnimal.city || 'empty';
   }
@@ -174,17 +193,22 @@ export class FindFComponent implements OnInit {
   // Метод для закриття модального вікна
   closeModal() {
     this.selectedAnimal = null; // Скидаємо вибрану тварину
-
+    this.isModalOpen = false;
+    this.onWindowScroll(); 
   }
 
   closeAdoptForm() {
     this.isAdoptFormOpen = null;
     this.clearForm();
+    this.isModalOpen = false;
+    this.onWindowScroll(); 
   }
 
   closeWardForm() {
     this.isWardFormOpen = null;
     this.clearForm();
+    this.isModalOpen = false;
+    this.onWindowScroll(); 
   }
 
   // Змінні для фільтрів

@@ -195,8 +195,8 @@ body {
     display: grid;
     place-content: center;
     position: absolute;
-    right: -30px;
-    top: -30px;
+    right: -35px;
+    top: -35px;
   }
   .close-button:hover,
   .close-button1:hover,
@@ -310,6 +310,7 @@ body {
   
 
 @media (max-width: 1150px) {
+ 
   .animals-container .pagination { margin: 25px auto;}
   .pagination {
     margin-top: 20px;

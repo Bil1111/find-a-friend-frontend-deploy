@@ -172,6 +172,15 @@ body{
 @media (min-width: 320px) and (max-width: 425px) {
   .paw2, .paw3{display: none;}
 }
+@media (min-width: 320px) and (max-width: 500px) {
+ .Blog h2{ margin-bottom: 20px;}
+ .News h2{ margin-bottom: 20px; margin-top: 15px;}
+ .Blog p{ text-align:center;  margin: 10px auto; width: 100%;}
+ .News p{ text-align:center;  margin: 10px auto; width: 100%;}
+
+
+
+}
   /* .Blog h1{
   background: rgba(0, 0, 0, 0.1);
   border-radius: 15px;

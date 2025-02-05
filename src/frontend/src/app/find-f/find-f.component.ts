@@ -36,7 +36,7 @@ export class FindFComponent implements OnInit {
   email: string = '';
   contactNumber: string = '';
   experience: string = '';
-  
+
   errorMessage: string | null = null;
   successMessage: string | null = null;
   //ТВАРИНКА
@@ -68,9 +68,9 @@ export class FindFComponent implements OnInit {
   //       this.AllAnimals = data.map(animal => {
   //         animal.imageURL = `http://localhost:8080/images/${animal.id}.png`;
   //         return animal;
-          
+
   //       });
-        
+
 
   //       this.animals = [...this.AllAnimals]; // Ініціалізуємо тварин
 
@@ -85,7 +85,7 @@ export class FindFComponent implements OnInit {
   //           console.error('Error fetching all animals:', error);
   //         }
   //       );
-        
+
   //     },
   //     error => {
   //       console.error('Error fetching animals:', error); // Логування помилки
@@ -95,12 +95,12 @@ export class FindFComponent implements OnInit {
 
   fetchAnimals(page: number) {
     const startId = (page - 1) * this.itemsPerPage;
-  
+
     // Запит на отримання всіх притулків
     this.http.get<any[]>('http://localhost:8080/api/shelters').subscribe(
       shelters => {
         const allAnimals: any[] = [];
-  
+
         // Обробка кожного притулку
         shelters.forEach(shelter => {
           if (shelter.animals) {
@@ -112,11 +112,11 @@ export class FindFComponent implements OnInit {
             allAnimals.push(...animalsWithShelterName); // Додаємо до загального списку
           }
         });
-  
+
         // Пагінація: вибираємо тварин для поточної сторінки
         this.animals = allAnimals.slice(startId, startId + this.itemsPerPage);
         this.AllAnimals = [...allAnimals]; // Зберігаємо копію для подальшої фільтрації чи обробки
-  
+
         // Обчислюємо кількість сторінок
         this.totalPages = Math.ceil(allAnimals.length / this.itemsPerPage);
         console.log('Total pages:', this.totalPages);

@@ -45,15 +45,28 @@ public class Shelter {
     @Column(columnDefinition = "VARCHAR(255)")
     @NotNull(message = "File")
     private String imageURL;
+
+    @Column(columnDefinition = "VARCHAR(255)")
+    @NotEmpty(message = "Email не може бути порожнім")
+    @Email(message = "Невірний формат email")
+    private String email;
+
+    @Column(columnDefinition = "VARCHAR(255)")
+    @Size(max = 50, message = "Номер картки не повинен перевищувати 50 символів")
+    private String card;
+
+    @Column(columnDefinition = "VARCHAR(255)")
+    @Size(max = 50, message = "PayPal не повинен перевищувати 50 символів")
+    private String paypal;
+
+    @Column(columnDefinition = "VARCHAR(255)")
+    @Size(max = 50, message = "IBAN не повинен перевищувати 50 символів")
+    private String iban;
     @JsonManagedReference
     @OneToMany(mappedBy = "shelter", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Animal> animals;
-    @JsonManagedReference
-    @OneToMany(mappedBy = "shelter", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<VolunteerForm> volunteerForms;
 
-
-    public Shelter(String name, String address, String contactNumber, String description, String city,double latitude,double longitude, String imageURL) {
+    public Shelter(String name, String address, String contactNumber, String description, String city, Double latitude, Double longitude, String imageURL, String email, String card, String paypal, String iban) {
         this.name = name;
         this.address = address;
         this.contactNumber = contactNumber;
@@ -61,7 +74,11 @@ public class Shelter {
         this.city = city;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.imageURL=imageURL;
+        this.imageURL = imageURL;
+        this.email = email;
+        this.card = card;
+        this.paypal = paypal;
+        this.iban = iban;
     }
 
     public Shelter() {
@@ -146,5 +163,45 @@ public class Shelter {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCard() {
+        return card;
+    }
+
+    public void setCard(String card) {
+        this.card = card;
+    }
+
+    public String getPaypal() {
+        return paypal;
+    }
+
+    public void setPaypal(String paypal) {
+        this.paypal = paypal;
+    }
+
+    public String getIban() {
+        return iban;
+    }
+
+    public void setIban(String iban) {
+        this.iban = iban;
     }
 }

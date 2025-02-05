@@ -27,11 +27,22 @@ public class AnimalRequest {
     @NotNull(message = "File")
     private String imageURL;
 
+    @NotNull(message = "Поле вакцинації обов'язкове")
+    private Boolean vaccinated;
+
+    @NotNull(message = "Поле стерилізації обов'язкове")
+    private Boolean sterilized;
+
+    @NotNull(message = "Поле особливого догляду обов'язкове")
+    private Boolean specialCare;
+
     // Конструктор без параметрів
     public AnimalRequest() {}
 
     // Конструктор з параметрами
-    public AnimalRequest(String name, String type, Integer age, String size, Long shelter, String description, Integer sex, String imageURL) {
+
+
+    public AnimalRequest(String name, String type, Integer age, String size, Long shelter, String description, Integer sex, String imageURL, Boolean vaccinated, Boolean sterilized, Boolean specialCare) {
         this.name = name;
         this.type = type;
         this.age = age;
@@ -40,6 +51,9 @@ public class AnimalRequest {
         this.description = description;
         this.sex = sex;
         this.imageURL = imageURL;
+        this.vaccinated = vaccinated;
+        this.sterilized = sterilized;
+        this.specialCare = specialCare;
     }
 
     // Геттери та сеттери
@@ -104,5 +118,29 @@ public class AnimalRequest {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    public Boolean getVaccinated() {
+        return vaccinated;
+    }
+
+    public void setVaccinated(Boolean vaccinated) {
+        this.vaccinated = vaccinated;
+    }
+
+    public Boolean getSterilized() {
+        return sterilized;
+    }
+
+    public void setSterilized(Boolean sterilized) {
+        this.sterilized = sterilized;
+    }
+
+    public Boolean getSpecialCare() {
+        return specialCare;
+    }
+
+    public void setSpecialCare(Boolean specialCare) {
+        this.specialCare = specialCare;
     }
 }

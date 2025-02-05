@@ -54,13 +54,13 @@
          <p>{{animal.age}} роки</p>
       </div>
       <div class="info_about_pet">
-          <p>Потребує особливого догляду</p>
+        <p>{{animal.specialCare  ? "Потребує особливого догляду" : "Не потребує особливого догляду"}}</p>
       </div>
 
       <div class="info_about_pet">
-          <p>Вакцинована</p>
+          <p>{{animal.vaccinated ? "Вакцинована" : "Не вакцинована"}}</p>
           <div class="circle"></div>
-          <p>Стерелізована</p>
+          <p>{{animal.sterilized  ? "Стерелізована" : "Не стерелізована"}}</p>
 
        </div>
        <div class="buttonn" (click)="selectAnimal(animal)">
@@ -86,12 +86,15 @@
       <img [src]="selectedAnimal.imageURL" alt="{{ selectedAnimal.name }}" />
       <div class="info" >
          <h2><strong>{{ selectedAnimal.name }}</strong></h2>
-      <p><strong>Тип: </strong> {{ selectedAnimal.sex }}</p>
-      <p><strong>Вік: </strong>{{ selectedAnimal.age }} років</p>
-      <p><strong>Розмір: </strong> {{ selectedAnimal.size }}</p>
-      <p><strong>Опис: </strong> {{ selectedAnimal.description }}</p>
-      <p><strong>Місто: </strong> {{ selectedAnimal.city }}</p>
-      <p><strong>Назва притулку: </strong>{{ selectedAnimal.shelterName }}</p>
+        <p><strong>Тип: </strong> {{ selectedAnimal.sex }}</p>
+        <p><strong>Вік: </strong>{{ selectedAnimal.age }} років</p>
+        <p><strong>Розмір: </strong> {{ selectedAnimal.size }}</p>
+        <p><strong>Вакцинована: </strong>{{selectedAnimal.vaccinated ? "Так" : "Ні"}}</p>
+        <p><strong>Стерилізована: </strong>{{selectedAnimal.sterilized  ? "Так" : "Ні"}}</p>
+        <p><strong>Потребує особливого догляду: </strong>{{selectedAnimal.specialCare  ? "Так" : "Ні"}}</p>
+        <p><strong>Опис: </strong> {{ selectedAnimal.description }}</p>
+        <p><strong>Місто: </strong> {{ selectedAnimal.city }}</p>
+        <p><strong>Назва притулку: </strong>{{ selectedAnimal.shelterName }}</p>
     </div>
 
       <div class="buttonForAdoptAndWard">

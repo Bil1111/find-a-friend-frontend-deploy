@@ -21,7 +21,7 @@ public class AnimalService {
     @Autowired
     private AnimalRepository animalRepository;
 
-    public void addAnimal(AnimalRequest request, Shelter shelter) {
+    public void addAnimal(AnimalRequest request, Shelter shelter,String shelterName) {
         // Створення нового Animal
         Animal animal = new Animal();
         animal.setName(request.getName());
@@ -29,7 +29,11 @@ public class AnimalService {
         animal.setAge(request.getAge());
         animal.setSize(request.getSize());
         animal.setDescription(request.getDescription());
+        animal.setVaccinated(request.getVaccinated());
+        animal.setSterilized(request.getSterilized());
+        animal.setSpecialCare(request.getSpecialCare());
         animal.setShelter(shelter);
+        animal.setShelterName(shelterName);
         if (request.getSex() == 0) {
             animal.setSex("Хлопчик");
         } else if (request.getSex() == 1) {
@@ -38,8 +42,8 @@ public class AnimalService {
         animal.setCity(shelter.getCity());
         animal.setShelterPhoneNumber(shelter.getContactNumber());
         animal.setImageURL(request.getImageURL());
-        animalRepository.save(animal);
 
+        animalRepository.save(animal);
     }
 
     public void updateAnimalDetails(AnimalRequest request, Long animalId, Shelter shelter) {

@@ -31,7 +31,11 @@ public class ShelterService {
                 request.getCity(),
                 request.getLatitude(),
                 request.getLongitude(),
-                request.getImageURL()
+                request.getImageURL(),
+                request.getEmail(),
+                request.getCard(),
+                request.getPaypal(),
+                request.getIban()
         );
         shelterRepository.save(shelter);
     }

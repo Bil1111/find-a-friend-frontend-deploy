@@ -61,10 +61,6 @@ public class AdoptForm {
     private Shelter shelter;
     @Column(columnDefinition = "VARCHAR(255)")
     private String shelterName;
-//    @JsonBackReference
-//    @ManyToOne
-//    @JoinColumn(name = "user_id", nullable = false)
-//    private User user;
 
 
     public AdoptForm(String firstName, String lastName, String email, String contactNumber, String experience, String typeOfAnimal, String animalName, String animalAge, String animalSex, String animalSize, Shelter shelter, String shelterName) {

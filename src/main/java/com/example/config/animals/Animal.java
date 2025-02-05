@@ -55,11 +55,35 @@ public class Animal {
     @JoinColumn(name = "shelter_id", nullable = false) // Зазначаємо, що поле shelter_id в базі даних
     private Shelter shelter; // Вказуємо зв'язок з притулком
 
+    @Column(columnDefinition = "VARCHAR(255)")
+    private String shelterName;
+
+    @Column(nullable = false)
+    private Boolean vaccinated;
+
+    @Column(nullable = false)
+    private Boolean sterilized;
+
+    @Column(nullable = false)
+    private Boolean specialCare;
+
     // Конструктори
-    public Animal(String name, String type, Integer age, String size, String description, Shelter shelter, int sexIndex) {
 
+
+    public Animal(String name, String type, Integer age, String size, String description, String sex, String imageURL, Shelter shelter, String shelterName, Boolean vaccinated, Boolean sterilized, Boolean specialCare) {
+        this.name = name;
+        this.type = type;
+        this.age = age;
+        this.size = size;
+        this.description = description;
+        this.sex = sex;
+        this.imageURL = imageURL;
+        this.shelter = shelter;
+        this.shelterName = shelterName;
+        this.vaccinated = vaccinated;
+        this.sterilized = sterilized;
+        this.specialCare = specialCare;
     }
-
 
     public Animal() {}
 
@@ -152,5 +176,37 @@ public class Animal {
 
     public void setShelterPhoneNumber(String shelterPhoneNumber) {
         this.shelterPhoneNumber = shelterPhoneNumber;
+    }
+
+    public String getShelterName() {
+        return shelterName;
+    }
+
+    public void setShelterName(String shelterName) {
+        this.shelterName = shelterName;
+    }
+
+    public Boolean getVaccinated() {
+        return vaccinated;
+    }
+
+    public void setVaccinated(Boolean vaccinated) {
+        this.vaccinated = vaccinated;
+    }
+
+    public Boolean getSterilized() {
+        return sterilized;
+    }
+
+    public void setSterilized(Boolean sterilized) {
+        this.sterilized = sterilized;
+    }
+
+    public Boolean getSpecialCare() {
+        return specialCare;
+    }
+
+    public void setSpecialCare(Boolean specialCare) {
+        this.specialCare = specialCare;
     }
 }

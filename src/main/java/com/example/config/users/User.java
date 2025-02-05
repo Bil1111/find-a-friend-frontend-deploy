@@ -1,7 +1,6 @@
 package com.example.config.users;
 import jakarta.persistence.*;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
 @Entity

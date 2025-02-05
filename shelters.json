@@ -8,15 +8,11 @@
   "latitude" : 49.8397,
   "longitude" : 24.0297,
   "imageURL" : "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no",
-  "animals" : [ ],
-  "volunteerForms" : [ {
-    "id" : 1,
-    "firstName" : "dfgfgffdgdfg",
-    "lastName" : "dfgdfgfdg",
-    "email" : "fdgfgfgffgd",
-    "contactNumber" : "gdgfgf",
-    "shelterName" : "Притулок №2"
-  } ]
+  "email" : null,
+  "card" : null,
+  "paypal" : null,
+  "iban" : null,
+  "animals" : [ ]
 }, {
   "id" : 3,
   "name" : "Притулок №3",
@@ -27,8 +23,11 @@
   "latitude" : 46.4825,
   "longitude" : 30.7233,
   "imageURL" : "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no",
-  "animals" : [ ],
-  "volunteerForms" : [ ]
+  "email" : null,
+  "card" : null,
+  "paypal" : null,
+  "iban" : null,
+  "animals" : [ ]
 }, {
   "id" : 4,
   "name" : "Притулок №4",
@@ -39,8 +38,11 @@
   "latitude" : 49.9935,
   "longitude" : 36.2304,
   "imageURL" : "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no",
-  "animals" : [ ],
-  "volunteerForms" : [ ]
+  "email" : null,
+  "card" : null,
+  "paypal" : null,
+  "iban" : null,
+  "animals" : [ ]
 }, {
   "id" : 5,
   "name" : "Притулок №5",
@@ -51,8 +53,11 @@
   "latitude" : 48.4647,
   "longitude" : 35.0462,
   "imageURL" : "https://lh5.googleusercontent.com/p/AF1QipPllRvUohZQGRjPkEKMCl3OrSrekrSmbInvX2MI=w408-h306-k-no",
-  "animals" : [ ],
-  "volunteerForms" : [ ]
+  "email" : null,
+  "card" : null,
+  "paypal" : null,
+  "iban" : null,
+  "animals" : [ ]
 }, {
   "id" : 1,
   "name" : "Притулок №1",
@@ -63,18 +68,39 @@
   "latitude" : 50.4501,
   "longitude" : 30.5931,
   "imageURL" : null,
-  "animals" : [ ],
-  "volunteerForms" : [ ]
+  "email" : null,
+  "card" : null,
+  "paypal" : null,
+  "iban" : null,
+  "animals" : [ {
+    "id" : 1,
+    "name" : "Барсик",
+    "type" : "Кіт",
+    "age" : 3,
+    "size" : "Маленький",
+    "description" : "Дуже грайливий котик",
+    "sex" : "Хлопчик",
+    "imageURL" : "https://example.com/image.jpg",
+    "city" : "Київ",
+    "shelterPhoneNumber" : "+380 931 112 222",
+    "shelterName" : "Притулок №1",
+    "vaccinated" : true,
+    "sterilized" : false,
+    "specialCare" : false
+  } ]
 }, {
-  "id" : 8,
-  "name" : "Притулок \"Бідний Єврей\"",
-  "address" : "Берлін",
-  "contactNumber" : "+380 931 112 222",
-  "description" : "Тільки для євреїв i циганів ",
-  "city" : "Берлін",
-  "latitude" : 80.0,
-  "longitude" : 89.0,
-  "imageURL" : "зщшгнеку",
-  "animals" : [ ],
-  "volunteerForms" : [ ]
+  "id" : 6,
+  "name" : "Притулок для тварин 'Добро'",
+  "address" : "Київ, вул. Шевченка 10",
+  "contactNumber" : "+380501234567",
+  "description" : "Притулок для бездомних тварин. Ми надаємо допомогу та шукаємо нових господарів.",
+  "city" : "Київ",
+  "latitude" : 50.4501,
+  "longitude" : 30.5032,
+  "imageURL" : "https://example.com/image.jpg",
+  "email" : "info@dobro.com",
+  "card" : "1234567890",
+  "paypal" : "paypal@dobro.com",
+  "iban" : "UA12345678901234567890",
+  "animals" : [ ]
 } ]

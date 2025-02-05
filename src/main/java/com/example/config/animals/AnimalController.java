@@ -3,6 +3,7 @@ package com.example.config.animals;
 import com.example.config.requests.AnimalRequest;
 import com.example.config.shelters.Shelter;
 import com.example.config.shelters.ShelterRepository;
+import com.example.config.shelters.ShelterService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,13 +20,16 @@ public class AnimalController {
     private AnimalService animalService;
 
     @Autowired
-    private ShelterRepository shelterRepository; // Додайте поле для ShelterRepository
+    private ShelterRepository shelterRepository;
+    @Autowired
+    private ShelterService shelterService;
+
 
     @PostMapping("/add")
     public ResponseEntity<String> addAnimal(@RequestBody @Valid AnimalRequest request) {
         Shelter shelter = shelterRepository.findById(request.getShelter())
                 .orElseThrow(() -> new RuntimeException("Shelter not found"));
-        animalService.addAnimal(request, shelter);
+        animalService.addAnimal(request, shelter,shelterService.getShelterNameById(request.getShelter()));
 
         return new ResponseEntity<>("Animal added successfully", HttpStatus.CREATED);
     }

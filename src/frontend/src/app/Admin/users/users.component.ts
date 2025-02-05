@@ -24,8 +24,8 @@ export class UsersComponent {
   search_user_role: any = {role:''};
 
 
-  emailadmin: string = '';
-  passwordadmin: string = '';
+  emailAdmin: string = '';
+  passwordAdmin: string = '';
   passwordAgain: string = '';
   errorMessage: string | null = null;
   loading: boolean = false;
@@ -86,15 +86,15 @@ export class UsersComponent {
 
 
     register() {
-      if (this.password !== this.passwordAgain) {
+      if (this.passwordAdmin !== this.passwordAgain) {
         this.errorMessage = 'Паролі не співпадають';
         console.error(this.errorMessage);
         return;
       }
 
       const registrationData = {
-        email: this.email,
-        password: this.password
+        email: this.emailAdmin,
+        password: this.passwordAdmin
       };
       const httpOptions = {
         headers: new HttpHeaders({
@@ -114,7 +114,9 @@ export class UsersComponent {
             if (response.status === 201) {
               //
               console.log('Реєстрація успішна', response);
-              this.router.navigate(['/admin']);
+              this.closeAdd();
+              this.AllUsers();
+              this.router.navigate(['/admin/usersadmin']);
               window.location.reload;
             } else {
               this.errorMessage = 'Сталася невідома помилка';
@@ -146,8 +148,8 @@ export class UsersComponent {
       }
     }
     seandDelete(){
-  
-      this.http.delete<any[]>(`http://localhost:8080/api/users/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe( 
+
+      this.http.delete<any[]>(`http://localhost:8080/api/users/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe(
      {next: (response) => {
       console.log(response);
       this.closeModalDelete();
@@ -156,7 +158,7 @@ export class UsersComponent {
     },
     error: (error) => {
       console.error('Помилка при видаленні користувача', error);
-      
+
     }})
     }
 }

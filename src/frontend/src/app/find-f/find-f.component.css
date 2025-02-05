@@ -3,8 +3,8 @@ body{
 }
 .animal-card .buttonn{
   position: absolute; /* Абсолютна позиція відносно animal-card */
-  bottom: 10px; 
-  right: 10px; 
+  bottom: 10px;
+  right: 10px;
   width: 50px;
   height: 50px;
   color: #f9f9f9;
@@ -31,13 +31,13 @@ body{
   padding: 20px;
   box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
-  overflow-y: scroll; 
+  overflow-y: scroll;
 }
 
 .sidebar .filter-group,
 .sidebar .filter-groupOther {
   margin-bottom: 10px;
-} 
+}
 .sidebar .filter-group label,
 .filter-groupOther label {
   display: block;
@@ -58,7 +58,7 @@ body{
   font-size: 15px;
   transition: all 0.3s ease-in-out;
   margin-right: 7px;
- 
+
 
 }
 
@@ -80,7 +80,7 @@ body{
 }
 
 
-.animals-container  .animal-cards{margin: auto 100px; display:flex;justify-content: center; margin-bottom: 10px;}  
+.animals-container  .animal-cards{margin: auto 100px; display:flex;justify-content: center; margin-bottom: 10px;}
 
 .animals-container h2 {
  display: flex;
@@ -112,13 +112,13 @@ body{
 }
 
 .animal-card img {
-  width: 100%; 
-  height: 370px; 
-  object-fit: cover; 
+  width: 100%;
+  height: 370px;
+  object-fit: cover;
 }
-/* 
+/*
 .animal-card:hover {
-  transform: scale(1.05); 
+  transform: scale(1.05);
 } */
 
 .pagination {
@@ -126,12 +126,12 @@ body{
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 25%; 
+  width: 25%;
 }
 .previous, .next {margin-top: 13px;}
 .animal-card h3 { margin-left: 5px; margin-top: 5px; }
 .animal-card .info_about_pet {
-  display: flex; 
+  display: flex;
   gap: 10px;
   font-family: 'e-ukrL';
   font-size: 16px;
@@ -196,7 +196,7 @@ body{
  justify-content: space-evenly;
  align-items: center;
  border-radius: 10px;
- 
+
 }
 
 .modalAdopt{
@@ -212,21 +212,21 @@ body{
   z-index: 3;
 }
 .adopt-content h1{
-  
+
   text-align: center;
-  line-height: 1.5cm;   
+  line-height: 1.5cm;
 }
 .adopt-content{
   position: relative;
   background: #fff;
   padding: 20px;
-  border-radius: 8px; 
+  border-radius: 8px;
   text-align: start;
 }
 .adopt{
   display: flex;
   flex-direction: column;
-  
+
 }
 
 .modalWard{
@@ -262,7 +262,7 @@ body{
 }
 .ward-content h1{
   text-align: center;
-  line-height: 1.5cm;   
+  line-height: 1.5cm;
 }
 
 .ward{
@@ -286,13 +286,13 @@ input, select,  button {
 button{
     color: #ffffff;
     background-color: #fc8f00
-    
-    
+
+
 }
 button:hover{
     background-color: #d97b00;
     transition: 0.2s ease-in-out;
-    
+
 }
 
 .scroll-to-top {
@@ -305,7 +305,7 @@ button:hover{
   padding: 15px 20px;
   border-radius: 100px;
   cursor: pointer;
-  display: none; 
+  display: none;
   z-index: 1000;
   font-size: xx-large;
 }
@@ -320,7 +320,7 @@ button:hover{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 37%; 
+    width: 37%;
   }
   .close-button2{height: 45px; width: 45px; position: absolute; right: -10px; top: -10px;}
 .ward-content{ height: 95%; width: 95%; overflow-x:scroll; }
@@ -328,7 +328,7 @@ button:hover{
 .adopt-content{ height: 95%; width: 95%; overflow-x:scroll;}
 }
 @media (min-width: 320px) and (max-width: 995px) {
- 
+
 }
 
 
@@ -336,7 +336,7 @@ button:hover{
   /* .animals-container  .animal-cards{margin: auto 0px;}   */
   .animal-cards { gap: 40px; }
   .animal-card { width: 340px; /* Ширина картки */}
-.animals-container  .animal-cards{margin: auto 60px;}  
+.animals-container  .animal-cards{margin: auto 60px;}
 .sidebar {max-width: 100%; max-height: 500px;}
 /* .animals-container .pagination { margin: 25px auto;} */
 .pagination {width: 40%; }
@@ -348,14 +348,14 @@ button:hover{
 @media (max-width: 860px) {
   .animal-cards { gap: 20px; }
   .animal-card { width: 270px; /* Ширина картки */}
-.animals-container  .animal-cards{margin: auto 60px;}  
+.animals-container  .animal-cards{margin: auto 60px;}
 .sidebar {max-width: 100%; max-height: 500px;}
 /* .animals-container .pagination { margin: 25px auto;} */
 .pagination {width: 40%; }
 .animal-card .info_about_pet {
-  display: flex; 
+  display: flex;
   gap: 10px;
-  font-family: 'e-ukrL';  
+  font-family: 'e-ukrL';
   font-size: 14px;
   padding-left: 5px;
   line-height: 0.4cm;
@@ -377,7 +377,7 @@ button:hover{
 
 
 @media (max-width: 426px) {
-  .animals-container  .animal-cards{margin: auto 0px;}  
+  .animals-container  .animal-cards{margin: auto 0px;}
   .animal-cards { gap: 40px; }
   .animal-card { width: 259px; /* Ширина картки */}
   .pagination { width: 100%;}
@@ -397,7 +397,7 @@ button:hover{
 @media (max-width: 375px) {
   .animal-cards {gap: 40px; }
   .animal-card {width: 259px; /* Ширина картки */}
- 
+
 }
 
 
@@ -411,7 +411,7 @@ button:hover{
   /* .close-button,.close-button1,.close-button2{height: 45px; width: 45px; position: absolute; right: 5px; top: 0px;} */
 
 
- 
+
 }
 
 

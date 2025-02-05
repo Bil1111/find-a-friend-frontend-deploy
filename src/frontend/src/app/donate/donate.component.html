@@ -17,17 +17,17 @@
           <h3 class="nameshelter">Притулок  {{shelter.name }}</h3>
         <img [src]="shelter.name" alt="{{ shelter.city }}" />
         <h3 >Контактна інформація</h3>
-        
+
         <p>м. {{ shelter.city }}</p>
         <!-- <p>ID: {{ shelter.id }}</p> -->
         <p>Адреса: {{ shelter.address }}</p>
         <p>Телефон: {{ shelter.contactNumber }}</p>
-        <p>Email: anuta0203.net</p>
+        <p>Email: {{ shelter.email }}</p>
 
         <h3>Ревізити для переказу:</h3>
-        <p>Карта: 1111 1111 1111 1111</p>
-        <p>Paypal: SAP_Dobro</p>
-        <p>IBAN: BA393385804800211234</p>
+        <p>{{ shelter.card }}</p>
+        <p>{{ shelter.paypal }}</p>
+        <p>{{ shelter.iban }}</p>
       </div>
     </div>
   </div>
@@ -40,17 +40,16 @@
       <h3 class="nameshelter" >Притулок  {{selectedShelter.name }}</h3>
       <img [src]="selectedShelter.imageURL" alt="{{ selectedShelter.city }}" />
       <h3>Контактна інформація</h3>
-        
+
       <!-- <p>ID: {{ shelter.id }}</p> -->
       <p>Адреса: {{ selectedShelter.address }}</p>
       <p>Телефон: {{ selectedShelter.contactNumber }}</p>
-      <p>Email: anuta0203.net</p>
+      <p>Email: {{ selectedShelter.email }}</p>
 
       <h3>Ревізити для переказу:</h3>
-      <p>Карта: 1111 1111 1111 1111</p>
-      <p>Paypal: SAP_Dobro</p>
-      <p>IBAN: BA393385804800211234</p>
-      <p>Опис: {{ selectedShelter.description }}</p>
+      <p>{{ selectedShelter.card }}</p>
+      <p>{{ selectedShelter.paypal }}</p>
+      <p>{{ selectedShelter.iban }}</p>
     </div>
   </div>
 

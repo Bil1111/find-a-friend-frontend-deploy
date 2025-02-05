@@ -32,18 +32,36 @@ public class ShelterRequest {
     @NotBlank(message = "Image is required")
     private String imageURL;
 
+    @NotBlank(message = "Email is required")
+    private String email;
+
+    @NotBlank(message = "card is required")
+    private String card;
+
+    @NotBlank(message = "paypal is required")
+    private String paypal;
+
+    @NotBlank(message = "iban is required")
+    private String iban;
+
+
+
     // Constructors, Getters, and Setters
     public ShelterRequest() {}
 
-    public ShelterRequest(String name, String address, String contactNumber, String description, String city, Double latitude, Double longitude, String imageURL) {
+    public ShelterRequest(String name, String address, String contactNumber, String description, String city, Double latitude, Double longitude, String imageURL, String email, String card, String paypal, String iban) {
         this.name = name;
         this.address = address;
         this.contactNumber = contactNumber;
         this.description = description;
         this.city = city;
-        this.latitude=latitude;
-        this.longitude=longitude;
-        this.imageURL=imageURL;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.imageURL = imageURL;
+        this.email = email;
+        this.card = card;
+        this.paypal = paypal;
+        this.iban = iban;
     }
 
     public String getName() {
@@ -109,5 +127,37 @@ public class ShelterRequest {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCard() {
+        return card;
+    }
+
+    public void setCard(String card) {
+        this.card = card;
+    }
+
+    public String getPaypal() {
+        return paypal;
+    }
+
+    public void setPaypal(String paypal) {
+        this.paypal = paypal;
+    }
+
+    public String getIban() {
+        return iban;
+    }
+
+    public void setIban(String iban) {
+        this.iban = iban;
     }
 }

@@ -11,6 +11,7 @@ import { AdoptComponent } from './adopt/adopt.component';
 import { GifthouseComponent } from './gifthouse/gifthouse.component';
 import { ThignsComponent } from './thigns/thigns.component';
 import { ForAllShelterComponent } from './for-all-shelter/for-all-shelter.component';
+import {accsecAdminGuard} from './accsec-admin.guard';
 
 
 const routes: Routes = [
@@ -26,7 +27,9 @@ const routes: Routes = [
   { path: 'thigns', component: ThignsComponent },
   { path: 'for-all-shelter', component: ForAllShelterComponent },
 
-  { path: 'admin', loadChildren: () => import('./Admin/admin.module').then((m) => m.AdminModule) },
+  { path: 'admin', loadChildren: () => import('./Admin/admin.module').then((m) => m.AdminModule),
+    // canActivate: [accsecAdminGuard] 
+   },
 
   //{ path: '', redirectTo: '/about', pathMatch: 'full' }, // Опціонально, щоб перенаправити на нову сторінку за замовчуванням
 ];

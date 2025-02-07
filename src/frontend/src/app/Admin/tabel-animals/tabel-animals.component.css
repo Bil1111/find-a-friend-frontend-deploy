@@ -148,7 +148,23 @@ input[type='search']{padding: 10px;}
   background-color: #ccccccb4;
 }
   
-  
+.check{
+  margin: 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.check input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+  accent-color: #01a9a9;
+}
+
+.check input[type="checkbox"]:hover {
+  cursor: pointer;
+}
+
+
 
 
 

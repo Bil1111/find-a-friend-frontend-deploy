@@ -9,10 +9,13 @@ import {UsersComponent} from './users/users.component';
 import {VolontersComponent} from './volonters/volonters.component';
 import {WardComponent} from './ward/ward.component';
 import { TabelAnimalsComponent } from './tabel-animals/tabel-animals.component';
+import {accsecAdminGuard} from '../accsec-admin.guard';
 
 const routes: Routes = [
   {
-    path: '', component: AdmindashbordComponent, children: [
+    path: '', component: AdmindashbordComponent,
+    canActivate: [accsecAdminGuard],
+     children: [
       { path: 'header', component: HeaderComponent },
       { path: 'shelteradmin', component: ShelteradminComponent },
       { path: 'adopradmin', component: AdoptComponent },

@@ -83,17 +83,30 @@
         <label for="description">Опис:</label>
         <input type="text" id="description" [(ngModel)]="description" placeholder="Опис">
 
-        <label for="email">Почта:</label>
-        <input type="text" id="email" [(ngModel)]="emailShelter" placeholder="Почта">
+        
+        <div class="secretinfo">
 
-        <label for="card">Карта:</label>
-        <input type="text" id="card" [(ngModel)]="card" placeholder="Карта">
+          <div>
+              <label for="emailShelter">Почта:</label>
+              <input type="text" id="emailShelter" [(ngModel)]="emailShelter" placeholder="Почта">
+          </div>
+         
+        <div >
+           <label for="card">Карта:</label>
+        <input type="number" id="card" [(ngModel)]="card" placeholder="Карта">
+        </div>
 
-        <label for="paypal">PayPal:</label>
-        <input type="text" id="paypal" [(ngModel)]="PayPal" placeholder="PayPal">
+        <div >
+           <label for="PayPal">PayPal:</label>
+        <input type="text" id="PayPal" [(ngModel)]="PayPal" placeholder="PayPal">
+        </div>
 
-        <label for="iban">IBAN:</label>
-        <input type="text" id="iban" [(ngModel)]="IBAN" placeholder="IBAN">
+        <div >
+          <label for="IBAN">IBAN:</label>
+          <input type="text" id="IBAN" [(ngModel)]="IBAN" placeholder="IBAN">
+        </div>
+
+        </div>
         <div>
             <button class="confirm_edit" (click)="SendEditedShelter()">Внести зміни</button>
         </div>
@@ -117,31 +130,44 @@
         <label for="city">Aдрес:</label>
         <input type="text" id="city" [(ngModel)]="address" placeholder="Aдрес">
 
-        <label for="contactNumber">Телефон</label>
-        <input type="text" id="contactNumber" [(ngModel)]="contactNumber" placeholder="Телефон">
-        <label for="description">Опис притулку</label>
+        <label for="contactNumber">Телефон:</label>
+        <input type="number" id="contactNumber" [(ngModel)]="contactNumber" placeholder="Телефон">
+        <label for="description">Опис притулку:</label>
         <input type="text" id="description" [(ngModel)]="description" placeholder="Опис притулку">
 
-        <label for="description">Зображення</label>
+        <label for="description">Зображення:</label>
         <input type="text" id="description" [(ngModel)]="imgurl" placeholder="Зображення">
 
-        <label for="description">Широта</label>
-        <input type="text" id="description" [(ngModel)]="latitude" placeholder="Широта">
+        <label for="description">Широта:</label>
+        <input type="number" id="description" [(ngModel)]="latitude" placeholder="Широта">
 
-        <label for="description">Довгота</label>
-        <input type="text" id="description" [(ngModel)]="longitude" placeholder="Довгота">
+        <label for="description">Довгота:</label>
+        <input type="number" id="description" [(ngModel)]="longitude" placeholder="Довгота">
 
-        <label for="emailShelter">Почта</label>
-        <input type="text" id="description" [(ngModel)]="emailShelter" placeholder="Почта">
+        <div class="secretinfo">
 
-        <label for="description">Карта</label>
-        <input type="text" id="description" [(ngModel)]="card" placeholder="Карта">
+          <div>
+              <label for="emailShelter">Почта:</label>
+              <input type="text" id="emailShelter" [(ngModel)]="emailShelter" placeholder="Почта">
+          </div>
+         
+        <div >
+           <label for="card">Карта:</label>
+        <input type="number" id="card" [(ngModel)]="card" placeholder="Карта">
+        </div>
 
-        <label for="description">PayPal</label>
-        <input type="text" id="description" [(ngModel)]="PayPal" placeholder="PayPal">
+        <div >
+           <label for="PayPal">PayPal:</label>
+        <input type="text" id="PayPal" [(ngModel)]="PayPal" placeholder="PayPal">
+        </div>
 
-        <label for="description">IBAN</label>
-        <input type="text" id="description" [(ngModel)]="IBAN" placeholder="IBAN">
+        <div >
+          <label for="IBAN">IBAN:</label>
+          <input type="text" id="IBAN" [(ngModel)]="IBAN" placeholder="IBAN">
+        </div>
+
+        </div>
+       
         <div>
             <button class="confirm_edit" (click)="AddShelter()">Додати притулок</button>
         </div>
@@ -218,13 +244,15 @@
 
             <label for="url">Посилання на зображення:</label>
             <input type="text" id="url" [(ngModel)]="url_animals" placeholder="Посилання на зображення">
-
-            <label for="vaccinated">Вакцинована:</label>
+            <div class="check">
+              <label for="vaccinated">Вакцинована:</label>
             <input type="checkbox" id="vaccinated" [(ngModel)]="vaccinated" placeholder="Вакцинована">
-            <label for="vaccinated">Стерелізована:</label>
-            <input type="checkbox" id="vaccinated" [(ngModel)]="steril" placeholder="Вакцинована">
-            <label for="vaccinated">Потребує особливого догляду:</label>
-            <input type="checkbox" id="vaccinated" [(ngModel)]="specialCare" placeholder="Вакцинована">
+            <label for="steril">Стерелізована:</label>
+            <input type="checkbox" id="steril" [(ngModel)]="steril" placeholder="Вакцинована">
+            <label for="specialCare">Потребує особливого догляду:</label>
+            <input type="checkbox" id="specialCare" [(ngModel)]="specialCare" placeholder="Вакцинована">
+            </div>
+            
 
             <input type="hidden" id="city" [(ngModel)]="city_animals" >
             <input type="hidden" id="shelterphine" [(ngModel)]="contactshelter_animals">

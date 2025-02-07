@@ -78,12 +78,14 @@
             <label for="contactNumber">Розмір:</label>
             <input type="text" id="contactNumber" [(ngModel)]="size">
           
-            <label for="vaccinated">Вакцинована:</label>
-            <input type="checkbox" id="vaccinated" [(ngModel)]="vaccinated">
+            <div class="check">
+              <label for="vaccinated">Вакцинована:</label>
+            <input type="checkbox" id="vaccinated" [(ngModel)]="vaccinated" placeholder="Вакцинована">
             <label for="steril">Стерелізована:</label>
-            <input type="checkbox" id="steril" [(ngModel)]="steril">
+            <input type="checkbox" id="steril" [(ngModel)]="steril" placeholder="Вакцинована">
             <label for="specialCare">Потребує особливого догляду:</label>
-            <input type="checkbox" id="specialCare" [(ngModel)]="specialCare">
+            <input type="checkbox" id="specialCare" [(ngModel)]="specialCare" placeholder="Вакцинована">
+            </div>
 
             <div>
                 <button class="confirm_edit" (click)="SendEditedShelter()">Внести зміни</button>

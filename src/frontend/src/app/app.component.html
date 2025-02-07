@@ -88,8 +88,13 @@
   </div>
 
   <div class="ReggPhone d-block d-lg-none"  >
-    <a routerLink='/sing-in' class="Enter">Вхід</a>
-    <a routerLink='/regest' class="Registr">Зареєструватися</a>
+    <a routerLink='/sing-in' class="Enter" *ngIf="!isLogged">Вхід</a>
+    <a routerLink='/regest' class="Registr"  *ngIf="!isLogged">Зареєструватися</a>
+
+    <div *ngIf="isLogged" class="loginphone">
+      <img src="/user.svg" alt="1488" class="photo">
+      <button class="btn_out" (click)="logout()">Вийти</button>
+     </div>
   </div>
     </ul>
   </div>

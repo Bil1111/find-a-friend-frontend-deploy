@@ -343,6 +343,9 @@ nav ul li .Registr_pc:hover {
 .login{
   margin-right: 100px;
 }
+.loginphone{
+  margin-right: 30px;
+}
 .btn_out{
   border: none;
   background-color: #ffffff;

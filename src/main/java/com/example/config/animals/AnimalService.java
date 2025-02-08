@@ -75,6 +75,15 @@ public class AnimalService {
                     animal.setSex("Дівчинка");
                 }
             }
+            if (request.getVaccinated() != null) {
+                animal.setVaccinated(request.getVaccinated());
+            }
+            if (request.getSterilized() != null) {
+                animal.setSterilized(request.getSterilized());
+            }
+            if (request.getSpecialCare() != null) {
+                animal.setSpecialCare(request.getSpecialCare());
+            }
             animalRepository.save(animal);
         }, () -> {
             throw new ResponseStatusException(

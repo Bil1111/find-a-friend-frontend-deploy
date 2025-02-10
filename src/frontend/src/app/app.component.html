@@ -50,10 +50,10 @@
       <div class="Phone_and_Tablet d-block d-lg-none ">
       <li class="nav-item "><a class="nav-link" routerLink='/find-f' routerLinkActive="active">Знайти друга</a></li>
       <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}"><a class="nav-link" (click)="Openmemu()" >Волонтерство</a>
-        <div class="dropdown-content" *ngIf="visible">
+        <div class="dropdown-contentPhone" *ngIf="visible">
           <a routerLink="/free-people" (click)="closeMenu()">Стати волонтером</a>
           <a routerLink="/adopt" (click)="closeMenu()">Усиновити тваринку</a>
-          <a routerLink="/"(click)="closeMenu()">Допомогти речами</a>
+          <a routerLink="/thigns"(click)="closeMenu()">Допомога</a>
         </div>
       </li>
       <li class="nav-item "><a class="nav-link" routerLink='/donate' routerLinkActive="active">Донат</a></li>
@@ -140,7 +140,7 @@
         <ul>
           <li><a routerLink="/free-people">Стати волонтером</a></li>
           <li><a routerLink="/adopt">Усиновити тваринку</a></li>
-          <li><a routerLink="/">Допомогти речами</a></li>
+          <li><a routerLink="/thigns">Допомога</a></li>
           <!-- <li><a routerLink="/gifthouse">Подарувати дім</a></li> -->
         </ul>
     </div>

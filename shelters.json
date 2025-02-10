@@ -12,7 +12,22 @@
   "card" : null,
   "paypal" : null,
   "iban" : null,
-  "animals" : [ ]
+  "animals" : [ {
+    "id" : 4,
+    "name" : "цук",
+    "type" : "іва",
+    "age" : 2,
+    "size" : "іва",
+    "description" : "цук",
+    "sex" : "Хлопчик",
+    "imageURL" : "іва",
+    "city" : "Львів",
+    "shelterPhoneNumber" : "+380 932 223 333",
+    "shelterName" : "Притулок №2",
+    "vaccinated" : false,
+    "sterilized" : false,
+    "specialCare" : false
+  } ]
 }, {
   "id" : 3,
   "name" : "Притулок №3",
@@ -75,47 +90,17 @@
   "animals" : [ ]
 }, {
   "id" : 8,
-  "name" : "Притулок \"Бідний Єврей\"",
-  "address" : "Берлін",
+  "name" : "Sun",
+  "address" : "Бровари",
   "contactNumber" : "+380 931 112 222",
-  "description" : "Тільки для євреїв i циганів ",
-  "city" : "Берлін",
-  "latitude" : 80.0,
-  "longitude" : 89.0,
+  "description" : "Тільки",
+  "city" : "Бровари",
+  "latitude" : 50.511389,
+  "longitude" : 30.790278,
   "imageURL" : "зщшгнеку",
-  "email" : "1fdsfsd",
-  "card" : "1",
-  "paypal" : "1",
-  "iban" : "1",
-  "animals" : [ {
-    "id" : 2,
-    "name" : "fsdsddfsd",
-    "type" : "sfsdfsdf",
-    "age" : 342,
-    "size" : "BIG",
-    "description" : "sdfsd",
-    "sex" : "Дівчинка",
-    "imageURL" : "hg",
-    "city" : "Берлін",
-    "shelterPhoneNumber" : "+380 931 112 222",
-    "shelterName" : "Притулок \"Бідний Єврей\"",
-    "vaccinated" : true,
-    "sterilized" : true,
-    "specialCare" : true
-  }, {
-    "id" : 1,
-    "name" : "UwU",
-    "type" : "s",
-    "age" : 2,
-    "size" : "asd",
-    "description" : "sdkjfs",
-    "sex" : "Дівчинка",
-    "imageURL" : "a",
-    "city" : "Берлін",
-    "shelterPhoneNumber" : "+380 931 112 222",
-    "shelterName" : "Притулок \"Бідний Єврей\"",
-    "vaccinated" : true,
-    "sterilized" : false,
-    "specialCare" : true
-  } ]
+  "email" : "@@@@",
+  "card" : "2",
+  "paypal" : "2",
+  "iban" : "2",
+  "animals" : [ ]
 } ]

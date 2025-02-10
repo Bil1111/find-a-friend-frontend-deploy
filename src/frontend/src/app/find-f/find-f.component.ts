@@ -134,6 +134,7 @@ export class FindFComponent implements OnInit {
         // Обчислюємо кількість сторінок
         this.totalPages = Math.ceil(allAnimals.length / this.itemsPerPage);
         console.log('Total pages:', this.totalPages);
+        
       },
       error => console.error('Error fetching shelter data:', error)
     );

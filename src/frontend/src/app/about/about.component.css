@@ -396,10 +396,11 @@ margin-top: 50px;
   .find{width: 100%; }
   .howtext {width: 100%;}
   .listtext{font-size: x-large;}
-  .Title1 p,.Title2 p ,.Title3 p{ width: 100%; padding: 0px; text-align: start;}
-  .Title1 h1,.Title2 h1,.Title3 h1 { margin-bottom: 30px;}
+  .Title1 p,.Title2 p ,.Title3 p{ width: 100%; padding: 0px; text-align: center;}
+  .Title1 h1,.Title2 h1,.Title3 h1 { margin-bottom: 35px;}
   .steptext{width: 100%; text-align: center;}
-  
+  .step h1{text-align:center;}
+  .alltext{margin: auto 15px;}
 }
 
 

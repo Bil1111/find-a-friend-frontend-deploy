@@ -27,6 +27,9 @@
                 <th>Стать</th>
                 <th>Розмір</th>
                 <th>Тип</th>
+                <th>Вакцинована</th>
+                <th>Стерелізована</th>
+                <th>Потребує особливого догляду</th>
                 <th>Телефон</th>
                 <th>Назва притулку</th>
              
@@ -42,6 +45,9 @@
                 <td>{{shelters.sex}}</td>
                 <td>{{shelters.size}}</td>
                 <td>{{shelters.type}}</td>
+                <td>{{shelters.vaccinated}}</td>
+                <td>{{shelters.sterilized}}</td>
+                <td>{{shelters.specialCare}}</td>
                 <td>{{shelters.shelterPhoneNumber}}</td>
                 <td>{{shelters.shelterName}}</td>
               
@@ -69,9 +75,17 @@
             <label for="address">Опис:</label>
             <input type="text" id="address" [(ngModel)]="descript">
 
-            <label for="contactNumber">Розмір</label>
+            <label for="contactNumber">Розмір:</label>
             <input type="text" id="contactNumber" [(ngModel)]="size">
           
+            <div class="check">
+              <label for="vaccinated">Вакцинована:</label>
+            <input type="checkbox" id="vaccinated" [(ngModel)]="vaccinated" placeholder="Вакцинована">
+            <label for="steril">Стерелізована:</label>
+            <input type="checkbox" id="steril" [(ngModel)]="steril" placeholder="Вакцинована">
+            <label for="specialCare">Потребує особливого догляду:</label>
+            <input type="checkbox" id="specialCare" [(ngModel)]="specialCare" placeholder="Вакцинована">
+            </div>
 
             <div>
                 <button class="confirm_edit" (click)="SendEditedShelter()">Внести зміни</button>

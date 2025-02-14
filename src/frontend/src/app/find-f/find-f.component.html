@@ -36,9 +36,9 @@
     </div>
       <div class="filter-groupOther">
           <label>Інше</label>
-          <button [ngClass]="{'active' :activeFilters['vakcin'].includes('Вакцинована') }" (click)="toggleFilter('vakcin','Вакцинована')" class="V">Вакцинована</button>
-          <button [ngClass]="{'active' :activeFilters['steril'].includes('Стерелізована') }" (click)="toggleFilter('steril','Стерелізована')" class="S">Стерелізована</button>
-          <button [ngClass]="{'active' :activeFilters['need_help'].includes('Потребує особливого догляду') }" (click)="toggleFilter('need_help','Потребує особливого догляду')" class="P">Потребує особливого догляду</button>
+          <button [ngClass]="{'active' :activeFilters['vaccinated'].includes(true) }" (click)="toggleFilter('vaccinated',true)" class="V">Вакцинована</button>
+          <button [ngClass]="{'active' :activeFilters['sterilized'].includes(true) }" (click)="toggleFilter('sterilized',true)" class="S">Стерелізована</button>
+          <button [ngClass]="{'active' :activeFilters['specialCare'].includes(true) }" (click)="toggleFilter('specialCare',true)" class="P">Потребує  догляду</button>
       </div>
 
   </div>
@@ -54,14 +54,13 @@
          <p>{{animal.age}} роки</p>
       </div>
       <div class="info_about_pet">
-        <p>{{animal.specialCare  ? "Потребує особливого догляду" : "Не потребує особливого догляду"}}</p>
+        <p>{{animal.specialCare  ? "Потребує  догляду" : "Не потребує  догляду"}}</p>
       </div>
 
       <div class="info_about_pet">
           <p>{{animal.vaccinated ? "Вакцинована" : "Не вакцинована"}}</p>
           <div class="circle"></div>
           <p>{{animal.sterilized  ? "Стерелізована" : "Не стерелізована"}}</p>
-
        </div>
        <div class="buttonn" (click)="selectAnimal(animal)">
          <svg width="50" height="50" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -121,7 +120,7 @@
     <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Введіть ваш email" required>
 
     <label for="phone">Телефон:</label>
-    <input type="tel" id="contactNumber" [(ngModel)]="contactNumber"  name="contactNumber" placeholder="Введіть ваш номер телефону" required>
+    <input type="number" id="contactNumber" [(ngModel)]="contactNumber"  name="contactNumber" placeholder="Введіть ваш номер телефону" required>
 
 
     <label for="exp">Чи маєте досвід догляду за тваринами?</label>
@@ -161,7 +160,7 @@
       <input type="email" id="email1" [(ngModel)]="email" name="email" placeholder="Введіть ваш email" required>
 
       <label for="phone">Телефон:</label>
-      <input type="tel" id="phone" [(ngModel)]="contactNumber"  name="contactNumber" placeholder="Введіть ваш номер телефону" required>
+      <input type="number" id="phone" [(ngModel)]="contactNumber"  name="contactNumber" placeholder="Введіть ваш номер телефону" required>
 
 
       <label for="exp">Чи маєте досвід догляду за тваринами?</label>

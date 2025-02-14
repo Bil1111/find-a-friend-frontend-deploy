@@ -9,11 +9,25 @@ import {HttpClient} from '@angular/common/http';
 export class FindFComponent implements OnInit {
 
   isScrollToTopVisible: boolean = false;
-
+  isModalOpen: boolean = false;
+  private lastScrollTop: number = 0;
   @HostListener('window:scroll', [])
   onWindowScroll() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    this.isScrollToTopVisible = scrollTop > 300;
+
+    // Показуємо кнопку, якщо користувач прокрутив вниз
+    if (scrollTop > this.lastScrollTop && scrollTop > 300) {
+      this.isScrollToTopVisible = true;
+    } else if (scrollTop < 100) {
+      this.isScrollToTopVisible = false;
+    }
+  
+    this.lastScrollTop = scrollTop;
+  
+    // Якщо відкрите модальне вікно, приховуємо кнопку
+    if (this.isModalOpen) {
+      this.isScrollToTopVisible = false;
+    }
   }
 
   scrollToTop() {
@@ -120,6 +134,7 @@ export class FindFComponent implements OnInit {
         // Обчислюємо кількість сторінок
         this.totalPages = Math.ceil(allAnimals.length / this.itemsPerPage);
         console.log('Total pages:', this.totalPages);
+        
       },
       error => console.error('Error fetching shelter data:', error)
     );
@@ -144,6 +159,8 @@ export class FindFComponent implements OnInit {
     this.selectedAnimal = animal; // Зберігаємо вибрану тварину
     this.isAdoptFormOpen = null;
     this.isWardFormOpen = null;
+    this.isModalOpen = true;
+    this.isScrollToTopVisible = false; // Ховаємо кнопку
   }
 
   openAdoptForm() {
@@ -154,6 +171,8 @@ export class FindFComponent implements OnInit {
     this.animalSize = this.selectedAnimal.size || 'empty';
     this.typeOfAnimal = this.selectedAnimal.type || 'empty';
     this.ID_shelter = this.selectedAnimal.shelterId || 'empty';
+    this.isModalOpen = true;
+    this.isScrollToTopVisible = false; // Ховаємо кнопку
     // this.Shelter = this.selectedAnimal.shelterName || 'empty';
     // this.City = this.selectedAnimal.city || 'empty';
   }
@@ -166,7 +185,8 @@ export class FindFComponent implements OnInit {
     this.animalSize = this.selectedAnimal.size || 'empty';
     this.typeOfAnimal = this.selectedAnimal.type || 'empty';
     this.ID_shelter = this.selectedAnimal.shelterId || 'empty';
-
+    this.isModalOpen = true;
+    this.isScrollToTopVisible = false; // Ховаємо кнопку
     // this.Shelter = this.selectedAnimal.shelterName || 'empty';
     // this.City = this.selectedAnimal.city || 'empty';
   }
@@ -174,17 +194,22 @@ export class FindFComponent implements OnInit {
   // Метод для закриття модального вікна
   closeModal() {
     this.selectedAnimal = null; // Скидаємо вибрану тварину
-
+    this.isModalOpen = false;
+    this.onWindowScroll(); 
   }
 
   closeAdoptForm() {
     this.isAdoptFormOpen = null;
     this.clearForm();
+    this.isModalOpen = false;
+    this.onWindowScroll(); 
   }
 
   closeWardForm() {
     this.isWardFormOpen = null;
     this.clearForm();
+    this.isModalOpen = false;
+    this.onWindowScroll(); 
   }
 
   // Змінні для фільтрів
@@ -193,15 +218,15 @@ export class FindFComponent implements OnInit {
     sex: [],
     age: [],
     city: [],
-    vakcin: [],
-    steril: [],
-    need_help: []
+    vaccinated: [],
+    sterilized: [],
+    specialCare: []
   };
 
-  toggleFilter(filterType: string, value: string | number) {
+  toggleFilter(filterType: string, value: string | number | boolean) {
     const filterArray = this.activeFilters[filterType]; // Це масив, в якому зберігаються значення для вибраного фільтра.
     const index = filterArray.indexOf(value);
-    if (value === '' || 0) {
+    if (value === '' || 0 || false)  {
       this.activeFilters[filterType] = [];
     }
 
@@ -220,9 +245,9 @@ export class FindFComponent implements OnInit {
         this.isMatchingFilter(animal, 'sex', this.activeFilters.sex) &&
         this.isMatchingFilter(animal, 'age', this.activeFilters.age) &&
         this.isMatchingFilter(animal, 'city', this.activeFilters.city) &&
-        this.isMatchingFilter(animal, 'vakcin', this.activeFilters.vakcin) &&
-        this.isMatchingFilter(animal, 'steril', this.activeFilters.steril) &&
-        this.isMatchingFilter(animal, 'need_help', this.activeFilters.need_help)
+        this.isMatchingFilter(animal, 'vaccinated', this.activeFilters.vaccinated) &&
+        this.isMatchingFilter(animal, 'sterilized', this.activeFilters.sterilized) &&
+        this.isMatchingFilter(animal, 'specialCare', this.activeFilters.specialCare)
       );
     });
   }
@@ -246,7 +271,9 @@ export class FindFComponent implements OnInit {
 
       return activeValues.some(value => ageRanges[value]?.(animal.age));
     }
-
+    if (typeof animal[filterType] === 'boolean') {
+      return activeValues.includes(animal[filterType]);
+    }
     return activeValues.includes(animal[filterType]);
   }
 

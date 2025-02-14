@@ -12,7 +12,22 @@
   "card" : null,
   "paypal" : null,
   "iban" : null,
-  "animals" : [ ]
+  "animals" : [ {
+    "id" : 4,
+    "name" : "цук",
+    "type" : "іва",
+    "age" : 2,
+    "size" : "іва",
+    "description" : "цук",
+    "sex" : "Хлопчик",
+    "imageURL" : "іва",
+    "city" : "Львів",
+    "shelterPhoneNumber" : "+380 932 223 333",
+    "shelterName" : "Притулок №2",
+    "vaccinated" : false,
+    "sterilized" : false,
+    "specialCare" : false
+  } ]
 }, {
   "id" : 3,
   "name" : "Притулок №3",
@@ -72,35 +87,20 @@
   "card" : null,
   "paypal" : null,
   "iban" : null,
-  "animals" : [ {
-    "id" : 1,
-    "name" : "Барсик",
-    "type" : "Кіт",
-    "age" : 3,
-    "size" : "Маленький",
-    "description" : "Дуже грайливий котик",
-    "sex" : "Хлопчик",
-    "imageURL" : "https://example.com/image.jpg",
-    "city" : "Київ",
-    "shelterPhoneNumber" : "+380 931 112 222",
-    "shelterName" : "Притулок №1",
-    "vaccinated" : true,
-    "sterilized" : false,
-    "specialCare" : false
-  } ]
+  "animals" : [ ]
 }, {
-  "id" : 6,
-  "name" : "Притулок для тварин 'Добро'",
-  "address" : "Київ, вул. Шевченка 10",
-  "contactNumber" : "+380501234567",
-  "description" : "Притулок для бездомних тварин. Ми надаємо допомогу та шукаємо нових господарів.",
-  "city" : "Київ",
-  "latitude" : 50.4501,
-  "longitude" : 30.5032,
-  "imageURL" : "https://example.com/image.jpg",
-  "email" : "info@dobro.com",
-  "card" : "1234567890",
-  "paypal" : "paypal@dobro.com",
-  "iban" : "UA12345678901234567890",
+  "id" : 8,
+  "name" : "Sun",
+  "address" : "Бровари",
+  "contactNumber" : "+380 931 112 222",
+  "description" : "Тільки",
+  "city" : "Бровари",
+  "latitude" : 50.511389,
+  "longitude" : 30.790278,
+  "imageURL" : "зщшгнеку",
+  "email" : "@@@@",
+  "card" : "2",
+  "paypal" : "2",
+  "iban" : "2",
   "animals" : [ ]
 } ]

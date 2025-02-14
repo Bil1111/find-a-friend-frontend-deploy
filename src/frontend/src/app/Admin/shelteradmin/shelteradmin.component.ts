@@ -129,7 +129,11 @@ close(){this.selectedShelterForadd = false;
   this.description = '';
   this.imgurl = '';
   this.latitude = '';
-  this.longitude = '';}
+  this.longitude = '';
+  this.emailShelter ='';
+  this.card = '';
+  this.PayPal ='';
+  this.IBAN = '';}
 
 SendEditedShelter(){
   const EditShelter = {

@@ -5,7 +5,7 @@
         <!-- <div class="search-conteiner">
            <p class="search-button">
             <span class="search-icon"><img src="search.png" alt=""></span>
-           </p> 
+           </p>
           <input class="search" type="search" placeholder="Пошук" [(ngModel)]="search_data.name">
         </div> -->
         <button class="clearbutton" (click)="CleanSearchForm()" *ngIf="search_data_id.id || search_data_id.name || search_data_id.city
@@ -27,12 +27,13 @@
                 <th>Стать</th>
                 <th>Розмір</th>
                 <th>Тип</th>
+                <th>Фото</th>
                 <th>Вакцинована</th>
                 <th>Стерелізована</th>
                 <th>Потребує особливого догляду</th>
                 <th>Телефон</th>
                 <th>Назва притулку</th>
-             
+
             </tr>
             <tr *ngFor="let shelters of Shelters | filterBy : search_data_id || search_data_name ||search_data_city
             ||search_data_age||search_data_sex ||search_data_size ||search_data_type || search_data_shelterName ">
@@ -45,12 +46,13 @@
                 <td>{{shelters.sex}}</td>
                 <td>{{shelters.size}}</td>
                 <td>{{shelters.type}}</td>
+                <td>{{shelters.imageURL}}</td>
                 <td>{{shelters.vaccinated}}</td>
                 <td>{{shelters.sterilized}}</td>
                 <td>{{shelters.specialCare}}</td>
                 <td>{{shelters.shelterPhoneNumber}}</td>
                 <td>{{shelters.shelterName}}</td>
-              
+
             </tr>
         </table>
     </div>
@@ -62,7 +64,7 @@
              <input type="hidden" id="name" [(ngModel)]="id">
              <input type="hidden" name="" id="idshelter" [(ngModel)]="idsgelter">
 
-                 <h3>Редагування інформації про притулок</h3>
+                 <h3>Редагування інформації про тваринку</h3>
             <label for="name">Ім'я:</label>
             <input type="text" id="name" [(ngModel)]="name">
 
@@ -77,7 +79,10 @@
 
             <label for="contactNumber">Розмір:</label>
             <input type="text" id="contactNumber" [(ngModel)]="size">
-          
+
+          <label for="contactNumber">Фото:</label>
+          <input type="text" id="photo" [(ngModel)]="imageurl">
+
             <div class="check">
               <label for="vaccinated">Вакцинована:</label>
             <input type="checkbox" id="vaccinated" [(ngModel)]="vaccinated" placeholder="Вакцинована">
@@ -90,7 +95,7 @@
             <div>
                 <button class="confirm_edit" (click)="SendEditedShelter()">Внести зміни</button>
             </div>
-          
+
         </div>
       </div>
 
@@ -130,11 +135,11 @@
 <div *ngIf="DELETE" class="modal">
   <div class="modal-content">
     <span (click)="closeModalDelete()" class="close-button">&times;</span>
-     
+
            <h3></h3>
       <label for="name">ID:</label>
       <input type="text" id="name" [(ngModel)]="id_for_delete" placeholder="ID тваринки">
-      
+
       <div>
           <button class="confirm_edit" (click)="confirmDelete()">Видалити</button>
       </div>

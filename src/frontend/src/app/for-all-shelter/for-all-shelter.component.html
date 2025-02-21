@@ -52,65 +52,74 @@
              </div>
         </div>
 
-          <div *ngFor="let animal of animals"
+          <div *ngFor="let animal of animals "
                class="animal-card"
                [ngStyle]="{'background-color': '#dedede'}">
             <img [src]="animal.imageURL" alt="{{ animal.name }}" />
-             <h3>{{ animal.name }}</h3>
+            <h3>{{ animal.name }}</h3>
             <div class="info_about_pet">
-               <p>{{animal.sex}}</p>
-               <div class="circle"></div>
-               <p>{{animal.age}} роки</p>
+              <p>{{animal.sex}}</p>
+              <div class="circle"></div>
+              <p>{{animal.age}} роки/років</p>
             </div>
             <div class="info_about_pet">
-                <p>Потребує особливого догляду</p>
+              <p>{{animal.specialCare  ? "Потребує особливого догляду" : "Не потребує особливого догляду"}}</p>
             </div>
 
             <div class="info_about_pet">
-                <p>Вакцинована</p>
-                <div class="circle"></div>
-                <p>Стерелізована</p>
-
-             </div>
-             <div class="buttonn" (click)="selectAnimal(animal)">
-               <svg width="50" height="50" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="18" cy="18" r="18" fill="#FF9000"/>
-              <path d="M13 26.1375L24.3922 18" stroke="white" stroke-width="3" stroke-linecap="round"/>
-              <path d="M13 10L24.5617 17.8947" stroke="white" stroke-width="3" stroke-linecap="round"/>
+              <p>{{animal.vaccinated ? "Вакцинована" : "Не вакцинована"}}</p>
+              <div class="circle"></div>
+              <p>{{animal.sterilized  ? "Стерелізована" : "Не стерелізована"}}</p>
+            </div>
+            <div class="buttonn" (click)="selectAnimal(animal)">
+              <svg width="50" height="50" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="18" cy="18" r="18" fill="#FF9000"/>
+                <path d="M13 26.1375L24.3922 18" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                <path d="M13 10L24.5617 17.8947" stroke="white" stroke-width="3" stroke-linecap="round"/>
               </svg></div>
           </div>
         </div>
+
+      <div class="pagination">
+        <button (click)="previousPage()" [disabled]="currentPage === 1" class="previous">Назад</button>
+        <span>Сторінка {{ currentPage }} з {{ totalPages }}</span>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages"  class="next">Вперед</button>
+      </div>
+    </div>
+    <!-- *ngFor="let shelter of shelters" -->
+    <!-- Модальне вікно для детальної інформації про тварину -->
+    <div *ngIf="selectedAnimal" class="modal">
+      <div class="modal-content">
+        <span (click)="closeModal()" class="close-button">&times;</span>
+        <img [src]="selectedAnimal.imageURL" alt="{{ selectedAnimal.name }}" />
+        <div class="info" >
+          <h2><strong>{{ selectedAnimal.name }}</strong></h2>
+          <p><strong>Тип: </strong> {{ selectedAnimal.sex }}</p>
+          <p><strong>Вік: </strong>{{ selectedAnimal.age }} роки/років</p>
+          <p><strong>Розмір: </strong> {{ selectedAnimal.size }}</p>
+          <p><strong>Вакцинована: </strong>{{selectedAnimal.vaccinated ? "Так" : "Ні"}}</p>
+          <p><strong>Стерилізована: </strong>{{selectedAnimal.sterilized  ? "Так" : "Ні"}}</p>
+          <p><strong>Потребує особливого догляду: </strong>{{selectedAnimal.specialCare  ? "Так" : "Ні"}}</p>
+          <p><strong>Опис: </strong> {{ selectedAnimal.description }}</p>
+          <p><strong>Місто: </strong> {{ selectedAnimal.city }}</p>
+          <p><strong>Назва притулку: </strong>{{ selectedAnimal.shelterName }}</p>
+        </div>
+
+        <div class="buttonForAdoptAndWard">
+          <button (click)="openWardForm()" class="Adoptbtn">Взяти під опіку</button>
+          <button (click)="openAdoptForm()" class="Wardbtn">Усиновити</button>
+        </div>
+
+      </div>
+    </div>
 
        <div class="pagination">
           <button (click)="previousPage()" [disabled]="currentPage === 1" class="previous">Назад</button>
           <span>Сторінка {{ currentPage }} з {{ totalPages }}</span>
           <button (click)="nextPage()" [disabled]="currentPage === totalPages"  class="next">Вперед</button>
         </div>
-      </div>
 
 
-      <!-- Модальне вікно для детальної інформації про тварину -->
-      <div *ngIf="selectedAnimal" class="modal">
-        <div class="modal-content">
-          <span (click)="closeModal()" class="close-button">&times;</span>
-          <img [src]="selectedAnimal.imageURL" alt="{{ selectedAnimal.name }}" />
-          <div class="info">
-             <h2><strong>{{ selectedAnimal.name }}</strong></h2>
-          <p><strong>Тип: </strong> {{ selectedAnimal.sex }}</p>
-          <p><strong>Вік: </strong>{{ selectedAnimal.age }} років</p>
-          <p><strong>Розмір: </strong> {{ selectedAnimal.size }}</p>
-          <p><strong>Опис: </strong> {{ selectedAnimal.description }}</p>
-          <p><strong>Місто: </strong> {{ selectedAnimal.city }}</p>
-          <p><strong>Назва притулку: </strong></p>
-        </div>
-
-          <div class="buttonForAdoptAndWard">
-            <button (click)="openWardForm()" class="Adoptbtn">Взяти під опіку</button>
-             <button (click)="openAdoptForm()" class="Wardbtn">Усиновити</button>
-          </div>
-
-        </div>
-      </div>
 
       <div *ngIf="isAdoptFormOpen" class="modalAdopt">
       <div class="adopt-content">

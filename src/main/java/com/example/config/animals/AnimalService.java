@@ -65,6 +65,9 @@ public class AnimalService {
             if (StringUtils.isNotBlank(request.getDescription())) {
                 animal.setDescription(request.getDescription());
             }
+            if (StringUtils.isNotBlank(request.getImageURL())) {
+                animal.setImageURL(request.getImageURL());
+            }
             if (request.getShelter() != null) {
                 animal.setShelter(shelter);
             }

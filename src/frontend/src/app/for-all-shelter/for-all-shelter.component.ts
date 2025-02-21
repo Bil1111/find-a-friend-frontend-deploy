@@ -48,28 +48,6 @@ export class ForAllShelterComponent implements OnInit {
 
   }
 
-  // fetchShelterData(shelterID: number) {
-  //   this.http.get<any>(`http://localhost:8080/api/shelters/${this.shelter_ID}`)
-  //     .subscribe(
-  //       response => {
-  //         this.shelter = response;
-  //         this.animals = response.animals || [];
-  //
-  //         // Генерація локального фото для кожної тварини
-  //         this.animals = this.animals.map(animal => {
-  //           // Якщо фото не надано, можна додати дефолтне фото або генерувати його за умовами
-  //           animal.imageURL = `http://localhost:8080/images/${animal.id}.png`
-  //           // Якщо потрібно додавати більше властивостей, ви можете це зробити тут
-  //           return animal;
-  //         });
-  //
-  //         this.filteredAnimals = [...this.animals];
-  //         this.totalPages = response.totalPages; // Ensure your API returns totalPages
-  //       },
-  //       error => console.error('Error fetching shelter data:', error)
-  //     );
-  // }
-
   fetchShelterData(page: number) {
     const startId = (page - 1) * this.itemsPerPage;
 
@@ -77,14 +55,6 @@ export class ForAllShelterComponent implements OnInit {
       .subscribe(
         response => {
           this.animals = response || []; // Тепер відповідь — це список тварин
-
-          // Генерація локального фото для кожної тварини
-          this.animals = this.animals.map(animal => {
-            animal.imageURL = `http://localhost:8080/images/${animal.id}.png`;
-            
-            return animal;
-          });
-
           this.filteredAnimals = [...this.animals];
 
           // Запит на отримання всіх тварин для обчислення загальної кількості сторінок

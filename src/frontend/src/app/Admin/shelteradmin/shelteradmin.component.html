@@ -27,6 +27,7 @@
                 <th>Адреса</th>
                 <th>Телефон</th>
                 <th>Кіл. Tварин</th>
+                <th>Фото</th>
                 <th>Опис</th>
                 <th>Довгота</th>
                 <th>Широта</th>
@@ -48,6 +49,7 @@
                 <td>{{shelters.address}}</td>
                 <td>{{shelters.contactNumber}}</td>
                 <td>{{shelters.animals?.length}}</td>
+                <td>{{shelters.imageURL}}</td>
                 <td>{{shelters.description}}</td>
                 <td>{{shelters.longitude}}</td>
                 <td>{{shelters.latitude}}</td>
@@ -75,6 +77,10 @@
         <input type="text" id="address" [(ngModel)]="address" placeholder="Адреса">
         <label for="contactNumber">Телефон:</label>
         <input type="text" id="contactNumber" [(ngModel)]="contactNumber" placeholder="Телефон">
+
+        <label for="imageURL">Фото:</label>
+        <input type="text" id="imageURL" [(ngModel)]="imageurl" placeholder="Фото">
+
 
         <label for="longitude">Довгота:</label>
         <input type="text" id="longitude" [(ngModel)]="longitude" placeholder="Довгота">
@@ -136,7 +142,7 @@
         <input type="text" id="description" [(ngModel)]="description" placeholder="Опис притулку">
 
         <label for="description">Зображення:</label>
-        <input type="text" id="description" [(ngModel)]="imgurl" placeholder="Зображення">
+        <input type="text" id="description" [(ngModel)]="imageurl" placeholder="Зображення">
 
         <label for="description">Широта:</label>
         <input type="number" id="description" [(ngModel)]="latitude" placeholder="Широта">

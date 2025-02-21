@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './tabel-animals.component.css'
 })
 export class TabelAnimalsComponent {
- All_Animal: any[] = [];
+ Shelters: any[] = [];
  selectedShelter: any = null; // Для зберігання вибраного притулку
  selectedShelter_For_Add_Animals: any = null;
  selectedShelterForadd: boolean = false;
@@ -21,22 +21,15 @@ export class TabelAnimalsComponent {
  city: string = '';
  address: string = '';
  contactNumber: string = '';
- imgurl: string = '';
+ imageurl: string = '';
  age: string = '';
  descript: string = '';
  size: string = '';
  idsgelter: string = '';
+ vaccinated: boolean = false;
+ steril: boolean = false;
+ specialCare: boolean = false;
 
-  vaccinated: boolean = false;
-  steril: boolean = false;
-  specialCare: boolean = false;
-
- // МОДАЛЬНЕ ВІКНО ДЛЯ ДОдавання  ПРИТУЛКА
-//  name: string = '';
-//  city: string = '';
-//  address: string = '';
-//  contactNumber: string = '';
-//  description: string ='';
 
  // МОДАЛЬНЕ ВІКНО ДЛЯ ПОШУКУ
  search_data_id: any = {id:''};
@@ -48,45 +41,17 @@ export class TabelAnimalsComponent {
  search_data_type: any = {type:''};
  search_data_shelterName: any ={shelterName: ''};
 
-// МОДАЛЬНЕ ВІКНО ДЛЯ ВИДАЛЕННЯ
  id_for_delete: string = '';
-// МОДАЛЬНЕ ВІКНО ДЛЯ ДОДАВАННЯ ТВАРИНКИ ДО ПРИТУЛКУ
-// id_animals: string = '';
-// age_animals: string = '';
-// name_animals: string = '';
-// descript_animals: string = '';
-// sex_animals: string = '';
-// size_animals: string = '';
-// type_animals: string = '';
-// url_animals: string ='';
-// city_animals: string = '';
-// contactshelter_animals: string = '';
 
-
-// ВИПРАВИ ДОДАВАННЯ ПРИТУЛКУВ І ТВАРИНОК НЕ ПРАВИЛЬНО РАХУЄ ID !!!! TO DO
-//
 
 
 constructor(private http: HttpClient) { }
 
 ngOnInit() {
-  this.Table_animal_forAdmin();
+  this.SherlterForAdmin();
 }
 
-// SherlterForAdmin() {
-//   this.http.get<any[]>('http://localhost:8080/api/animals').subscribe(
-//     data => {
-//       this.Shelters = data.map(shelter => { 
-        
-//         return shelter;}); 
-//     },
-//     error => {
-//       console.error('Error fetching shelters:', error); // Логування помилки
-//     }
-//   );
-// }
-
-Table_animal_forAdmin() {
+SherlterForAdmin() {
     this.http.get<any[]>('http://localhost:8080/api/shelters') // Отримуємо всі притулки
       .subscribe(
         shelters => {
@@ -95,10 +60,10 @@ Table_animal_forAdmin() {
               const animalsWithShelterName = shelter.animals.map((animal: any) => ({
                 ...animal, // копіювання всіх властивостей об'єкта
                 shelterName: shelter.name, // Додаємо назву притулку до кожної тварини
-                shelterid: shelter.id, // Додаємо назву притулку до кожної тварини
+                shelterid: shelter.id, // Додаємо назву притулку до кожної тварин
               }));
-              
-              this.All_Animal.push(...animalsWithShelterName); // Додаємо до загального списку
+
+              this.Shelters.push(...animalsWithShelterName); // Додаємо до загального списку
             }
           });
           // this.Shelters = [...this.animals]; // Зберігаємо копію для подальшої фільтрації чи обробки
@@ -116,69 +81,44 @@ selectShelter(shelter: any){
   this.descript = shelter.description;
   this.size = shelter.size;
   this.idsgelter = shelter.shelterid;
-
+  this.imageurl=shelter.imageURL;
   this.vaccinated = Boolean(shelter.vaccinated);
   this.steril = Boolean(shelter.sterilized);
   this.specialCare = Boolean(shelter.specialCare);
-  // console.log('Vaccinated:', this.vaccinated);
-  // console.log('Sterilized:', this.steril);
-  // console.log('SpecialCare:', this.specialCare);
-
-  // this.contactNumber = shelter.contactNumber;
 }
 
-// selectShelter_froanimals(shelters: any){
-//   this.selectedShelter_For_Add_Animals = shelters;
-//   this.id = shelters.id;
-//   this.id = shelters.id;
-//   this.id = shelters.id;
-//   this.id = shelters.id;
-//   this.id = shelters.id;
-//   this.id = shelters.id;
-//   this.city_animals = shelters.city;
-//   this.contactshelter_animals = shelters.contactNumber;
-
-// }
-// close(){this.selectedShelterForadd = false;
-//   this.name = '';
-//   this.city = '';
-//   this.address = '';
-//   this.contactNumber = '';
-//   this.description = '';
-//   this.imgurl = '';
-//   this.latitude = '';
-//   this.longitude = '';}
 
 closeFor_Add_Animals(){this.selectedShelter_For_Add_Animals = null;}
 closeModal() {this.selectedShelter = null; }
 
 
-SendEditedAnimal(){
+SendEditedShelter(){
   console.log('Vaccinated:', this.vaccinated);
   console.log('Sterilized:', this.steril);
   console.log('SpecialCare:', this.specialCare);
 
-  const EditAniamal = {
-    
+  const EditShelter = {
+
       id: this.id,
       name: this.name,
       city: this.city,
       age: this.age,
       description: this.descript,
       size: this.size,
-      shelter: this.idsgelter, 
+      imageURL: this.imageurl,
+      shelter: this.idsgelter,
       vaccinated: Boolean(this.vaccinated),
       sterilized: Boolean(this.steril),
       specialCare: Boolean(this.specialCare)
   };
-  console.log(EditAniamal);
+  console.log(EditShelter);
 
-  this.http.put(`http://localhost:8080/api/animals/update/${this.id}`,EditAniamal, {responseType: ('text' )}).subscribe(
+  this.http.put(`http://localhost:8080/api/animals/update/${this.id}`,EditShelter, {responseType: ('text' )}).subscribe(
    {next: (response) => {
     console.log("Сервер відповів:", response);
     this.closeModal();
-    this.All_Animal = [];
-    this.Table_animal_forAdmin();
+    this.Shelters = [];
+    this.SherlterForAdmin();
   },
   error: (error) => {
     console.error('Помилка при оновленні притулку', error);
@@ -212,17 +152,17 @@ confirmDelete(){
   }
 }
 seandDelete(){
-  
-  this.http.delete<any[]>(`http://localhost:8080/api/animals/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe( 
+
+  this.http.delete<any[]>(`http://localhost:8080/api/animals/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe(
  {next: (response) => {
   console.log(response);
   this.closeModalDelete();
-  this.All_Animal = [];
-  this.Table_animal_forAdmin();
+  this.Shelters = [];
+  this.SherlterForAdmin();
 },
 error: (error) => {
   console.error('Помилка при видаленні притулку', error);
-  
+
 }})
 }
 

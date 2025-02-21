@@ -286,12 +286,12 @@ body {
     display: none;
   }
 } */
- 
+
 @media (min-width: 320px) and (max-width: 500px) {
   .Prozoro {
     padding: 15px;
   }
-  
+
   .Prozoro h1 {
     font-size: 22px;
     text-align: center;
@@ -300,5 +300,5 @@ body {
   .Prozoro h2 {
     font-size: 16px;
   }
- 
+
 }

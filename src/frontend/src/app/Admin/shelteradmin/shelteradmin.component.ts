@@ -21,7 +21,7 @@ export class ShelteradminComponent {
  city: string = '';
  address: string = '';
  contactNumber: string = '';
- imgurl: string = '';
+ imageurl: string = '';
  latitude: string = '';
  longitude: string = '';
  // МОДАЛЬНЕ ВІКНО ДЛЯ ДОдавання  ПРИТУЛКА
@@ -91,7 +91,7 @@ selectShelter(shelter: any){
   this.description = shelter.description;
   this.latitude = shelter.latitude;
   this.longitude = shelter.longitude;
-
+  this.imageurl=shelter.imageURL;
   this.emailShelter = shelter.email;
   this.card = shelter.card;
   this.PayPal = shelter.paypal;
@@ -109,13 +109,14 @@ selectShelter_froanimals(shelters: any){
 closeFor_Add_Animals(){this.selectedShelter_For_Add_Animals = null;}
 
 closeModal() {this.selectedShelter = null;
-   this.name = '';
+  this.name = '';
   this.city = '';
   this.address = '';
   this.contactNumber = '';
   this.description = '';
   this.latitude = '';
   this.longitude = '';
+  this.imageurl='';
   this.emailShelter ='';
   this.card = '';
   this.PayPal ='';
@@ -127,9 +128,14 @@ close(){this.selectedShelterForadd = false;
   this.address = '';
   this.contactNumber = '';
   this.description = '';
-  this.imgurl = '';
+  this.imageurl = '';
   this.latitude = '';
-  this.longitude = '';}
+  this.longitude = '';
+  this.imageurl='';
+  this.emailShelter ='';
+  this.card = '';
+  this.PayPal ='';
+  this.IBAN = '';}
 
 SendEditedShelter(){
   const EditShelter = {
@@ -141,7 +147,7 @@ SendEditedShelter(){
      description:  this.description,
      latitude:  this.latitude,
      longitude:  this.longitude,
-
+     imageURL: this.imageurl,
      email:  this.emailShelter,
      card:  this.card,
      paypal:  this.PayPal,
@@ -161,15 +167,6 @@ SendEditedShelter(){
   }})
 }
 
-// getFreeId(): number{
-//     const idfree = this.Shelters.map(shelter => shelter.id);
-//     for(let i =1; i <= idfree.length; i++){
-//       if(!idfree.includes(i)){
-//         return i;
-//       }
-//     }
-//     return idfree.length + 1;
-// }
 OpenAddForm(){this.selectedShelterForadd = true;}
 AddShelter(){
   const AddShelterData = {
@@ -179,7 +176,7 @@ AddShelter(){
      address: this.address,
      contactNumber: this.contactNumber,
      description: this.description,
-     imageURL: this.imgurl,
+     imageURL: this.imageurl,
      latitude: this.latitude,
      longitude:this.longitude,
      email:  this.emailShelter,

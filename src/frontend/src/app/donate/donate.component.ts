@@ -31,8 +31,6 @@ export class DonateComponent implements OnInit {
       data => {
         console.log('Received shelters data:', data); // Логування отриманих даних
         this.shelters = data.map(shelter => {
-          // Генеруємо URL для зображення кожного притулку
-          shelter.imageURL = `http://localhost:8080/images/shelters/${shelter.id}.png`;
           return shelter;
         });
       },

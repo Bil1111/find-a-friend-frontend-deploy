@@ -53,7 +53,9 @@ public class ShelterService {
                 shelter.setDescription(request.getDescription());
             }if (StringUtils.isNotBlank(request.getCity())) {
                 shelter.setCity(request.getCity());
-            }if (request.getLatitude()!=null) {
+            }if (StringUtils.isNotBlank(request.getImageURL())) {
+                shelter.setImageURL(request.getImageURL());}
+            if (request.getLatitude()!=null) {
                 shelter.setLatitude(request.getLatitude());
             }if (request.getLongitude()!=null) {
                 shelter.setLongitude(request.getLongitude());

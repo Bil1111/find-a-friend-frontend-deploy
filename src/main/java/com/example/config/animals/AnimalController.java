@@ -47,7 +47,7 @@ public class AnimalController {
         return new ResponseEntity<>(animals, HttpStatus.OK);
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateCustomerDetails(@RequestBody AnimalRequest request, @PathVariable("id") Long id) {
+    public ResponseEntity<String> updateAnimalDetails(@RequestBody AnimalRequest request, @PathVariable("id") Long id) {
         Shelter shelter = shelterRepository.findById(request.getShelter())
                 .orElseThrow(() -> new RuntimeException("Shelter not found"));
         animalService.updateAnimalDetails(request, id,shelter);

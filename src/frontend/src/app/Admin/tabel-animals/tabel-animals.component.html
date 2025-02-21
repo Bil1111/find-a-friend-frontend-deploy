@@ -34,22 +34,22 @@
                 <th>Назва притулку</th>
              
             </tr>
-            <tr *ngFor="let shelters of Shelters | filterBy : search_data_id || search_data_name ||search_data_city
+            <tr *ngFor="let all_animal of All_Animal | filterBy : search_data_id || search_data_name ||search_data_city
             ||search_data_age||search_data_sex ||search_data_size ||search_data_type || search_data_shelterName ">
-                <td  class="exclude"><button class="edit" (click)="selectShelter(shelters)"><img src="image_admin_edit.png" alt=""></button></td>
-                <td>{{shelters.id}}</td>
-                <td>{{shelters.name}}</td>
-                <td>{{shelters.age}}</td>
-                <td>{{shelters.city}}</td>
-                <td>{{shelters.description}}</td>
-                <td>{{shelters.sex}}</td>
-                <td>{{shelters.size}}</td>
-                <td>{{shelters.type}}</td>
-                <td>{{shelters.vaccinated}}</td>
-                <td>{{shelters.sterilized}}</td>
-                <td>{{shelters.specialCare}}</td>
-                <td>{{shelters.shelterPhoneNumber}}</td>
-                <td>{{shelters.shelterName}}</td>
+                <td  class="exclude"><button class="edit" (click)="selectShelter(all_animal)"><img src="image_admin_edit.png" alt=""></button></td>
+                <td>{{all_animal.id}}</td>
+                <td>{{all_animal.name}}</td>
+                <td>{{all_animal.age}}</td>
+                <td>{{all_animal.city}}</td>
+                <td>{{all_animal.description}}</td>
+                <td>{{all_animal.sex}}</td>
+                <td>{{all_animal.size}}</td>
+                <td>{{all_animal.type}}</td>
+                <td>{{all_animal.vaccinated}}</td>
+                <td>{{all_animal.sterilized}}</td>
+                <td>{{all_animal.specialCare}}</td>
+                <td>{{all_animal.shelterPhoneNumber}}</td>
+                <td>{{all_animal.shelterName}}</td>
               
             </tr>
         </table>
@@ -88,7 +88,7 @@
             </div>
 
             <div>
-                <button class="confirm_edit" (click)="SendEditedShelter()">Внести зміни</button>
+                <button class="confirm_edit" (click)="SendEditedAnimal()">Внести зміни</button>
             </div>
           
         </div>

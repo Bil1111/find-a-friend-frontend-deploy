@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './tabel-animals.component.css'
 })
 export class TabelAnimalsComponent {
- Shelters: any[] = [];
+ All_Animal: any[] = [];
  selectedShelter: any = null; // Для зберігання вибраного притулку
  selectedShelter_For_Add_Animals: any = null;
  selectedShelterForadd: boolean = false;
@@ -70,7 +70,7 @@ export class TabelAnimalsComponent {
 constructor(private http: HttpClient) { }
 
 ngOnInit() {
-  this.SherlterForAdmin();
+  this.Table_animal_forAdmin();
 }
 
 // SherlterForAdmin() {
@@ -86,7 +86,7 @@ ngOnInit() {
 //   );
 // }
 
-SherlterForAdmin() {
+Table_animal_forAdmin() {
     this.http.get<any[]>('http://localhost:8080/api/shelters') // Отримуємо всі притулки
       .subscribe(
         shelters => {
@@ -98,7 +98,7 @@ SherlterForAdmin() {
                 shelterid: shelter.id, // Додаємо назву притулку до кожної тварини
               }));
               
-              this.Shelters.push(...animalsWithShelterName); // Додаємо до загального списку
+              this.All_Animal.push(...animalsWithShelterName); // Додаємо до загального списку
             }
           });
           // this.Shelters = [...this.animals]; // Зберігаємо копію для подальшої фільтрації чи обробки
@@ -153,12 +153,12 @@ closeFor_Add_Animals(){this.selectedShelter_For_Add_Animals = null;}
 closeModal() {this.selectedShelter = null; }
 
 
-SendEditedShelter(){
+SendEditedAnimal(){
   console.log('Vaccinated:', this.vaccinated);
   console.log('Sterilized:', this.steril);
   console.log('SpecialCare:', this.specialCare);
 
-  const EditShelter = {
+  const EditAniamal = {
     
       id: this.id,
       name: this.name,
@@ -171,14 +171,14 @@ SendEditedShelter(){
       sterilized: Boolean(this.steril),
       specialCare: Boolean(this.specialCare)
   };
-  console.log(EditShelter);
+  console.log(EditAniamal);
 
-  this.http.put(`http://localhost:8080/api/animals/update/${this.id}`,EditShelter, {responseType: ('text' )}).subscribe(
+  this.http.put(`http://localhost:8080/api/animals/update/${this.id}`,EditAniamal, {responseType: ('text' )}).subscribe(
    {next: (response) => {
     console.log("Сервер відповів:", response);
     this.closeModal();
-    this.Shelters = [];
-    this.SherlterForAdmin();
+    this.All_Animal = [];
+    this.Table_animal_forAdmin();
   },
   error: (error) => {
     console.error('Помилка при оновленні притулку', error);
@@ -217,8 +217,8 @@ seandDelete(){
  {next: (response) => {
   console.log(response);
   this.closeModalDelete();
-  this.Shelters = [];
-  this.SherlterForAdmin();
+  this.All_Animal = [];
+  this.Table_animal_forAdmin();
 },
 error: (error) => {
   console.error('Помилка при видаленні притулку', error);

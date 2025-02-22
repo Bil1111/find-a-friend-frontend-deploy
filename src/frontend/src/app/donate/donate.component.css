@@ -186,7 +186,7 @@ body {
 
 .shelter-card img {
   width: 100%;
-  height: 150px;
+  height: 160px;
   object-fit: cover;
   border-radius: 8px 8px 0 0;
 }
@@ -200,6 +200,7 @@ body {
   font-size: 18px;
   color: #222;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .shelter-card p {
@@ -239,7 +240,7 @@ body {
 
 .modal-content img {
   width: 100%;
-  height: auto;
+  height: 200px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 15px;
@@ -250,6 +251,13 @@ body {
   color: #555;
   margin-bottom: 10px;
 }
+.modal-content .nameshelter {
+ margin-bottom: 15px;
+ text-align: center;
+}
+.modal-content .contact_info_in_modal { margin-bottom: 10px;}
+
+ .modal-content .recvizit_info_in_modal {margin-bottom: 10px;}
 
 .close-button {
   cursor: pointer;

@@ -1,0 +1,13 @@
+*{ margin: 0; padding: 0; box-sizing: border-box;  font-family: "e-ukrL";}
+body{width: 100%; height: 100%;}
+.main_div{
+    max-width: 1200px;
+     margin:  40px auto;
+      padding: 20px;
+       border-radius: 20px;
+        background: #d3e0e0;
+         box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+.main_div h2{margin-bottom: 25px; text-align: start; font-size: 42px;}
+/* .main_div ul{color: #495057;} */
+.main_div li{line-height: 1.8; font-size: 22px; color: #28292b; margin-left: 25px;}

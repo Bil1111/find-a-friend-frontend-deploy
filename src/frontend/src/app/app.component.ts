@@ -31,9 +31,10 @@ export class AppComponent implements OnInit {
    public isLogged: boolean = false;
    ShowFooter: boolean = false;
    ShowHeader: boolean = true;
-    
 
-  visible = false;
+
+
+  
   constructor(private router: Router, private http: HttpClient,private sharedService: SharedService) {
     this.router.events.subscribe(() => {
       this.ShowFooter = this.router.url !== '/adopt' &&  this.router.url !== '/gifthouse' &&  this.router.url !== '/free-people' 
@@ -109,7 +110,7 @@ export class AppComponent implements OnInit {
 
   }
 
-
+  visible = false;
   closeMenu(){this.visible = false;}
   Openmemu(){this.visible = true;}
 

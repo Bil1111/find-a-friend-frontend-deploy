@@ -49,14 +49,14 @@
                 <td>{{shelters.address}}</td>
                 <td>{{shelters.contactNumber}}</td>
                 <td>{{shelters.animals?.length}}</td>
-                <td>{{shelters.imageURL}}</td>
-                <td>{{shelters.description}}</td>
+                <td><span class="shorten-link" title="{{shelters.imageURL}}" >{{shelters.imageURL}}</span></td>
+                <td><span class="short-descrip" title="{{shelters.description}}">{{shelters.description}}</span></td>
                 <td>{{shelters.longitude}}</td>
                 <td>{{shelters.latitude}}</td>
                 <td>{{shelters.email}}</td>
-                <td>{{shelters.card}}</td>
+                <td><span class="short-card" title="{{shelters.card}}">{{shelters.card}}</span></td>
                 <td>{{shelters.paypal}}</td>
-                <td>{{shelters.iban}}</td>
+                <td><span class="shorten_iban" title="{{shelters.iban}}">{{shelters.iban}}</span></td>
 
 
             </tr>
@@ -211,7 +211,7 @@
 
            <h3></h3>
       <label for="name">ID:</label>
-      <input type="text" id="name" [(ngModel)]="id_for_delete"  placeholder="ID притулку">
+      <input type="number" id="name" [(ngModel)]="id_for_delete"  placeholder="ID притулку">
 
       <div>
           <button class="confirm_edit" (click)="confirmDelete()">Видалити</button>

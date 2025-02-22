@@ -7,8 +7,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './tabel-animals.component.css'
 })
 export class TabelAnimalsComponent {
- Shelters: any[] = [];
- selectedShelter: any = null; // Для зберігання вибраного притулку
+ All_Animals: any[] = [];
+ selectedAnimal: any = null; // Для зберігання вибраного притулку
  selectedShelter_For_Add_Animals: any = null;
  selectedShelterForadd: boolean = false;
  DELETE: boolean = false;
@@ -63,7 +63,7 @@ SherlterForAdmin() {
                 shelterid: shelter.id, // Додаємо назву притулку до кожної тварин
               }));
 
-              this.Shelters.push(...animalsWithShelterName); // Додаємо до загального списку
+              this.All_Animals.push(...animalsWithShelterName); // Додаємо до загального списку
             }
           });
           // this.Shelters = [...this.animals]; // Зберігаємо копію для подальшої фільтрації чи обробки
@@ -73,7 +73,7 @@ SherlterForAdmin() {
 }
 
 selectShelter(shelter: any){
-  this.selectedShelter = shelter;
+  this.selectedAnimal = shelter;
   this.id = shelter.id;
   this.name = shelter.name;
   this.city = shelter.city;
@@ -89,15 +89,15 @@ selectShelter(shelter: any){
 
 
 closeFor_Add_Animals(){this.selectedShelter_For_Add_Animals = null;}
-closeModal() {this.selectedShelter = null; }
+closeModal() {this.selectedAnimal = null; }
 
 
-SendEditedShelter(){
+SendEditedAnimal(){
   console.log('Vaccinated:', this.vaccinated);
   console.log('Sterilized:', this.steril);
   console.log('SpecialCare:', this.specialCare);
 
-  const EditShelter = {
+  const EditAnimal = {
 
       id: this.id,
       name: this.name,
@@ -111,13 +111,13 @@ SendEditedShelter(){
       sterilized: Boolean(this.steril),
       specialCare: Boolean(this.specialCare)
   };
-  console.log(EditShelter);
+  console.log(EditAnimal);
 
-  this.http.put(`http://localhost:8080/api/animals/update/${this.id}`,EditShelter, {responseType: ('text' )}).subscribe(
+  this.http.put(`http://localhost:8080/api/animals/update/${this.id}`,EditAnimal, {responseType: ('text' )}).subscribe(
    {next: (response) => {
     console.log("Сервер відповів:", response);
     this.closeModal();
-    this.Shelters = [];
+    this.All_Animals = [];
     this.SherlterForAdmin();
   },
   error: (error) => {
@@ -140,8 +140,11 @@ CleanSearchForm(){
   this.search_data_id.type= '';
   this.search_data_id.shelterName = '';
 }
+CleanDeleteForm(){
+  this.id_for_delete = '';
+}
 OpeneDelete(){this.DELETE = true;}
-closeModalDelete(){this.DELETE = false; }
+closeModalDelete(){this.DELETE = false; this.CleanDeleteForm()}
 confirmDelete(){
   const confirmation = confirm('Ви впевнені, що хочете видалити цю тваринку?');
   if(confirmation){
@@ -157,7 +160,7 @@ seandDelete(){
  {next: (response) => {
   console.log(response);
   this.closeModalDelete();
-  this.Shelters = [];
+  this.All_Animals = [];
   this.SherlterForAdmin();
 },
 error: (error) => {

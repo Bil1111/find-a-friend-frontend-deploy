@@ -31,7 +31,7 @@ input[type='search']{padding: 10px;}
     margin: 15px 200px;
     width: 80%;
 }
-.modal_for_search, .modal {
+.modal, .modal_for_search {
     position: fixed;
     top: 0;
     left: 0;
@@ -71,7 +71,7 @@ input[type='search']{padding: 10px;}
 th, td {
     border: 2px solid rgb(194, 192, 192);
   }
-  th{
+  th, td{
     text-align: center;
    }
   th.exclude, td.exclude {
@@ -107,3 +107,37 @@ th, td {
     margin-top: 10px;
     color: white;
   }
+  .close-button
+ {
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+    float: right;
+    font-size: 28px;
+    background-color: #cccccca4;
+    border-radius: 100%;
+    display: grid;
+    place-content: center;
+    position: absolute;
+    right: -30px;
+    top: -30px;
+  }
+  .close-button1{
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+    float: right;
+    font-size: 28px;
+    background-color: #cccccca4;
+    border-radius: 100%;
+    display: grid;
+    place-content: center;
+    position: absolute;
+    right: -15px;
+    top: -15px;
+  }
+  .close-button:hover,
+  .close-button1:hover {
+    background-color: #ccccccb4;
+  }
+  .dell{border-radius: 5px;}

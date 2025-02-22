@@ -34,13 +34,13 @@ export class FindFComponent implements OnInit {
     window.scrollTo({top: 0,});
   }
 
-
+  filteredAnimals: any[] = [];
   shelters: any[] = [];
   animals: any[] = [];
   AllAnimals: any[] = [];
   currentPage: number = 1;
   totalPages: number = 0;
-  itemsPerPage: number = 10;
+  itemsPerPage: number = 11;
   selectedAnimal: any = null; // Для зберігання вибраної тварини
   isAdoptFormOpen: any = null;
   isWardFormOpen: any = null;
@@ -93,6 +93,8 @@ export class FindFComponent implements OnInit {
         // Пагінація: вибираємо тварин для поточної сторінки
         this.animals = allAnimals.slice(startId, startId + this.itemsPerPage);
         this.AllAnimals = [...allAnimals]; // Зберігаємо копію для подальшої фільтрації чи обробки
+
+        this.applyFilters(); // Застосовуємо фільтри при переході на нову сторінку
 
         // Обчислюємо кількість сторінок
         this.totalPages = Math.ceil(allAnimals.length / this.itemsPerPage);
@@ -189,7 +191,7 @@ export class FindFComponent implements OnInit {
   toggleFilter(filterType: string, value: string | number | boolean) {
     const filterArray = this.activeFilters[filterType]; // Це масив, в якому зберігаються значення для вибраного фільтра.
     const index = filterArray.indexOf(value);
-    if (value === '' || 0 || false)  {
+    if (value === '' || value === 0 || value === false)  {
       this.activeFilters[filterType] = [];
     }
 
@@ -199,10 +201,12 @@ export class FindFComponent implements OnInit {
       filterArray.push(value); //додає його до масиву фільтрів
     }
     this.applyFilters(); // застосування нових фільтрів до колекції тварин.
+    setTimeout(() => {}, 0);
   }
+  
 
   applyFilters() {
-    this.animals = this.AllAnimals.filter(animal => {
+    this.filteredAnimals  = this.AllAnimals.filter(animal => {
       return (
         this.isMatchingFilter(animal, 'type', this.activeFilters.type) &&
         this.isMatchingFilter(animal, 'sex', this.activeFilters.sex) &&
@@ -213,6 +217,9 @@ export class FindFComponent implements OnInit {
         this.isMatchingFilter(animal, 'specialCare', this.activeFilters.specialCare)
       );
     });
+    this.animals = this.filteredAnimals.slice((this.currentPage - 1) * this.itemsPerPage, this.currentPage * this.itemsPerPage);
+    this.totalPages = Math.ceil(this.filteredAnimals.length / this.itemsPerPage);
+
   }
 
   isMatchingFilter(animal: any, filterType: string, activeValues: any[]): boolean {

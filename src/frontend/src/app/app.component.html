@@ -11,12 +11,12 @@
   <nav class="navbar navbar-expand-lg" >
 
     <!-- Button to toggle the sidenav -->
-  <button class="btn btn-light d-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidenav" >
-    <span class="navbar-toggler-icon"></span>
+  <button class="btn btn-light d-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidenav" (click)="Openmemu()">
+    <span class="navbar-toggler-icon"  ></span>
   </button>
 
 <!-- Sidenav (Offcanvas) -->
-    <div class="offcanvas offcanvas-start " tabindex="-1" id="sidenav" aria-labelledby="sidenavLabel" >
+    <div class="offcanvas offcanvas-start " tabindex="-1" id="sidenav" aria-labelledby="sidenavLabel" [class.show]="visible" [attr.aria-hidden]="!visible" data-bs-backdrop="true">
 
   <div class="offcanvas-header">
     <div class="LinkIconPhone">
@@ -26,11 +26,11 @@
   </div>
 
     <h2 class="title">Find a Friend</h2>
-    <button class="btn-close"  data-bs-dismiss="offcanvas"> </button>
+    <button class="btn-close"  data-bs-dismiss="offcanvas" (click)="closeMenu()"> </button>
   </div>
 
 
-  <div class="offcanvas-body">
+  <div class="offcanvas-body" >
     <ul class="navbar-nav">
 
       <div class="Descktop d-none d-lg-block">
@@ -47,18 +47,18 @@
       <li class="nav-item "><a class="nav-link" routerLink='/blog-and-news'  routerLinkActive="active">Блог та новини</a></li>
       </div>
 
-      <div class="Phone_and_Tablet d-block d-lg-none ">
-      <li class="nav-item "><a class="nav-link" routerLink='/find-f' routerLinkActive="active">Знайти друга</a></li>
-      <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}"><a class="nav-link" (click)="Openmemu()" >Волонтерство</a>
-        <div class="dropdown-contentPhone" *ngIf="visible">
+      <div class="Phone_and_Tablet d-block d-lg-none " >
+      <li class="nav-item "><a class="nav-link" routerLink='/find-f' routerLinkActive="active" (click)="closeMenu()">Знайти друга</a></li>
+      <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}"><a class="nav-link"  >Волонтерство</a>
+        <div class="dropdown-contentPhone">
           <a routerLink="/free-people" (click)="closeMenu()">Стати волонтером</a>
-          <a routerLink="/adopt" (click)="closeMenu()">Усиновити тваринку</a>
+          <a routerLink="/adopt"(click)="closeMenu()" >Усиновити тваринку</a>
           <a routerLink="/thigns"(click)="closeMenu()">Допомога</a>
         </div>
       </li>
-      <li class="nav-item "><a class="nav-link" routerLink='/donate' routerLinkActive="active">Донат</a></li>
-      <li class="nav-item "><a class="nav-link" routerLink='/about' routerLinkActive="active">Про нас</a></li>
-      <li class="nav-item "><a class="nav-link" routerLink='/blog-and-news' routerLinkActive="active">Блог та новини</a></li>
+      <li class="nav-item "><a class="nav-link" routerLink='/donate' routerLinkActive="active"  (click)="closeMenu()">Донат</a></li>
+      <li class="nav-item "><a class="nav-link" routerLink='/about' routerLinkActive="active" (click)="closeMenu()">Про нас</a></li>
+      <li class="nav-item "><a class="nav-link" routerLink='/blog-and-news' routerLinkActive="active" (click)="closeMenu()">Блог та новини</a></li>
       </div>
 
 
@@ -88,12 +88,12 @@
   </div>
 
   <div class="ReggPhone d-block d-lg-none"  >
-    <a routerLink='/sing-in' class="Enter" *ngIf="!isLogged">Вхід</a>
-    <a routerLink='/regest' class="Registr"  *ngIf="!isLogged">Зареєструватися</a>
+    <a routerLink='/sing-in' class="Enter" *ngIf="!isLogged" (click)="closeMenu()">Вхід</a>
+    <a routerLink='/regest' class="Registr"  *ngIf="!isLogged" (click)="closeMenu()">Зареєструватися</a>
 
     <div *ngIf="isLogged" class="loginphone">
       <img src="/user.svg" alt="1488" class="photo">
-      <button class="btn_out" (click)="logout()">Вийти</button>
+      <button class="btn_out" (click)="logout()" >Вийти</button>
      </div>
   </div>
     </ul>

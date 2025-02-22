@@ -35,30 +35,30 @@
                 <th>Назва притулку</th>
 
             </tr>
-            <tr *ngFor="let shelters of Shelters | filterBy : search_data_id || search_data_name ||search_data_city
+            <tr *ngFor="let all_animals of All_Animals | filterBy : search_data_id || search_data_name ||search_data_city
             ||search_data_age||search_data_sex ||search_data_size ||search_data_type || search_data_shelterName ">
-                <td  class="exclude"><button class="edit" (click)="selectShelter(shelters)"><img src="image_admin_edit.png" alt=""></button></td>
-                <td>{{shelters.id}}</td>
-                <td>{{shelters.name}}</td>
-                <td>{{shelters.age}}</td>
-                <td>{{shelters.city}}</td>
-                <td>{{shelters.description}}</td>
-                <td>{{shelters.sex}}</td>
-                <td>{{shelters.size}}</td>
-                <td>{{shelters.type}}</td>
-                <td>{{shelters.imageURL}}</td>
-                <td>{{shelters.vaccinated}}</td>
-                <td>{{shelters.sterilized}}</td>
-                <td>{{shelters.specialCare}}</td>
-                <td>{{shelters.shelterPhoneNumber}}</td>
-                <td>{{shelters.shelterName}}</td>
+                <td  class="exclude"><button class="edit" (click)="selectShelter(all_animals)"><img src="image_admin_edit.png" alt=""></button></td>
+                <td>{{all_animals.id}}</td>
+                <td>{{all_animals.name}}</td>
+                <td>{{all_animals.age}}</td>
+                <td>{{all_animals.city}}</td>
+                <td>{{all_animals.description}}</td>
+                <td>{{all_animals.sex}}</td>
+                <td>{{all_animals.size}}</td>
+                <td>{{all_animals.type}}</td>
+                <td><span class="short_url" title="{{all_animals.imageURL}}">{{all_animals.imageURL}}</span></td>
+                <td>{{all_animals.vaccinated}}</td>
+                <td>{{all_animals.sterilized}}</td>
+                <td>{{all_animals.specialCare}}</td>
+                <td>{{all_animals.shelterPhoneNumber}}</td>
+                <td>{{all_animals.shelterName}}</td>
 
             </tr>
         </table>
     </div>
 
 
-    <div *ngIf="selectedShelter" class="modal">
+    <div *ngIf="selectedAnimal" class="modal">
         <div class="modal-content">
           <span (click)="closeModal()" class="close-button">&times;</span>
              <input type="hidden" id="name" [(ngModel)]="id">
@@ -93,7 +93,7 @@
             </div>
 
             <div>
-                <button class="confirm_edit" (click)="SendEditedShelter()">Внести зміни</button>
+                <button class="confirm_edit" (click)="SendEditedAnimal()">Внести зміни</button>
             </div>
 
         </div>
@@ -136,9 +136,8 @@
   <div class="modal-content">
     <span (click)="closeModalDelete()" class="close-button">&times;</span>
 
-           <h3></h3>
       <label for="name">ID:</label>
-      <input type="text" id="name" [(ngModel)]="id_for_delete" placeholder="ID тваринки">
+      <input type="number" id="name" [(ngModel)]="id_for_delete" placeholder="ID тваринки">
 
       <div>
           <button class="confirm_edit" (click)="confirmDelete()">Видалити</button>

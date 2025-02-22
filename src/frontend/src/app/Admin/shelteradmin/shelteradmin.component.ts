@@ -208,8 +208,12 @@ CleanSearchForm(){
   this.search_data_id.address = '';
   this.search_data_id.contactNumber = '';
 }
+CleanDeleteForm(){
+  this.id_for_delete = '';
+
+}
 OpeneDelete(){this.DELETE = true;}
-closeModalDelete(){this.DELETE = false; }
+closeModalDelete(){this.DELETE = false; this.CleanDeleteForm(); }
 confirmDelete(){
   const confirmation = confirm('Ви впевнені, що хочете видалити цей притулок?');
   if(confirmation){
@@ -225,6 +229,7 @@ seandDelete(){
  {next: (response) => {
   console.log(response);
   this.closeModalDelete();
+  
   this.SherlterForAdmin();
 },
 error: (error) => {

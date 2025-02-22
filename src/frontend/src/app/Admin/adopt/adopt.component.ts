@@ -99,9 +99,11 @@ export class AdoptComponent {
       
   //   }})
   // }
-
+  CleanDeleteForm(){
+    this.id_for_delete = '';
+  }
   OpeneDelete(){this.DELETE = true;}
-  closeModalDelete(){this.DELETE = false;}
+  closeModalDelete(){this.DELETE = false; this.CleanDeleteForm();}
   confirmDelete(){
     const confirmation = confirm('Ви впевнені, що хочете видалити заявку на усиновлення?');
     if(confirmation){

@@ -82,8 +82,12 @@ export class UsersComponent {
   // }
 
   OpenAddForm(){this.addform = true};
-  closeAdd(){this.addform = false};
-
+  closeAdd(){this.addform = false; this.CleanAddForm();};
+  CleanAddForm(){
+    this.emailAdmin = '';
+    this.passwordAdmin = '';
+    this.passwordAgain = '';
+  }
 
     register() {
       if (this.passwordAdmin !== this.passwordAgain) {
@@ -135,9 +139,11 @@ export class UsersComponent {
         });
 
     }
-
+    CleanDeleteForm(){
+      this.id_for_delete = '';
+    }
     OpeneDelete(){this.DELETE = true;}
-    closeModalDelete(){this.DELETE = false;}
+    closeModalDelete(){this.DELETE = false; this.CleanDeleteForm();}
     confirmDelete(){
       const confirmation = confirm('Ви впевнені, що хочете видалити користувача?');
       if(confirmation){

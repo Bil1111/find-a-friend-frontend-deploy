@@ -39,14 +39,14 @@
       <h2>м. {{ selectedShelter.city }}</h2>
       <h3 class="nameshelter" >Притулок  {{selectedShelter.name }}</h3>
       <img [src]="selectedShelter.imageURL" alt="{{ selectedShelter.city }}" />
-      <h3>Контактна інформація</h3>
+      <h3 class="contact_info_in_modal">Контактна інформація</h3>
 
       <!-- <p>ID: {{ shelter.id }}</p> -->
       <p>Адреса: {{ selectedShelter.address }}</p>
       <p>Телефон: {{ selectedShelter.contactNumber }}</p>
       <p>Email: {{ selectedShelter.email }}</p>
 
-      <h3>Ревізити для переказу:</h3>
+      <h3 class="recvizit_info_in_modal">Ревізити для переказу</h3>
       <p>Карта: {{ selectedShelter.card }}</p>
         <p>PayPal: {{ selectedShelter.paypal }}</p>
         <p>IBAN: {{ selectedShelter.iban }}</p>

@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './for-all-shelter.component.css'
 })
 export class ForAllShelterComponent implements OnInit {
+
   shelter: any = {};
   animals: any[] = [];
   filteredAnimals: any[] = [];
@@ -56,6 +57,8 @@ export class ForAllShelterComponent implements OnInit {
         response => {
           this.animals = response || []; // Тепер відповідь — це список тварин
           this.filteredAnimals = [...this.animals];
+          
+          this.applyFilters(); 
 
           // Запит на отримання всіх тварин для обчислення загальної кількості сторінок
           this.http.get<any[]>(`http://localhost:8080/api/shelters/${this.shelter_ID}/animals`)
@@ -169,6 +172,7 @@ export class ForAllShelterComponent implements OnInit {
         this.isMatchingFilter(animal, 'specialCare', this.activeFilters.specialCare)
       );
     });
+    this.totalPages = Math.ceil(this.filteredAnimals.length / this.itemsPerPage);
   }
 
   isMatchingFilter(animal: any, filterType: string, activeValues: any[]): boolean {

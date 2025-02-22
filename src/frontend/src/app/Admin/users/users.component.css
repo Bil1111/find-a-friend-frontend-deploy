@@ -68,7 +68,7 @@ input[type='search']{padding: 10px;}
   th, td {
     border: 2px solid rgb(194, 192, 192);
   }
-  th{
+  th, td{
     text-align: center;
    }
   th.exclude, td.exclude {

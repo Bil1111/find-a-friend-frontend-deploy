@@ -20,7 +20,7 @@
          <input type="email" id="email" [(ngModel)]="email"  name="email" placeholder="Введіть ваш email" required>
 
          <label for="phone">Телефон:</label>
-         <input type="tel" id="phone" [(ngModel)]="contactNumber" name="contactNumber" placeholder="Введіть ваш номер телефону" required>
+         <input type="number" id="phone" [(ngModel)]="contactNumber" name="contactNumber" placeholder="Введіть ваш номер телефону" required>
 
          <input type="hidden"  [(ngModel)]="animalAge"  name="animalAge">
          <input type="hidden"  [(ngModel)]="animalSex"  name="animalSex">
@@ -33,7 +33,7 @@
          <select type="text" id="shelter" [(ngModel)]="shelter" (change)="fetchShelterData()" name="shelter"  required>
           <option value="" disabled selected hidden>Оберіть притулок</option>
            <option *ngFor="let shelter of shelters" [value]="shelter.id">
-             {{ shelter.name }}
+             {{ shelter.name }} (м.{{ shelter.city }})
            </option>
          </select>
 
@@ -41,7 +41,7 @@
          <select id="animal" [(ngModel)]="animalName" (change)="hidden_info_for_animals(animalName)"  name="Name_Animal" required>
           <option value="" disabled selected hidden>Оберіть тваринку</option>
           <option *ngFor="let animal of animals" [value]="animal.name">
-            {{ animal.name }}
+            {{ animal.name }} ({{ animal.type }}, {{ animal.age }} роки/рік, розмір: {{ animal.size }}, стать: {{ animal.sex }})
           </option>
          </select>
 

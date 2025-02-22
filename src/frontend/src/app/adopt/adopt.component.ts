@@ -129,6 +129,7 @@ export class AdoptComponent implements OnInit {
     this.typeOfAnimal = '';
     this.experience = '';
     this.shelter = "";
+    this.animalName ='';
 
    this.animalAge = '';
    this.animalSex = '';

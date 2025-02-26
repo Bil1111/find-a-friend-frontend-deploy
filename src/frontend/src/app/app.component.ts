@@ -34,17 +34,17 @@ export class AppComponent implements OnInit {
 
 
 
-  
+
   constructor(private router: Router, private http: HttpClient,private sharedService: SharedService) {
     this.router.events.subscribe(() => {
-      this.ShowFooter = this.router.url !== '/adopt' &&  this.router.url !== '/gifthouse' &&  this.router.url !== '/free-people' 
-      &&  this.router.url !== '/admin' &&  this.router.url !== '/admin/shelteradmin' &&  this.router.url !== '/admin/usersadmin' &&  this.router.url !== '/admin/volonteradmin' 
-      &&  this.router.url !== '/admin/adopradmin' &&  this.router.url !== '/admin/wardadmin' 
+      this.ShowFooter = this.router.url !== '/adopt' &&  this.router.url !== '/gifthouse' &&  this.router.url !== '/free-people'
+      &&  this.router.url !== '/admin' &&  this.router.url !== '/admin/shelteradmin' &&  this.router.url !== '/admin/usersadmin' &&  this.router.url !== '/admin/volonteradmin'
+      &&  this.router.url !== '/admin/adopradmin' &&  this.router.url !== '/admin/wardadmin'
       &&  this.router.url !== '/admin/blogadmin'   &&  this.router.url !== '/admin/tabel-animals';
-      
-      this.ShowHeader = this.router.url !== '/admin' &&  this.router.url !== '/admin/shelteradmin' 
-      &&  this.router.url !== '/admin/usersadmin' &&  this.router.url !== '/admin/volonteradmin' 
-      &&  this.router.url !== '/admin/adopradmin' &&  this.router.url !== '/admin/wardadmin' 
+
+      this.ShowHeader = this.router.url !== '/admin' &&  this.router.url !== '/admin/shelteradmin'
+      &&  this.router.url !== '/admin/usersadmin' &&  this.router.url !== '/admin/volonteradmin'
+      &&  this.router.url !== '/admin/adopradmin' &&  this.router.url !== '/admin/wardadmin'
       &&  this.router.url !== '/admin/blogadmin'  &&  this.router.url !== '/admin/tabel-animals';
 
     })
@@ -118,5 +118,6 @@ export class AppComponent implements OnInit {
   logout(){
     localStorage.removeItem('token');
     this.sharedService.changeLoginState(false);
+    this.router.navigate(["/sing-in"]);
    }
 }

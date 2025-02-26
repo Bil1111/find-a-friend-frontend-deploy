@@ -13,21 +13,6 @@
   "paypal" : "paypal.me/dobrydim",
   "iban" : "UA123456789012345678901234567",
   "animals" : [ {
-    "id" : 4,
-    "name" : "Белла",
-    "type" : "Собака",
-    "age" : 8,
-    "size" : "Великий",
-    "description" : "Активна та весела.",
-    "sex" : "Дівчинка",
-    "imageURL" : "https://res.cloudinary.com/dpqr3xkbh/image/upload/v1740156219/1_g6px54.png",
-    "city" : "Київ",
-    "shelterPhoneNumber" : "380671234567",
-    "shelterName" : "Добрий Дім",
-    "vaccinated" : true,
-    "sterilized" : true,
-    "specialCare" : false
-  }, {
     "id" : 7,
     "name" : "Максі",
     "type" : "Собака",
@@ -42,6 +27,21 @@
     "vaccinated" : true,
     "sterilized" : true,
     "specialCare" : false
+  }, {
+    "id" : 4,
+    "name" : "Белла",
+    "type" : "Собака",
+    "age" : 8,
+    "size" : "Великий",
+    "description" : "Активна та весела.",
+    "sex" : "Дівчинка",
+    "imageURL" : "https://res.cloudinary.com/dpqr3xkbh/image/upload/v1740156219/1_g6px54.png",
+    "city" : "Київ",
+    "shelterPhoneNumber" : "380671234567",
+    "shelterName" : "Добрий Дім",
+    "vaccinated" : true,
+    "sterilized" : true,
+    "specialCare" : true
   } ]
 }, {
   "id" : 2,
@@ -58,6 +58,21 @@
   "paypal" : "paypal.me/hatiko",
   "iban" : "UA098765432109876543210987654",
   "animals" : [ {
+    "id" : 5,
+    "name" : "Бані",
+    "type" : "Кролик",
+    "age" : 4,
+    "size" : "Середній",
+    "description" : "Непосидючий та жвавий.",
+    "sex" : "Хлопчик",
+    "imageURL" : "https://res.cloudinary.com/dpqr3xkbh/image/upload/v1740156213/8_l4oopt.jpg",
+    "city" : "Львів",
+    "shelterPhoneNumber" : "380673456789",
+    "shelterName" : "Хатіко",
+    "vaccinated" : true,
+    "sterilized" : true,
+    "specialCare" : false
+  }, {
     "id" : 6,
     "name" : "Боні",
     "type" : "Кролик",
@@ -71,21 +86,6 @@
     "shelterName" : "Хатіко",
     "vaccinated" : true,
     "sterilized" : true,
-    "specialCare" : false
-  }, {
-    "id" : 5,
-    "name" : "Бані",
-    "type" : "Кролик",
-    "age" : 4,
-    "size" : "Середній",
-    "description" : "Непосидючий та жвавий.",
-    "sex" : "Хлопчик",
-    "imageURL" : "https://res.cloudinary.com/dpqr3xkbh/image/upload/v1740156213/8_l4oopt.jpg",
-    "city" : "Львів",
-    "shelterPhoneNumber" : "380673456789",
-    "shelterName" : "Хатіко",
-    "vaccinated" : true,
-    "sterilized" : false,
     "specialCare" : false
   } ]
 }, {

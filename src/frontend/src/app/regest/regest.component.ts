@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-// import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-regest',
@@ -15,20 +14,40 @@ export class RegestComponent {
   errorMessage: string | null = null;
   loading: boolean = false; // Додали змінну для завантаження
 
- //
-  // log: boolean = false;// Локальна змінна для зберігання стану
- //
-
   constructor(private http: HttpClient, private router: Router) {}
 
 
 
+  validateEmail(email: string): boolean {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+  }
+
   register() {
+    if (!this.validateEmail(this.email)) {
+      this.errorMessage = 'Невірний формат електронної пошти';
+      console.error(this.errorMessage);
+      return;
+    }
     if (this.password !== this.passwordAgain) {
       this.errorMessage = 'Паролі не співпадають';
       console.error(this.errorMessage);
       return;
     }
+
+    if (this.password=='') {
+      this.errorMessage = 'Пароль не може бути пустим';
+      console.error(this.errorMessage);
+      return;
+    }
+
+    if (this.password.length<6) {
+      this.errorMessage = 'Пароль має містити мінімум 6 символів';
+      console.error(this.errorMessage);
+      return;
+    }
+
+
 
     const registrationData = {
       email: this.email,

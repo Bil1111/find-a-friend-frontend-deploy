@@ -38,7 +38,7 @@ export class UsersComponent {
   }
 
   AllUsers(){
-    this.http.get<any[]>('http://localhost:8080/api/users').subscribe(
+    this.http.get<any[]>('https://find-a-friend-backend-deploy.onrender.com/api/users').subscribe(
       data =>{this.Users = data.map( user => {  return user;});}, error =>{   console.error('Error fetching shelters:', error);});
   }
 
@@ -51,35 +51,7 @@ export class UsersComponent {
     this.search_data_id.role = '';
   }
 
-  // selectUser(user:any){
-  //  this. selectedUser = user;
-  //  this.Id = user.id;
-  //  this.email = user.email;
-  //  this.password = user.password;
-  //  this.role = user.role;
-  // }
   closeModal(){this.selectedUser = null;}
-
-  // SendEditedUser(){
-
-  //   const datauser = {
-  //     id: this.Id,
-  //     email: this.email,
-  //     password: this.password,
-  //     role: this.role
-  //   };
-
-  //   this.http.put<any[]>(`http://localhost:8080/api/users/update/${datauser.id}` , datauser , {responseType: 'text' as 'json'}).subscribe(
-  //   {next: (response) => {
-  //     console.log(response);
-  //     this.closeModal();
-  //     this.AllUsers();
-  //   },
-  //   error: (error) => {
-  //     console.error('Помилка при оновленні користувача', error);
-
-  //   }})
-  // }
 
   OpenAddForm(){this.addform = true};
   closeAdd(){this.addform = false; this.CleanAddForm();};
@@ -109,7 +81,7 @@ export class UsersComponent {
 
       this.loading = true; // Включаємо стан завантаження
 
-      this.http.post('http://localhost:8080/api/users/register/admin', registrationData, httpOptions)
+      this.http.post('https://find-a-friend-backend-deploy.onrender.com/api/users/register/admin', registrationData, httpOptions)
         .subscribe({
           next: (response) => {
             this.loading = false; // Вимикаємо стан завантаження
@@ -155,7 +127,7 @@ export class UsersComponent {
     }
     seandDelete(){
 
-      this.http.delete<any[]>(`http://localhost:8080/api/users/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe(
+      this.http.delete<any[]>(`https://find-a-friend-backend-deploy.onrender.com/api/users/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe(
      {next: (response) => {
       console.log(response);
       this.closeModalDelete();

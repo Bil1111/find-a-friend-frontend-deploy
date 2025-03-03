@@ -39,7 +39,7 @@ export class WardComponent {
   }
 
   AllUsers(){
-    this.http.get<any[]>('http://localhost:8080/api/forms/ward/all').subscribe(
+    this.http.get<any[]>('https://find-a-friend-backend-deploy.onrender.com/api/forms/ward/all').subscribe(
       data =>{this.Volonter = data.map( volonter => { return volonter;});},
        error =>{console.error('Error fetching shelters:', error);});
   }
@@ -61,39 +61,8 @@ export class WardComponent {
     this.search_data_id.shelterName = '';
   }
 
-  // selectUser(volonter:any){
-  //  this.selectedVolonter = volonter;
-
-  //  this.Id = volonter.id;
-  //  this.email = volonter.email;
-  //  this.contactnumber = volonter.contactNumber;
-  //  this.name = volonter.firstName;
-  //  this.surname = volonter.lastName;
-  
-  // }
   closeModal(){this.selectedVolonter = null;}
 
-  // SendEditedUser(){
-
-  //   const DataVolonter = {
-  //     id: this.Id,
-  //     email:  this.email,
-  //     contactNumber: this.contactnumber,
-  //     firstName: this.name,
-  //     lastName:  this.surname
-  //   };
-
-  //   this.http.put<any[]>(`http://localhost:8080/api/forms/volunteer` , DataVolonter , {responseType: 'text' as 'json'}).subscribe(
-  //   {next: (response) => {
-  //     // console.log(response); 
-  //     this.closeModal();
-  //     this.AllUsers();
-  //   },
-  //   error: (error) => {
-  //     console.error('Помилка при оновленні користувача', error);
-      
-  //   }})
-  // }
   CleanDeleteForm(){
     this.id_for_delete = '';
   }
@@ -110,7 +79,7 @@ export class WardComponent {
   }
   seandDelete(){
 
-    this.http.delete<any[]>(`http://localhost:8080/api/forms/ward/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe( 
+    this.http.delete<any[]>(`https://find-a-friend-backend-deploy.onrender.com/api/forms/ward/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe(
    {next: (response) => {
     console.log(response);
     this.closeModalDelete();
@@ -119,7 +88,7 @@ export class WardComponent {
   },
   error: (error) => {
     console.error('Помилка при видаленні', error);
-    
+
   }})
   }
 }

@@ -32,10 +32,10 @@ export class VolontersComponent {
   }
 
   AllUsers() {
-    this.http.get<any[]>('http://localhost:8080/api/forms/volunteer/all').subscribe(
+    this.http.get<any[]>('https://find-a-friend-backend-deploy.onrender.com/api/forms/volunteer/all').subscribe(
       data => {
         console.log("API Response:", data);  // Логуємо всю відповідь від API
-        this.Volonter = data.map(volonter => { 
+        this.Volonter = data.map(volonter => {
           // console.log(volonter.shelter);  // Логуємо кожного волонтера окремо
           return volonter;
         });
@@ -57,39 +57,6 @@ export class VolontersComponent {
     this.search_data_id.shelterName = '';
   }
 
-  // selectUser(volonter:any){
-  //  this.selectedVolonter = volonter;
-
-  //  this.Id = volonter.id;
-  //  this.email = volonter.email;
-  //  this.contactnumber = volonter.contactNumber;
-  //  this.name = volonter.firstName;
-  //  this.surname = volonter.lastName;
-  //  this.shelter = volonter.shelter;
-  // }
- 
-
-  // SendEditedUser(){
-
-  //   const DataVolonter = {
-  //     id: this.Id,
-  //     email:  this.email,
-  //     contactNumber: this.contactnumber,
-  //     firstName: this.name,
-  //     lastName:  this.surname
-  //   };
-
-  //   this.http.put<any[]>(`http://localhost:8080/api/forms/volunteer` , DataVolonter , {responseType: 'text' as 'json'}).subscribe(
-  //   {next: (response) => {
-  //     // console.log(response); 
-  //     this.closeModal();
-  //     this.AllUsers();
-  //   },
-  //   error: (error) => {
-  //     console.error('Помилка при оновленні користувача', error);
-      
-  //   }})
-  // }
   CleanDeleteForm(){
     this.Id = '';
   }
@@ -106,7 +73,7 @@ export class VolontersComponent {
   }
   seandDelete(){
 
-    this.http.delete<any[]>(`http://localhost:8080/api/forms/volunteer/${this.Id}` , {responseType: ('text' as 'json')}).subscribe( 
+    this.http.delete<any[]>(`https://find-a-friend-backend-deploy.onrender.com/api/forms/volunteer/${this.Id}` , {responseType: ('text' as 'json')}).subscribe(
    {next: (response) => {
     console.log(response);
     this.closeModalDelete();
@@ -115,7 +82,7 @@ export class VolontersComponent {
   },
   error: (error) => {
     console.error('Помилка при видаленні', error);
-    
+
   }})
   }
 }

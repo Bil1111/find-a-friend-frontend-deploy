@@ -75,7 +75,7 @@ export class FindFComponent implements OnInit {
     const startId = (page - 1) * this.itemsPerPage;
 
     // Запит на отримання всіх притулків
-    this.http.get<any[]>('http://localhost:8080/api/shelters').subscribe(
+    this.http.get<any[]>('https://find-a-friend-backend-deploy.onrender.com/api/shelters').subscribe(
       shelters => {
         const allAnimals: any[] = [];
 
@@ -203,7 +203,7 @@ export class FindFComponent implements OnInit {
     this.applyFilters(); // застосування нових фільтрів до колекції тварин.
     setTimeout(() => {}, 0);
   }
-  
+
 
   applyFilters() {
     this.filteredAnimals  = this.AllAnimals.filter(animal => {
@@ -226,11 +226,6 @@ export class FindFComponent implements OnInit {
     if (activeValues.length === 0 || activeValues.includes('')) {
       return true; // Якщо фільтр не активний, всі значення проходять
     }
-    // if (filterType === 'type' && activeValues.includes('') || filterType === 'sex' && activeValues.includes('')
-    //    || filterType === 'age' && activeValues.includes(0) || filterType === 'city' && activeValues.includes('')) {
-    //   return true; // Вік "Усі" повинен проходити
-    // }
-
     if (filterType === 'age') {
       const ageRanges: { [key: number]: (age: number) => boolean } = {
         1: (age) => age <= 1,
@@ -264,17 +259,9 @@ export class FindFComponent implements OnInit {
       animalSize: this.animalSize,
     };
     console.log('Дані форми:', AdoptData);
-    // const token = localStorage.getItem('token');
-    //
-    // // Перевіряємо, чи є токен
-    // if (!token) {
-    //   console.error('Token not found');
-    //   return;
-    // }
-    //
-    // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    this.http.post('http://localhost:8080/api/forms/adopt', AdoptData).subscribe({
+
+    this.http.post('https://find-a-friend-backend-deploy.onrender.com/api/forms/adopt', AdoptData).subscribe({
       next: (response) => {
         this.successMessage = 'Форма успішно відправлена!';
         this.errorMessage = null;
@@ -311,7 +298,7 @@ export class FindFComponent implements OnInit {
       // City: this.City,
     };
 
-    this.http.post('http://localhost:8080/api/forms/ward', WardData).subscribe({
+    this.http.post('https://find-a-friend-backend-deploy.onrender.com/api/forms/ward', WardData).subscribe({
       next: (response) => {
         this.successMessage = 'Форма успішно відправлена!';
         this.errorMessage = null;

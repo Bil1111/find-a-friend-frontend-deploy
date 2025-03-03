@@ -18,7 +18,7 @@ export class AdoptComponent implements OnInit {
   animalAge: string = '';
   animalSex: string = '';
   animalSize: string = '';
- 
+
   errorMessage: string | null = null;
   successMessage: string | null = null;
 
@@ -38,7 +38,7 @@ export class AdoptComponent implements OnInit {
 
 
    fetchShelterData() {
-    this.http.get<any>(`http://localhost:8080/api/shelters/${this.shelter}`)
+    this.http.get<any>(`https://find-a-friend-backend-deploy.onrender.com/api/shelters/${this.shelter}`)
       .subscribe(
         response => {
           this.shelter = response.id;
@@ -50,23 +50,9 @@ export class AdoptComponent implements OnInit {
   }
 
 
- // Метод для отримання всіх тварин
-  //  fetchAnimals() {
-  //   this.http.get<any[]>(`http://localhost:8080/api/animals`).subscribe(
-  //     data => {
-  //       console.log('Received data:', data); // Додайте це логування
-  //       this.allAnimals = data.map(animal => {
-  //         return animal; });
-  //       this.animals = [...this.allAnimals]; // Ініціалізуємо тварин
-  //     },
-  //     error => {console.error('Error fetching animals:', error);}
-  //   );
-  // }
-
-
   // Метод для отримання всіх притулків
   fetchShelters() {
-    this.http.get<any[]>('http://localhost:8080/api/shelters').subscribe(
+    this.http.get<any[]>('https://find-a-friend-backend-deploy.onrender.com/api/shelters').subscribe(
       data => {
         console.log('Received shelters data:', data); // Логування отриманих даних
         this.shelters = data.map(shelter => {return shelter;});
@@ -100,11 +86,11 @@ export class AdoptComponent implements OnInit {
       shelter: this.shelter,
       animalName: this.animalName,
       experience: this.experience
-    
+
     };
     console.log('Дані форми:', adoptData);
-    
-    this.http.post(`http://localhost:8080/api/forms/adopt`, adoptData).subscribe({
+
+    this.http.post(`https://find-a-friend-backend-deploy.onrender.com/api/forms/adopt`, adoptData).subscribe({
       next: (response) => {
         this.successMessage = 'Форма успішно відправлена!';
         this.errorMessage = null;

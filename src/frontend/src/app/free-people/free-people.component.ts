@@ -29,7 +29,7 @@ export class FreePeopleComponent implements OnInit {
 // 'Received shelters data:',
   // Метод для отримання всіх притулків
   fetchShelters() {
-    this.http.get<any[]>('http://localhost:8080/api/shelters').subscribe(
+    this.http.get<any[]>('https://find-a-friend-backend-deploy.onrender.com/api/shelters').subscribe(
       data => {
         console.log( data); // Логування отриманих даних
         this.shelters = data.map(shelter => {

@@ -52,16 +52,16 @@ export class ForAllShelterComponent implements OnInit {
   fetchShelterData(page: number) {
     const startId = (page - 1) * this.itemsPerPage;
 
-    this.http.get<any[]>(`http://localhost:8080/api/shelters/${this.shelter_ID}/animals/next/${startId}`)
+    this.http.get<any[]>(`https://find-a-friend-backend-deploy.onrender.com/api/shelters/${this.shelter_ID}/animals/next/${startId}`)
       .subscribe(
         response => {
           this.animals = response || []; // Тепер відповідь — це список тварин
           this.filteredAnimals = [...this.animals];
-          
-          this.applyFilters(); 
+
+          this.applyFilters();
 
           // Запит на отримання всіх тварин для обчислення загальної кількості сторінок
-          this.http.get<any[]>(`http://localhost:8080/api/shelters/${this.shelter_ID}/animals`)
+          this.http.get<any[]>(`https://find-a-friend-backend-deploy.onrender.com/api/shelters/${this.shelter_ID}/animals`)
             .subscribe(
               allAnimals => {
                 this.totalPages = Math.ceil(allAnimals.length / this.itemsPerPage); // Округлюємо до більшого
@@ -179,10 +179,6 @@ export class ForAllShelterComponent implements OnInit {
     if (activeValues.length === 0 || activeValues.includes('')) {
       return true; // Якщо фільтр не активний, всі значення проходять
     }
-    // if (filterType === 'type' && activeValues.includes('') || filterType === 'sex' && activeValues.includes('')
-    //    || filterType === 'age' && activeValues.includes(0) || filterType === 'city' && activeValues.includes('')) {
-    //   return true; // Вік "Усі" повинен проходити
-    // }
 
     if (filterType === 'age') {
       const ageRanges: { [key: number]: (age: number) => boolean } = {
@@ -216,17 +212,8 @@ export class ForAllShelterComponent implements OnInit {
       animalSize: this.animalSize,
     };
     console.log('Дані форми:', AdoptData);
-    // const token = localStorage.getItem('token');
-    //
-    // // Перевіряємо, чи є токен
-    // if (!token) {
-    //   console.error('Token not found');
-    //   return;
-    // }
-    //
-    // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    this.http.post('http://localhost:8080/api/forms/adopt', AdoptData).subscribe({
+    this.http.post('https://find-a-friend-backend-deploy.onrender.com/api/forms/adopt', AdoptData).subscribe({
       next: (response) => {
         this.successMessage = 'Форма успішно відправлена!';
         this.errorMessage = null;
@@ -259,7 +246,7 @@ export class ForAllShelterComponent implements OnInit {
       animalSize: this.animalSize,
     };
 
-    this.http.post('http://localhost:8080/api/forms/ward', WardData).subscribe({
+    this.http.post('https://find-a-friend-backend-deploy.onrender.com/api/forms/ward', WardData).subscribe({
       next: (response) => {
         this.successMessage = 'Форма успішно відправлена!';
         this.errorMessage = null;

@@ -62,7 +62,7 @@ export class RegestComponent {
 
     this.loading = true; // Включаємо стан завантаження
 
-    this.http.post('http://localhost:8080/api/users/register', registrationData, httpOptions)
+    this.http.post('https://find-a-friend-backend-deploy.onrender.com/api/users/register', registrationData, httpOptions)
       .subscribe({
         next: (response) => {
           this.loading = false; // Вимикаємо стан завантаження

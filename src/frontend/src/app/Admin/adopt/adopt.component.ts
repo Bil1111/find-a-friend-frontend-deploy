@@ -78,27 +78,6 @@ export class AdoptComponent {
   }
   closeModal(){this.selectedVolonter = null;}
 
-  // SendEditedUser(){
-
-  //   const DataVolonter = {
-  //     id: this.Id,
-  //     email:  this.email,
-  //     contactNumber: this.contactnumber,
-  //     firstName: this.name,
-  //     lastName:  this.surname
-  //   };
-
-  //   this.http.put<any[]>(`http://localhost:8080/api/forms/volunteer` , DataVolonter , {responseType: 'text' as 'json'}).subscribe(
-  //   {next: (response) => {
-  //     // console.log(response);
-  //     this.closeModal();
-  //     this.AllUsers();
-  //   },
-  //   error: (error) => {
-  //     console.error('Помилка при оновленні користувача', error);
-
-  //   }})
-  // }
   CleanDeleteForm(){
     this.id_for_delete = '';
   }

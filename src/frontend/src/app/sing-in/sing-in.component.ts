@@ -35,7 +35,7 @@ export class SingINComponent implements OnInit {
       password: this.password
     };
 
-    this.http.post('http://localhost:8080/api/users/login', loginData)
+    this.http.post('https://find-a-friend-backend-deploy.onrender.com/api/users/login', loginData)
       .subscribe({
         next: (response: any) => {
           console.log('Login successful', response);

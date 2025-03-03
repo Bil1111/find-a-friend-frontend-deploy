@@ -65,7 +65,7 @@ export class AppComponent implements OnInit {
   }
 
   loadMapPoints() {
-    this.http.get<MapPoint[]>('http://localhost:8080/api/mapPoints')
+    this.http.get<MapPoint[]>('https://find-a-friend-backend-deploy.onrender.com/api/mapPoints')
       .subscribe(data => {
         this.mapPoints = data;
         this.initMap();
